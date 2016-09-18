@@ -10,7 +10,7 @@
 
 
 NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
-static const DDLogLevel ddLogLevel = DDLogLevelVerbose; //log everything
+
 
 
 @implementation AppDelegate

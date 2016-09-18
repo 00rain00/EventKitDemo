@@ -21,7 +21,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    //request access to events
+    [self performSelector:@selector(requestAccessToEvents) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(requestAccessToReminders) withObject:nil afterDelay:1];
+
+    // Do any additional setup after loading the view, typically from a nib.
     
     // Instantiate the appDelegate property.
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -83,6 +87,28 @@
 
 - (IBAction)createEvent:(id)sender {
     
+}
+
+- (void)requestAccessToEvents {
+    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
+        if(OBJECT_IS_EMPTY(error)){
+            self.appDelegate.eventManager.eventsAccessGranted=granted;
+        }else{
+            FATAL_CORE_DATA_ERROR(error);
+        }
+    }];
+
+}
+
+- (void)requestAccessToReminders {
+    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error){
+        if(OBJECT_IS_EMPTY(error)){
+         DDLogInfo(@"reminder access Yes");
+        }else{
+            FATAL_CORE_DATA_ERROR(error);
+        }
+    }];
+
 }
 
 

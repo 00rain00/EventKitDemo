@@ -11,19 +11,19 @@
 #endif
 
 #ifdef __OBJC__
-    #import <UIKit/UIKit.h>
-    #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"
-
 #import <CoreData/CoreData.h>
 #import "UIAlertController+Window.h"  //gobal alert
 
 
 #endif /* PrefixHeader_pch */
 extern NSString * const ManagedObjectContextSaveDidFailNotification;
+static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 //Macros
 #define FATAL_CORE_DATA_ERROR(__error__)\
 DDLogDebug(@"*** Fatal error: %@ \n %@", error, [error userInfo]);\

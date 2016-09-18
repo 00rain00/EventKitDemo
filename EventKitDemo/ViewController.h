@@ -18,4 +18,8 @@
 
 - (IBAction)createEvent:(id)sender;
 
+-(void)requestAccessToEvents;
+
+-(void)requestAccessToReminders;
+
 @end

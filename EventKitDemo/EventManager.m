@@ -16,5 +16,11 @@
     }
     return self;
 }
+//override the setter
+- (void)setEventsAccessGranted:(BOOL)eventsAccessGranted {
+    _eventsAccessGranted = eventsAccessGranted;
+    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:eventsAccessGranted] forKey:@"eventkit_events_access_granted"];
+}
+
 
 @end
