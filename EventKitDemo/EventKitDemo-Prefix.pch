@@ -7,10 +7,39 @@
 #import <Availability.h>
 
 #ifndef __IPHONE_5_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
+
 #endif
 
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
-#endif
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CocoaLumberjack/CocoaLumberjack.h>
+#import "LogFormatter.h"
+
+#import <CoreData/CoreData.h>
+#import "UIAlertController+Window.h"  //gobal alert
+
+
+#endif /* PrefixHeader_pch */
+extern NSString * const ManagedObjectContextSaveDidFailNotification;
+//Macros
+#define FATAL_CORE_DATA_ERROR(__error__)\
+DDLogDebug(@"*** Fatal error: %@ \n %@", error, [error userInfo]);\
+[[NSNotificationCenter defaultCenter] postNotificationName:\
+ManagedObjectContextSaveDidFailNotification object:error];
+
+//检查空对象
+#define OBJECT_ISNOT_EMPTY(_object) (NO == OBJECT_IS_EMPTY(_object))
+#define RETURN_WHEN_OBJECT_IS_EMPTY(_object)        if (OBJECT_IS_EMPTY(_object)) { return ;    }
+#define RETURN_NIL_WHEN_OBJECT_IS_EMPTY(_object)    if (OBJECT_IS_EMPTY(_object)) { return nil; }
+#define RETURN_EMPTY_WHEN_OBJECT_IS_EMPTY(_object)  if (OBJECT_IS_EMPTY(_object)) { return @""; }
+#define RETURN_YES_WHEN_OBJECT_IS_EMPTY(_object)    if (OBJECT_IS_EMPTY(_object)) { return YES; }
+#define RETURN_NO_WHEN_OBJECT_IS_EMPTY(_object)     if (OBJECT_IS_EMPTY(_object)) { return NO; }
+#define RETURN_ZERO_WHEN_OBJECT_IS_EMPTY(_object)   if (OBJECT_IS_EMPTY(_object)) { return 0; }
+
+#define OBJECT_IS_EMPTY(_object) (_object == nil \
+|| [_object isKindOfClass:[NSNull class]] \
+|| ([_object respondsToSelector:@selector(length)] && [(NSData *)_object length] == 0) \
+|| ([_object respondsToSelector:@selector(count)]  && [(NSArray *)_object count] == 0))

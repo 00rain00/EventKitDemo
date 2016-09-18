@@ -21,6 +21,13 @@
 		C0062F3B1970321800B71762 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F1D1970321800B71762 /* UIKit.framework */; };
 		C0062F431970321800B71762 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0062F411970321800B71762 /* InfoPlist.strings */; };
 		C0062F451970321800B71762 /* EventKitDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F441970321800B71762 /* EventKitDemoTests.m */; };
+		C0062F4F1970323600B71762 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F4E1970323600B71762 /* EventKit.framework */; };
+		C0062F521970354A00B71762 /* CalendarsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F511970354A00B71762 /* CalendarsViewController.m */; };
+		C0062F551970380600B71762 /* EditEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F541970380600B71762 /* EditEventViewController.m */; };
+		C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F571970392C00B71762 /* DatePickerViewController.m */; };
+		C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */; };
+		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
+		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06658FFF4E062C9BCFC8D08F /* Pods-EventKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		AD2271355E89ADDBE48DC14B /* Pods-EventKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C0062F161970321800B71762 /* EventKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0062F191970321800B71762 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C0062F1B1970321800B71762 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -53,6 +62,19 @@
 		C0062F401970321800B71762 /* EventKitDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventKitDemoTests-Info.plist"; sourceTree = "<group>"; };
 		C0062F421970321800B71762 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C0062F441970321800B71762 /* EventKitDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventKitDemoTests.m; sourceTree = "<group>"; };
+		C0062F4E1970323600B71762 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		C0062F501970354A00B71762 /* CalendarsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarsViewController.h; sourceTree = "<group>"; };
+		C0062F511970354A00B71762 /* CalendarsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarsViewController.m; sourceTree = "<group>"; };
+		C0062F531970380600B71762 /* EditEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEventViewController.h; sourceTree = "<group>"; };
+		C0062F541970380600B71762 /* EditEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEventViewController.m; sourceTree = "<group>"; };
+		C0062F561970392C00B71762 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
+		C0062F571970392C00B71762 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
+		C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogFormatter.h; path = ../LogFormatter.h; sourceTree = "<group>"; };
+		C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogFormatter.m; path = ../LogFormatter.m; sourceTree = "<group>"; };
+		C17BE50D1D8C7EAA001F5C87 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
+		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
+		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +82,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0062F4F1970323600B71762 /* EventKit.framework in Frameworks */,
 				C0062F1C1970321800B71762 /* CoreGraphics.framework in Frameworks */,
 				C0062F1E1970321800B71762 /* UIKit.framework in Frameworks */,
 				C0062F1A1970321800B71762 /* Foundation.framework in Frameworks */,
+				C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +103,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		971E1FFCF7ED6F85D5A82510 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD2271355E89ADDBE48DC14B /* Pods-EventKitDemo.debug.xcconfig */,
+				06658FFF4E062C9BCFC8D08F /* Pods-EventKitDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C0062F0D1970321800B71762 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +119,7 @@
 				C0062F3E1970321800B71762 /* EventKitDemoTests */,
 				C0062F181970321800B71762 /* Frameworks */,
 				C0062F171970321800B71762 /* Products */,
+				971E1FFCF7ED6F85D5A82510 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +135,12 @@
 		C0062F181970321800B71762 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0062F4E1970323600B71762 /* EventKit.framework */,
 				C0062F191970321800B71762 /* Foundation.framework */,
 				C0062F1B1970321800B71762 /* CoreGraphics.framework */,
 				C0062F1D1970321800B71762 /* UIKit.framework */,
 				C0062F381970321800B71762 /* XCTest.framework */,
+				C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,11 +148,21 @@
 		C0062F1F1970321800B71762 /* EventKitDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C17BE5111D8ED1F5001F5C87 /* Service */,
+				C17BE5101D8ED1EF001F5C87 /* View */,
+				C17BE50F1D8ED1D9001F5C87 /* ViewModel */,
+				C17BE50E1D8ED1CE001F5C87 /* Model */,
 				C0062F281970321800B71762 /* AppDelegate.h */,
 				C0062F291970321800B71762 /* AppDelegate.m */,
 				C0062F2B1970321800B71762 /* Main.storyboard */,
 				C0062F2E1970321800B71762 /* ViewController.h */,
 				C0062F2F1970321800B71762 /* ViewController.m */,
+				C0062F501970354A00B71762 /* CalendarsViewController.h */,
+				C0062F511970354A00B71762 /* CalendarsViewController.m */,
+				C0062F531970380600B71762 /* EditEventViewController.h */,
+				C0062F541970380600B71762 /* EditEventViewController.m */,
+				C0062F561970392C00B71762 /* DatePickerViewController.h */,
+				C0062F571970392C00B71762 /* DatePickerViewController.m */,
 				C0062F311970321800B71762 /* Images.xcassets */,
 				C0062F201970321800B71762 /* Supporting Files */,
 			);
@@ -126,6 +172,9 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C17BE50D1D8C7EAA001F5C87 /* PrefixHeader.pch */,
+				C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */,
+				C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */,
 				C0062F211970321800B71762 /* EventKitDemo-Info.plist */,
 				C0062F221970321800B71762 /* InfoPlist.strings */,
 				C0062F251970321800B71762 /* main.m */,
@@ -152,6 +201,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C17BE50E1D8ED1CE001F5C87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C17BE5121D8ED25C001F5C87 /* EventManager.h */,
+				C17BE5131D8ED25C001F5C87 /* EventManager.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C17BE50F1D8ED1D9001F5C87 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C17BE5101D8ED1EF001F5C87 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C17BE5111D8ED1F5001F5C87 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +238,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0062F481970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemo" */;
 			buildPhases = (
+				F9776B0421E715396129D99E /* [CP] Check Pods Manifest.lock */,
 				C0062F121970321800B71762 /* Sources */,
 				C0062F131970321800B71762 /* Frameworks */,
 				C0062F141970321800B71762 /* Resources */,
+				0CD3DA2B18583A69F4EF882B /* [CP] Embed Pods Frameworks */,
+				2EA750F79ACC008DF3F57117 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +278,7 @@
 		C0062F0E1970321800B71762 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Appcoda;
 				TargetAttributes = {
 					C0062F361970321800B71762 = {
@@ -244,14 +326,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CD3DA2B18583A69F4EF882B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2EA750F79ACC008DF3F57117 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9776B0421E715396129D99E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C0062F121970321800B71762 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0062F521970354A00B71762 /* CalendarsViewController.m in Sources */,
 				C0062F301970321800B71762 /* ViewController.m in Sources */,
 				C0062F2A1970321800B71762 /* AppDelegate.m in Sources */,
+				C0062F551970380600B71762 /* EditEventViewController.m in Sources */,
+				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,
 				C0062F261970321800B71762 /* main.m in Sources */,
+				C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */,
+				C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +454,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -333,7 +469,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -365,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -373,12 +509,14 @@
 		};
 		C0062F491970321800B71762 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD2271355E89ADDBE48DC14B /* Pods-EventKitDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,12 +524,14 @@
 		};
 		C0062F4A1970321800B71762 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06658FFF4E062C9BCFC8D08F /* Pods-EventKitDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -413,6 +553,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "EventKitDemoTests/EventKitDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -431,6 +572,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemoTests/EventKitDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -456,6 +598,7 @@
 				C0062F4A1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0062F4B1970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -464,6 +607,7 @@
 				C0062F4D1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
