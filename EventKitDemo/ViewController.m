@@ -43,10 +43,15 @@
 
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    DDLogDebug(@"");
     if ([segue.identifier isEqualToString:@"idSegueEvent"]) {
         EditEventViewController *editEventViewController = [segue destinationViewController];
         editEventViewController.delegate = self;
     }
+//    if ([segue.identifier isEqualToString:@"idSegueCalendars"]) {
+//        CalendarsViewController *calendarsViewController = [segue destinationViewController];
+//        calendarsViewController.delegate = self;
+//    }
 }
 
 
@@ -82,7 +87,9 @@
 #pragma mark - IBAction method implementation
 
 - (IBAction)showCalendars:(id)sender {
-    
+    if(self.appDelegate.eventManager.eventsAccessGranted){
+        [self performSegueWithIdentifier:@"idSegueCalendars" sender:self];
+    }
 }
 
 - (IBAction)createEvent:(id)sender {

@@ -71,7 +71,6 @@
 		C0062F571970392C00B71762 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogFormatter.h; path = ../LogFormatter.h; sourceTree = "<group>"; };
 		C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogFormatter.m; path = ../LogFormatter.m; sourceTree = "<group>"; };
-		C17BE50D1D8C7EAA001F5C87 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
 		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,7 +171,6 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C17BE50D1D8C7EAA001F5C87 /* PrefixHeader.pch */,
 				C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */,
 				C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */,
 				C0062F211970321800B71762 /* EventKitDemo-Info.plist */,
@@ -281,6 +279,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Appcoda;
 				TargetAttributes = {
+					C0062F151970321800B71762 = {
+						DevelopmentTeam = 3LLN762WT3;
+					};
 					C0062F361970321800B71762 = {
 						TestTargetID = C0062F151970321800B71762;
 					};
@@ -513,11 +514,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "ST.yulin-cai.EventKitDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -528,11 +532,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.appcoda.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "ST.yulin-cai.EventKitDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

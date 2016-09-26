@@ -18,7 +18,7 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"
 #import <CoreData/CoreData.h>
-#import "UIAlertController+Window.h"  //gobal alert
+
 
 
 #endif /* PrefixHeader_pch */

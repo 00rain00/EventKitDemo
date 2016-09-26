@@ -14,4 +14,9 @@
 
 @property (nonatomic)BOOL eventsAccessGranted;
 
+@property (nonatomic, strong)NSString *selectedCalenderIdentifier;
+-(NSArray *)getiCloudCalendars;
+-(void)saveCustomerCalendarIdentifier:(NSString *)identifier;
+-(BOOL)checkIfCalendarIsCustomerWithIdentifier:(NSString *)identifier;
+-(void)removeCalendarIdentifier:(NSString *)identifier;
 @end

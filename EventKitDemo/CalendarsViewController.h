@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CalendarsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
+@interface CalendarsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblCalendars;
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "EditEventViewController.h"
-
+#import "CalendarsViewController.h"
 @interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;

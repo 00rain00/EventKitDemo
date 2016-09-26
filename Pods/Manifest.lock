@@ -1,0 +1,28 @@
+PODS:
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - FFGlobalAlertController (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - XLForm (3.2.0)
+
+DEPENDENCIES:
+  - CocoaLumberjack
+  - FFGlobalAlertController
+  - MBProgressHUD
+  - XLForm
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  FFGlobalAlertController: 40c66500ae173895085911ba19d79d045bd26742
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  XLForm: 2250b4e96ab8ffa5f3355838c79edd90de451782
+
+PODFILE CHECKSUM: df840bc4cc4163a7f69e2892a78e20e4181c03ff
+
+COCOAPODS: 1.0.1
