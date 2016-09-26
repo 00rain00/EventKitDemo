@@ -32,14 +32,14 @@
                                                     <rect key="frame" x="15" y="6" width="29" height="29"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v7x-Jo-m1m">
                                                     <rect key="frame" x="15" y="35" width="33.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -87,9 +87,9 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="DJr-XY-Iab">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="idCellGeneral" textLabel="fja-Ll-xGf" rowHeight="60" style="IBUITableViewCellStyleDefault" id="0iT-Gs-ERa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="idCellGeneral" textLabel="fja-Ll-xGf" rowHeight="60" style="IBUITableViewCellStyleDefault" id="0iT-Gs-ERa">
                                         <rect key="frame" x="0.0" y="113.5" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0iT-Gs-ERa" id="F2A-9f-vku">
@@ -100,7 +100,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="270" height="59.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -137,11 +137,101 @@
                     <connections>
                         <outlet property="tblEvent" destination="DJr-XY-Iab" id="6k6-RE-enj"/>
                         <segue destination="GIt-2J-eEj" kind="push" identifier="idSegueDatepicker" id="dx2-u3-rJx"/>
+                        <segue destination="SM5-C3-W48" kind="push" identifier="idSegueCalender" id="jYL-8O-stu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLz-pO-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="458"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Jfu-Rh-625">
+            <objects>
+                <tableViewController id="SM5-C3-W48" customClass="CalenderListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="40o-Ys-NCg" userLabel="table3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WELWordCell" id="tdU-UP-Kdw" customClass="WELWordCell">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tdU-UP-Kdw" id="OYp-Zc-q8a">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EN-yn-zPT">
+                                            <rect key="frame" x="8" y="14" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="calenderTitle" destination="3EN-yn-zPT" id="gEN-LF-bR2"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6CU-8K-R2m" id="FWm-BJ-uyF"/>
+                            <outlet property="delegate" destination="Cwg-xk-QtC" id="am4-lG-zAD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Calenders" id="T0c-U5-5Hr">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bc3-wS-1a9">
+                            <connections>
+                                <segue destination="kur-Yf-cKC" kind="push" identifier="id1" id="kjS-5d-5v7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="dataDelegate" destination="6CU-8K-R2m" id="qO7-TM-xQ7"/>
+                        <outlet property="table" destination="40o-Ys-NCg" id="CJJ-qh-B4f"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8kt-DT-Wdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="6CU-8K-R2m" customClass="WELDataSource">
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="cellIdentifier" value="WELWordCell"/>
+                    </userDefinedRuntimeAttributes>
+                </customObject>
+                <customObject id="Cwg-xk-QtC" customClass="WELTableDelegate">
+                    <connections>
+                        <outlet property="viewController" destination="SM5-C3-W48" id="J3R-Y4-UOb"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="1433" y="-174"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="d6q-er-RuN">
+            <objects>
+                <tableViewController id="kur-Yf-cKC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0js-Pl-GVg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="spF-8F-Rvk">
+                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="spF-8F-Rvk" id="9It-14-QRi">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kur-Yf-cKC" id="AxW-pz-uOQ"/>
+                            <outlet property="delegate" destination="kur-Yf-cKC" id="VTa-4g-p33"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="myz-bV-5eq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4T-NG-dLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1843" y="-174"/>
         </scene>
         <!--Pick a date...-->
         <scene sceneID="jMO-lQ-6db">
@@ -177,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8S-4a-xRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="458"/>
+            <point key="canvasLocation" x="1602" y="573"/>
         </scene>
         <!--Calendars-->
         <scene sceneID="19T-du-zIY">
@@ -206,7 +296,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="290" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

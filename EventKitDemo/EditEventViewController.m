@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) NSDate *eventEndDate;
 
+@property (nonatomic, strong)NSString *enentCalender;
+
 @end
 
 @implementation EditEventViewController
@@ -66,6 +68,10 @@
         DatePickerViewController *datePickerViewController = [segue destinationViewController];
         datePickerViewController.delegate = self;
     }
+//TODO complete viewcontroller
+    if ([segue.identifier isEqualToString:@"idSegueCalender"]) {
+
+    }
 }
 
 
@@ -78,7 +84,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 3;
+        return 4;
     }
     else{
         return 0;
@@ -118,7 +124,19 @@
 
             }
                 break;
-            case 1:
+            case 1:{
+
+                if(OBJECT_IS_EMPTY(self.enentCalender)){
+                    cell.textLabel.text=@"Select a calender";
+                }else{
+                    //TODO better call in the services layer
+                    cell.textLabel.text= self.enentCalender;
+
+                }
+            }
+
+            break;
+            case 2:
             {
                 if(OBJECT_IS_EMPTY(self.eventStartDate)){
                     cell.textLabel.text=@"Select a start date...";
@@ -130,7 +148,7 @@
 
             }
                 break;
-            case 2:
+            case 3:
             {
                 if(OBJECT_IS_EMPTY(self.eventEndDate)){
                     cell.textLabel.text=@"Select an end date...";
@@ -154,8 +172,13 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section==0&&(indexPath.row==1 || indexPath.row==2)){
+    if(indexPath.section==0&&(indexPath.row==3 || indexPath.row==2)){
+
         [self performSegueWithIdentifier:@"idSegueDatepicker" sender:self];
+    }
+
+    if(indexPath.section==0&&indexPath.row==1){
+        [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
     }
 }
 
@@ -208,9 +231,9 @@
 -(void)dateWasSelected:(NSDate *)selectedDate{
     NSIndexPath *indexPath= [self.tblEvent indexPathForSelectedRow];
     if(indexPath.section==0){
-        if(indexPath.row==1){
+        if(indexPath.row==2){
             self.eventStartDate=selectedDate;
-        }else{
+        }else if (indexPath.row==3){
             self.eventEndDate=selectedDate;
         }
     }

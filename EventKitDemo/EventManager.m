@@ -55,6 +55,23 @@
     return (NSArray *)iCloudCalenders;
 }
 
+
+
+- (NSArray *)getLocalCalenders {
+    NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
+    NSMutableArray *localCalenders = [NSMutableArray new];
+    for(int i =0; i<allCalendars.count;i++){
+        EKCalendar *calendar= [allCalendars objectAtIndex:i];
+
+        DDLogDebug(@"calender type: %@////title:%@",[NSString stringWithFormat: @"%ld",(long)calendar.type],calendar.title);
+        if(calendar.type == EKCalendarTypeLocal){
+            [localCalenders addObject:calendar];
+        }
+    }
+    DDLogDebug(@"Size of local Calenders:%lu",(unsigned long)localCalenders.count);
+    return (NSArray *)localCalenders;
+}
+
 - (void)saveCustomerCalendarIdentifier:(NSString *)identifier {
     [self.customerCalendarIdentifiers addObject:identifier];
     [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];

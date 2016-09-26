@@ -39,7 +39,7 @@
 
 - (void)viewDidLoad
 {
-    DDLogDebug(@"");
+
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -57,6 +57,73 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)loadEventCalendars {
+    self.calendars= [self.appDelegate.eventManager getLocalCalenders];
+   // self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
+
+    [self.tblCalendars reloadData];
+}
+
+- (void)createCalendar {
+    //get textfield
+    UITextField *textField= (UITextField *) [[self.tblCalendars cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:10];
+    [textField resignFirstResponder];
+    if(textField.text.length==0){
+        return;
+    }
+    EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:self.appDelegate.eventManager.ekEventStore];
+    calendar.title = textField.text;
+
+    //the type cannot assign directly
+    for(int i = 0; i<self.appDelegate.eventManager.ekEventStore.sources.count;i++){
+        EKSource *source = [self.appDelegate.eventManager.ekEventStore.sources objectAtIndex:i];
+        EKSourceType ekSourceType = source.sourceType;
+        if(ekSourceType == EKSourceTypeLocal){
+            calendar.source  = source;
+            NSError *error;
+            [self.appDelegate.eventManager.ekEventStore saveCalendar:calendar commit:YES error:&error];
+            if(OBJECT_IS_EMPTY(error)){
+                [self.tblCalendars setEditing:NO animated:YES];
+                [self.appDelegate.eventManager saveCustomerCalendarIdentifier:calendar.calendarIdentifier];
+                [self loadEventCalendars];
+            }else{
+                FATAL_CORE_DATA_ERROR(error);
+            }
+        }
+    }
+    textField.text = @"";
+}
+
+- (void)confirmCalendarDeletion {
+    NSString *identifier = [self.calendars[self.indexOfCalendarToDelete] calendarIdentifier];
+    if(![self.appDelegate.eventManager checkIfCalendarIsCustomerWithIdentifier:identifier]){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"You are not allowed to delete this calendar." preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+        [alert show];
+    }else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+        __weak typeof(self) weakSelf=self;
+        [alert addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+            EKCalendar *calendarToDelete = weakSelf.calendars[weakSelf.indexOfCalendarToDelete];
+
+            NSError *error;
+            if([weakSelf.appDelegate.eventManager.ekEventStore removeCalendar:calendarToDelete commit:YES error:&error]){
+                if([weakSelf.appDelegate.eventManager.selectedCalenderIdentifier isEqualToString:identifier]){
+                    weakSelf.appDelegate.eventManager.selectedCalenderIdentifier=@"";
+                }
+                [weakSelf.appDelegate.eventManager removeCalendarIdentifier:identifier];
+                [weakSelf loadEventCalendars];
+            }else{
+                FATAL_CORE_DATA_ERROR(error);
+            }
+
+        }]];
+        [alert show];
+    }
+}
+
 
 /*
 #pragma mark - Navigation
@@ -143,11 +210,11 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDLogDebug(@"");
+
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell.selected&&cell.accessoryType==UITableViewCellAccessoryNone){
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        self.appDelegate.eventManager.selectedCalenderIdentifier = [[self.calendars objectAtIndex:indexPath.row] calendarIdentifier];
+        self.appDelegate.eventManager.selectedCalenderIdentifier = [self.calendars[(NSUInteger) indexPath.row] calendarIdentifier];
 
 
 
@@ -189,70 +256,6 @@
     return YES;
 }
 
-- (void)loadEventCalendars {
-    self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
-
-    [self.tblCalendars reloadData];
-}
-
-- (void)createCalendar {
-    //get textfield
-    UITextField *textField= (UITextField *) [[self.tblCalendars cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:10];
-    [textField resignFirstResponder];
-    if(textField.text.length==0){
-        return;
-    }
-    EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:self.appDelegate.eventManager.ekEventStore];
-    calendar.title = textField.text;
-
-    //the type cannot assign directly
-    for(int i = 0; i<self.appDelegate.eventManager.ekEventStore.sources.count;i++){
-        EKSource *source = [self.appDelegate.eventManager.ekEventStore.sources objectAtIndex:i];
-        EKSourceType ekSourceType = source.sourceType;
-        if(ekSourceType == EKSourceTypeCalDAV){
-            calendar.source  = source;
-           NSError *error;
-            [self.appDelegate.eventManager.ekEventStore saveCalendar:calendar commit:YES error:&error];
-            if(OBJECT_IS_EMPTY(error)){
-                [self.tblCalendars setEditing:NO animated:YES];
-                [self.appDelegate.eventManager saveCustomerCalendarIdentifier:calendar.calendarIdentifier];
-                [self loadEventCalendars];
-            }else{
-                FATAL_CORE_DATA_ERROR(error);
-            }
-        }
-    }
-    textField.text = @"";
-}
-
-- (void)confirmCalendarDeletion {
-    NSString *identifier = [self.calendars[self.indexOfCalendarToDelete] calendarIdentifier];
-    if(![self.appDelegate.eventManager checkIfCalendarIsCustomerWithIdentifier:identifier]){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"You are not allowed to delete this calendar." preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-        [alert show];
-    }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-        __weak typeof(self) weakSelf=self;
-        [alert addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            EKCalendar *calendarToDelete = weakSelf.calendars[weakSelf.indexOfCalendarToDelete];
-           
-            NSError *error;
-            if([weakSelf.appDelegate.eventManager.ekEventStore removeCalendar:calendarToDelete commit:YES error:&error]){
-                if([weakSelf.appDelegate.eventManager.selectedCalenderIdentifier isEqualToString:identifier]){
-                    weakSelf.appDelegate.eventManager.selectedCalenderIdentifier=@"";
-                }
-                [weakSelf.appDelegate.eventManager removeCalendarIdentifier:identifier];
-                [weakSelf loadEventCalendars];
-            }else{
-                FATAL_CORE_DATA_ERROR(error);
-            }
-
-        }]];
-        [alert show];
-    }
-}
 
 
 @end

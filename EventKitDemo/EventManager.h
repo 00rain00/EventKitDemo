@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong)NSString *selectedCalenderIdentifier;
 -(NSArray *)getiCloudCalendars;
+-(NSArray *)getLocalCalenders;
 -(void)saveCustomerCalendarIdentifier:(NSString *)identifier;
 -(BOOL)checkIfCalendarIsCustomerWithIdentifier:(NSString *)identifier;
 -(void)removeCalendarIdentifier:(NSString *)identifier;
