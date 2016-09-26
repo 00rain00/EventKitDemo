@@ -93,6 +93,9 @@
 }
 
 - (IBAction)createEvent:(id)sender {
+    if(self.appDelegate.eventManager.eventsAccessGranted){
+        [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
+    }
     
 }
 

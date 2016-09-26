@@ -13,26 +13,26 @@
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/main.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EditEventViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalendarsViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EditEventViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventManager.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Images.xcassets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/DatePickerViewController.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/en.lproj/InfoPlist.strings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Base.lproj/Main.storyboard" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/DatePickerViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/ViewController.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Base.lproj/Main.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/en.lproj/InfoPlist.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/ViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EditEventViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AppDelegate.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidationStatus.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidator.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidationStatus.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidatorProtocol.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormRegexValidator.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormRegexValidator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Validation/XLFormValidator.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Controllers/XLFormOptionsObject.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Controllers/XLFormViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Controllers/XLFormRowDescriptorViewController.h" isTestSource="false" />
@@ -41,7 +41,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Controllers/XLFormOptionsViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Controllers/XLFormOptionsViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/UIView+XLFormAdditions.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSPredicate+XLFormAdditions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSExpression+XLFormAdditions.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSString+XLFormAdditions.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/Views/XLFormRightDetailCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/Views/XLFormRightImageButton.h" isTestSource="false" />
@@ -51,21 +51,20 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/Views/XLFormRowNavigationAccessoryView.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/Views/XLFormRightImageButton.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/Views/XLFormTextView.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSExpression+XLFormAdditions.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/UIView+XLFormAdditions.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSArray+XLFormAdditions.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSPredicate+XLFormAdditions.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSExpression+XLFormAdditions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSString+XLFormAdditions.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/UIView+XLFormAdditions.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSPredicate+XLFormAdditions.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSArray+XLFormAdditions.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSExpression+XLFormAdditions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSArray+XLFormAdditions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSObject+XLFormAdditions.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSPredicate+XLFormAdditions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Helpers/NSObject+XLFormAdditions.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormBaseCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormBaseCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSwitchCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSliderCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormLeftRightSelectorCell.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormInlineSelectorCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSegmentedCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSwitchCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSliderCell.m" isTestSource="false" />
@@ -85,15 +84,16 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormStepCounterCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormTextViewCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormTextFieldCell.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormTextFieldCell.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormLeftRightSelectorCell.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormCheckCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormDescriptorCell.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormLeftRightSelectorCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormInlineSelectorCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSelectorCell.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormCheckCell.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormInlineSelectorCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormSelectorCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormCheckCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormDatePickerCell.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Cell/XLFormTextFieldCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/XLForm.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/XLForm.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/XLForm/XLForm/XL/Descriptors/XLFormRowDescriptor.h" isTestSource="false" />
@@ -108,6 +108,17 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/FFGlobalAlertController/Pod/Classes/UIAlertController+Window.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/MBProgressHUD/MBProgressHUD.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/MBProgressHUD/MBProgressHUD.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-dummy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm.modulemap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm.xcconfig" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-umbrella.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/FFGlobalAlertController-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/FFGlobalAlertController-umbrella.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/Info.plist" isTestSource="false" />
@@ -115,31 +126,20 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/ResourceBundle-FFGlobalAlertController-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/FFGlobalAlertController-prefix.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/FFGlobalAlertController/FFGlobalAlertController.xcconfig" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm.modulemap" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm.xcconfig" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/XLForm/XLForm-umbrella.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack-dummy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.modulemap" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/CocoaLumberjack/CocoaLumberjack.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/MBProgressHUD-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/MBProgressHUD.modulemap" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/MBProgressHUD-umbrella.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/MBProgressHUD.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/MBProgressHUD/MBProgressHUD-prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.debug.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-umbrella.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.modulemap" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-dummy.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.release.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.markdown" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-resources.sh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-frameworks.sh" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogCapture.m" isTestSource="false" />
@@ -150,7 +150,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDFileLogger.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDTTYLogger.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDAbstractDatabaseLogger.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDFileLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDTTYLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogger.m" isTestSource="false" />
@@ -162,9 +162,9 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/Extensions/DDDispatchQueueLogFormatter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDASLLogger.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog+LOGV.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLog.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/CocoaLumberjack.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDLogMacros.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Pods/CocoaLumberjack/Classes/DDAbstractDatabaseLogger.m" isTestSource="false" />
     </content>
     <content url="file://$USER_HOME$/Library/Caches/AppCode2016.2/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Intermediates/Pods.build/Debug-iphoneos/CocoaLumberjack.build/DerivedSources" />
     <content url="file://$USER_HOME$/Library/Caches/AppCode2016.2/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Intermediates/Pods.build/Debug-iphoneos/FFGlobalAlertController.build/DerivedSources" />

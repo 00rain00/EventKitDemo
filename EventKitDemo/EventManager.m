@@ -79,5 +79,13 @@
 
 }
 
+- (NSString *)getStringFromDate:(NSDate *)date {
+    NSDateFormatter *dateFormatter= [NSDateFormatter new];
+    dateFormatter.locale= [NSLocale currentLocale];
+    [dateFormatter setDateFormat:@"d MMM yyyy, HH:mm"];
+    NSString *stringFromDate= [dateFormatter stringFromDate:date];
+    return stringFromDate;
+}
+
 
 @end

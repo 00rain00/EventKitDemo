@@ -19,4 +19,5 @@
 -(void)saveCustomerCalendarIdentifier:(NSString *)identifier;
 -(BOOL)checkIfCalendarIsCustomerWithIdentifier:(NSString *)identifier;
 -(void)removeCalendarIdentifier:(NSString *)identifier;
+-(NSString *)getStringFromDate:(NSDate *)date;
 @end
