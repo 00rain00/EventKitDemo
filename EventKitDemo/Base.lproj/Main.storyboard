@@ -163,7 +163,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3EN-yn-zPT">
                                             <rect key="frame" x="8" y="14" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -179,11 +179,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Calenders" id="T0c-U5-5Hr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bc3-wS-1a9">
-                            <connections>
-                                <segue destination="kur-Yf-cKC" kind="push" identifier="id1" id="kjS-5d-5v7"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="bc3-wS-1a9"/>
                     </navigationItem>
                     <connections>
                         <outlet property="dataDelegate" destination="6CU-8K-R2m" id="qO7-TM-xQ7"/>
@@ -202,36 +198,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1433" y="-174"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="d6q-er-RuN">
-            <objects>
-                <tableViewController id="kur-Yf-cKC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0js-Pl-GVg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="spF-8F-Rvk">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="spF-8F-Rvk" id="9It-14-QRi">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="kur-Yf-cKC" id="AxW-pz-uOQ"/>
-                            <outlet property="delegate" destination="kur-Yf-cKC" id="VTa-4g-p33"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="myz-bV-5eq"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="w4T-NG-dLP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1843" y="-174"/>
+            <point key="canvasLocation" x="1592" y="-132"/>
         </scene>
         <!--Pick a date...-->
         <scene sceneID="jMO-lQ-6db">

@@ -1,48 +1,47 @@
 //
-//  CalenderListTableViewController.m
+//  testCreateTable.m
 //  EventKitDemo
 //
-//  Created by YULIN CAI on 26/09/2016.
+//  Created by YULIN CAI on 27/09/2016.
 //  Copyright © 2016 Appcoda. All rights reserved.
 //
 
-
-#import "CalenderListTableViewController.h"
+#import "testCreateTable.h"
 #import "WELDataSource.h"
 #import "WELTableDelegate.h"
-
-@interface CalenderListTableViewController ()
-
+#import "Event.h"
+@interface testCreateTable()
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
 @property (strong, nonatomic) IBOutlet WELDataSource *dataDelegate;
 
 
+    
 @end
 
-@implementation CalenderListTableViewController
+
+@implementation testCreateTable
 
 - (void)viewDidLoad {
     DDLogDebug(@"");
-
+    
     [super viewDidLoad];
-    [_dataDelegate addModels:@[@"a",@"b",@"c",@"d"]];
+    Event *newEvent = [Event new];
+    newEvent.index=1;
+    newEvent.name=@"A";
+NSMutableArray *data = [NSMutableArray new];
+    [data addObject:newEvent];
+    [_dataDelegate addModels: data];
     [_table reloadData];
     _table.delegate = self;
-
-
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
+    
 }
-
--(IBAction)pushTable :(id)sender{
-     [self performSegueWithIdentifier:@"id1" sender:self];
-}
-
-
 
 
 @end
