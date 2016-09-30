@@ -59,8 +59,8 @@
 }
 
 - (void)loadEventCalendars {
-    self.calendars= [self.appDelegate.eventManager getLocalCalenders];
-   // self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
+   // self.calendars= [self.appDelegate.eventManager getLocalCalenders];
+    self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
 
     [self.tblCalendars reloadData];
 }

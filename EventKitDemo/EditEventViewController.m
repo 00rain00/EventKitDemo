@@ -107,7 +107,7 @@
     
     if (indexPath.section == 0) {
         // If the cell is nil, then dequeue it. Make sure to dequeue the proper cell based on the row.
-        if (cell == nil) {
+        if (OBJECT_IS_EMPTY(cell)) {
             if (indexPath.row == 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellTitle"];
             }
@@ -119,8 +119,7 @@
             case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
-                titleTextfile.text = self.eventTitle;
-
+                
 
             }
                 break;
@@ -199,12 +198,22 @@
         return;
     }
     EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
-
+    
     event.title=self.eventTitle;
-    event.calendar= [self.appDelegate.eventManager.ekEventStore calendarWithIdentifier:self.appDelegate.eventManager.selectedCalenderIdentifier];
     event.startDate=self.eventStartDate;
     event.endDate=self.eventEndDate;
-
+    NSArray * alCalenders = [self.appDelegate.eventManager.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
+    
+    for (EKCalendar * calendar in alCalenders) {
+        if([calendar.calendarIdentifier isEqualToString:self.appDelegate.eventManager.selectedCalenderIdentifier]){
+            event.calendar= calendar;
+            break;
+        }
+    }
+    
+    
+//    event.calendar= [self.appDelegate.eventManager.ekEventStore calendarWithIdentifier:self.appDelegate.eventManager.selectedCalenderIdentifier];
+    
     NSError *error;
     if([self.appDelegate.eventManager.ekEventStore saveEvent:event span:EKSpanFutureEvents commit:YES error:&error]){
         [self.delegate eventWasSuccessfullySaved];
@@ -219,8 +228,9 @@
 #pragma mark - UITextFieldDelegate method implementation
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    DDLogDebug(@"");
+
     self.eventTitle=textField.text;
+    DDLogDebug(@"event title :%@",self.eventTitle);
     [textField resignFirstResponder];
     return YES;
 }
