@@ -184,9 +184,9 @@
             }
             else{
 
-                if (indexPath.row == 0) {
-                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-                }
+//                if (indexPath.row == 0) {
+//                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+//                }
             }
         }
     }
@@ -213,13 +213,14 @@
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell.selected&&cell.accessoryType==UITableViewCellAccessoryNone){
+        DDLogDebug(@"selected cell , accessory none");
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         self.appDelegate.eventManager.selectedCalenderIdentifier = [self.calendars[(NSUInteger) indexPath.row] calendarIdentifier];
 
 
 
     }else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+               cell.accessoryType = UITableViewCellAccessoryNone;
         self.appDelegate.eventManager.selectedCalenderIdentifier =@"";
        }
     [self.tblCalendars reloadData];
