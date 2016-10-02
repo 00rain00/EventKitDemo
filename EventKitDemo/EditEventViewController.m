@@ -21,6 +21,12 @@
 
 @property (nonatomic, strong)NSString *enentCalender;
 
+@property (nonatomic, strong) NSMutableArray *arrAlarms;
+
+@property (nonatomic, strong)EKAlarm *ekAlarm;
+
+@property (nonatomic, strong)EKEvent *editedEvent;
+
 @end
 
 @implementation EditEventViewController
@@ -47,6 +53,16 @@
     self.tblEvent.dataSource = self;
     self.eventStartDate=nil;
     self.eventEndDate=nil;
+
+    self.arrAlarms= [NSMutableArray new];
+
+    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
+        self.editedEvent = [self.appDelegate.eventManager.ekEventStore eventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
+
+        self.eventTitle = self.editedEvent.title;
+        self.eventStartDate = self.editedEvent.startDate;
+        self.eventEndDate = self.editedEvent.endDate;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,10 +100,10 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0) {
-        return 4;
+        return 5;
     }
     else{
-        return 0;
+        return self.arrAlarms.count +1;
     }
 }
 
@@ -119,7 +135,7 @@
             case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
-                
+                titleTextfile.text=self.eventTitle;
 
             }
                 break;
@@ -155,15 +171,33 @@
                     cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.eventEndDate];
                 }
             }
-
                 break;
+            case 4:{
+                if(OBJECT_IS_EMPTY(self.ekAlarm)){
+                    cell.textLabel.text=@"Select a notification...";
+                }else{
+                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.ekAlarm.absoluteDate];
+                }
+            }
+                break;
+
             default:
                 break;
         }
     }
     else{
-        if (cell == nil) {
+        if (OBJECT_IS_EMPTY(cell)) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
+        }
+        if(indexPath.row ==0){
+            cell.textLabel.text = @"Add a new alarm...";
+        }else{
+            cell.textLabel.text = [self.appDelegate.eventManager getStringFromDate:self.arrAlarms[indexPath.row-1] ];
+            // No selection for the alarm cells.
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+            // No accessory style.
+            cell.accessoryType = UITableViewCellAccessoryNone;
         }
     }
     
@@ -171,14 +205,23 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section==0&&indexPath.row==1){
+        [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
+    }
+
     if(indexPath.section==0&&(indexPath.row==3 || indexPath.row==2)){
 
         [self performSegueWithIdentifier:@"idSegueDatepicker" sender:self];
     }
 
-    if(indexPath.section==0&&indexPath.row==1){
-        [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
+    if(indexPath.section==0&&indexPath.row==4){
+
+        [self performSegueWithIdentifier:@"idSegueCreateAlarm" sender:self];
     }
+
+
+
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -197,7 +240,13 @@
         DDLogDebug(@"empty end or start date");
         return;
     }
+
+    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
+        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
+        self.appDelegate.eventManager.selectedEventIdentifier = @"";
+    }
     EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
+
     
     event.title=self.eventTitle;
     event.startDate=self.eventStartDate;
@@ -212,8 +261,7 @@
     }
     
     
-//    event.calendar= [self.appDelegate.eventManager.ekEventStore calendarWithIdentifier:self.appDelegate.eventManager.selectedCalenderIdentifier];
-    
+
     NSError *error;
     if([self.appDelegate.eventManager.ekEventStore saveEvent:event span:EKSpanFutureEvents commit:YES error:&error]){
         [self.delegate eventWasSuccessfullySaved];
@@ -247,6 +295,10 @@
             self.eventEndDate=selectedDate;
         }
     }
+//    if(indexPath.section ==1){
+//        [self.arrAlarms addObject:selectedDate];
+//    }
+
     [self.tblEvent reloadData];
 }
 

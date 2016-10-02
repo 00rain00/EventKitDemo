@@ -6,5 +6,6 @@ target 'EventKitDemo' do
   pod 'XLForm'
   pod 'FFGlobalAlertController'
   pod 'MBProgressHUD'
+  pod 'DBMapSelectorViewController'
 end
 

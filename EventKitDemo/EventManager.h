@@ -15,10 +15,15 @@
 @property (nonatomic)BOOL eventsAccessGranted;
 
 @property (nonatomic, strong)NSString *selectedCalenderIdentifier;
+
+@property (nonatomic, strong)NSString *selectedEventIdentifier;
 -(NSArray *)getiCloudCalendars;
 -(NSArray *)getLocalCalenders;
+-(NSArray *)getiCloudReminders;
 -(void)saveCustomerCalendarIdentifier:(NSString *)identifier;
 -(BOOL)checkIfCalendarIsCustomerWithIdentifier:(NSString *)identifier;
 -(void)removeCalendarIdentifier:(NSString *)identifier;
+-(void)deleteEventWithIdentifier:(NSString *)identifier;
 -(NSString *)getStringFromDate:(NSDate *)date;
+-(NSArray *)getEventsOfSelectedCalendar;
 @end

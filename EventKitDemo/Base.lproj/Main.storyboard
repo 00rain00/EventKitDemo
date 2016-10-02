@@ -52,7 +52,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="fmw-QP-WWp">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Owm-Qh-E9i"/>
-                        <barButtonItem key="leftBarButtonItem" title="Calendars" id="qcL-kK-5kl">
+                        <barButtonItem key="leftBarButtonItem" title="Reminders" id="qcL-kK-5kl">
                             <connections>
                                 <action selector="showCalendars:" destination="vXZ-lx-hvc" id="GrS-4c-2cO"/>
                             </connections>
@@ -138,11 +138,33 @@
                         <outlet property="tblEvent" destination="DJr-XY-Iab" id="6k6-RE-enj"/>
                         <segue destination="GIt-2J-eEj" kind="push" identifier="idSegueDatepicker" id="dx2-u3-rJx"/>
                         <segue destination="SM5-C3-W48" kind="push" identifier="idSegueCalender" id="jYL-8O-stu"/>
+                        <segue destination="gOg-Sv-d62" kind="push" identifier="idSegueCreateAlarm" id="v4E-t4-h25"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLz-pO-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="458"/>
+        </scene>
+        <!--Create Alarm Form View Controller-->
+        <scene sceneID="g4D-gB-rES">
+            <objects>
+                <viewController id="gOg-Sv-d62" customClass="CreateAlarmFormViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9M0-dt-fV9"/>
+                        <viewControllerLayoutGuide type="bottom" id="HLZ-pQ-15q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rcw-Hd-id3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ifb-xA-HZB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="GeZ-H5-YYY"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eh4-0X-qEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1602" y="584"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Jfu-Rh-625">
@@ -198,7 +220,7 @@
                     </connections>
                 </customObject>
             </objects>
-            <point key="canvasLocation" x="1592" y="-132"/>
+            <point key="canvasLocation" x="1602" y="-752"/>
         </scene>
         <!--Pick a date...-->
         <scene sceneID="jMO-lQ-6db">
@@ -234,9 +256,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8S-4a-xRP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1602" y="573"/>
+            <point key="canvasLocation" x="1602" y="-79"/>
         </scene>
-        <!--Calendars-->
+        <!--Reminders-->
         <scene sceneID="19T-du-zIY">
             <objects>
                 <viewController id="W0S-1x-eFd" customClass="CalendarsViewController" sceneMemberID="viewController">
@@ -289,7 +311,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendars" id="p4k-8S-bhi">
+                    <navigationItem key="navigationItem" title="Reminders" id="p4k-8S-bhi">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="xkY-Tg-kip">
                             <connections>
                                 <action selector="editCalendars:" destination="W0S-1x-eFd" id="Eza-kd-mXl"/>

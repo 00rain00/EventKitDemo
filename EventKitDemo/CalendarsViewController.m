@@ -60,8 +60,8 @@
 
 - (void)loadEventCalendars {
    // self.calendars= [self.appDelegate.eventManager getLocalCalenders];
-    self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
-
+   // self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
+    self.calendars= [self.appDelegate.eventManager getiCloudReminders];
     [self.tblCalendars reloadData];
 }
 
@@ -72,14 +72,15 @@
     if(textField.text.length==0){
         return;
     }
-    EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:self.appDelegate.eventManager.ekEventStore];
+    EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:self.appDelegate.eventManager.ekEventStore];
     calendar.title = textField.text;
 
-    //the type cannot assign directly
+
     for(int i = 0; i<self.appDelegate.eventManager.ekEventStore.sources.count;i++){
-        EKSource *source = [self.appDelegate.eventManager.ekEventStore.sources objectAtIndex:i];
+        EKSource *source = self.appDelegate.eventManager.ekEventStore.sources[i];
         EKSourceType ekSourceType = source.sourceType;
-        if(ekSourceType == EKSourceTypeLocal){
+
+        if(ekSourceType == EKSourceTypeCalDAV){
             calendar.source  = source;
             NSError *error;
             [self.appDelegate.eventManager.ekEventStore saveCalendar:calendar commit:YES error:&error];
@@ -97,12 +98,8 @@
 
 - (void)confirmCalendarDeletion {
     NSString *identifier = [self.calendars[self.indexOfCalendarToDelete] calendarIdentifier];
-    if(![self.appDelegate.eventManager checkIfCalendarIsCustomerWithIdentifier:identifier]){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"You are not allowed to delete this calendar." preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-        [alert show];
-    }else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"Are you sure to delete this list?" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
         __weak typeof(self) weakSelf=self;
         [alert addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -121,7 +118,7 @@
 
         }]];
         [alert show];
-    }
+
 }
 
 
