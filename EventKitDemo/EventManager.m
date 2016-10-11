@@ -137,6 +137,9 @@
     EKCalendar *calendar = nil;
     if (self.selectedCalenderIdentifier != nil && self.selectedCalenderIdentifier.length > 0) {
         calendar = [self.ekEventStore calendarWithIdentifier:self.selectedCalenderIdentifier];
+        DDLogDebug(@"selected calenderidentifer : %@",calendar.title);
+    }else{
+        DDLogDebug(@"no selected calender identifier!");
     }
 
     // If no selected calendar identifier exists and the calendar variable has the nil value, then all calendars will be used for retrieving events.
@@ -159,6 +162,10 @@
     // Return that array.
     return eventsArray;
 
+}
+
+- (NSArray *)getRemembersOfSelectedCalendar {
+    return nil;
 }
 
 

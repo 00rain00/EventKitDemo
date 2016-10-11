@@ -1,11 +1,16 @@
 platform :ios, '9.0'
 use_frameworks!
+
 target 'EventKitDemo' do
 
- pod 'CocoaLumberjack'
+  pod 'CocoaLumberjack', '~>2.3.0'
   pod 'XLForm'
   pod 'FFGlobalAlertController'
   pod 'MBProgressHUD'
   pod 'DBMapSelectorViewController'
+end
+
+target 'EventKitDemoTests' do
+  pod 'CocoaLumberjack', '~>2.3.0'
 end
 

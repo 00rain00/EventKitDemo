@@ -9,49 +9,56 @@
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>DBMapSelectorViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<key>FFGlobalAlertController-FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Pods-EventKitDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
+		</dict>
+		<key>Pods-EventKitDemoTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
 		<key>XLForm.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>9</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -67,6 +74,11 @@
 			<true />
 		</dict>
 		<key>8A2E8FED01C8A6BC8ADFCF3C3B78368F</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>919ED3758820784DDC7159D9A7F27801</key>
 		<dict>
 			<key>primary</key>
 			<true />

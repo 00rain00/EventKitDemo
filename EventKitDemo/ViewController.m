@@ -167,7 +167,8 @@
 - (void)loadEvents {
     if (self.appDelegate.eventManager.eventsAccessGranted) {
         self.arrEvents = [self.appDelegate.eventManager getEventsOfSelectedCalendar];
-
+        for(EKCalendar *event in self.arrEvents){
+        DDLogDebug(@"arrEvents: %@",event.title);}
         [self.tblEvents reloadData];
     }
 

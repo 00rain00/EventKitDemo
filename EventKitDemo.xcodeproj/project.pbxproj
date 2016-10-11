@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E9B0AFF58A2C867B2BC42F6 /* Pods_EventKitDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC90C3F5A360F07F75BA00B5 /* Pods_EventKitDemoTests.framework */; };
 		C0062F1A1970321800B71762 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F191970321800B71762 /* Foundation.framework */; };
 		C0062F1C1970321800B71762 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F1B1970321800B71762 /* CoreGraphics.framework */; };
 		C0062F1E1970321800B71762 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F1D1970321800B71762 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 		C177A7F71D99B25B00BBDC78 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7F61D99B25B00BBDC78 /* Event.m */; };
 		C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */; };
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
+		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
 		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
@@ -53,6 +55,8 @@
 
 /* Begin PBXFileReference section */
 		06658FFF4E062C9BCFC8D08F /* Pods-EventKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8F0C2CAF6850B7FFF1AF6E51 /* Pods-EventKitDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemoTests/Pods-EventKitDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A107C3AD59ACCB585D49670A /* Pods-EventKitDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemoTests/Pods-EventKitDemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		AD2271355E89ADDBE48DC14B /* Pods-EventKitDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EventKitDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		C0062F161970321800B71762 /* EventKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0062F191970321800B71762 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -101,6 +105,7 @@
 		C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogFormatter.m; path = ../LogFormatter.m; sourceTree = "<group>"; };
 		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
+		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
 		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
@@ -108,6 +113,7 @@
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
 		C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmFormViewController.m; sourceTree = "<group>"; };
 		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC90C3F5A360F07F75BA00B5 /* Pods_EventKitDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +133,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */,
 				C0062F391970321800B71762 /* XCTest.framework in Frameworks */,
 				C0062F3B1970321800B71762 /* UIKit.framework in Frameworks */,
 				C0062F3A1970321800B71762 /* Foundation.framework in Frameworks */,
+				6E9B0AFF58A2C867B2BC42F6 /* Pods_EventKitDemoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +149,8 @@
 			children = (
 				AD2271355E89ADDBE48DC14B /* Pods-EventKitDemo.debug.xcconfig */,
 				06658FFF4E062C9BCFC8D08F /* Pods-EventKitDemo.release.xcconfig */,
+				8F0C2CAF6850B7FFF1AF6E51 /* Pods-EventKitDemoTests.debug.xcconfig */,
+				A107C3AD59ACCB585D49670A /* Pods-EventKitDemoTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -169,12 +179,14 @@
 		C0062F181970321800B71762 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */,
 				C0062F4E1970323600B71762 /* EventKit.framework */,
 				C0062F191970321800B71762 /* Foundation.framework */,
 				C0062F1B1970321800B71762 /* CoreGraphics.framework */,
 				C0062F1D1970321800B71762 /* UIKit.framework */,
 				C0062F381970321800B71762 /* XCTest.framework */,
 				C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */,
+				EC90C3F5A360F07F75BA00B5 /* Pods_EventKitDemoTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -321,9 +333,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C0062F4B1970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemoTests" */;
 			buildPhases = (
+				CF9755C581C4A39F2F7F0EB8 /* [CP] Check Pods Manifest.lock */,
 				C0062F331970321800B71762 /* Sources */,
 				C0062F341970321800B71762 /* Frameworks */,
 				C0062F351970321800B71762 /* Resources */,
+				37251A05E1A9F866C28814A1 /* [CP] Embed Pods Frameworks */,
+				80C4C7C274190ADDBDC3CDCB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -421,6 +436,51 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37251A05E1A9F866C28814A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventKitDemoTests/Pods-EventKitDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80C4C7C274190ADDBDC3CDCB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EventKitDemoTests/Pods-EventKitDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF9755C581C4A39F2F7F0EB8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		F9776B0421E715396129D99E /* [CP] Check Pods Manifest.lock */ = {
@@ -622,6 +682,7 @@
 		};
 		C0062F4C1970321800B71762 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F0C2CAF6850B7FFF1AF6E51 /* Pods-EventKitDemoTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EventKitDemo.app/EventKitDemo";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -645,6 +706,7 @@
 		};
 		C0062F4D1970321800B71762 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A107C3AD59ACCB585D49670A /* Pods-EventKitDemoTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EventKitDemo.app/EventKitDemo";
 				FRAMEWORK_SEARCH_PATHS = (

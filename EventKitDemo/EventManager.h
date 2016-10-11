@@ -26,4 +26,5 @@
 -(void)deleteEventWithIdentifier:(NSString *)identifier;
 -(NSString *)getStringFromDate:(NSDate *)date;
 -(NSArray *)getEventsOfSelectedCalendar;
+-(NSArray *)getRemembersOfSelectedCalendar;
 @end
