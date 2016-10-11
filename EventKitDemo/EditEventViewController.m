@@ -25,7 +25,7 @@
 
 @property (nonatomic, strong)EKAlarm *ekAlarm;
 
-@property (nonatomic, strong)EKEvent *editedEvent;
+@property (nonatomic, strong)EKReminder *editedEvent;
 
 @end
 
@@ -57,11 +57,15 @@
     self.arrAlarms= [NSMutableArray new];
 
     if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-        self.editedEvent = [self.appDelegate.eventManager.ekEventStore eventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
+        DDLogDebug(@"event identifier : %@",self.appDelegate.eventManager.selectedEventIdentifier);
+        self.editedEvent = (EKReminder *) [self.appDelegate.eventManager.ekEventStore calendarItemWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
 
         self.eventTitle = self.editedEvent.title;
-        self.eventStartDate = self.editedEvent.startDate;
-        self.eventEndDate = self.editedEvent.endDate;
+        DDLogDebug(@"event title : %@",self.eventTitle);
+       // self.eventStartDate = self.editedEvent.startDate;
+       // self.eventEndDate = self.editedEvent.endDate;
+    }else{
+        DDLogDebug(@"no selected event ");
     }
 }
 

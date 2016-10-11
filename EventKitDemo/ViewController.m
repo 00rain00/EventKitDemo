@@ -101,8 +101,8 @@
 }
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Keep the identifier of the event that's about to be edited.
-    self.appDelegate.eventManager.selectedEventIdentifier = [self.arrEvents [(NSUInteger) indexPath.row] eventIdentifier];
-
+   NSString *reminderIdentifer = [self.arrEvents [(NSUInteger) indexPath.row] calendarItemIdentifier];
+    self.appDelegate.eventManager.selectedEventIdentifier=reminderIdentifer;
     // Perform the segue.
     [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
 }
@@ -168,7 +168,7 @@
     if (self.appDelegate.eventManager.eventsAccessGranted) {
         DDLogDebug(@"access granted");
         NSArray *arrCalender = [self.appDelegate.eventManager getiCloudReminders];
-
+        //TODO need to add loading image
         [self.appDelegate.eventManager callbackForFetchReminders:^(NSArray *reminders){
             self.arrEvents=reminders;
             for(EKCalendar *event in self.arrEvents){

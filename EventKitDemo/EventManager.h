@@ -21,7 +21,7 @@ typedef void(^FetchRemindersBlock)(NSArray *reminders);
 @property (nonatomic, strong)NSString *selectedCalenderIdentifier;
 
 @property (nonatomic, strong)NSString *selectedEventIdentifier;
--(NSArray *)callbackForFetchReminders:(FetchRemindersBlock)reminderDidRetrived;
+-(void)callbackForFetchReminders:(FetchRemindersBlock)reminderDidRetrived;
 -(NSArray *)getiCloudCalendars;
 -(NSArray *)getLocalCalenders;
 -(NSArray *)getiCloudReminders;
