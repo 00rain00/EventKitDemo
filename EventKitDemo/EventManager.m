@@ -40,6 +40,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:selectedCalenderIdentifier forKey:@"eventkit_selected_calendar"];
 }
 
+- (void)callbackForFetchReminders:(FetchRemindersBlock)reminderDidRetrived {
+   //给block 赋值
+    self.callbackForFetchReminders=reminderDidRetrived;
+
+
+}
+
 - (NSArray *)getiCloudCalendars {
     NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
     NSMutableArray *iCloudCalenders = [NSMutableArray new];
@@ -164,8 +171,30 @@
 
 }
 
-- (NSArray *)getRemembersOfSelectedCalendar {
-    return nil;
+- (void)getRemembersOfSelectedCalendar:(NSArray *)calenders {
+
+
+    // Create a predicate value with start date a year before and end date a year after the current date.
+    int yearSeconds = 365 * (60 * 60 * 24);
+    NSPredicate *predicate = [self.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:nil];
+    NSPredicate *predicate1 = [self.ekEventStore predicateForRemindersInCalendars:calenders];
+
+    // Get an array with all events.
+    //completion is ascynomous
+    [self.ekEventStore fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders){
+
+        //call the block
+        if(self.callbackForFetchReminders){
+            self.callbackForFetchReminders(reminders);
+        }
+
+    }];
+    //[NSThread sleepForTimeInterval:5.0];
+    // Sort the array based on the start date.
+   // eventsArray = [eventsArray sortedArrayUsingSelector:@selector(compareStartDateWithEvent:)];
+
+    // Return that array.
+
 }
 
 

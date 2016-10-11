@@ -1,4 +1,4 @@
-//
+
 //  EventKitDemoTests.m
 //  EventKitDemoTests
 //
@@ -42,5 +42,22 @@
     }
     eventManager=nil;
 }
+
+-(void)testGetRemembers{
+    EventManager *eventManager = [EventManager new];
+    NSArray *arrCalenders = eventManager.getiCloudReminders;
+    XCTestExpectation *expectation= [self expectationWithDescription:@"fetch all reminders"];
+
+   
+    if(OBJECT_IS_EMPTY(arrEvent)){
+        XCTFail(@"arrEvent is empty");
+
+    }
+       for (EKReminder *ekCalendar in arrEvent) {
+        DDLogDebug(@"event title:%@",ekCalendar.title);
+    }
+    eventManager=nil;
+}
+
 
 @end

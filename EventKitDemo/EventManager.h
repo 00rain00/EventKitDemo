@@ -8,8 +8,12 @@
 
 #import <Foundation/Foundation.h>
 @import EventKit;
+
+//declare a block
+typedef void(^FetchRemindersBlock)(NSArray *reminders);
 @interface EventManager : NSObject
 
+@property (nonatomic, strong)FetchRemindersBlock callbackForFetchReminders;
 @property (nonatomic, strong) EKEventStore *ekEventStore;
 
 @property (nonatomic)BOOL eventsAccessGranted;
@@ -17,6 +21,7 @@
 @property (nonatomic, strong)NSString *selectedCalenderIdentifier;
 
 @property (nonatomic, strong)NSString *selectedEventIdentifier;
+-(NSArray *)callbackForFetchReminders:(FetchRemindersBlock)reminderDidRetrived;
 -(NSArray *)getiCloudCalendars;
 -(NSArray *)getLocalCalenders;
 -(NSArray *)getiCloudReminders;
@@ -26,5 +31,5 @@
 -(void)deleteEventWithIdentifier:(NSString *)identifier;
 -(NSString *)getStringFromDate:(NSDate *)date;
 -(NSArray *)getEventsOfSelectedCalendar;
--(NSArray *)getRemembersOfSelectedCalendar;
+-(void)getRemembersOfSelectedCalendar:(NSArray *)calenders;
 @end

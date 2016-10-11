@@ -78,19 +78,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellEvent"];
 
     // Get each single event.
-    EKEvent *event = self.arrEvents[(NSUInteger) indexPath.row];
+    EKReminder *event = self.arrEvents[(NSUInteger) indexPath.row];
 
     // Set its title to the cell's text label.
     cell.textLabel.text = event.title;
 
     // Get the event start date as a string value.
-    NSString *startDateString = [self.appDelegate.eventManager getStringFromDate:event.startDate];
+ //   NSString *startDateString = [self.appDelegate.eventManager getStringFromDate:event.startDate];
 
     // Get the event end date as a string value.
-    NSString *endDateString = [self.appDelegate.eventManager getStringFromDate:event.endDate];
+ //   NSString *endDateString = [self.appDelegate.eventManager getStringFromDate:event.endDate];
 
     // Add the start and end date strings to the detail text label.
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDateString, endDateString];
+ //   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", startDateString, endDateString];
 
     return cell;
 }
@@ -110,7 +110,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the selected event.
-        [self.appDelegate.eventManager deleteEventWithIdentifier:[[self.arrEvents objectAtIndex:indexPath.row] eventIdentifier]];
+        [self.appDelegate.eventManager deleteEventWithIdentifier:[self.arrEvents[(NSUInteger) indexPath.row] eventIdentifier]];
 
         // Reload all events and the table view.
         [self loadEvents];
@@ -166,10 +166,19 @@
 
 - (void)loadEvents {
     if (self.appDelegate.eventManager.eventsAccessGranted) {
-        self.arrEvents = [self.appDelegate.eventManager getEventsOfSelectedCalendar];
-        for(EKCalendar *event in self.arrEvents){
-        DDLogDebug(@"arrEvents: %@",event.title);}
-        [self.tblEvents reloadData];
+        DDLogDebug(@"access granted");
+        NSArray *arrCalender = [self.appDelegate.eventManager getiCloudReminders];
+
+        [self.appDelegate.eventManager callbackForFetchReminders:^(NSArray *reminders){
+            self.arrEvents=reminders;
+            for(EKCalendar *event in self.arrEvents){
+                DDLogDebug(@"arrEvents: %@",event.title);}
+
+            [self.tblEvents reloadData];
+        }];
+        [self.appDelegate.eventManager getRemembersOfSelectedCalendar:arrCalender];
+
+
     }
 
 }
