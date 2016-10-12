@@ -110,7 +110,7 @@
                                         <rect key="frame" x="0.0" y="174" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pvC-u4-2eX" id="tgF-tM-0nr">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                            <rect key="frame" x="0.0" y="-1" width="320" height="61"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a title for the event..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-1m-9cc">

@@ -8,6 +8,7 @@ target 'EventKitDemo' do
   pod 'FFGlobalAlertController'
   pod 'MBProgressHUD'
   pod 'DBMapSelectorViewController'
+
 end
 
 target 'EventKitDemoTests' do

@@ -11,4 +11,6 @@
 @interface Event : NSObject
 @property(strong,nonatomic)NSString*name;
 @property(nonatomic)NSInteger index;
+@property (nonatomic, strong)NSDictionary *rules;
+@property (nonatomic, strong)NSString *calenderItemIdentifier;
 @end

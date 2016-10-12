@@ -7,12 +7,13 @@
 //
 
 #import <XLForm/XLForm.h>
-
+#import <UIKit/UIKit.h>
 @class EKAlarm;
 
 @interface CreateAlarmFormViewController : XLFormViewController
 @property (nonatomic) NSTimeInterval offset;
-
 @property (nonatomic, strong)EKAlarm *ekAlarm;
 @property (nonatomic, strong)NSDictionary *dictionary;
+
+-(IBAction)saveNotificationRules:(id)sender;
 @end
