@@ -134,9 +134,10 @@
 }
 
 - (IBAction)createEvent:(id)sender {
-    if(self.appDelegate.eventManager.eventsAccessGranted){
-        [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
-    }
+    //TODO a new view controller for adding new event
+//    if(self.appDelegate.eventManager.eventsAccessGranted){
+//        [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
+//    }
     
 }
 

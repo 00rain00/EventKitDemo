@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
+    OpenFileWithLoadError=-1,
+    FileNotOpen,
+    FileOpenSuccess
+    
+};
+
 @interface EngineService : NSObject
 
+-(int)setUpClipsEnvironment;
 
 //get the dictionaary of user's setting and transform to clips rules with reminder identifier
 -(NSDictionary *)transformRules:(NSDictionary *)rules;

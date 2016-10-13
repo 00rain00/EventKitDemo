@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b1dc6cb-9f81-495f-ba0a-d1e80f91900e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/EventKitDemo.iml" afterPath="$PROJECT_DIR$/.idea/EventKitDemo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/EventKitDemo.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/Event.h" afterPath="$PROJECT_DIR$/EventKitDemo/Event.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EventService.h" afterPath="$PROJECT_DIR$/EventKitDemo/EventService.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EngineService.m" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
     </list>
     <ignored path="EventKitDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +18,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_ca35c0521136722c15b6fa99881a7802d6d26b0a" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphonesimulatoriPhone_6_9.3_x86_64_1" />
   <component name="FavoritesManager">
     <favorites_list name="EventKitDemo" />
   </component>
@@ -48,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CreateAlarmFormViewController.m" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CreateAlarmFormViewController.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+            <state relative-caret-position="231">
+              <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -80,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EngineService.m" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EngineService.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+            <state relative-caret-position="107">
+              <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -181,8 +167,8 @@
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.h" />
-        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
       </list>
     </option>
   </component>
@@ -194,9 +180,10 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1631" />
-    <option name="height" value="1027" />
+    <option name="x" value="111" />
+    <option name="y" value="101" />
+    <option name="width" value="1394" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -480,7 +467,8 @@
       <workItem from="1475210720371" duration="11118000" />
       <workItem from="1475385457785" duration="5367000" />
       <workItem from="1476192903210" duration="15688000" />
-      <workItem from="1476242157165" duration="5198000" />
+      <workItem from="1476242157165" duration="5224000" />
+      <workItem from="1476257835943" duration="653000" />
     </task>
     <task id="LOCAL-00001" summary="alert">
       <created>1474209786167</created>
@@ -517,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476212824105</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change add notification">
+      <created>1476250130605</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1476250130605</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -553,7 +548,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83778000" />
+    <option name="totallyTimeSpent" value="84457000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -565,17 +560,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1631" height="1027" extended-state="6" />
+    <frame x="111" y="101" width="1394" height="877" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23913044" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23889293" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31573159" sideWeight="0.4975186" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.314888" sideWeight="0.4975186" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24092409" sideWeight="0.5024814" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25082508" sideWeight="0.4975186" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25032938" sideWeight="0.4975186" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -645,7 +640,8 @@
     <MESSAGE value="fix DDlog problem" />
     <MESSAGE value="load reminders" />
     <MESSAGE value="editRemember" />
-    <option name="LAST_COMMIT_MESSAGE" value="editRemember" />
+    <MESSAGE value="change add notification" />
+    <option name="LAST_COMMIT_MESSAGE" value="change add notification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -794,7 +790,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="426" column="59" selection-start-line="426" selection-start-column="59" selection-end-line="426" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -802,9 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="27" column="40" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
-          <folding>
-            <element signature="e#193#216#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -812,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
           <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,7 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,7 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,13 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4536">
           <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
-          <folding>
-            <element signature="e#1191#1462#0" expanded="false" />
-            <element signature="e#1464#1725#0" expanded="false" />
-            <element signature="e#3784#4034#0" expanded="false" />
-            <element signature="e#4036#4392#0" expanded="false" />
-            <element signature="e#4394#4641#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -990,18 +972,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        <state relative-caret-position="231">
+          <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/CreateAlarmFormViewController.m">
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="118" column="1" selection-start-line="118" selection-start-column="1" selection-end-line="118" selection-end-column="1" />
+        <state relative-caret-position="107">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
           <folding />
         </state>
       </provider>

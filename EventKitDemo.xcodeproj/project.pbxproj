@@ -27,6 +27,11 @@
 		C0062F551970380600B71762 /* EditEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F541970380600B71762 /* EditEventViewController.m */; };
 		C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F571970392C00B71762 /* DatePickerViewController.m */; };
 		C11117F01DADFAD6000A6210 /* EngineService.m in Sources */ = {isa = PBXBuildFile; fileRef = C11117EF1DADFAD6000A6210 /* EngineService.m */; };
+		C17095641DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17095631DAF809C007B5059 /* CLIPSiOS.framework */; };
+		C17095651DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17095631DAF809C007B5059 /* CLIPSiOS.framework */; };
+		C17095671DAF8270007B5059 /* rules.clp in Resources */ = {isa = PBXBuildFile; fileRef = C17095661DAF8270007B5059 /* rules.clp */; };
+		C17095681DAF8270007B5059 /* rules.clp in Resources */ = {isa = PBXBuildFile; fileRef = C17095661DAF8270007B5059 /* rules.clp */; };
+		C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095691DAF8305007B5059 /* EngineServieTest.m */; };
 		C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7DF1D999CF700BBDC78 /* WELDataSource.m */; };
 		C177A7E41D999E0200BBDC78 /* WELTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E31D999E0200BBDC78 /* WELTableDelegate.m */; };
 		C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E71D999F7200BBDC78 /* WELWordCell.m */; };
@@ -87,6 +92,9 @@
 		C0062F571970392C00B71762 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C11117EE1DADFAD6000A6210 /* EngineService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineService.h; sourceTree = "<group>"; };
 		C11117EF1DADFAD6000A6210 /* EngineService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineService.m; sourceTree = "<group>"; };
+		C17095631DAF809C007B5059 /* CLIPSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CLIPSiOS.framework; sourceTree = "<group>"; };
+		C17095661DAF8270007B5059 /* rules.clp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rules.clp; sourceTree = "<group>"; };
+		C17095691DAF8305007B5059 /* EngineServieTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineServieTest.m; sourceTree = "<group>"; };
 		C177A7DE1D999CF700BBDC78 /* WELDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELDataSource.h; sourceTree = "<group>"; };
 		C177A7DF1D999CF700BBDC78 /* WELDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELDataSource.m; sourceTree = "<group>"; };
 		C177A7E11D999D9500BBDC78 /* WELCellConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WELCellConfigure.h; sourceTree = "<group>"; };
@@ -126,6 +134,7 @@
 			files = (
 				C0062F4F1970323600B71762 /* EventKit.framework in Frameworks */,
 				C0062F1C1970321800B71762 /* CoreGraphics.framework in Frameworks */,
+				C17095641DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */,
 				C0062F1E1970321800B71762 /* UIKit.framework in Frameworks */,
 				C0062F1A1970321800B71762 /* Foundation.framework in Frameworks */,
 				C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */,
@@ -138,6 +147,7 @@
 			files = (
 				C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */,
 				C0062F391970321800B71762 /* XCTest.framework in Frameworks */,
+				C17095651DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */,
 				C0062F3B1970321800B71762 /* UIKit.framework in Frameworks */,
 				C0062F3A1970321800B71762 /* Foundation.framework in Frameworks */,
 				6E9B0AFF58A2C867B2BC42F6 /* Pods_EventKitDemoTests.framework in Frameworks */,
@@ -182,6 +192,7 @@
 		C0062F181970321800B71762 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C17095631DAF809C007B5059 /* CLIPSiOS.framework */,
 				C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */,
 				C0062F4E1970323600B71762 /* EventKit.framework */,
 				C0062F191970321800B71762 /* Foundation.framework */,
@@ -219,6 +230,7 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C17095661DAF8270007B5059 /* rules.clp */,
 				C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */,
 				C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */,
 				C0062F211970321800B71762 /* EventKitDemo-Info.plist */,
@@ -234,6 +246,7 @@
 			children = (
 				C0062F441970321800B71762 /* EventKitDemoTests.m */,
 				C0062F3F1970321800B71762 /* Supporting Files */,
+				C17095691DAF8305007B5059 /* EngineServieTest.m */,
 			);
 			path = EventKitDemoTests;
 			sourceTree = "<group>";
@@ -397,6 +410,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0062F321970321800B71762 /* Images.xcassets in Resources */,
+				C17095671DAF8270007B5059 /* rules.clp in Resources */,
 				C0062F241970321800B71762 /* InfoPlist.strings in Resources */,
 				C0062F2D1970321800B71762 /* Main.storyboard in Resources */,
 			);
@@ -407,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0062F431970321800B71762 /* InfoPlist.strings in Resources */,
+				C17095681DAF8270007B5059 /* rules.clp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +553,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0062F451970321800B71762 /* EventKitDemoTests.m in Sources */,
+				C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +674,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
@@ -676,6 +696,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
@@ -695,6 +719,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
@@ -719,6 +744,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
