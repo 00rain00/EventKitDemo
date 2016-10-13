@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DatePickerViewController.h"
-
+#import "AddAlarm.h"
 @protocol EditEventViewControllerDelegate
 
 -(void)eventWasSuccessfullySaved;
@@ -16,7 +16,7 @@
 @end
 
 
-@interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, DatePickerViewControllerDelegate>
+@interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, DatePickerViewControllerDelegate,AddAlarmDelegate>
 
 @property (nonatomic, strong) id<EditEventViewControllerDelegate> delegate;
 

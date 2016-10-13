@@ -26,6 +26,7 @@ NSString *const earphone = @"earphone";
 @implementation CreateAlarmFormViewController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    DDLogDebug(@"");
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self){
         [self initializeForm];
@@ -34,6 +35,7 @@ NSString *const earphone = @"earphone";
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
+     DDLogDebug(@"");
     self = [super initWithCoder:aDecoder];
     if (self){
         [self initializeForm];

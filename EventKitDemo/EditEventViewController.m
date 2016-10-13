@@ -7,6 +7,7 @@
 //
 
 #import "EditEventViewController.h"
+#import "AddAlarm.h"
 #import "AppDelegate.h"
 
 @interface EditEventViewController ()
@@ -62,9 +63,7 @@
 
         self.eventTitle = self.editedEvent.title;
         DDLogDebug(@"event title : %@",self.eventTitle);
-       // self.eventStartDate = self.editedEvent.startDate;
-       // self.eventEndDate = self.editedEvent.endDate;
-    }else{
+           }else{
         DDLogDebug(@"no selected event ");
     }
 }
@@ -91,6 +90,11 @@
 //TODO complete viewcontroller
     if ([segue.identifier isEqualToString:@"idSegueCalender"]) {
 
+    }
+    if ([segue.identifier isEqualToString:@"idSegueAddAlarm"]) {
+        AddAlarm *controller = segue.destinationViewController;
+        controller.reminder=self.editedEvent;
+        controller.delegate=self;
     }
 }
 
@@ -209,6 +213,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DDLogDebug(@"section :%d ,  row :%d",indexPath.section, indexPath.row);
     if(indexPath.section==0&&indexPath.row==1){
         [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
     }
@@ -222,7 +227,10 @@
 
         [self performSegueWithIdentifier:@"idSegueCreateAlarm" sender:self];
     }
-
+    
+    if(indexPath.section==1&&indexPath.row==0){
+        [self performSegueWithIdentifier:@"idSegueAddAlarm" sender:self ];
+    }
 
 
 
@@ -240,34 +248,32 @@
         DDLogDebug(@"empty title");
         return;
     }
-    if(OBJECT_IS_EMPTY(self.eventEndDate)||OBJECT_IS_EMPTY(self.eventStartDate)){
-        DDLogDebug(@"empty end or start date");
-        return;
-    }
+
 
     if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
         [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
         self.appDelegate.eventManager.selectedEventIdentifier = @"";
     }
-    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
+    self.editedEvent.title = self.eventTitle;
+//    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
+//
+//
+//    event.title=self.eventTitle;
+//    event.startDate=self.eventStartDate;
+//    event.endDate=self.eventEndDate;
+//    NSArray * alCalenders = [self.appDelegate.eventManager.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
+//
+//    for (EKCalendar * calendar in alCalenders) {
+//        if([calendar.calendarIdentifier isEqualToString:self.appDelegate.eventManager.selectedCalenderIdentifier]){
+//            event.calendar= calendar;
+//            break;
+//        }
+//    }
 
-    
-    event.title=self.eventTitle;
-    event.startDate=self.eventStartDate;
-    event.endDate=self.eventEndDate;
-    NSArray * alCalenders = [self.appDelegate.eventManager.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
-    
-    for (EKCalendar * calendar in alCalenders) {
-        if([calendar.calendarIdentifier isEqualToString:self.appDelegate.eventManager.selectedCalenderIdentifier]){
-            event.calendar= calendar;
-            break;
-        }
-    }
-    
-    
+
 
     NSError *error;
-    if([self.appDelegate.eventManager.ekEventStore saveEvent:event span:EKSpanFutureEvents commit:YES error:&error]){
+    if([self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:&error]){
         [self.delegate eventWasSuccessfullySaved];
         [self.navigationController popViewControllerAnimated:YES];
     }else{
@@ -304,6 +310,14 @@
 //    }
 
     [self.tblEvent reloadData];
+}
+
+- (void)addAlarm:(AddAlarm *)controller didFinishCreateAlarm:(EKAlarm *)item {
+    [self.editedEvent addAlarm:item];
+}
+
+- (void)addAlarm:(AddAlarm *)controller test:(NSString *)string {
+
 }
 
 
