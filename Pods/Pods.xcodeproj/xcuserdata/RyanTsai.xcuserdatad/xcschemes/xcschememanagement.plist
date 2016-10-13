@@ -32,38 +32,45 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>MBProgressHUD.xcscheme</key>
+		<key>INTULocationManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>Pods-EventKitDemo.xcscheme</key>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Pods-EventKitDemoTests.xcscheme</key>
+		<key>Pods-EventKitDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>XLForm.xcscheme</key>
+		<key>Pods-EventKitDemoTests.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
+		<key>XLForm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>5A55CDAA0EE2DC99A4811A07F80B15D7</key>
+		<key>5AF1C612F4CDA296FC4C82D9BD0BD25D</key>
 		<dict>
 			<key>primary</key>
 			<true />
@@ -78,11 +85,6 @@
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>919ED3758820784DDC7159D9A7F27801</key>
-		<dict>
-			<key>primary</key>
-			<true />
-		</dict>
 		<key>AF9231FABC1ABD66B51BBB24E5BCE138</key>
 		<dict>
 			<key>primary</key>
@@ -93,7 +95,17 @@
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>F25240E2ED564F3C9FD6B8BD59030C6B</key>
+		<key>E6F48D5072A5FE8892A7B1A09BAB0FF9</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>EBE680486B0EA907E47E233953658AAD</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>F63A2C57B3F68FB49802633BBBA5537E</key>
 		<dict>
 			<key>primary</key>
 			<true />

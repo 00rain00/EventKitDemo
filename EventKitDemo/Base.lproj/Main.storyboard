@@ -140,6 +140,7 @@
                         <segue destination="SM5-C3-W48" kind="push" identifier="idSegueCalender" id="jYL-8O-stu"/>
                         <segue destination="gOg-Sv-d62" kind="push" identifier="idSegueCreateAlarm" id="v4E-t4-h25"/>
                         <segue destination="O26-hl-4N0" kind="push" identifier="idSegueAddAlarm" id="tQg-uc-7Sh"/>
+                        <segue destination="ZVg-5f-IRw" kind="push" identifier="idSegueLocation" id="wjR-ow-cV2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLz-pO-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,6 +167,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eh4-0X-qEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1933" y="-99"/>
+        </scene>
+        <!--Add Location View Controller-->
+        <scene sceneID="umW-NS-zsl">
+            <objects>
+                <viewController id="ZVg-5f-IRw" customClass="AddLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1O4-Tu-zCW"/>
+                        <viewControllerLayoutGuide type="bottom" id="sMu-Yc-vNS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vRu-JV-NtO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2No-iT-lOT">
+                                <rect key="frame" x="0.0" y="64" width="320" height="475"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZVg-5f-IRw" id="fNy-gU-f1n"/>
+                                </connections>
+                            </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-Kf-QDn">
+                                <rect key="frame" x="0.0" y="540" width="320" height="29"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oFS-Fq-oFq"/>
+                    <connections>
+                        <outlet property="editingTypeSegentedControl" destination="Fsg-Kf-QDn" id="RFY-gk-Ui5"/>
+                        <outlet property="mapView" destination="2No-iT-lOT" id="Aid-i8-Gev"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Unl-7h-wne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1337" y="1091"/>
         </scene>
         <!--Add Alarm-->
         <scene sceneID="9In-SU-SnY">

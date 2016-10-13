@@ -8,10 +8,11 @@ target 'EventKitDemo' do
   pod 'FFGlobalAlertController'
   pod 'MBProgressHUD'
   pod 'DBMapSelectorViewController'
-
+  pod 'INTULocationManager'
 end
 
 target 'EventKitDemoTests' do
   pod 'CocoaLumberjack', '~>2.3.0'
+  pod 'INTULocationManager'
 end
 

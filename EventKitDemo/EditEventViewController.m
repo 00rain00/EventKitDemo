@@ -111,7 +111,7 @@
         return 5;
     }
     else{
-        return self.arrAlarms.count +1;
+        return 2;
     }
 }
 
@@ -197,16 +197,22 @@
         if (OBJECT_IS_EMPTY(cell)) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
         }
-        if(indexPath.row ==0){
-            cell.textLabel.text = @"Add a new alarm...";
-        }else{
-            cell.textLabel.text = [self.appDelegate.eventManager getStringFromDate:self.arrAlarms[indexPath.row-1] ];
-            // No selection for the alarm cells.
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
-            // No accessory style.
-            cell.accessoryType = UITableViewCellAccessoryNone;
+        switch (indexPath.row){
+            case 0 : {
+                cell.textLabel.text = @"Add a new time alarm...";
+            }
+                break;
+            case 1: {
+                cell.textLabel.text = @"add a new location alarm...";
+            }
+                break;
+            default:
+                break;
         }
+
+
+
+
     }
     
     return cell;
@@ -230,6 +236,9 @@
     
     if(indexPath.section==1&&indexPath.row==0){
         [self performSegueWithIdentifier:@"idSegueAddAlarm" sender:self ];
+    }
+    if(indexPath.section==1&&indexPath.row==1){
+        [self performSegueWithIdentifier:@"idSegueLocation" sender:self ];
     }
 
 

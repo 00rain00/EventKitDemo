@@ -34,6 +34,8 @@
 		C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095691DAF8305007B5059 /* EngineServieTest.m */; };
 		C170956D1DAF94C2007B5059 /* AddAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = C170956C1DAF94C2007B5059 /* AddAlarm.m */; };
 		C170956E1DAF94C2007B5059 /* AddAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = C170956C1DAF94C2007B5059 /* AddAlarm.m */; };
+		C17095711DAFE025007B5059 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095701DAFE025007B5059 /* AddLocationViewController.m */; };
+		C17095721DAFE025007B5059 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095701DAFE025007B5059 /* AddLocationViewController.m */; };
 		C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7DF1D999CF700BBDC78 /* WELDataSource.m */; };
 		C177A7E41D999E0200BBDC78 /* WELTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E31D999E0200BBDC78 /* WELTableDelegate.m */; };
 		C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E71D999F7200BBDC78 /* WELWordCell.m */; };
@@ -99,6 +101,8 @@
 		C17095691DAF8305007B5059 /* EngineServieTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineServieTest.m; sourceTree = "<group>"; };
 		C170956B1DAF94C2007B5059 /* AddAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAlarm.h; sourceTree = "<group>"; };
 		C170956C1DAF94C2007B5059 /* AddAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarm.m; sourceTree = "<group>"; };
+		C170956F1DAFE025007B5059 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
+		C17095701DAFE025007B5059 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
 		C177A7DE1D999CF700BBDC78 /* WELDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELDataSource.h; sourceTree = "<group>"; };
 		C177A7DF1D999CF700BBDC78 /* WELDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELDataSource.m; sourceTree = "<group>"; };
 		C177A7E11D999D9500BBDC78 /* WELCellConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WELCellConfigure.h; sourceTree = "<group>"; };
@@ -303,6 +307,8 @@
 				C0062F2F1970321800B71762 /* ViewController.m */,
 				C0062F531970380600B71762 /* EditEventViewController.h */,
 				C0062F541970380600B71762 /* EditEventViewController.m */,
+				C170956F1DAFE025007B5059 /* AddLocationViewController.h */,
+				C17095701DAFE025007B5059 /* AddLocationViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -550,6 +556,7 @@
 				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,
 				C0062F261970321800B71762 /* main.m in Sources */,
 				C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */,
+				C17095711DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 				C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */,
 				C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */,
 			);
@@ -562,6 +569,7 @@
 				C170956E1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C0062F451970321800B71762 /* EventKitDemoTests.m in Sources */,
 				C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */,
+				C17095721DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +690,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -704,6 +713,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
