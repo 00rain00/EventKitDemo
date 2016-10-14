@@ -27,6 +27,7 @@
 		C0062F551970380600B71762 /* EditEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F541970380600B71762 /* EditEventViewController.m */; };
 		C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F571970392C00B71762 /* DatePickerViewController.m */; };
 		C11117F01DADFAD6000A6210 /* EngineService.m in Sources */ = {isa = PBXBuildFile; fileRef = C11117EF1DADFAD6000A6210 /* EngineService.m */; };
+		C12BFD811DB15EB60059A7B7 /* NSDate+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C12BFD801DB15EB60059A7B7 /* NSDate+Helper.m */; };
 		C17095641DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17095631DAF809C007B5059 /* CLIPSiOS.framework */; };
 		C17095651DAF809C007B5059 /* CLIPSiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17095631DAF809C007B5059 /* CLIPSiOS.framework */; };
 		C17095671DAF8270007B5059 /* rules.clp in Resources */ = {isa = PBXBuildFile; fileRef = C17095661DAF8270007B5059 /* rules.clp */; };
@@ -96,6 +97,8 @@
 		C0062F571970392C00B71762 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		C11117EE1DADFAD6000A6210 /* EngineService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineService.h; sourceTree = "<group>"; };
 		C11117EF1DADFAD6000A6210 /* EngineService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineService.m; sourceTree = "<group>"; };
+		C12BFD7F1DB15EB60059A7B7 /* NSDate+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Helper.h"; sourceTree = "<group>"; };
+		C12BFD801DB15EB60059A7B7 /* NSDate+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Helper.m"; sourceTree = "<group>"; };
 		C17095631DAF809C007B5059 /* CLIPSiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CLIPSiOS.framework; sourceTree = "<group>"; };
 		C17095661DAF8270007B5059 /* rules.clp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = rules.clp; sourceTree = "<group>"; };
 		C17095691DAF8305007B5059 /* EngineServieTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineServieTest.m; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C12BFD7F1DB15EB60059A7B7 /* NSDate+Helper.h */,
+				C12BFD801DB15EB60059A7B7 /* NSDate+Helper.m */,
 				C0062F561970392C00B71762 /* DatePickerViewController.h */,
 				C0062F571970392C00B71762 /* DatePickerViewController.m */,
 				C17095661DAF8270007B5059 /* rules.clp */,
@@ -551,6 +556,7 @@
 				C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */,
 				C170956D1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */,
+				C12BFD811DB15EB60059A7B7 /* NSDate+Helper.m in Sources */,
 				C177A7F71D99B25B00BBDC78 /* Event.m in Sources */,
 				C177A7F11D99AB2300BBDC78 /* CustomerCell.m in Sources */,
 				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,

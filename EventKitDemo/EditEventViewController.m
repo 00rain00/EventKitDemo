@@ -62,6 +62,13 @@
         self.editedEvent = (EKReminder *) [self.appDelegate.eventManager.ekEventStore calendarItemWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
 
         self.eventTitle = self.editedEvent.title;
+        [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
+        for(EKAlarm * alarm1 in self.arrAlarms){
+            DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
+            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
+            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
+            DDLogDebug(@"arriving : %d",alarm1.proximity);
+        }
         DDLogDebug(@"event title : %@",self.eventTitle);
            }else{
         DDLogDebug(@"no selected event ");
@@ -94,6 +101,10 @@
     if ([segue.identifier isEqualToString:@"idSegueAddAlarm"]) {
         AddAlarm *controller = segue.destinationViewController;
         controller.reminder=self.editedEvent;
+        controller.delegate=self;
+    }
+    if([segue.identifier isEqualToString:@"idSegueLocation"]){
+        AddLocationViewController *controller  = segue.destinationViewController;
         controller.delegate=self;
     }
 }
@@ -219,7 +230,7 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDLogDebug(@"section :%d ,  row :%d",indexPath.section, indexPath.row);
+    DDLogDebug(@"section :%ld ,  row :%ld",(long)indexPath.section, (long)indexPath.row);
     if(indexPath.section==0&&indexPath.row==1){
         [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
     }
@@ -259,10 +270,10 @@
     }
 
 
-    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
-        self.appDelegate.eventManager.selectedEventIdentifier = @"";
-    }
+//    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
+//        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
+//        self.appDelegate.eventManager.selectedEventIdentifier = @"";
+//    }
     self.editedEvent.title = self.eventTitle;
 //    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
 //
@@ -327,6 +338,10 @@
 
 - (void)addAlarm:(AddAlarm *)controller test:(NSString *)string {
 
+}
+
+- (void)addLocation:(AddLocationViewController *)controller didFinishAdding:(EKAlarm *)item {
+    [self.editedEvent addAlarm:item];
 }
 
 

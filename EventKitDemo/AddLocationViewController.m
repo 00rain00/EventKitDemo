@@ -9,6 +9,7 @@
 #import "AddLocationViewController.h"
 #import "DBMapSelectorViewController/DBMapSelectorManager.h"
 @import INTULocationManager;
+double const DEFAULTSPAN = 500;
 
 @interface AddLocationViewController ()<DBMapSelectorManagerDelegate>
 @property (nonatomic, strong)DBMapSelectorManager *mapSelectorManager;
@@ -18,7 +19,10 @@
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
 @property (assign, nonatomic) INTUHeadingRequestID headingRequestID;
 @property (nonatomic, strong)CLLocation *currentLocation;
-
+@property (nonatomic, strong)NSMutableArray *nearbyInfoArray;
+@property (nonatomic, strong)NSDictionary *addressBook;
+@property (nonatomic, strong)CLPlacemark *place;
+@property (nonatomic)BOOL arrive;
 @end
 
 @implementation AddLocationViewController
@@ -62,8 +66,11 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated {
-}
+    [self reverseGeoCode:self.currentLocation];
 
+
+
+}
 
 
 -(void)getCurrentLocation{
@@ -96,6 +103,7 @@
 
                                                                               strongSelf.locationRequestID = NSNotFound;
                                                                               weakSelf.currentLocation=currentLocation;
+
                                                                               if(weakSelf.callbackForDidReceiceLocation){
                                                                                   weakSelf.callbackForDidReceiceLocation(currentLocation);
                                                                               }
@@ -103,6 +111,29 @@
 
 }
 
+-(void)reverseGeoCode:(CLLocation *)location{
+    DDLogDebug(@"start");
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+       DDLogInfo(@"Finding address");
+        if (error) {
+            DDLogDebug(@"Error %@", error.description);
+        } else {
+            self.place = [placemarks lastObject];
+            MKMapItem *mapItem = [[MKMapItem alloc] initWithPlacemark:self.place];
+            EKStructuredLocation *location  = [EKStructuredLocation locationWithMapItem:mapItem];
+            EKAlarm *alarm1 = [EKAlarm new];
+            location.geoLocation= self.currentLocation;
+            location.radius=self.mapSelectorManager.circleRadius;
+            alarm1.structuredLocation =location;
+            alarm1.proximity = (self.arrive)? EKAlarmProximityEnter :EKAlarmProximityLeave;
+
+            [self.delegate addLocation:self didFinishAdding:alarm1];
+
+        }
+    }];
+    DDLogDebug(@"finish");
+}
 - (NSString *)getLocationErrorDescription:(INTULocationStatus)status
 {
     if (status == INTULocationStatusServicesNotDetermined) {
@@ -120,6 +151,37 @@
     return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
 }
 
+-(void)fetchMearByInfo{
+
+
+    MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, self.mapSelectorManager.circleRadius,self.mapSelectorManager.circleRadius );
+
+    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
+    requst.region = region;
+    requst.naturalLanguageQuery = @"place"; //想要的信息
+    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
+
+    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+        if (OBJECT_IS_EMPTY(error))
+        {
+            [self.nearbyInfoArray addObjectsFromArray:response.mapItems];
+            for (MKMapItem * place in response.mapItems) {
+                DDLogDebug(@"place: %@",place.name);
+            }
+        }
+        else
+        {
+            FATAL_CORE_DATA_ERROR(error);
+        }
+    }];
+}
+
+#pragma mark - Actions
+- (IBAction)fillingModeSegmentedControlValueDidChange:(UISegmentedControl *)sender {
+    self.mapSelectorManager.fillInside = (sender.selectedSegmentIndex == 0);
+    self.arrive = (sender.selectedSegmentIndex==0);
+    //[self fetchMearByInfo];
+}
 
 
 
@@ -143,6 +205,7 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     [self.mapSelectorManager mapView:mapView regionDidChangeAnimated:animated];
 }
+
 
 
 
