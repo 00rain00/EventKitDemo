@@ -171,11 +171,14 @@
         NSArray *arrCalender = [self.appDelegate.eventManager getiCloudReminders];
         //TODO need to add loading image
         [self.appDelegate.eventManager callbackForFetchReminders:^(NSArray *reminders){
+            DDLogDebug(@"call back executed");
             self.arrEvents=reminders;
             for(EKCalendar *event in self.arrEvents){
                 DDLogDebug(@"arrEvents: %@",event.title);}
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tblEvents reloadData];
+            });
 
-            [self.tblEvents reloadData];
         }];
         [self.appDelegate.eventManager getRemembersOfSelectedCalendar:arrCalender];
 

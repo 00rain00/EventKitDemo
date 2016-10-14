@@ -274,6 +274,7 @@
 //        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
 //        self.appDelegate.eventManager.selectedEventIdentifier = @"";
 //    }
+    DDLogDebug(@"eventTitle:%@",self.eventTitle);
     self.editedEvent.title = self.eventTitle;
 //    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
 //
@@ -299,14 +300,14 @@
     }else{
         FATAL_CORE_DATA_ERROR(error);
     }
-
+    [self.tblEvent reloadData];
 }
 
 
 #pragma mark - UITextFieldDelegate method implementation
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-
+    DDLogInfo(@"");
     self.eventTitle=textField.text;
     DDLogDebug(@"event title :%@",self.eventTitle);
     [textField resignFirstResponder];
