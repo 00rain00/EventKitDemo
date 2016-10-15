@@ -32,5 +32,13 @@
     NSLog(@"%d",result);
     XCTAssertEqual(result, 1);
 }
+-(void)testTransformFacts{
+    EngineService * es = [EngineService new];
+    es.setUpClipsEnvironment;
+    NSDictionary *facts = @{
+            @"Time" :[NSDate new]};
+
+    [es generateFacts:facts];
+}
 
 @end

@@ -23,7 +23,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     [DDTTYLogger sharedInstance].logFormatter=[CustomerFormatter new];
     
     [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
-    // [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
+
     DDLogDebug(@"application start");
 
 
@@ -33,6 +33,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 -(void)applicationDidBecomeActive:(UIApplication *)application {
     self.eventManager= [EventManager new];
     self.engineService= [EngineService new];
+
 }
 							
 

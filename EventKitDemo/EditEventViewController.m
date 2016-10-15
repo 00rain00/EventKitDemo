@@ -282,29 +282,20 @@
         DDLogDebug(@"empty title");
         return;
     }
-
-
-//    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-//        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
-//        self.appDelegate.eventManager.selectedEventIdentifier = @"";
-//    }
     DDLogDebug(@"eventTitle:%@",self.eventTitle);
     self.editedEvent.title = self.eventTitle;
-//    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
-//
-//
-//    event.title=self.eventTitle;
-//    event.startDate=self.eventStartDate;
-//    event.endDate=self.eventEndDate;
-//    NSArray * alCalenders = [self.appDelegate.eventManager.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
-//
-//    for (EKCalendar * calendar in alCalenders) {
-//        if([calendar.calendarIdentifier isEqualToString:self.appDelegate.eventManager.selectedCalenderIdentifier]){
-//            event.calendar= calendar;
-//            break;
-//        }
-//    }
+    //TODO start engine
+    self.appDelegate.engineService.setUpClipsEnvironment;
 
+    //TODO push facts fo engine
+    NSDictionary *facts = [NSDictionary new];
+    facts = @{@"time": [NSDate new]};
+    [self.appDelegate.engineService generateFacts:facts];
+    //TODO PUSH rules to engine
+    NSDictionary *rules  = [NSDictionary new];
+    [self.appDelegate.engineService transformRules:facts];
+    //TODO EVALUE RESULT
+    //TODO ADD alarm to reminder
 
 
     NSError *error;
