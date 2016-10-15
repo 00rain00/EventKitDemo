@@ -15,11 +15,10 @@
 
 @protocol AddAlarmDelegate<NSObject>
 -(void)addAlarm:(AddAlarm *)controller didFinishCreateAlarm:(EKAlarm *)item;
--(void)addAlarm:(AddAlarm *)controller test:(NSString *)string;
+
 @end
 @interface AddAlarm : XLFormViewController
 @property (nonatomic, weak)id <AddAlarmDelegate> delegate;
-@property (nonatomic, strong)EKReminder *reminder;
 @property (nonatomic, strong)EKAlarm *ekAlarm;
 @property (nonatomic, strong) AppDelegate *appDelegate;
 

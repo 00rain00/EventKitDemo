@@ -64,10 +64,13 @@
         self.eventTitle = self.editedEvent.title;
         [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
         for(EKAlarm * alarm1 in self.arrAlarms){
-            DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
-            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
-            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
-            DDLogDebug(@"arriving : %d",alarm1.proximity);
+//            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
+//                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
+//            }
+//
+//            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
+//            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
+//            DDLogDebug(@"arriving : %d",alarm1.proximity);
         }
         DDLogDebug(@"event title : %@",self.eventTitle);
            }else{
@@ -100,11 +103,15 @@
     }
     if ([segue.identifier isEqualToString:@"idSegueAddAlarm"]) {
         AddAlarm *controller = segue.destinationViewController;
-        controller.reminder=self.editedEvent;
+
         controller.delegate=self;
     }
     if([segue.identifier isEqualToString:@"idSegueLocation"]){
         AddLocationViewController *controller  = segue.destinationViewController;
+        controller.delegate=self;
+    }
+    if([segue.identifier isEqualToString:@"idSegueWeather"]){
+        AddWeatherViewController *controller  = segue.destinationViewController;
         controller.delegate=self;
     }
 }
@@ -122,7 +129,7 @@
         return 5;
     }
     else{
-        return 2;
+        return 3;
     }
 }
 
@@ -217,6 +224,10 @@
                 cell.textLabel.text = @"add a new location alarm...";
             }
                 break;
+            case 2: {
+                cell.textLabel.text = @"add a new weather alarm...";
+            }
+                break;
             default:
                 break;
         }
@@ -250,6 +261,9 @@
     }
     if(indexPath.section==1&&indexPath.row==1){
         [self performSegueWithIdentifier:@"idSegueLocation" sender:self ];
+    }
+    if(indexPath.section==1&&indexPath.row==2){
+        [self performSegueWithIdentifier:@"idSegueWeather" sender:self ];
     }
 
 
@@ -326,9 +340,6 @@
             self.eventEndDate=selectedDate;
         }
     }
-//    if(indexPath.section ==1){
-//        [self.arrAlarms addObject:selectedDate];
-//    }
 
     [self.tblEvent reloadData];
 }
@@ -343,6 +354,10 @@
 
 - (void)addLocation:(AddLocationViewController *)controller didFinishAdding:(EKAlarm *)item {
     [self.editedEvent addAlarm:item];
+}
+
+- (void)addWeatherViewController:(AddWeatherViewController *)controller :(EKAlarm *)item {
+
 }
 
 

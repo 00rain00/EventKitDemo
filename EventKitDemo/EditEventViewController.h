@@ -10,6 +10,7 @@
 #import "DatePickerViewController.h"
 #import "AddAlarm.h"
 #import "AddLocationViewController.h"
+#import "AddWeatherViewController.h"
 @protocol EditEventViewControllerDelegate
 
 -(void)eventWasSuccessfullySaved;
@@ -18,7 +19,7 @@
 
 
 @interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,
-        DatePickerViewControllerDelegate,AddAlarmDelegate,AddLocationViewControllerDelegate>
+        DatePickerViewControllerDelegate,AddAlarmDelegate,AddLocationViewControllerDelegate,AddWeatherViewControllerDelegate>
 
 @property (nonatomic, strong) id<EditEventViewControllerDelegate> delegate;
 

@@ -1,4 +1,5 @@
 PODS:
+  - AFNetworking (1.3.4)
   - CocoaLumberjack (2.3.0):
     - CocoaLumberjack/Default (= 2.3.0)
     - CocoaLumberjack/Extensions (= 2.3.0)
@@ -11,6 +12,8 @@ PODS:
   - FFGlobalAlertController (1.0.2)
   - INTULocationManager (4.2.0)
   - MBProgressHUD (1.0.0)
+  - OpenWeatherMapAPI (0.0.5):
+    - AFNetworking (~> 1.3.1)
   - XLForm (3.2.0)
 
 DEPENDENCIES:
@@ -19,16 +22,19 @@ DEPENDENCIES:
   - FFGlobalAlertController
   - INTULocationManager
   - MBProgressHUD
+  - OpenWeatherMapAPI
   - XLForm
 
 SPEC CHECKSUMS:
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   DBMapSelectorViewController: 39b9156fae4f6c937397d66edd30c9c428cc4b8c
   FFGlobalAlertController: 40c66500ae173895085911ba19d79d045bd26742
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  OpenWeatherMapAPI: 53613bba3dffc948f852a66a25f512f7a16643e7
   XLForm: 2250b4e96ab8ffa5f3355838c79edd90de451782
 
-PODFILE CHECKSUM: 65862bdc0105f4f2dc114c8ea754fde8b062bb3c
+PODFILE CHECKSUM: b9d2544c24b9431c3269ea3cbf3b13a3b9f99430
 
 COCOAPODS: 1.0.1

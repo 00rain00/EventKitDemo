@@ -4,78 +4,102 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>CocoaLumberjack.xcscheme</key>
+		<key>AFNetworking.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>DBMapSelectorViewController.xcscheme</key>
+		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>FFGlobalAlertController-FFGlobalAlertController.xcscheme</key>
+		<key>DBMapSelectorViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>FFGlobalAlertController.xcscheme</key>
+		<key>FFGlobalAlertController-FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>INTULocationManager.xcscheme</key>
+		<key>FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
-		<key>MBProgressHUD.xcscheme</key>
+		<key>INTULocationManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>8</integer>
 		</dict>
-		<key>Pods-EventKitDemo.xcscheme</key>
+		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>9</integer>
 		</dict>
-		<key>Pods-EventKitDemoTests.xcscheme</key>
+		<key>OpenWeatherMapAPI.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>XLForm.xcscheme</key>
+		<key>Pods-EventKitDemo.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>Pods-EventKitDemoTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>XLForm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>13210CD1959CD7F2E9771402A372E6A6</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
 		<key>5AF1C612F4CDA296FC4C82D9BD0BD25D</key>
 		<dict>
 			<key>primary</key>
 			<true />
 		</dict>
 		<key>77AA17025300812751E7DBD0BB40865F</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>7BF0A6FE820C825708F045082CC214A6</key>
 		<dict>
 			<key>primary</key>
 			<true />
@@ -90,22 +114,22 @@
 			<key>primary</key>
 			<true />
 		</dict>
+		<key>B1F2ACD242BBB0246A14BFFCFD7EBA69</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>BF3BFEFFD5F510A0F882962F942B8C83</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
 		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
 		<dict>
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>E6F48D5072A5FE8892A7B1A09BAB0FF9</key>
-		<dict>
-			<key>primary</key>
-			<true />
-		</dict>
-		<key>EBE680486B0EA907E47E233953658AAD</key>
-		<dict>
-			<key>primary</key>
-			<true />
-		</dict>
-		<key>F63A2C57B3F68FB49802633BBBA5537E</key>
+		<key>EBB70B39B24BFA8A41C2439A78FAC47B</key>
 		<dict>
 			<key>primary</key>
 			<true />

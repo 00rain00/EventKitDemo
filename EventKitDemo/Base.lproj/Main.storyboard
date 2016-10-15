@@ -141,6 +141,7 @@
                         <segue destination="gOg-Sv-d62" kind="push" identifier="idSegueCreateAlarm" id="v4E-t4-h25"/>
                         <segue destination="O26-hl-4N0" kind="push" identifier="idSegueAddAlarm" id="tQg-uc-7Sh"/>
                         <segue destination="ZVg-5f-IRw" kind="push" identifier="idSegueLocation" id="wjR-ow-cV2"/>
+                        <segue destination="1Q5-HI-FKK" kind="push" identifier="idSegueWeather" id="7aL-sa-Rsb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLz-pO-XJF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -167,6 +168,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eh4-0X-qEW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1933" y="-99"/>
+        </scene>
+        <!--Add Weather View Controller-->
+        <scene sceneID="VXT-au-lbc">
+            <objects>
+                <viewController id="1Q5-HI-FKK" customClass="AddWeatherViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z7E-dn-bfN"/>
+                        <viewControllerLayoutGuide type="bottom" id="924-p3-FUx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="C8C-mi-sG3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7QF-nj-blQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U8q-8z-aFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="866" y="1109"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="umW-NS-zsl">

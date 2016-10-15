@@ -30,6 +30,9 @@ static const DDLogLevel ddLogLevel = DDLogLevelVerbose;
 DDLogDebug(@"*** Fatal error: %@ \n %@", error, [error userInfo]);\
 [[NSNotificationCenter defaultCenter] postNotificationName:\
 ManagedObjectContextSaveDidFailNotification object:error];
+//loop NSDictionary
+#define LOOP_DICTIONARY(_dictionary) for(id key in _dictionary){DDLogDebug(@"key : %@, value:%@",key,_dictionary[key]);}
+
 
 //检查空对象
 #define OBJECT_ISNOT_EMPTY(_object) (NO == OBJECT_IS_EMPTY(_object))

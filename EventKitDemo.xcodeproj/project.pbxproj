@@ -49,6 +49,7 @@
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
 		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
+		C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
 		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
@@ -130,6 +131,8 @@
 		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
 		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
+		C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWeatherViewController.h; sourceTree = "<group>"; };
+		C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWeatherViewController.m; sourceTree = "<group>"; };
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
 		C1EAFB621D9972D300234B31 /* EventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventService.m; sourceTree = "<group>"; };
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
@@ -314,6 +317,8 @@
 				C0062F541970380600B71762 /* EditEventViewController.m */,
 				C170956F1DAFE025007B5059 /* AddLocationViewController.h */,
 				C17095701DAFE025007B5059 /* AddLocationViewController.m */,
+				C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */,
+				C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 				C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */,
 				C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */,
 				C170956D1DAF94C2007B5059 /* AddAlarm.m in Sources */,
+				C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */,
 				C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */,
 				C12BFD811DB15EB60059A7B7 /* NSDate+Helper.m in Sources */,
 				C177A7F71D99B25B00BBDC78 /* Event.m in Sources */,

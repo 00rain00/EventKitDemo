@@ -2,7 +2,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'EventKitDemo' do
-
+  pod 'OpenWeatherMapAPI'
   pod 'CocoaLumberjack', '~>2.3.0'
   pod 'XLForm'
   pod 'FFGlobalAlertController'
@@ -12,6 +12,7 @@ target 'EventKitDemo' do
 end
 
 target 'EventKitDemoTests' do
+  pod 'OpenWeatherMapAPI'
   pod 'CocoaLumberjack', '~>2.3.0'
   pod 'INTULocationManager'
 end
