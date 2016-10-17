@@ -9,7 +9,8 @@
 #import "EditEventViewController.h"
 #import "AddAlarm.h"
 #import "AppDelegate.h"
-
+#import <FFGlobalAlertController/UIAlertController+Window.h>
+#import "UIAlertController+Window.h"
 @interface EditEventViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -48,8 +49,7 @@
 
     self.arrAlarms= [NSMutableArray new];
 
-    RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
-
+    LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
 
 
         self.eventTitle = self.editedEvent.title;
@@ -123,7 +123,7 @@
             case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
-                titleTextfile.text=self.eventTitle;
+                titleTextfile.text=self.editedEvent.title;
 
             }
                 break;
@@ -156,11 +156,26 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+DDLogDebug(@"");
 
 
 }
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle == UITableViewCellEditingStyleDelete){
+      [self deleteCondition];
+  }
+}
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //config the button at leftside
+    if(indexPath.row==0){
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return UITableViewCellEditingStyleDelete;
+    }
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0;
 }
@@ -169,12 +184,16 @@
 #pragma mark - IBAction method implementation
 
 - (IBAction)saveEvent:(id)sender {
-    if(self.eventTitle.length==0){
-        DDLogDebug(@"empty title");
+    if(OBJECT_IS_EMPTY(self.eventTitle)){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"Title is empty" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+        [alert show];
         return;
+
     }
     DDLogDebug(@"eventTitle:%@",self.eventTitle);
-    return;
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     self.editedEvent.title = self.eventTitle;
     //TODO start engine
     self.appDelegate.engineService.setUpClipsEnvironment;
@@ -207,6 +226,14 @@
 - (IBAction)cancle:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 
+}
+
+- (void)deleteCondition {
+        DDLogDebug(@"");
+}
+
+- (NSArray *)fetchCondition:(NSString *)reminderID {
+    return nil;
 }
 
 

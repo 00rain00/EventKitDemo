@@ -7,11 +7,12 @@
 //
 
 #import <FFGlobalAlertController/UIAlertController+Window.h>
+#import "UIAlertController+Window.h"
 #import "CalendarsViewController.h"
 #import "AppDelegate.h"
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "CannotResolve"
-#import "UIAlertController+Window.h"
+
+
+
 
 
 @interface CalendarsViewController ()
@@ -295,4 +296,3 @@ return numRow;
 
 @end
 
-#pragma clang diagnostic pop

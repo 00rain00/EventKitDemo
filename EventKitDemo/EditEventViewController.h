@@ -31,5 +31,6 @@
 - (IBAction)saveEvent:(id)sender;
 -(IBAction)NewCondition:(id)sender;
 -(IBAction)cancle:(id)sender;
+-(void)deleteCondition;
 -(NSArray *)fetchCondition:(NSString *)reminderID;
 @end

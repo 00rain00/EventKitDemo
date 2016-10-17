@@ -105,7 +105,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
 
     if ([segue.identifier isEqualToString:@"idSegueEvent"]) {
-
+        LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.selectedEvent);
 
         UINavigationController *navigationController = segue.destinationViewController;
         EditEventViewController *controller = (EditEventViewController *)navigationController.topViewController;
@@ -167,7 +167,7 @@
     // Keep the identifier of the event that's about to be edited.
    NSString *reminderIdentifer = [self.arrEvents [(NSUInteger) indexPath.row] calendarItemIdentifier];
     self.appDelegate.eventManager.selectedEventIdentifier=reminderIdentifer;
-    // Perform the segue.
+  self.selectedEvent = self.arrEvents[indexPath.row];
     [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
 }
 

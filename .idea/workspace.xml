@@ -3,14 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3b1dc6cb-9f81-495f-ba0a-d1e80f91900e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/DateAndTimeViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/DateAndTimeViewController.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/ViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/ViewController.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/ViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/ViewController.m" />
     </list>
     <ignored path="EventKitDemo.iws" />
@@ -34,20 +29,44 @@
       <file leaf-file-name="EditEventViewController.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+            <state relative-caret-position="720">
+              <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+              <folding>
+                <element signature="e#160#183#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditEventViewController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
+              <folding>
+                <marker date="1476730973000" expanded="true" signature="4082:4106" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CalendarsViewController.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditEventViewController.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.m">
+      <file leaf-file-name="CalendarsViewController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1591">
-              <caret line="148" column="20" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="20" />
+            <state relative-caret-position="312">
+              <caret line="13" column="48" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="48" />
               <folding>
-                <marker date="1476728265000" expanded="true" signature="3976:4000" ph="{...}" />
+                <element signature="e#160#183#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,8 +75,8 @@
       <file leaf-file-name="ViewController.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/ViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2657">
-              <caret line="212" column="68" selection-start-line="212" selection-start-column="68" selection-end-line="212" selection-end-column="68" />
+            <state relative-caret-position="339">
+              <caret line="171" column="1" selection-start-line="171" selection-start-column="1" selection-end-line="171" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -68,7 +87,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-              <folding />
+              <folding>
+                <element signature="e#151#174#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,10 +152,10 @@
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.h" />
-        <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/ViewController.h" />
-        <option value="$PROJECT_DIR$/EventKitDemo/ViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" />
+        <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/ViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" />
       </list>
     </option>
@@ -487,7 +508,7 @@
       <workItem from="1476257835943" duration="653000" />
       <workItem from="1476353460348" duration="24850000" />
       <workItem from="1476458475757" duration="12252000" />
-      <workItem from="1476512573405" duration="45695000" />
+      <workItem from="1476512573405" duration="48361000" />
     </task>
     <task id="LOCAL-00001" summary="alert">
       <created>1474209786167</created>
@@ -623,7 +644,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167254000" />
+    <option name="totallyTimeSpent" value="169920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -646,7 +667,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40044004" sideWeight="0.9083591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20274486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20274486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7568757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -957,14 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Podfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1107,18 +1120,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="312">
           <caret line="13" column="48" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2235">
-          <caret line="101" column="3" selection-start-line="101" selection-start-column="3" selection-end-line="101" selection-end-column="3" />
           <folding>
-            <element signature="e#160#220#0" expanded="true" />
+            <element signature="e#160#183#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1127,33 +1132,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/ViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2657">
-          <caret line="212" column="68" selection-start-line="212" selection-start-column="68" selection-end-line="212" selection-end-column="68" />
-          <folding />
+          <folding>
+            <element signature="e#151#174#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="720">
+          <caret line="33" column="18" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="18" />
+          <folding>
+            <element signature="e#160#183#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/ViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="171" column="1" selection-start-line="171" selection-start-column="1" selection-end-line="171" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1591">
-          <caret line="148" column="20" selection-start-line="148" selection-start-column="20" selection-end-line="148" selection-end-column="20" />
+        <state relative-caret-position="456">
+          <caret line="203" column="43" selection-start-line="203" selection-start-column="43" selection-end-line="203" selection-end-column="43" />
           <folding>
-            <marker date="1476728265000" expanded="true" signature="3976:4000" ph="{...}" />
+            <marker date="1476730973000" expanded="true" signature="4082:4106" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-271">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="134" column="5" selection-start-line="134" selection-start-column="5" selection-end-line="134" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
