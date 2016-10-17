@@ -86,17 +86,20 @@
     
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(int)selectRow:(UITableView *)table{
+    int numSession = [table numberOfSections];
+    int numRow = 0;
+    for (int i = 0; i <numSession ; ++i) {
+        numRow += [table numberOfRowsInSection:i];
+    }
+return numRow;
 }
+
+
 
 - (void)loadEventCalendars {
     DDLogDebug(@"");
-   // self.calendars= [self.appDelegate.eventManager getLocalCalenders];
-   // self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
+
    LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.appDelegate.eventManager);
     self.calendars= [self.appDelegate.eventManager getiCloudReminders];
     [self.tblCalendars reloadData];
@@ -243,24 +246,20 @@
         self.appDelegate.eventManager.selectedCalenderIdentifier = [self.calendars[(NSUInteger) indexPath.row] calendarIdentifier];
 
     }
+    self.selectedCalendar = self.calendars[(NSUInteger) indexPath.row];
     [self.tblCalendars reloadData];
     [self performSegueWithIdentifier:@"idSegueShowEvent" sender:self];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    int numSession = [self.tblCalendars numberOfSections];
-    int numRow = 0;
-    for (int i = 0; i <numSession ; ++i) {
-        numRow += [self.tblCalendars numberOfRowsInSection:i];
-    }
-
+   int numRow = [self selectRow:self.tblCalendars];
 
     if(editingStyle == UITableViewCellEditingStyleInsert){
         [self createCalendar];
     }
     NSInteger row = (self.calendars.count==numRow)? indexPath.row:indexPath.row-1;
     if(editingStyle==UITableViewCellEditingStyleDelete){
-        self.indexOfCalendarToDelete = row;
+        self.indexOfCalendarToDelete = (NSUInteger) row;
         [self confirmCalendarDeletion];
 
     }
@@ -288,8 +287,8 @@
 #pragma mark - UITransction
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
         ViewController *controller = (ViewController *)segue.destinationViewController;
-   
-    controller.calendarIdentifier = self.appDelegate.eventManager.selectedCalenderIdentifier;
+    controller.selectedCalendar = self.selectedCalendar;
+
 }
 
 

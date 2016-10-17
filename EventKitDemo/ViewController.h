@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-@property(nonatomic,copy)NSString * calendarIdentifier;
+@property (nonatomic, strong)EKCalendar *selectedCalendar;
+@property (nonatomic, strong)EKReminder *selectedEvent;
 
 - (IBAction)showCalendars:(id)sender;
 

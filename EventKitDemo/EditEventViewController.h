@@ -19,16 +19,17 @@
 
 
 @interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,
-        DatePickerViewControllerDelegate,AddAlarmDelegate,AddLocationViewControllerDelegate,AddWeatherViewControllerDelegate>
+        AddAlarmDelegate,AddLocationViewControllerDelegate,AddWeatherViewControllerDelegate>
 
 @property (nonatomic, strong) id<EditEventViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvent;
-
+@property (nonatomic, strong)EKReminder *editedEvent;
 
 
 
 - (IBAction)saveEvent:(id)sender;
 -(IBAction)NewCondition:(id)sender;
 -(IBAction)cancle:(id)sender;
+-(NSArray *)fetchCondition:(NSString *)reminderID;
 @end

@@ -105,7 +105,7 @@ XLFormRowDescriptor*    everyDayOfWeekrow = [XLFormRowDescriptor formRowDescript
 //
 //    }
     DatePickerViewController * controller = [[DatePickerViewController alloc]initWithNibName:@"DatePickerViewController" bundle:nil];
-    DDLogDebug(@"date picker : %d",self.datePicker);
+    DDLogDebug(@"date picker : %ld",(long)self.datePicker);
     controller.selection = self.datePicker;
     [self performSegueWithIdentifier:@"idSeguePickDate" sender:self ];
 

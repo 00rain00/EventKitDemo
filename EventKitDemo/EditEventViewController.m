@@ -16,17 +16,9 @@
 
 @property (nonatomic, strong) NSString *eventTitle;
 
-@property (nonatomic, strong) NSDate *eventStartDate;
-
-@property (nonatomic, strong) NSDate *eventEndDate;
-
-@property (nonatomic, strong)NSString *enentCalender;
-
 @property (nonatomic, strong) NSMutableArray *arrAlarms;
 
 @property (nonatomic, strong)EKAlarm *ekAlarm;
-
-@property (nonatomic, strong)EKReminder *editedEvent;
 
 @end
 
@@ -52,18 +44,17 @@
     // Make self the delegate and datasource of the table view.
     self.tblEvent.delegate = self;
     self.tblEvent.dataSource = self;
-    self.eventStartDate=nil;
-    self.eventEndDate=nil;
+
 
     self.arrAlarms= [NSMutableArray new];
 
-    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-        DDLogDebug(@"event identifier : %@",self.appDelegate.eventManager.selectedEventIdentifier);
-        self.editedEvent = (EKReminder *) [self.appDelegate.eventManager.ekEventStore calendarItemWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
+    RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
+
+
 
         self.eventTitle = self.editedEvent.title;
         [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
-        for(EKAlarm * alarm1 in self.arrAlarms){
+    //    for(EKAlarm * alarm1 in self.arrAlarms){
 //            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
 //                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
 //            }
@@ -71,11 +62,9 @@
 //            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
 //            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
 //            DDLogDebug(@"arriving : %d",alarm1.proximity);
-        }
-        DDLogDebug(@"event title : %@",self.eventTitle);
-           }else{
-        DDLogDebug(@"no selected event ");
-    }
+ //       }
+
+   // }
 }
 
 - (void)didReceiveMemoryWarning
@@ -90,57 +79,30 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    if ([segue.identifier isEqualToString:@"idSegueDatepicker"]) {
-        DatePickerViewController *datePickerViewController = [segue destinationViewController];
-        datePickerViewController.delegate = self;
-    }
-//TODO complete viewcontroller
-    if ([segue.identifier isEqualToString:@"idSegueCalender"]) {
 
-    }
-    if ([segue.identifier isEqualToString:@"idSegueAddAlarm"]) {
-        AddAlarm *controller = segue.destinationViewController;
 
-        controller.delegate=self;
-    }
-    if([segue.identifier isEqualToString:@"idSegueLocation"]){
-        AddLocationViewController *controller  = segue.destinationViewController;
-        controller.delegate=self;
-    }
-    if([segue.identifier isEqualToString:@"idSegueWeather"]){
-        AddWeatherViewController *controller  = segue.destinationViewController;
-        controller.delegate=self;
-    }
 }
 
 
 #pragma mark - UITableView Delegate and Datasource method implementation
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
+
         return 5;
-    }
-    else{
-        return 4;
-    }
+
+
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
+
         return @"Event Settings";
-    }
-    else {
-        return @"Alarms";
-    }
+
 }
 
 
@@ -149,14 +111,14 @@
     
     if (indexPath.section == 0) {
         // If the cell is nil, then dequeue it. Make sure to dequeue the proper cell based on the row.
-        if (OBJECT_IS_EMPTY(cell)) {
+
             if (indexPath.row == 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellTitle"];
             }
             else{
-                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
+                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
             }
-        }
+
         switch(indexPath.row){
             case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
@@ -167,109 +129,33 @@
                 break;
             case 1:{
 
-                if(OBJECT_IS_EMPTY(self.enentCalender)){
-                    cell.textLabel.text=@"Select a calender";
-                }else{
-                    //TODO better call in the services layer
-                    cell.textLabel.text= self.enentCalender;
+                    UILabel * label = (UILabel *)[cell.contentView viewWithTag:1];
+                    label.text=@"Every Day at 0700 to 0800";
 
-                }
             }
 
             break;
             case 2:
             {
-                if(OBJECT_IS_EMPTY(self.eventStartDate)){
-                    cell.textLabel.text=@"Select a start date...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.eventStartDate];
+                UILabel * label = (UILabel *)[cell.contentView viewWithTag:1];
 
-                }
+                    label.text=@"Arriving range at ...";
 
 
             }
                 break;
-            case 3:
-            {
-                if(OBJECT_IS_EMPTY(self.eventEndDate)){
-                    cell.textLabel.text=@"Select an end date...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.eventEndDate];
-                }
-            }
-                break;
-            case 4:{
-                if(OBJECT_IS_EMPTY(self.ekAlarm)){
-                    cell.textLabel.text=@"Select a notification...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.ekAlarm.absoluteDate];
-                }
-            }
-                break;
+
 
             default:
                 break;
         }
     }
-    else{
-        if (OBJECT_IS_EMPTY(cell)) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
-        }
-        switch (indexPath.row){
-            case 0 : {
-                cell.textLabel.text = @"Add a new time alarm...";
-            }
-                break;
-            case 1: {
-                cell.textLabel.text = @"add a new location alarm...";
-            }
-                break;
-            case 2: {
-                cell.textLabel.text = @"add a new weather alarm...";
-            }
-                break;
-            case 3:{
-                cell.textLabel.text = @"Save";
-                
-            }
-                break;
-            default:
-                break;
-        }
 
-
-
-
-    }
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDLogDebug(@"section :%ld ,  row :%ld",(long)indexPath.section, (long)indexPath.row);
-    if(indexPath.section==0&&indexPath.row==1){
-        [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
-    }
-
-    if(indexPath.section==0&&(indexPath.row==3 || indexPath.row==2)){
-
-        [self performSegueWithIdentifier:@"idSegueDatepicker" sender:self];
-    }
-
-    if(indexPath.section==0&&indexPath.row==4){
-
-        [self performSegueWithIdentifier:@"idSegueCreateAlarm" sender:self];
-    }
-    
-    if(indexPath.section==1&&indexPath.row==0){
-        
-    }
-    if(indexPath.section==1&&indexPath.row==1){
-        [self performSegueWithIdentifier:@"idSegueLocation" sender:self ];
-    }
-    if(indexPath.section==1&&indexPath.row==2){
-        [self performSegueWithIdentifier:@"idSegueWeather" sender:self ];
-    }
 
 
 
@@ -288,6 +174,7 @@
         return;
     }
     DDLogDebug(@"eventTitle:%@",self.eventTitle);
+    return;
     self.editedEvent.title = self.eventTitle;
     //TODO start engine
     self.appDelegate.engineService.setUpClipsEnvironment;
@@ -326,9 +213,9 @@
 #pragma mark - UITextFieldDelegate method implementation
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    DDLogInfo(@"");
+
     self.eventTitle=textField.text;
-    DDLogDebug(@"event title :%@",self.eventTitle);
+
     [textField resignFirstResponder];
     return YES;
 }
@@ -336,18 +223,7 @@
 
 #pragma mark - DatePickerViewControllerDelegate method implementation
 
--(void)dateWasSelected:(NSDate *)selectedDate{
-    NSIndexPath *indexPath= [self.tblEvent indexPathForSelectedRow];
-    if(indexPath.section==0){
-        if(indexPath.row==2){
-            self.eventStartDate=selectedDate;
-        }else if (indexPath.row==3){
-            self.eventEndDate=selectedDate;
-        }
-    }
 
-    [self.tblEvent reloadData];
-}
 
 - (void)addAlarm:(AddAlarm *)controller didFinishCreateAlarm:(EKAlarm *)item {
     [self.editedEvent addAlarm:item];

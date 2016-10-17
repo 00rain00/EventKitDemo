@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblCalendars;
 
+@property (nonatomic, strong)EKCalendar *selectedCalendar;
 
 - (IBAction)editCalendars:(id)sender;
 

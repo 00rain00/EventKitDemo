@@ -16,11 +16,11 @@
 
 @property (nonatomic, strong) NSArray *arrEvents;
 
-@property (nonatomic, strong)NSArray *arrCalendars;
 
-@property (nonatomic)BOOL isEditing;
 
--(void)loadEvents;
+
+
+
 
 @end
 
@@ -48,9 +48,9 @@
 - (void)loadEvents {
     if (self.appDelegate.eventManager.eventsAccessGranted) {
         DDLogDebug(@"access granted");
-        NSArray * calendarsIdentifer  = @[self.calendarIdentifier];
-        self.arrCalendars =[self.appDelegate.eventManager getCalendarBy:calendarsIdentifer];
-        RETURN_WHEN_OBJECT_IS_EMPTY(self.arrCalendars);
+
+
+        RETURN_WHEN_OBJECT_IS_EMPTY(self.selectedCalendar);
 
         [self.appDelegate.eventManager callbackForFetchReminders:^(NSArray *reminders){
 
@@ -62,8 +62,8 @@
             });
 
         }];
-
-        [self.appDelegate.eventManager getRemembersOfSelectedCalendar:self.arrCalendars];
+        NSArray *calenders = @[self.selectedCalendar];
+        [self.appDelegate.eventManager getRemembersOfSelectedCalendar:calenders];
 
 
     }
@@ -78,12 +78,12 @@
     [textField resignFirstResponder];
     RETURN_WHEN_OBJECT_IS_EMPTY(textField.text);
 
-    EKCalendar *calendar = (EKCalendar *)self.arrCalendars.firstObject;
+
 
 // 2
     EKReminder *reminder = [EKReminder reminderWithEventStore:self.appDelegate.eventManager.ekEventStore];
     reminder.title = textField.text;
-    reminder.calendar = calendar;
+    reminder.calendar = self.selectedCalendar;
 
     // 3
     NSError *error = nil;
@@ -103,20 +103,17 @@
 
 #pragma mark - UItransction
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    DDLogDebug(@"");
+
     if ([segue.identifier isEqualToString:@"idSegueEvent"]) {
 
 
         UINavigationController *navigationController = segue.destinationViewController;
         EditEventViewController *controller = (EditEventViewController *)navigationController.topViewController;
         controller.delegate = self;
-
+        controller.editedEvent = self.selectedEvent;
 
     }
-//    if ([segue.identifier isEqualToString:@"idSegueCalendars"]) {
-//        CalendarsViewController *calendarsViewController = [segue destinationViewController];
-//        calendarsViewController.delegate = self;
-//    }
+
 }
 
 
@@ -158,10 +155,6 @@
             cell.accessoryType = UITableViewCellAccessoryDetailButton;
         }
     }
-
-
-
-
 
     return cell;
 }
@@ -206,7 +199,7 @@
         NSError *error;
        // [self.appDelegate.eventManager deleteEventWithIdentifier:[self.arrEvents[(NSUInteger) indexPath.row] eventIdentifier]];
         NSInteger row = (self.arrEvents.count==numRow)? indexPath.row:indexPath.row-1;
-       EKReminder *ekReminder = self.arrEvents[row];
+       EKReminder *ekReminder = self.arrEvents[(NSUInteger) row];
         [self.appDelegate.eventManager.ekEventStore removeReminder:ekReminder commit:YES error:&error];
         if(OBJECT_ISNOT_EMPTY(error)){
             FATAL_CORE_DATA_ERROR(error);
@@ -214,6 +207,10 @@
         // Reload all events and the table view.
         [self loadEvents];
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.selectedEvent = self.arrEvents[(NSUInteger) indexPath.row];
 }
 
 
