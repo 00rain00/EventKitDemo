@@ -166,7 +166,6 @@
                         <outlet property="tblEvent" destination="DJr-XY-Iab" id="6k6-RE-enj"/>
                         <segue destination="SM5-C3-W48" kind="push" identifier="idSegueCalender" id="jYL-8O-stu"/>
                         <segue destination="gOg-Sv-d62" kind="push" identifier="idSegueCreateAlarm" id="v4E-t4-h25"/>
-                        <segue destination="ZVg-5f-IRw" kind="push" identifier="idSegueLocation" id="wjR-ow-cV2"/>
                         <segue destination="1Q5-HI-FKK" kind="push" identifier="idSegueWeather" id="7aL-sa-Rsb"/>
                     </connections>
                 </viewController>
@@ -332,7 +331,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oFS-Fq-oFq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kxq-Mk-Kms"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Kxq-Mk-Kms">
+                            <connections>
+                                <action selector="finishAddLocation:" destination="ZVg-5f-IRw" id="lbc-Ur-wAR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -553,7 +556,4 @@
             <point key="canvasLocation" x="-32" y="117"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wjR-ow-cV2"/>
-    </inferredMetricsTieBreakers>
 </document>
