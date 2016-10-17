@@ -95,8 +95,8 @@
 }
 
 - (void)saveCustomerCalendarIdentifier:(NSString *)identifier {
-    [self.customerCalendarIdentifiers addObject:identifier];
-    [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
+ //   [self.customerCalendarIdentifiers addObject:identifier];
+  //  [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
 
 }
 
@@ -113,8 +113,8 @@
 }
 
 - (void)removeCalendarIdentifier:(NSString *)identifier {
-    [self.customerCalendarIdentifiers removeObject:identifier];
-    [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
+    //[self.customerCalendarIdentifiers removeObject:identifier];
+   // [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
 
 }
 
@@ -173,10 +173,14 @@
 
 - (NSMutableArray *)getCalendarBy:(NSArray *)calendarIdentifiers {
     if(OBJECT_ISNOT_EMPTY(calendarIdentifiers)){
-        NSMutableArray * result;
-        for(NSString *identifier in calendarIdentifiers){
-            EKCalendar *calendar = [self.ekEventStore calendarWithIdentifier:identifier];
-            [result addObject:calendar];
+        NSMutableArray * result = [NSMutableArray new];
+        NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeReminder];
+        NSString *identifier  = calendarIdentifiers.firstObject;
+        for(EKCalendar *calendar1 in allCalendars){
+           if([calendar1.calendarIdentifier isEqualToString:identifier]){
+               [result addObject:calendar1];
+           }
+
         }
         DDLogDebug(@"total fetch calendars: %lu",(unsigned long)result.count);
         return result;

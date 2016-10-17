@@ -10,7 +10,7 @@
 #import "EditEventViewController.h"
 #import "CalendarsViewController.h"
 @class Reminder;
-@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
+@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
@@ -19,7 +19,9 @@
 
 - (IBAction)showCalendars:(id)sender;
 
-- (IBAction)createEvent:(id)sender;
+- (IBAction)editEvent:(id)sender;
+
+
 
 
 

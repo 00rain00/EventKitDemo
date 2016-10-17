@@ -106,9 +106,8 @@
     //get textfield
     UITextField *textField= (UITextField *) [[self.tblCalendars cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]] viewWithTag:10];
     [textField resignFirstResponder];
-    if(textField.text.length==0){
-        return;
-    }
+    RETURN_WHEN_OBJECT_IS_EMPTY(textField.text);
+
     EKCalendar *calendar = [EKCalendar calendarForEntityType:EKEntityTypeReminder eventStore:self.appDelegate.eventManager.ekEventStore];
     calendar.title = textField.text;
 
@@ -117,7 +116,7 @@
         EKSource *source = self.appDelegate.eventManager.ekEventStore.sources[i];
         EKSourceType ekSourceType = source.sourceType;
 
-        if(ekSourceType == EKSourceTypeCalDAV){
+        if(ekSourceType == EKSourceTypeLocal){
             calendar.source  = source;
             NSError *error;
             [self.appDelegate.eventManager.ekEventStore saveCalendar:calendar commit:YES error:&error];
@@ -136,7 +135,7 @@
 - (void)confirmCalendarDeletion {
     NSString *identifier = [self.calendars[self.indexOfCalendarToDelete] calendarIdentifier];
 
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Global Alert" message:@"Are you sure to delete this list?" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Are you sure to delete this list?" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
         __weak typeof(self) weakSelf=self;
         [alert addAction:[UIAlertAction actionWithTitle:@"Yes" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
@@ -241,19 +240,27 @@
 
     }else {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        self.appDelegate.eventManager.selectedCalenderIdentifier =@"";
-       }
+        self.appDelegate.eventManager.selectedCalenderIdentifier = [self.calendars[(NSUInteger) indexPath.row] calendarIdentifier];
+
+    }
     [self.tblCalendars reloadData];
     [self performSegueWithIdentifier:@"idSegueShowEvent" sender:self];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    int numSession = [self.tblCalendars numberOfSections];
+    int numRow = 0;
+    for (int i = 0; i <numSession ; ++i) {
+        numRow += [self.tblCalendars numberOfRowsInSection:i];
+    }
+
+
     if(editingStyle == UITableViewCellEditingStyleInsert){
         [self createCalendar];
     }
-
+    NSInteger row = (self.calendars.count==numRow)? indexPath.row:indexPath.row-1;
     if(editingStyle==UITableViewCellEditingStyleDelete){
-        self.indexOfCalendarToDelete = (NSUInteger) (indexPath.row-1);
+        self.indexOfCalendarToDelete = row;
         [self confirmCalendarDeletion];
 
     }
@@ -280,16 +287,9 @@
 
 #pragma mark - UITransction
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-   
-   
-        
-        
         ViewController *controller = (ViewController *)segue.destinationViewController;
    
     controller.calendarIdentifier = self.appDelegate.eventManager.selectedCalenderIdentifier;
-    
-        
-    
 }
 
 
