@@ -26,9 +26,7 @@
 {
     [super viewDidLoad];
     //request access to events
-    [self performSelector:@selector(requestAccessToEvents) withObject:nil afterDelay:0.5];
-    [self performSelector:@selector(requestAccessToReminders) withObject:nil afterDelay:1];
-
+   
     // Do any additional setup after loading the view, typically from a nib.
     
     // Instantiate the appDelegate property.
@@ -134,47 +132,21 @@
 
 - (IBAction)showCalendars:(id)sender {
     if(self.appDelegate.eventManager.eventsAccessGranted){
-        [self performSegueWithIdentifier:@"idSegueCalendars" sender:self];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (IBAction)createEvent:(id)sender {
-    //TODO a new view controller for adding new event
-//    if(self.appDelegate.eventManager.eventsAccessGranted){
-//        [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
-//    }
     
 }
 
-- (void)requestAccessToEvents {
-    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
-        if(OBJECT_IS_EMPTY(error)){
-            self.appDelegate.eventManager.eventsAccessGranted=granted;
-        }else{
-            FATAL_CORE_DATA_ERROR(error);
-        }
-    }];
-    
-    
-
-}
-
-- (void)requestAccessToReminders {
-    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error){
-        if(OBJECT_IS_EMPTY(error)){
-         DDLogInfo(@"reminder access Yes");
-        }else{
-            FATAL_CORE_DATA_ERROR(error);
-        }
-    }];
-
-}
 
 - (void)loadEvents {
     if (self.appDelegate.eventManager.eventsAccessGranted) {
         DDLogDebug(@"access granted");
-        NSArray *arrCalender = [self.appDelegate.eventManager getiCloudReminders];
-        //TODO need to add loading image
+        NSArray * calendarsIdentifer  = @[self.calendarIdentifier];
+        NSArray *arrCalender =[self.appDelegate.eventManager getCalendarBy:calendarsIdentifer];
+       
         [self.appDelegate.eventManager callbackForFetchReminders:^(NSArray *reminders){
             DDLogDebug(@"call back executed");
             self.arrEvents=reminders;

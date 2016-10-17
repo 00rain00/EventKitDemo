@@ -29,13 +29,14 @@ static NSString * const kReminderStoreName = @"Reminder.sqlite";
     [MagicalRecord setLoggingLevel:MagicalRecordLoggingLevelVerbose];
     [MagicalRecord setupCoreDataStackWithStoreNamed:kReminderStoreName];
     self.controller.managedObjectContext = [NSManagedObjectContext MR_defaultContext];
-
+    self.eventManager= [EventManager new];
+    self.engineService= [EngineService new];
     return YES;
 }
 
 -(void)applicationDidBecomeActive:(UIApplication *)application {
-    self.eventManager= [EventManager new];
-    self.engineService= [EngineService new];
+    DDLogDebug(@"");
+
 
 }
 - (void) copyDefaultStoreIfNecessary;

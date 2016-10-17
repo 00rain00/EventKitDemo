@@ -15,14 +15,12 @@
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;
 @property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
-
+@property(nonatomic,copy)NSString * calendarIdentifier;
 
 - (IBAction)showCalendars:(id)sender;
 
 - (IBAction)createEvent:(id)sender;
 
--(void)requestAccessToEvents;
 
--(void)requestAccessToReminders;
 
 @end

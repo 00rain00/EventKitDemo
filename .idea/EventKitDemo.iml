@@ -7,16 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/CustomerCell.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/LogFormatter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WELWordCell.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/WELWordCell.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CustomerCell+Configure.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EngineServieTest.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EventKitDemoTests-Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EventKitDemoTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/en.lproj/InfoPlist.strings" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/WELWordCell+Configure.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/WELWordCell+Configure.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/CustomerCell+Configure.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/INTULocationManager/LocationManager/INTULocationManager/INTUHeadingRequest.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/INTULocationManager/LocationManager/INTULocationManager/INTUHeadingRequest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/INTULocationManager/LocationManager/INTULocationManager/INTULocationManager+Internal.h" isTestSource="false" />
@@ -295,17 +285,26 @@
       <sourceFolder url="file://$MODULE_DIR$/Pods/MagicalRecord/MagicalRecord/Categories/DataImport/NSString+MagicalDataImport.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/MagicalRecord/MagicalRecord/Categories/DataImport/NSEntityDescription+MagicalDataImport.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Pods/MagicalRecord/MagicalRecord/Categories/NSManagedObjectModel+MagicalRecord.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/testCreateTable.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Podfile" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WELWordCell.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EngineServieTest.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/en.lproj/InfoPlist.strings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EventKitDemoTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemoTests/EventKitDemoTests-Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WELWordCell+Configure.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/WELWordCell+Configure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CustomerCell+Configure.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CustomerCell+Configure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/NewEventViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/DatePickerViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Event.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/testCreateTable.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELDataSource.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalendarsViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Event.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Reminder+CoreDataProperties.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalendarsViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EngineService.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELTableDelegate.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalenderListTableViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELTableDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Weekdays/XLFormWeekDaysCell.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Weekdays/XLFormWeekDaysCell.xib" isTestSource="false" />
@@ -324,42 +323,43 @@
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Reminder.xcdatamodeld/Reminder.xcdatamodel" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/rules.clp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELDataSource.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventService.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Reminder+CoreDataProperties.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventService.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/NewEventViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/NewEventViewController.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELDataSource.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Reminder+CoreDataProperties.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalenderListTableViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventManager.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CalenderListTableViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Reminder.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/PhotoViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EditEventViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/testCreateTable.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/PhotoViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AppDelegate.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EditEventViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/en.lproj/InfoPlist.strings" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/ContactViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELCellConfigure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Condition.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddLocationViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/ContactViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/WELCellConfigure.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddConditionViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Condition+CoreDataProperties.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Condition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddLocationViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddConditionViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Condition+CoreDataProperties.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddConditionViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/main.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddAlarm.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddConditionViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/AddAlarm.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CreateAlarmFormViewController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EngineService.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/CreateAlarmFormViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventKitDemo-Prefix.pch" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/EventService.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/Event.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/system_en.fct" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/EventKitDemo/DatePickerViewController.m" isTestSource="false" />
     </content>

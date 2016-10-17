@@ -31,5 +31,6 @@ typedef void(^FetchRemindersBlock)(NSArray *reminders);
 -(void)deleteEventWithIdentifier:(NSString *)identifier;
 -(NSString *)getStringFromDate:(NSDate *)date;
 -(NSArray *)getEventsOfSelectedCalendar;
+-(NSMutableArray*)getCalendarBy:(NSArray *)calendarIdentifiers;
 -(void)getRemembersOfSelectedCalendar:(NSArray *)calenders;
 @end

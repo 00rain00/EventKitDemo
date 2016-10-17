@@ -44,6 +44,10 @@
     // Do any additional setup after loading the view.
     
     // Make self the delegate and datasource of the table view.
+    [self performSelector:@selector(requestAccessToEvents) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(requestAccessToReminders) withObject:nil afterDelay:1];
+
+    
     self.tblCalendars.delegate = self;
     self.tblCalendars.dataSource = self;
     
@@ -52,6 +56,37 @@
     [self loadEventCalendars];
 }
 
+- (void)requestAccessToEvents {
+    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
+        if(OBJECT_IS_EMPTY(error)){
+            self.appDelegate.eventManager.eventsAccessGranted=granted;
+        }else{
+            FATAL_CORE_DATA_ERROR(error);
+        }
+    }];
+    
+    
+    
+}
+
+- (void)requestAccessToReminders {
+    __weak typeof(self) weakSelf;
+    [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error){
+        if(OBJECT_IS_EMPTY(error)){
+            DDLogInfo(@"reminder access Yes");
+            dispatch_async(dispatch_get_main_queue(), ^{
+
+            });
+
+
+        }else{
+            FATAL_CORE_DATA_ERROR(error);
+        }
+    }];
+    
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,8 +94,10 @@
 }
 
 - (void)loadEventCalendars {
+    DDLogDebug(@"");
    // self.calendars= [self.appDelegate.eventManager getLocalCalenders];
    // self.calendars= [self.appDelegate.eventManager getiCloudCalendars];
+   LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.appDelegate.eventManager);
     self.calendars= [self.appDelegate.eventManager getiCloudReminders];
     [self.tblCalendars reloadData];
 }
@@ -122,16 +159,7 @@
 }
 
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 #pragma mark - UITableView Delegate and Datasource method implementation
@@ -167,7 +195,7 @@
     if (!self.tblCalendars.isEditing || (self.tblCalendars.isEditing && indexPath.row != 0)) {
         NSInteger row = self.tblCalendars.isEditing ? indexPath.row - 1 : indexPath.row;
 
-        EKCalendar *currentCalendar = [self.calendars objectAtIndex:row];
+        EKCalendar *currentCalendar = self.calendars[(NSUInteger) row];
 
         cell.textLabel.text = currentCalendar.title;
 
@@ -179,12 +207,7 @@
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                 }
             }
-            else{
-
-//                if (indexPath.row == 0) {
-//                    cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//                }
-            }
+            
         }
     }
 
@@ -210,17 +233,18 @@
 
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(cell.selected&&cell.accessoryType==UITableViewCellAccessoryNone){
-        DDLogDebug(@"selected cell , accessory none");
+        DDLogDebug(@"selected cell");
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         self.appDelegate.eventManager.selectedCalenderIdentifier = [self.calendars[(NSUInteger) indexPath.row] calendarIdentifier];
 
 
 
     }else {
-               cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryType = UITableViewCellAccessoryNone;
         self.appDelegate.eventManager.selectedCalenderIdentifier =@"";
        }
     [self.tblCalendars reloadData];
+    [self performSegueWithIdentifier:@"idSegueShowEvent" sender:self];
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -252,6 +276,20 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self createCalendar];
     return YES;
+}
+
+#pragma mark - UITransction
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+   
+   
+        
+        
+        ViewController *controller = (ViewController *)segue.destinationViewController;
+   
+    controller.calendarIdentifier = self.appDelegate.eventManager.selectedCalenderIdentifier;
+    
+        
+    
 }
 
 

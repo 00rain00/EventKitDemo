@@ -14,7 +14,6 @@
 		C0062F241970321800B71762 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0062F221970321800B71762 /* InfoPlist.strings */; };
 		C0062F261970321800B71762 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F251970321800B71762 /* main.m */; };
 		C0062F2A1970321800B71762 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F291970321800B71762 /* AppDelegate.m */; };
-		C0062F2D1970321800B71762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0062F2B1970321800B71762 /* Main.storyboard */; };
 		C0062F301970321800B71762 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F2F1970321800B71762 /* ViewController.m */; };
 		C0062F321970321800B71762 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0062F311970321800B71762 /* Images.xcassets */; };
 		C0062F391970321800B71762 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F381970321800B71762 /* XCTest.framework */; };
@@ -48,6 +47,7 @@
 		C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */; };
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
+		C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17DCA711DB4BBC800155100 /* Main.storyboard */; };
 		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
 		C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */; };
 		C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F7F01DB22C9200381D20 /* system_en.fct */; };
@@ -93,7 +93,6 @@
 		C0062F271970321800B71762 /* EventKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EventKitDemo-Prefix.pch"; sourceTree = "<group>"; };
 		C0062F281970321800B71762 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0062F291970321800B71762 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C0062F2C1970321800B71762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0062F2E1970321800B71762 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C0062F2F1970321800B71762 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C0062F311970321800B71762 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -142,6 +141,7 @@
 		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
 		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		C17DCA721DB4BBC800155100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
 		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
 		C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWeatherViewController.h; sourceTree = "<group>"; };
@@ -345,8 +345,8 @@
 		C17BE5101D8ED1EF001F5C87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C17DCA711DB4BBC800155100 /* Main.storyboard */,
 				C1E6F8101DB2BA1D00381D20 /* ViewWithData */,
-				C0062F2B1970321800B71762 /* Main.storyboard */,
 				C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */,
 				C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */,
 				C177A7EC1D99A68C00BBDC78 /* testCreateTable.h */,
@@ -509,9 +509,9 @@
 				C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */,
 				C0062F321970321800B71762 /* Images.xcassets in Resources */,
 				C17095671DAF8270007B5059 /* rules.clp in Resources */,
+				C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */,
 				C0062F241970321800B71762 /* InfoPlist.strings in Resources */,
 				C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */,
-				C0062F2D1970321800B71762 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,20 +692,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C0062F2B1970321800B71762 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C0062F2C1970321800B71762 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C0062F411970321800B71762 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C0062F421970321800B71762 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C17DCA711DB4BBC800155100 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C17DCA721DB4BBC800155100 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
