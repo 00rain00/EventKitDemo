@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "EditEventViewController.h"
 #import "CalendarsViewController.h"
-@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@class Reminder;
+@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 
 
 - (IBAction)showCalendars:(id)sender;

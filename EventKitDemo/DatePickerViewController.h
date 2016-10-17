@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <XLForm/XLForm.h>
 
 @protocol DatePickerViewControllerDelegate
 
@@ -15,12 +16,14 @@
 @end
 
 
-@interface DatePickerViewController : UIViewController
-
+@interface DatePickerViewController : XLFormViewController
 @property (nonatomic, strong) id<DatePickerViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *dtDatePicker;
 
+@property (strong, nonatomic)XLFormRowDescriptor * rowDescriptor1;
+
+@property(nonatomic)int selection;
 
 - (IBAction)acceptDate:(id)sender;
 

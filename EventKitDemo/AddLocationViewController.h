@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <EventKit/EventKit.h>
 #import <MapKit/MapKit.h>
+#import <XLForm/XLForm.h>
 @class AddLocationViewController;
 
 @protocol AddLocationViewControllerDelegate<NSObject>
 -(void)addLocation:(AddLocationViewController *)controller didFinishAdding:(EKAlarm *)item;
 @end
 typedef void(^DidReceiveLocation)(CLLocation *currentlocation);
-@interface AddLocationViewController : UIViewController<MKMapViewDelegate>
+@interface AddLocationViewController : UIViewController<MKMapViewDelegate,XLFormRowDescriptorViewController>
 @property(nonatomic,weak)IBOutlet MKMapView *mapView;
 @property(nonatomic,weak)IBOutlet UISegmentedControl *editingTypeSegentedControl;
 @property (nonatomic, strong)DidReceiveLocation callbackForDidReceiceLocation;

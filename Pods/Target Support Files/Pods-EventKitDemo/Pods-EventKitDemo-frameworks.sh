@@ -90,6 +90,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/FFGlobalAlertController/FFGlobalAlertController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/INTULocationManager/INTULocationManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
   install_framework "$BUILT_PRODUCTS_DIR/OpenWeatherMapAPI/OpenWeatherMapAPI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLForm/XLForm.framework"
 fi
@@ -100,6 +101,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/FFGlobalAlertController/FFGlobalAlertController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/INTULocationManager/INTULocationManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MagicalRecord/MagicalRecord.framework"
   install_framework "$BUILT_PRODUCTS_DIR/OpenWeatherMapAPI/OpenWeatherMapAPI.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLForm/XLForm.framework"
 fi

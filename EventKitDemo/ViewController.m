@@ -52,8 +52,13 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     DDLogDebug(@"");
     if ([segue.identifier isEqualToString:@"idSegueEvent"]) {
-        EditEventViewController *editEventViewController = [segue destinationViewController];
-        editEventViewController.delegate = self;
+
+
+        UINavigationController *navigationController = segue.destinationViewController;
+        EditEventViewController *controller = (EditEventViewController *)navigationController.topViewController;
+        controller.delegate = self;
+
+
     }
 //    if ([segue.identifier isEqualToString:@"idSegueCalendars"]) {
 //        CalendarsViewController *calendarsViewController = [segue destinationViewController];

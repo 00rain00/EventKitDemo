@@ -29,5 +29,6 @@
 
 
 - (IBAction)saveEvent:(id)sender;
-
+-(IBAction)NewCondition:(id)sender;
+-(IBAction)cancle:(id)sender;
 @end

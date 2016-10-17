@@ -129,7 +129,7 @@
         return 5;
     }
     else{
-        return 3;
+        return 4;
     }
 }
 
@@ -228,6 +228,11 @@
                 cell.textLabel.text = @"add a new weather alarm...";
             }
                 break;
+            case 3:{
+                cell.textLabel.text = @"Save";
+                
+            }
+                break;
             default:
                 break;
         }
@@ -257,7 +262,7 @@
     }
     
     if(indexPath.section==1&&indexPath.row==0){
-        [self performSegueWithIdentifier:@"idSegueAddAlarm" sender:self ];
+        
     }
     if(indexPath.section==1&&indexPath.row==1){
         [self performSegueWithIdentifier:@"idSegueLocation" sender:self ];
@@ -306,6 +311,15 @@
         FATAL_CORE_DATA_ERROR(error);
     }
     [self.tblEvent reloadData];
+}
+
+- (IBAction)NewCondition:(id)sender {
+    [self performSegueWithIdentifier:@"idSegueCreateCondition" sender:self ];
+}
+
+- (IBAction)cancle:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 
