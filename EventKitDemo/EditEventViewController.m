@@ -21,6 +21,10 @@
 
 @property (nonatomic, strong)EKAlarm *ekAlarm;
 
+@property (nonatomic, strong)CoreDataService *coreDataService;
+
+@property (nonatomic, strong)NSMutableArray *arrCondition;
+
 @end
 
 @implementation EditEventViewController
@@ -46,6 +50,7 @@
     self.tblEvent.delegate = self;
     self.tblEvent.dataSource = self;
 
+    self.coreDataService = [[CoreDataService alloc] init];
 
     self.arrAlarms= [NSMutableArray new];
 

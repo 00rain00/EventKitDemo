@@ -12,6 +12,7 @@
 #import "AddLocationViewController.h"
 #import "AddWeatherViewController.h"
 #import "Condition.h"
+#import "CoreDataService.h"
 @protocol EditEventViewControllerDelegate
 
 -(void)eventWasSuccessfullySaved;

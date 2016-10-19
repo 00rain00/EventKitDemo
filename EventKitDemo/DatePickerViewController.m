@@ -10,16 +10,10 @@
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
 
-//NSString * const XLFormRowDescriptorTypeWeekDays = @"XLFormRowDescriptorTypeWeekDays";
-
-//NSString *const kSunday= @"sunday";
-//NSString *const kMonday = @"monday";
-//NSString *const kTuesday = @"tuesday";
-//NSString *const kWednesday = @"wednesday";
-//NSString *const kThursday = @"thursday";
-//NSString *const kFriday = @"friday";
-//NSString *const kSaturday = @"saturday";
-//
+NSString *const kallDay = @"allDay";
+NSString * const kstartTime = @"startTime";
+NSString *const  kendTime = @"endTime";
+NSString * const  kendTimeSwitch=@"endTimeSwitch";
 
 @interface DatePickerViewController ()
 
@@ -61,13 +55,43 @@
     [form addFormSection:section];
     
     if (self.selection == 1) {
-      XLFormRowDescriptor * row = [XLFormRowDescriptor formRowDescriptorWithTag:@"time" rowType:XLFormRowDescriptorTypeTimeInline title:@"Time"];
+      XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
+        alldaySwitch.value = @1;
+        [section addFormRow:alldaySwitch];
+
+      XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];
+        startrow.value = [NSDate new];
+        startrow.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        [section addFormRow:startrow];
+
+        XLFormRowDescriptor *  endSwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kendTimeSwitch rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"End-Time"];
+        endSwitch.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        endSwitch.value = @0;
+        [section addFormRow:endSwitch];
+
+        XLFormRowDescriptor * row = [XLFormRowDescriptor formRowDescriptorWithTag:kendTime rowType:XLFormRowDescriptorTypeTimeInline title:@"End-Time"];
         row.value = [NSDate new];
+        row.hidden = [NSString stringWithFormat:@"$%@==0||$%@==1", kendTimeSwitch,kallDay];
         [section addFormRow:row];
     }
     else if (self.selection==2){
-        XLFormRowDescriptor  *row = [XLFormRowDescriptor formRowDescriptorWithTag:@"time" rowType:XLFormRowDescriptorTypeTimeInline title:@"Time"];
+        XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
+        alldaySwitch.value = @1;
+        [section addFormRow:alldaySwitch];
+
+        XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];
+        startrow.value = [NSDate new];
+        startrow.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        [section addFormRow:startrow];
+
+        XLFormRowDescriptor *  endSwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kendTimeSwitch rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"End-Time"];
+        endSwitch.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        endSwitch.value = @0;
+        [section addFormRow:endSwitch];
+
+        XLFormRowDescriptor * row = [XLFormRowDescriptor formRowDescriptorWithTag:kendTime rowType:XLFormRowDescriptorTypeTimeInline title:@"End-Time"];
         row.value = [NSDate new];
+        row.hidden = [NSString stringWithFormat:@"$%@==0||$%@==1", kendTimeSwitch,kallDay];
         [section addFormRow:row];
         
         section = [XLFormSectionDescriptor formSectionWithTitle:@"Weekdays"];
@@ -90,14 +114,29 @@
     }
     else if (self.selection==3){
 
-       XLFormRowDescriptor *  row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Day selector" rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
-        row.selectorOptions = @[@"Day 1",@"Day 2",@"Day 3",@"Day 4",@"Day 5",@"Day 6",@"Day 7",@"Day 8",@"Day 9",@"Day 10",@"Day 11",@"Day 12",@"Day 13",@"Day 14",@"Day 15",@"Day 16",@"Day 17",@"Day 18",@"Day 19",@"Day 20",@"Day 21",@"Day 22",@"Day 23",@"Day 24",@"Day 25",@"Day 26",@"Day 27",@"Day 28",@"Day 29",@"Day 30"];
-        row.value = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21,@22,@23,@24,@25,@26,@27,@28,@29,@30];
-        [section addFormRow:row];
+       XLFormRowDescriptor *  monthRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"Day selector" rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
+        monthRow.selectorOptions = @[@"Day 1",@"Day 2",@"Day 3",@"Day 4",@"Day 5",@"Day 6",@"Day 7",@"Day 8",@"Day 9",@"Day 10",@"Day 11",@"Day 12",@"Day 13",@"Day 14",@"Day 15",@"Day 16",@"Day 17",@"Day 18",@"Day 19",@"Day 20",@"Day 21",@"Day 22",@"Day 23",@"Day 24",@"Day 25",@"Day 26",@"Day 27",@"Day 28",@"Day 29",@"Day 30"];
+        monthRow.value = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21,@22,@23,@24,@25,@26,@27,@28,@29,@30];
+        [section addFormRow:monthRow];
 
-        XLFormRowDescriptor  *row2 = [XLFormRowDescriptor formRowDescriptorWithTag:@"time" rowType:XLFormRowDescriptorTypeTimeInline title:@"Time"];
-        row2.value = [NSDate new];
-        [section addFormRow:row2];
+        XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
+        alldaySwitch.value = @1;
+        [section addFormRow:alldaySwitch];
+
+        XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];
+        startrow.value = [NSDate new];
+        startrow.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        [section addFormRow:startrow];
+
+        XLFormRowDescriptor *  endSwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kendTimeSwitch rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"End-Time"];
+        endSwitch.hidden = [NSString stringWithFormat:@"$%@==1", kallDay];
+        endSwitch.value = @0;
+        [section addFormRow:endSwitch];
+
+        XLFormRowDescriptor * row = [XLFormRowDescriptor formRowDescriptorWithTag:kendTime rowType:XLFormRowDescriptorTypeTimeInline title:@"End-Time"];
+        row.value = [NSDate new];
+        row.hidden = [NSString stringWithFormat:@"$%@==0||$%@==1", kendTimeSwitch,kallDay];
+        [section addFormRow:row];
         
     }
     
