@@ -48,6 +48,8 @@
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
 		C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17DCA711DB4BBC800155100 /* Main.storyboard */; };
+		C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */; };
+		C1B2A57F1DB7760C00B6DB8B /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */; };
 		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
 		C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */; };
 		C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F7F01DB22C9200381D20 /* system_en.fct */; };
@@ -142,6 +144,9 @@
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
 		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		C17DCA721DB4BBC800155100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1B2A57B1DB7732500B6DB8B /* CoreDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataService.h; sourceTree = "<group>"; };
+		C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataService.m; sourceTree = "<group>"; };
+		C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
 		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
 		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
 		C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWeatherViewController.h; sourceTree = "<group>"; };
@@ -294,6 +299,7 @@
 				C0062F441970321800B71762 /* EventKitDemoTests.m */,
 				C0062F3F1970321800B71762 /* Supporting Files */,
 				C17095691DAF8305007B5059 /* EngineServieTest.m */,
+				C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */,
 			);
 			path = EventKitDemoTests;
 			sourceTree = "<group>";
@@ -325,8 +331,6 @@
 		C17BE50E1D8ED1CE001F5C87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C17BE5121D8ED25C001F5C87 /* EventManager.h */,
-				C17BE5131D8ED25C001F5C87 /* EventManager.m */,
 				C177A7F51D99B25B00BBDC78 /* Event.h */,
 				C177A7F61D99B25B00BBDC78 /* Event.m */,
 				C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */,
@@ -374,6 +378,10 @@
 				C1EAFB621D9972D300234B31 /* EventService.m */,
 				C11117EE1DADFAD6000A6210 /* EngineService.h */,
 				C11117EF1DADFAD6000A6210 /* EngineService.m */,
+				C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */,
+				C1B2A57B1DB7732500B6DB8B /* CoreDataService.h */,
+				C17BE5121D8ED25C001F5C87 /* EventManager.h */,
+				C17BE5131D8ED25C001F5C87 /* EventManager.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -628,6 +636,7 @@
 				C11117F01DADFAD6000A6210 /* EngineService.m in Sources */,
 				C177A7F41D99ABAA00BBDC78 /* CustomerCell+Configure.m in Sources */,
 				C177A7EB1D99A4E400BBDC78 /* WELWordCell+Configure.m in Sources */,
+				C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */,
 				C0062F521970354A00B71762 /* CalendarsViewController.m in Sources */,
 				C0062F301970321800B71762 /* ViewController.m in Sources */,
 				C177A7EE1D99A68C00BBDC78 /* testCreateTable.m in Sources */,
@@ -669,6 +678,7 @@
 				C170956E1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C0062F451970321800B71762 /* EventKitDemoTests.m in Sources */,
 				C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */,
+				C1B2A57F1DB7760C00B6DB8B /* CoreDataTest.m in Sources */,
 				C17095721DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,7 +894,7 @@
 				C0062F471970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C0062F481970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemo" */ = {
 			isa = XCConfigurationList;
@@ -893,7 +903,7 @@
 				C0062F4A1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C0062F4B1970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -902,7 +912,7 @@
 				C0062F4D1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

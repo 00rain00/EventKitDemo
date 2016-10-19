@@ -11,10 +11,6 @@ PODS:
   - DBMapSelectorViewController (1.2.2)
   - FFGlobalAlertController (1.0.2)
   - INTULocationManager (4.2.0)
-  - MagicalRecord/CocoaLumberjack (2.3.2):
-    - CocoaLumberjack (~> 2.0)
-    - MagicalRecord/Core
-  - MagicalRecord/Core (2.3.2)
   - MBProgressHUD (1.0.0)
   - OpenWeatherMapAPI (0.0.5):
     - AFNetworking (~> 1.3.1)
@@ -25,7 +21,6 @@ DEPENDENCIES:
   - DBMapSelectorViewController
   - FFGlobalAlertController
   - INTULocationManager
-  - MagicalRecord/CocoaLumberjack
   - MBProgressHUD
   - OpenWeatherMapAPI
   - XLForm
@@ -36,11 +31,10 @@ SPEC CHECKSUMS:
   DBMapSelectorViewController: 39b9156fae4f6c937397d66edd30c9c428cc4b8c
   FFGlobalAlertController: 40c66500ae173895085911ba19d79d045bd26742
   INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
-  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   OpenWeatherMapAPI: 53613bba3dffc948f852a66a25f512f7a16643e7
   XLForm: 2250b4e96ab8ffa5f3355838c79edd90de451782
 
-PODFILE CHECKSUM: e04e95561c07fd6be691782d3e8a5df8cf15b0bf
+PODFILE CHECKSUM: e693b1482d787133716e7504eb3d0a27528ffc8e
 
 COCOAPODS: 1.0.1

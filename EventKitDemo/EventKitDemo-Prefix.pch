@@ -18,8 +18,9 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"
 #import "NSDate+Helper.h"
-#import <CoreData/CoreData.h>
-#import <MagicalRecord/MagicalRecord.h>
+
+
+
 
 
 

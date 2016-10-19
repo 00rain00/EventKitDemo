@@ -11,6 +11,7 @@
 #import "AddAlarm.h"
 #import "AddLocationViewController.h"
 #import "AddWeatherViewController.h"
+#import "Condition.h"
 @protocol EditEventViewControllerDelegate
 
 -(void)eventWasSuccessfullySaved;
@@ -25,12 +26,12 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvent;
 @property (nonatomic, strong)EKReminder *editedEvent;
-
+@property (nonatomic, strong)Condition *createdCondition;
+@property (nonatomic, strong)NSMutableArray *arrCondtions;
 
 
 - (IBAction)saveEvent:(id)sender;
 -(IBAction)NewCondition:(id)sender;
 -(IBAction)cancle:(id)sender;
--(void)deleteCondition;
--(NSArray *)fetchCondition:(NSString *)reminderID;
+
 @end
