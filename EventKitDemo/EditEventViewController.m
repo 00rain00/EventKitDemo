@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import <FFGlobalAlertController/UIAlertController+Window.h>
 #import "UIAlertController+Window.h"
+#import "NSDate+Helper.h"
 @interface EditEventViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -53,12 +54,15 @@
     self.coreDataService = [[CoreDataService alloc] init];
 
     self.arrAlarms= [NSMutableArray new];
-
-    LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
+    self.arrCondition = [NSMutableArray new];
+    RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
 
 
         self.eventTitle = self.editedEvent.title;
         [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
+
+    [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
+        DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
     //    for(EKAlarm * alarm1 in self.arrAlarms){
 //            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
 //                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
@@ -70,7 +74,7 @@
  //       }
 
    // }
-    //if there is no condition, create a new on
+
 
 
 
@@ -88,7 +92,7 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-
+    [[NSUserDefaults standardUserDefaults] setObject:self.editedEvent.calendarItemIdentifier forKey:@"selected_reminder_identifier"];
 
 }
 
@@ -102,7 +106,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-        return 5;
+        return self.arrCondition.count+1;
 
 
 }
@@ -118,54 +122,38 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = nil;
     
-    if (indexPath.section == 0) {
+
         // If the cell is nil, then dequeue it. Make sure to dequeue the proper cell based on the row.
 
             if (indexPath.row == 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellTitle"];
-            }
-            else{
-                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
-            }
-
-        switch(indexPath.row){
-            case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
                 titleTextfile.text=self.editedEvent.title;
-
             }
-                break;
-            case 1:{
-
-                    UILabel * label = (UILabel *)[cell.contentView viewWithTag:1];
-                    label.text=@"Every Day at 0700 to 0800";
-
+            else{
+                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
+                UILabel * key = (UILabel *)[cell.contentView viewWithTag:1];
+                key.text= [(Condition *) self.arrCondition[(NSUInteger) (indexPath.row - 1)] myKey];
+                UISwitch *status = (UISwitch *) [cell.contentView viewWithTag:3];
+                status.on = [[(Condition *) self.arrCondition[(NSUInteger) (indexPath.row - 1)] sattus]boolValue];
+//                UILabel * value = (UILabel *)[cell.contentView viewWithTag:1];
+//                value.text= [(Condition *) self.arrCondition[indexPath.row - 1] myKey];
             }
 
-            break;
-            case 2:
-            {
-                UILabel * label = (UILabel *)[cell.contentView viewWithTag:1];
-
-                    label.text=@"Arriving range at ...";
 
 
-            }
-                break;
 
 
-            default:
-                break;
-        }
-    }
+
+
 
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-DDLogDebug(@"");
+
 
 
 }
@@ -174,7 +162,7 @@ DDLogDebug(@"");
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
-      [self deleteCondition];
+     // [self deleteCondition];
   }
 }
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -237,12 +225,19 @@ DDLogDebug(@"");
 
 }
 
-- (void)deleteCondition {
-        DDLogDebug(@"");
+- (void)deleteCondition:(NSUInteger)objectIndex {
+    //Todo DELETE the object in database than delete the obj in arrCondition
+    [self.arrCondition removeObjectAtIndex:objectIndex];
 }
 
 - (NSArray *)fetchCondition:(NSString *)reminderID {
-    return nil;
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =self.editedEvent.calendarItemIdentifier;
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
+    [request setPredicate:predicate];
+
+         return  [self.coreDataService fetchCondition:request];
+
 }
 
 

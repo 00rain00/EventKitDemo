@@ -9,7 +9,7 @@
 #import "DatePickerViewController.h"
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
-
+#import "CoreDataService.h"
 NSString *const kallDay = @"allDay";
 NSString * const kstartTime = @"startTime";
 NSString *const  kendTime = @"endTime";
@@ -114,10 +114,7 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
     }
     else if (self.selection==3){
 
-       XLFormRowDescriptor *  monthRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"Day selector" rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
-        monthRow.selectorOptions = @[@"Day 1",@"Day 2",@"Day 3",@"Day 4",@"Day 5",@"Day 6",@"Day 7",@"Day 8",@"Day 9",@"Day 10",@"Day 11",@"Day 12",@"Day 13",@"Day 14",@"Day 15",@"Day 16",@"Day 17",@"Day 18",@"Day 19",@"Day 20",@"Day 21",@"Day 22",@"Day 23",@"Day 24",@"Day 25",@"Day 26",@"Day 27",@"Day 28",@"Day 29",@"Day 30"];
-        monthRow.value = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21,@22,@23,@24,@25,@26,@27,@28,@29,@30];
-        [section addFormRow:monthRow];
+
 
         XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
         alldaySwitch.value = @1;
@@ -137,6 +134,11 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
         row.value = [NSDate new];
         row.hidden = [NSString stringWithFormat:@"$%@==0||$%@==1", kendTimeSwitch,kallDay];
         [section addFormRow:row];
+
+        XLFormRowDescriptor *  monthRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"Day selector" rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
+        monthRow.selectorOptions = @[@"Day 1",@"Day 2",@"Day 3",@"Day 4",@"Day 5",@"Day 6",@"Day 7",@"Day 8",@"Day 9",@"Day 10",@"Day 11",@"Day 12",@"Day 13",@"Day 14",@"Day 15",@"Day 16",@"Day 17",@"Day 18",@"Day 19",@"Day 20",@"Day 21",@"Day 22",@"Day 23",@"Day 24",@"Day 25",@"Day 26",@"Day 27",@"Day 28",@"Day 29",@"Day 30"];
+        monthRow.value = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21,@22,@23,@24,@25,@26,@27,@28,@29,@30];
+        [section addFormRow:monthRow];
         
     }
     
@@ -158,14 +160,29 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
 #pragma mark - IBAction method implementation
 
 - (IBAction)acceptDate:(id)sender {
-    // Notify the caller that a date was selected.
- //   [self.delegate dateWasSelected:self.dtDatePicker.date];
-    
-    // Pop the view controller.
-   
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 
-    
+    NSString *reminderID = [[NSUserDefaults standardUserDefaults] valueForKey:@"selected_reminder_identifier"];
+    if(OBJECT_IS_EMPTY(reminderID)){
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+    }else {
+        DDLogDebug(reminderID);
+        CoreDataService *coreDataService = [[CoreDataService alloc] init];
+        NSDictionary *formDic = [self formValues];
+        LOOP_DICTIONARY(formDic);
+       // BOOL alldaySwitch = [formDic[kallDay] boolValue];
+      //  BOOL endtimeSwitch = [formDic[kendTimeSwitch] boolValue];
+        for(NSString *key in formDic){
+            if( [key isEqualToString:kendTimeSwitch]){
+                continue;
+            }
+            NSData * myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
+            [coreDataService createCondition:reminderID :key :myValue];
+
+        }
+
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+    }
 
 }
 

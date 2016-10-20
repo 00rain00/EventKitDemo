@@ -37,7 +37,7 @@
 }
 -(void)testFetchCondion{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"12345";
+    NSString * ID =@"D98DC6FA-9AC7-434C-81C7-CAEEC342E39D";
    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
     CoreDataService *cd  = [[CoreDataService alloc]init];

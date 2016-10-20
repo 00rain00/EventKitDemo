@@ -15,7 +15,7 @@
         else{
             self.eventsAccessGranted=NO;
         }
-        if(OBJECT_IS_EMPTY([userDefaults objectForKey:@"eventkit_selected_calendar"])){
+        if(OBJECT_ISNOT_EMPTY([userDefaults objectForKey:@"eventkit_selected_calendar"])){
             self.selectedCalenderIdentifier= [userDefaults objectForKey:@"eventkit_selected_calendar"];
         }else{
             self.selectedCalenderIdentifier=@"";
@@ -195,7 +195,7 @@
 
 
    
-    NSPredicate *predicate = [self.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:nil];
+  //  NSPredicate *predicate = [self.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:nil];
     NSPredicate *predicate1 = [self.ekEventStore predicateForRemindersInCalendars:calenders];
 
     // Get an array with all events.

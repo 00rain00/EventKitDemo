@@ -27,8 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvent;
 @property (nonatomic, strong)EKReminder *editedEvent;
-@property (nonatomic, strong)Condition *createdCondition;
-@property (nonatomic, strong)NSMutableArray *arrCondtions;
+
 
 
 - (IBAction)saveEvent:(id)sender;

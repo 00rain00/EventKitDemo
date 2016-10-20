@@ -99,7 +99,7 @@ return numRow;
 
 
 - (void)loadEventCalendars {
-    DDLogDebug(@"");
+
 
    LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(self.appDelegate.eventManager);
     self.calendars= [self.appDelegate.eventManager getiCloudReminders];
@@ -174,7 +174,7 @@ return numRow;
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    DDLogInfo(@"calendars count:%lu", (unsigned long)[self.calendars count]);
+    //DDLogInfo(@"calendars count:%lu", (unsigned long)[self.calendars count]);
    if(!self.tblCalendars.isEditing){
        return self.calendars.count;
    }else{
