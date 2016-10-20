@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ViewController.h"
 
 @interface CalendarsViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblCalendars;
 
+@property (nonatomic, strong)EKCalendar *selectedCalendar;
 
 - (IBAction)editCalendars:(id)sender;
 

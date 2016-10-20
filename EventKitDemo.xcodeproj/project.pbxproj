@@ -14,7 +14,6 @@
 		C0062F241970321800B71762 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C0062F221970321800B71762 /* InfoPlist.strings */; };
 		C0062F261970321800B71762 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F251970321800B71762 /* main.m */; };
 		C0062F2A1970321800B71762 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F291970321800B71762 /* AppDelegate.m */; };
-		C0062F2D1970321800B71762 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0062F2B1970321800B71762 /* Main.storyboard */; };
 		C0062F301970321800B71762 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0062F2F1970321800B71762 /* ViewController.m */; };
 		C0062F321970321800B71762 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0062F311970321800B71762 /* Images.xcassets */; };
 		C0062F391970321800B71762 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0062F381970321800B71762 /* XCTest.framework */; };
@@ -48,8 +47,24 @@
 		C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */; };
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
+		C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17DCA711DB4BBC800155100 /* Main.storyboard */; };
+		C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */; };
+		C1B2A57F1DB7760C00B6DB8B /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */; };
 		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
 		C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */; };
+		C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F7F01DB22C9200381D20 /* system_en.fct */; };
+		C1E6F7F41DB268A300381D20 /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F31DB268A300381D20 /* NewEventViewController.m */; };
+		C1E6F7F71DB2AC8200381D20 /* Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */; };
+		C1E6F7FC1DB2B0B800381D20 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */; };
+		C1E6F7FD1DB2B0B800381D20 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7FB1DB2B0B800381D20 /* Reminder.m */; };
+		C1E6F8021DB2B48800381D20 /* Condition+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7FF1DB2B48800381D20 /* Condition+CoreDataProperties.m */; };
+		C1E6F8031DB2B48800381D20 /* Condition.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F8011DB2B48800381D20 /* Condition.m */; };
+		C1E6F8061DB2B86400381D20 /* AddConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F8051DB2B86400381D20 /* AddConditionViewController.m */; };
+		C1E6F8091DB2B9E700381D20 /* DateAndTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F8081DB2B9E700381D20 /* DateAndTimeViewController.m */; };
+		C1E6F80C1DB2B9FB00381D20 /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F80B1DB2B9FB00381D20 /* PhotoViewController.m */; };
+		C1E6F80F1DB2BA0D00381D20 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F80E1DB2BA0D00381D20 /* ContactViewController.m */; };
+		C1E6F8151DB39AE000381D20 /* XLFormWeekDaysCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F8131DB39AE000381D20 /* XLFormWeekDaysCell.m */; };
+		C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
 		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
@@ -80,7 +95,6 @@
 		C0062F271970321800B71762 /* EventKitDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EventKitDemo-Prefix.pch"; sourceTree = "<group>"; };
 		C0062F281970321800B71762 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C0062F291970321800B71762 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C0062F2C1970321800B71762 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C0062F2E1970321800B71762 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C0062F2F1970321800B71762 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C0062F311970321800B71762 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -129,10 +143,37 @@
 		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
 		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
+		C17DCA721DB4BBC800155100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C1B2A57B1DB7732500B6DB8B /* CoreDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataService.h; sourceTree = "<group>"; };
+		C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataService.m; sourceTree = "<group>"; };
+		C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
 		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
 		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
 		C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWeatherViewController.h; sourceTree = "<group>"; };
 		C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWeatherViewController.m; sourceTree = "<group>"; };
+		C1E6F7F01DB22C9200381D20 /* system_en.fct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system_en.fct; sourceTree = "<group>"; };
+		C1E6F7F21DB268A300381D20 /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
+		C1E6F7F31DB268A300381D20 /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
+		C1E6F7F61DB2AC8200381D20 /* Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reminder.xcdatamodel; sourceTree = "<group>"; };
+		C1E6F7F81DB2B0B800381D20 /* Reminder+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C1E6F7FA1DB2B0B800381D20 /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		C1E6F7FB1DB2B0B800381D20 /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
+		C1E6F7FE1DB2B48800381D20 /* Condition+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Condition+CoreDataProperties.h"; sourceTree = "<group>"; };
+		C1E6F7FF1DB2B48800381D20 /* Condition+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Condition+CoreDataProperties.m"; sourceTree = "<group>"; };
+		C1E6F8001DB2B48800381D20 /* Condition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
+		C1E6F8011DB2B48800381D20 /* Condition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Condition.m; sourceTree = "<group>"; };
+		C1E6F8041DB2B86400381D20 /* AddConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddConditionViewController.h; sourceTree = "<group>"; };
+		C1E6F8051DB2B86400381D20 /* AddConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddConditionViewController.m; sourceTree = "<group>"; };
+		C1E6F8071DB2B9E700381D20 /* DateAndTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateAndTimeViewController.h; sourceTree = "<group>"; };
+		C1E6F8081DB2B9E700381D20 /* DateAndTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateAndTimeViewController.m; sourceTree = "<group>"; };
+		C1E6F80A1DB2B9FB00381D20 /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		C1E6F80B1DB2B9FB00381D20 /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		C1E6F80D1DB2BA0D00381D20 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		C1E6F80E1DB2BA0D00381D20 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		C1E6F8121DB39AE000381D20 /* XLFormWeekDaysCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormWeekDaysCell.h; sourceTree = "<group>"; };
+		C1E6F8131DB39AE000381D20 /* XLFormWeekDaysCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormWeekDaysCell.m; sourceTree = "<group>"; };
+		C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLFormWeekDaysCell.xib; sourceTree = "<group>"; };
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
 		C1EAFB621D9972D300234B31 /* EventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventService.m; sourceTree = "<group>"; };
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
@@ -228,7 +269,6 @@
 				C17BE50E1D8ED1CE001F5C87 /* Model */,
 				C0062F281970321800B71762 /* AppDelegate.h */,
 				C0062F291970321800B71762 /* AppDelegate.m */,
-				C0062F2B1970321800B71762 /* Main.storyboard */,
 				C0062F311970321800B71762 /* Images.xcassets */,
 				C0062F201970321800B71762 /* Supporting Files */,
 			);
@@ -238,10 +278,10 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C1E6F8111DB39AE000381D20 /* Weekdays */,
+				C1E6F7F01DB22C9200381D20 /* system_en.fct */,
 				C12BFD7F1DB15EB60059A7B7 /* NSDate+Helper.h */,
 				C12BFD801DB15EB60059A7B7 /* NSDate+Helper.m */,
-				C0062F561970392C00B71762 /* DatePickerViewController.h */,
-				C0062F571970392C00B71762 /* DatePickerViewController.m */,
 				C17095661DAF8270007B5059 /* rules.clp */,
 				C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */,
 				C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */,
@@ -259,6 +299,7 @@
 				C0062F441970321800B71762 /* EventKitDemoTests.m */,
 				C0062F3F1970321800B71762 /* Supporting Files */,
 				C17095691DAF8305007B5059 /* EngineServieTest.m */,
+				C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */,
 			);
 			path = EventKitDemoTests;
 			sourceTree = "<group>";
@@ -290,10 +331,17 @@
 		C17BE50E1D8ED1CE001F5C87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C17BE5121D8ED25C001F5C87 /* EventManager.h */,
-				C17BE5131D8ED25C001F5C87 /* EventManager.m */,
 				C177A7F51D99B25B00BBDC78 /* Event.h */,
 				C177A7F61D99B25B00BBDC78 /* Event.m */,
+				C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */,
+				C1E6F7F81DB2B0B800381D20 /* Reminder+CoreDataProperties.h */,
+				C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */,
+				C1E6F7FA1DB2B0B800381D20 /* Reminder.h */,
+				C1E6F7FB1DB2B0B800381D20 /* Reminder.m */,
+				C1E6F7FE1DB2B48800381D20 /* Condition+CoreDataProperties.h */,
+				C1E6F7FF1DB2B48800381D20 /* Condition+CoreDataProperties.m */,
+				C1E6F8001DB2B48800381D20 /* Condition.h */,
+				C1E6F8011DB2B48800381D20 /* Condition.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,10 +349,46 @@
 		C17BE5101D8ED1EF001F5C87 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C17DCA711DB4BBC800155100 /* Main.storyboard */,
+				C1E6F8101DB2BA1D00381D20 /* ViewWithData */,
 				C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */,
 				C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */,
 				C177A7EC1D99A68C00BBDC78 /* testCreateTable.h */,
 				C177A7ED1D99A68C00BBDC78 /* testCreateTable.m */,
+				C1E6F7F21DB268A300381D20 /* NewEventViewController.h */,
+				C1E6F7F31DB268A300381D20 /* NewEventViewController.m */,
+				C1E6F8041DB2B86400381D20 /* AddConditionViewController.h */,
+				C1E6F8051DB2B86400381D20 /* AddConditionViewController.m */,
+				C1E6F8071DB2B9E700381D20 /* DateAndTimeViewController.h */,
+				C1E6F8081DB2B9E700381D20 /* DateAndTimeViewController.m */,
+				C0062F561970392C00B71762 /* DatePickerViewController.h */,
+				C0062F571970392C00B71762 /* DatePickerViewController.m */,
+				C1E6F80A1DB2B9FB00381D20 /* PhotoViewController.h */,
+				C1E6F80B1DB2B9FB00381D20 /* PhotoViewController.m */,
+				C1E6F80D1DB2BA0D00381D20 /* ContactViewController.h */,
+				C1E6F80E1DB2BA0D00381D20 /* ContactViewController.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C17BE5111D8ED1F5001F5C87 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C1EAFB611D9972D300234B31 /* EventService.h */,
+				C1EAFB621D9972D300234B31 /* EventService.m */,
+				C11117EE1DADFAD6000A6210 /* EngineService.h */,
+				C11117EF1DADFAD6000A6210 /* EngineService.m */,
+				C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */,
+				C1B2A57B1DB7732500B6DB8B /* CoreDataService.h */,
+				C17BE5121D8ED25C001F5C87 /* EventManager.h */,
+				C17BE5131D8ED25C001F5C87 /* EventManager.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		C1E6F8101DB2BA1D00381D20 /* ViewWithData */ = {
+			isa = PBXGroup;
+			children = (
 				C0062F501970354A00B71762 /* CalendarsViewController.h */,
 				C0062F511970354A00B71762 /* CalendarsViewController.m */,
 				C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */,
@@ -320,18 +404,17 @@
 				C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */,
 				C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */,
 			);
-			name = View;
+			name = ViewWithData;
 			sourceTree = "<group>";
 		};
-		C17BE5111D8ED1F5001F5C87 /* Service */ = {
+		C1E6F8111DB39AE000381D20 /* Weekdays */ = {
 			isa = PBXGroup;
 			children = (
-				C1EAFB611D9972D300234B31 /* EventService.h */,
-				C1EAFB621D9972D300234B31 /* EventService.m */,
-				C11117EE1DADFAD6000A6210 /* EngineService.h */,
-				C11117EF1DADFAD6000A6210 /* EngineService.m */,
+				C1E6F8121DB39AE000381D20 /* XLFormWeekDaysCell.h */,
+				C1E6F8131DB39AE000381D20 /* XLFormWeekDaysCell.m */,
+				C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */,
 			);
-			name = Service;
+			path = Weekdays;
 			sourceTree = "<group>";
 		};
 		C1EAFB641D999AA400234B31 /* TableHelper */ = {
@@ -431,10 +514,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */,
 				C0062F321970321800B71762 /* Images.xcassets in Resources */,
 				C17095671DAF8270007B5059 /* rules.clp in Resources */,
+				C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */,
 				C0062F241970321800B71762 /* InfoPlist.strings in Resources */,
-				C0062F2D1970321800B71762 /* Main.storyboard in Resources */,
+				C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,26 +636,38 @@
 				C11117F01DADFAD6000A6210 /* EngineService.m in Sources */,
 				C177A7F41D99ABAA00BBDC78 /* CustomerCell+Configure.m in Sources */,
 				C177A7EB1D99A4E400BBDC78 /* WELWordCell+Configure.m in Sources */,
+				C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */,
 				C0062F521970354A00B71762 /* CalendarsViewController.m in Sources */,
 				C0062F301970321800B71762 /* ViewController.m in Sources */,
 				C177A7EE1D99A68C00BBDC78 /* testCreateTable.m in Sources */,
 				C0062F2A1970321800B71762 /* AppDelegate.m in Sources */,
 				C177A7E41D999E0200BBDC78 /* WELTableDelegate.m in Sources */,
+				C1E6F80C1DB2B9FB00381D20 /* PhotoViewController.m in Sources */,
 				C0062F551970380600B71762 /* EditEventViewController.m in Sources */,
 				C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */,
+				C1E6F8151DB39AE000381D20 /* XLFormWeekDaysCell.m in Sources */,
+				C1E6F7F71DB2AC8200381D20 /* Reminder.xcdatamodeld in Sources */,
 				C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */,
 				C170956D1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */,
+				C1E6F7FC1DB2B0B800381D20 /* Reminder+CoreDataProperties.m in Sources */,
 				C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */,
 				C12BFD811DB15EB60059A7B7 /* NSDate+Helper.m in Sources */,
+				C1E6F8021DB2B48800381D20 /* Condition+CoreDataProperties.m in Sources */,
 				C177A7F71D99B25B00BBDC78 /* Event.m in Sources */,
 				C177A7F11D99AB2300BBDC78 /* CustomerCell.m in Sources */,
+				C1E6F8091DB2B9E700381D20 /* DateAndTimeViewController.m in Sources */,
+				C1E6F80F1DB2BA0D00381D20 /* ContactViewController.m in Sources */,
 				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,
 				C0062F261970321800B71762 /* main.m in Sources */,
 				C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */,
+				C1E6F7F41DB268A300381D20 /* NewEventViewController.m in Sources */,
 				C17095711DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 				C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */,
 				C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */,
+				C1E6F7FD1DB2B0B800381D20 /* Reminder.m in Sources */,
+				C1E6F8031DB2B48800381D20 /* Condition.m in Sources */,
+				C1E6F8061DB2B86400381D20 /* AddConditionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +678,7 @@
 				C170956E1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C0062F451970321800B71762 /* EventKitDemoTests.m in Sources */,
 				C170956A1DAF8305007B5059 /* EngineServieTest.m in Sources */,
+				C1B2A57F1DB7760C00B6DB8B /* CoreDataTest.m in Sources */,
 				C17095721DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,20 +702,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C0062F2B1970321800B71762 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C0062F2C1970321800B71762 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C0062F411970321800B71762 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C0062F421970321800B71762 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C17DCA711DB4BBC800155100 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C17DCA721DB4BBC800155100 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -796,7 +894,7 @@
 				C0062F471970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C0062F481970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemo" */ = {
 			isa = XCConfigurationList;
@@ -805,7 +903,7 @@
 				C0062F4A1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		C0062F4B1970321800B71762 /* Build configuration list for PBXNativeTarget "EventKitDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -814,9 +912,22 @@
 				C0062F4D1970321800B71762 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1E6F7F61DB2AC8200381D20 /* Reminder.xcdatamodel */,
+			);
+			currentVersion = C1E6F7F61DB2AC8200381D20 /* Reminder.xcdatamodel */;
+			path = Reminder.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C0062F0E1970321800B71762 /* Project object */;
 }

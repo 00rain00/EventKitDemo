@@ -9,17 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "EditEventViewController.h"
 #import "CalendarsViewController.h"
-@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource>
+@class Reminder;
+@interface ViewController : UIViewController <EditEventViewControllerDelegate, UITableViewDelegate, UITableViewDataSource,NSFetchedResultsControllerDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvents;
-
+@property (nonatomic, retain) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong)EKCalendar *selectedCalendar;
+@property (nonatomic, strong)EKReminder *selectedEvent;
 
 - (IBAction)showCalendars:(id)sender;
 
-- (IBAction)createEvent:(id)sender;
+- (IBAction)editEvent:(id)sender;
 
--(void)requestAccessToEvents;
 
--(void)requestAccessToReminders;
+
+
 
 @end

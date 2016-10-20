@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EventManager.h"
 #import "EngineService.h"
+#import "ViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -17,5 +18,9 @@
 @property (strong, nonatomic)EventManager *eventManager;
 
 @property (strong, nonatomic)EngineService *engineService;
+
+@property(strong,nonatomic)ViewController * controller;
+
+
 
 @end

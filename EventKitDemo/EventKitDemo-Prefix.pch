@@ -18,7 +18,9 @@
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"
 #import "NSDate+Helper.h"
-#import <CoreData/CoreData.h>
+
+
+
 
 
 
@@ -38,7 +40,8 @@ ManagedObjectContextSaveDidFailNotification object:error];
 #define OBJECT_ISNOT_EMPTY(_object) (NO == OBJECT_IS_EMPTY(_object))
 #define RETURN_WHEN_OBJECT_IS_EMPTY(_object)        if (OBJECT_IS_EMPTY(_object)) { return ;    }
 #define RETURN_NIL_WHEN_OBJECT_IS_EMPTY(_object)    if (OBJECT_IS_EMPTY(_object)) { return nil; }
-#define RETURN_EMPTY_WHEN_OBJECT_IS_EMPTY(_object)  if (OBJECT_IS_EMPTY(_object)) { return @""; }
+#define  RETURN_EMPTY_WHEN_OBJECT_IS_EMPTY(_object)  if (OBJECT_IS_EMPTY(_object)) {  return @""; }
+#define  LOG_EMPTY_WHEN_OBJECT_IS_EMPTY(_object) if(OBJECT_IS_EMPTY(_object)) {DDLogDebug(@"OBJECT IS EMPTY");}
 #define RETURN_YES_WHEN_OBJECT_IS_EMPTY(_object)    if (OBJECT_IS_EMPTY(_object)) { return YES; }
 #define RETURN_NO_WHEN_OBJECT_IS_EMPTY(_object)     if (OBJECT_IS_EMPTY(_object)) { return NO; }
 #define RETURN_ZERO_WHEN_OBJECT_IS_EMPTY(_object)   if (OBJECT_IS_EMPTY(_object)) { return 0; }

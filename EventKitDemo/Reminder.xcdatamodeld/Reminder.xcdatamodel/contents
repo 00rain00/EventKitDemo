@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Xcode 7.0">
+    <entity name="Condition" representedClassName="Condition" syncable="YES">
+        <attribute name="myKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myReminderID" attributeType="String" syncable="YES"/>
+        <attribute name="myValue" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="sattus" attributeType="Boolean" syncable="YES"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES">
+        <attribute name="myCalendarID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myReminderID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="reminderTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationship" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Condition" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Condition" positionX="-290" positionY="-9" width="128" height="103"/>
+        <element name="Reminder" positionX="-54" positionY="-9" width="128" height="103"/>
+    </elements>
+</model>

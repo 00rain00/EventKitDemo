@@ -9,24 +9,22 @@
 #import "EditEventViewController.h"
 #import "AddAlarm.h"
 #import "AppDelegate.h"
-
+#import <FFGlobalAlertController/UIAlertController+Window.h>
+#import "UIAlertController+Window.h"
+#import "NSDate+Helper.h"
 @interface EditEventViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
 
 @property (nonatomic, strong) NSString *eventTitle;
 
-@property (nonatomic, strong) NSDate *eventStartDate;
-
-@property (nonatomic, strong) NSDate *eventEndDate;
-
-@property (nonatomic, strong)NSString *enentCalender;
-
 @property (nonatomic, strong) NSMutableArray *arrAlarms;
 
 @property (nonatomic, strong)EKAlarm *ekAlarm;
 
-@property (nonatomic, strong)EKReminder *editedEvent;
+@property (nonatomic, strong)CoreDataService *coreDataService;
+
+@property (nonatomic, strong)NSMutableArray *arrCondition;
 
 @end
 
@@ -52,18 +50,20 @@
     // Make self the delegate and datasource of the table view.
     self.tblEvent.delegate = self;
     self.tblEvent.dataSource = self;
-    self.eventStartDate=nil;
-    self.eventEndDate=nil;
+
+    self.coreDataService = [[CoreDataService alloc] init];
 
     self.arrAlarms= [NSMutableArray new];
+    self.arrCondition = [NSMutableArray new];
+    RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
 
-    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-        DDLogDebug(@"event identifier : %@",self.appDelegate.eventManager.selectedEventIdentifier);
-        self.editedEvent = (EKReminder *) [self.appDelegate.eventManager.ekEventStore calendarItemWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
 
         self.eventTitle = self.editedEvent.title;
         [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
-        for(EKAlarm * alarm1 in self.arrAlarms){
+
+    [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
+        DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
+    //    for(EKAlarm * alarm1 in self.arrAlarms){
 //            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
 //                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
 //            }
@@ -71,18 +71,15 @@
 //            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
 //            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
 //            DDLogDebug(@"arriving : %d",alarm1.proximity);
-        }
-        DDLogDebug(@"event title : %@",self.eventTitle);
-           }else{
-        DDLogDebug(@"no selected event ");
-    }
+ //       }
+
+   // }
+
+
+
+
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 #pragma mark - Navigation
@@ -90,186 +87,100 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    
-    if ([segue.identifier isEqualToString:@"idSegueDatepicker"]) {
-        DatePickerViewController *datePickerViewController = [segue destinationViewController];
-        datePickerViewController.delegate = self;
-    }
-//TODO complete viewcontroller
-    if ([segue.identifier isEqualToString:@"idSegueCalender"]) {
+    [[NSUserDefaults standardUserDefaults] setObject:self.editedEvent.calendarItemIdentifier forKey:@"selected_reminder_identifier"];
 
-    }
-    if ([segue.identifier isEqualToString:@"idSegueAddAlarm"]) {
-        AddAlarm *controller = segue.destinationViewController;
-
-        controller.delegate=self;
-    }
-    if([segue.identifier isEqualToString:@"idSegueLocation"]){
-        AddLocationViewController *controller  = segue.destinationViewController;
-        controller.delegate=self;
-    }
-    if([segue.identifier isEqualToString:@"idSegueWeather"]){
-        AddWeatherViewController *controller  = segue.destinationViewController;
-        controller.delegate=self;
-    }
 }
 
 
 #pragma mark - UITableView Delegate and Datasource method implementation
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 1;
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0) {
-        return 5;
-    }
-    else{
-        return 3;
-    }
+
+        return self.arrCondition.count+1;
+
+
 }
 
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
+
         return @"Event Settings";
-    }
-    else {
-        return @"Alarms";
-    }
+
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = nil;
     
-    if (indexPath.section == 0) {
+
         // If the cell is nil, then dequeue it. Make sure to dequeue the proper cell based on the row.
-        if (OBJECT_IS_EMPTY(cell)) {
+
             if (indexPath.row == 0) {
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellTitle"];
-            }
-            else{
-                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
-            }
-        }
-        switch(indexPath.row){
-            case 0: {
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
-                titleTextfile.text=self.eventTitle;
-
+                titleTextfile.text=self.editedEvent.title;
             }
-                break;
-            case 1:{
+            else{
+                cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
+                Condition *condition = self.arrCondition[(NSUInteger) (indexPath.row-1)];
+                UILabel * key = (UILabel *)[cell.contentView viewWithTag:1];
+                key.text= condition.myKey;
+                UISwitch *status = (UISwitch *) [cell.contentView viewWithTag:3];
+                status.on = [condition.sattus boolValue];
 
-                if(OBJECT_IS_EMPTY(self.enentCalender)){
-                    cell.textLabel.text=@"Select a calender";
-                }else{
-                    //TODO better call in the services layer
-                    cell.textLabel.text= self.enentCalender;
-
+                [status addTarget:self action:@selector(changeStatus:) forControlEvents:UIControlEventValueChanged];
+                UILabel * valueLabel = (UILabel *)[cell.contentView viewWithTag:2];
+                //detact which type of value
+                if([condition.myKey containsString:@"Switch"]){
+                   // BOOL myValue = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] boolValue];
+                    valueLabel.hidden = YES;
                 }
-            }
-
-            break;
-            case 2:
-            {
-                if(OBJECT_IS_EMPTY(self.eventStartDate)){
-                    cell.textLabel.text=@"Select a start date...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.eventStartDate];
-
+                else if([condition.myKey containsString:@"Time"]){
+                    NSDate * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    valueLabel.text = [NSDate stringForDisplayFromDate:myValue prefixed:YES];
                 }
 
 
             }
-                break;
-            case 3:
-            {
-                if(OBJECT_IS_EMPTY(self.eventEndDate)){
-                    cell.textLabel.text=@"Select an end date...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.eventEndDate];
-                }
-            }
-                break;
-            case 4:{
-                if(OBJECT_IS_EMPTY(self.ekAlarm)){
-                    cell.textLabel.text=@"Select a notification...";
-                }else{
-                    cell.textLabel.text= [self.appDelegate.eventManager getStringFromDate:self.ekAlarm.absoluteDate];
-                }
-            }
-                break;
-
-            default:
-                break;
-        }
-    }
-    else{
-        if (OBJECT_IS_EMPTY(cell)) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"idCellGeneral"];
-        }
-        switch (indexPath.row){
-            case 0 : {
-                cell.textLabel.text = @"Add a new time alarm...";
-            }
-                break;
-            case 1: {
-                cell.textLabel.text = @"add a new location alarm...";
-            }
-                break;
-            case 2: {
-                cell.textLabel.text = @"add a new weather alarm...";
-            }
-                break;
-            default:
-                break;
-        }
 
 
 
 
-    }
+
+
+
+
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DDLogDebug(@"section :%ld ,  row :%ld",(long)indexPath.section, (long)indexPath.row);
-    if(indexPath.section==0&&indexPath.row==1){
-        [self performSegueWithIdentifier:@"idSegueCalender" sender:self];
-    }
-
-    if(indexPath.section==0&&(indexPath.row==3 || indexPath.row==2)){
-
-        [self performSegueWithIdentifier:@"idSegueDatepicker" sender:self];
-    }
-
-    if(indexPath.section==0&&indexPath.row==4){
-
-        [self performSegueWithIdentifier:@"idSegueCreateAlarm" sender:self];
-    }
-    
-    if(indexPath.section==1&&indexPath.row==0){
-        [self performSegueWithIdentifier:@"idSegueAddAlarm" sender:self ];
-    }
-    if(indexPath.section==1&&indexPath.row==1){
-        [self performSegueWithIdentifier:@"idSegueLocation" sender:self ];
-    }
-    if(indexPath.section==1&&indexPath.row==2){
-        [self performSegueWithIdentifier:@"idSegueWeather" sender:self ];
-    }
 
 
 
 }
 
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if(editingStyle == UITableViewCellEditingStyleDelete){
+      [self deleteCondition:(NSUInteger) indexPath.row];
+  }
+}
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //config the button at leftside
+    if(indexPath.row==0){
+        return UITableViewCellEditingStyleNone;
+    }else{
+        return UITableViewCellEditingStyleDelete;
+    }
+}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0;
 }
@@ -278,33 +189,29 @@
 #pragma mark - IBAction method implementation
 
 - (IBAction)saveEvent:(id)sender {
-    if(self.eventTitle.length==0){
-        DDLogDebug(@"empty title");
+    if(OBJECT_IS_EMPTY(self.eventTitle)){
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"Title is empty" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+        [alert show];
         return;
+
     }
-
-
-//    if (self.appDelegate.eventManager.selectedEventIdentifier.length > 0) {
-//        [self.appDelegate.eventManager deleteEventWithIdentifier:self.appDelegate.eventManager.selectedEventIdentifier];
-//        self.appDelegate.eventManager.selectedEventIdentifier = @"";
-//    }
     DDLogDebug(@"eventTitle:%@",self.eventTitle);
-    self.editedEvent.title = self.eventTitle;
-//    EKEvent *event= [EKEvent eventWithEventStore:self.appDelegate.eventManager.ekEventStore];
-//
-//
-//    event.title=self.eventTitle;
-//    event.startDate=self.eventStartDate;
-//    event.endDate=self.eventEndDate;
-//    NSArray * alCalenders = [self.appDelegate.eventManager.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
-//
-//    for (EKCalendar * calendar in alCalenders) {
-//        if([calendar.calendarIdentifier isEqualToString:self.appDelegate.eventManager.selectedCalenderIdentifier]){
-//            event.calendar= calendar;
-//            break;
-//        }
-//    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 
+    self.editedEvent.title = self.eventTitle;
+    //TODO start engine
+    self.appDelegate.engineService.setUpClipsEnvironment;
+
+    //TODO push facts fo engine
+    NSDictionary *facts = [NSDictionary new];
+    facts = @{@"time": [NSDate new]};
+    [self.appDelegate.engineService generateFacts:facts];
+    //TODO PUSH rules to engine
+    NSDictionary *rules  = [NSDictionary new];
+    [self.appDelegate.engineService transformRules:facts];
+    //TODO EVALUE RESULT
+    //TODO ADD alarm to reminder
 
 
     NSError *error;
@@ -317,13 +224,58 @@
     [self.tblEvent reloadData];
 }
 
+- (IBAction)NewCondition:(id)sender {
+    [self performSegueWithIdentifier:@"idSegueCreateCondition" sender:self ];
+}
+
+- (IBAction)cancle:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+}
+
+- (void)deleteCondition:(NSUInteger)objectIndex {
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =self.editedEvent.calendarItemIdentifier;
+    Condition *conditionToDelete = self.arrCondition[objectIndex-1];
+    NSString * key = conditionToDelete.myKey;
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
+    [request setPredicate:predicate];
+    [self.coreDataService deleteCondition:request];
+
+    [self.arrCondition removeObjectAtIndex:objectIndex-1];
+    [self.tblEvent reloadData];
+}
+
+- (NSArray *)fetchCondition:(NSString *)reminderID {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =self.editedEvent.calendarItemIdentifier;
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
+    [request setPredicate:predicate];
+
+         return  [self.coreDataService fetchCondition:request];
+
+}
+
+-(void)changeStatus:(UISwitch *)sender{
+    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tblEvent];
+    NSIndexPath * indexPath = [self.tblEvent indexPathForRowAtPoint:hitPoint];
+    Condition *condition = self.arrCondition[(NSUInteger) (indexPath.row-1)];
+    condition.sattus = @(@(sender.isOn).integerValue);
+    if([condition.myKey containsString:@"Switch"]){
+        NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
+        condition.myValue = newValue;
+    }
+    [self.coreDataService saveCondition];
+}
+
 
 #pragma mark - UITextFieldDelegate method implementation
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
-    DDLogInfo(@"");
+
     self.eventTitle=textField.text;
-    DDLogDebug(@"event title :%@",self.eventTitle);
+
     [textField resignFirstResponder];
     return YES;
 }
@@ -331,18 +283,7 @@
 
 #pragma mark - DatePickerViewControllerDelegate method implementation
 
--(void)dateWasSelected:(NSDate *)selectedDate{
-    NSIndexPath *indexPath= [self.tblEvent indexPathForSelectedRow];
-    if(indexPath.section==0){
-        if(indexPath.row==2){
-            self.eventStartDate=selectedDate;
-        }else if (indexPath.row==3){
-            self.eventEndDate=selectedDate;
-        }
-    }
 
-    [self.tblEvent reloadData];
-}
 
 - (void)addAlarm:(AddAlarm *)controller didFinishCreateAlarm:(EKAlarm *)item {
     [self.editedEvent addAlarm:item];

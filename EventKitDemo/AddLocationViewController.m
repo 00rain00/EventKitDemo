@@ -26,6 +26,7 @@ double const DEFAULTSPAN = 500;
 @end
 
 @implementation AddLocationViewController
+@synthesize rowDescriptor = _rowDescriptor;
 
 - (void)setLocationRequestID:(INTULocationRequestID)locationRequestID
 {
@@ -208,5 +209,18 @@ double const DEFAULTSPAN = 500;
 
 
 
+
+- (IBAction)finishAddLocation:(id)sender {
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+}
+
+- (XLFormRowDescriptor *)rowDescriptor {
+    return nil;
+}
+
+- (void)setRowDescriptor:(XLFormRowDescriptor *)rowDescriptor {
+
+}
 
 @end

@@ -15,7 +15,7 @@
         else{
             self.eventsAccessGranted=NO;
         }
-        if(OBJECT_IS_EMPTY([userDefaults objectForKey:@"eventkit_selected_calendar"])){
+        if(OBJECT_ISNOT_EMPTY([userDefaults objectForKey:@"eventkit_selected_calendar"])){
             self.selectedCalenderIdentifier= [userDefaults objectForKey:@"eventkit_selected_calendar"];
         }else{
             self.selectedCalenderIdentifier=@"";
@@ -32,7 +32,7 @@
 //override the setter
 - (void)setEventsAccessGranted:(BOOL)eventsAccessGranted {
     _eventsAccessGranted = eventsAccessGranted;
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:eventsAccessGranted] forKey:@"eventkit_events_access_granted"];
+    [[NSUserDefaults standardUserDefaults] setValue:@(eventsAccessGranted) forKey:@"eventkit_events_access_granted"];
 }
 
 - (void)setSelectedCalenderIdentifier:(NSString *)selectedCalenderIdentifier {
@@ -51,7 +51,7 @@
     NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
     NSMutableArray *iCloudCalenders = [NSMutableArray new];
     for(int i =0; i<allCalendars.count;i++){
-        EKCalendar *calendar= [allCalendars objectAtIndex:i];
+        EKCalendar *calendar= allCalendars[i];
 
         DDLogDebug(@"calender type: %@////title:%@",[NSString stringWithFormat: @"%ld",(long)calendar.type],calendar.title);
         if(calendar.type == EKCalendarTypeCalDAV){
@@ -68,7 +68,7 @@
     NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeEvent];
     NSMutableArray *localCalenders = [NSMutableArray new];
     for(int i =0; i<allCalendars.count;i++){
-        EKCalendar *calendar= [allCalendars objectAtIndex:i];
+        EKCalendar *calendar= allCalendars[i];
 
         DDLogDebug(@"calender type: %@////title:%@",[NSString stringWithFormat: @"%ld",(long)calendar.type],calendar.title);
         if(calendar.type == EKCalendarTypeLocal){
@@ -95,8 +95,8 @@
 }
 
 - (void)saveCustomerCalendarIdentifier:(NSString *)identifier {
-    [self.customerCalendarIdentifiers addObject:identifier];
-    [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
+ //   [self.customerCalendarIdentifiers addObject:identifier];
+  //  [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
 
 }
 
@@ -113,8 +113,8 @@
 }
 
 - (void)removeCalendarIdentifier:(NSString *)identifier {
-    [self.customerCalendarIdentifiers removeObject:identifier];
-    [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
+    //[self.customerCalendarIdentifiers removeObject:identifier];
+   // [[NSUserDefaults standardUserDefaults] setObject:self.customerCalendarIdentifiers forKey:@"eventkit_cal_identifiers"];
 
 }
 
@@ -171,17 +171,36 @@
 
 }
 
+- (NSMutableArray *)getCalendarBy:(NSArray *)calendarIdentifiers {
+    if(OBJECT_ISNOT_EMPTY(calendarIdentifiers)){
+        NSMutableArray * result = [NSMutableArray new];
+        NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeReminder];
+        NSString *identifier  = calendarIdentifiers.firstObject;
+        for(EKCalendar *calendar1 in allCalendars){
+           if([calendar1.calendarIdentifier isEqualToString:identifier]){
+               [result addObject:calendar1];
+           }
+
+        }
+        DDLogDebug(@"total fetch calendars: %lu",(unsigned long)result.count);
+        return result;
+    }else{
+        DDLogDebug(@"calendarIdentifiers is empty");
+        return nil;
+    }
+}
+
+
 - (void)getRemembersOfSelectedCalendar:(NSArray *)calenders {
 
 
-    // Create a predicate value with start date a year before and end date a year after the current date.
-    int yearSeconds = 365 * (60 * 60 * 24);
-    NSPredicate *predicate = [self.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:nil];
+   
+  //  NSPredicate *predicate = [self.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:nil];
     NSPredicate *predicate1 = [self.ekEventStore predicateForRemindersInCalendars:calenders];
 
     // Get an array with all events.
     //completion is ascynomous
-    [self.ekEventStore fetchRemindersMatchingPredicate:predicate completion:^(NSArray *reminders){
+    [self.ekEventStore fetchRemindersMatchingPredicate:predicate1 completion:^(NSArray *reminders){
 
         //call the block
         if(self.callbackForFetchReminders){
@@ -189,12 +208,7 @@
         }
 
     }];
-    //[NSThread sleepForTimeInterval:5.0];
-    // Sort the array based on the start date.
-   // eventsArray = [eventsArray sortedArrayUsingSelector:@selector(compareStartDateWithEvent:)];
-
-    // Return that array.
-
+   
 }
 
 
