@@ -27,25 +27,32 @@
 
 -(void)testCreateCondtion{
     CoreDataService *cd  = [[CoreDataService alloc]init];
-    [cd createCondidion:@"asfiasfasnkf"];
+    NSString *startTime = @"0700";
+    NSString * endTime  = @"0800";
+    NSData * start = [NSKeyedArchiver archivedDataWithRootObject:startTime];
+    NSData * end = [NSKeyedArchiver archivedDataWithRootObject:endTime];
+    [cd createCondition:@"12345" :@"startTime" :start];
+    [cd createCondition:@"12345" :@"endTime" :end];
     cd = nil;
 }
 -(void)testFetchCondion{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"asfiasfasnkf";
+    NSString * ID =@"12345";
    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
     CoreDataService *cd  = [[CoreDataService alloc]init];
    NSArray * re =  [cd fetchCondition:request];
     for (Condition * con in re) {
-        DDLogDebug(@"%@ %@",con.myReminderID,con.myKey);
+        NSString *value = [NSKeyedUnarchiver unarchiveObjectWithData:con.myValue];
+        DDLogDebug(@"%@ %@,%@",con.myReminderID,con.myKey,value);
     }
 }
 
 -(void)testDeleteCondition{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"asfiasfasnkf";
-    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
+    NSString * ID =@"12345";
+    NSString * key = @"endTime";
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
     [request setPredicate:predicate];
     CoreDataService *cd  = [[CoreDataService alloc]init];
     [cd deleteCondition:request];

@@ -12,7 +12,11 @@
 
 @interface CoreDataService : NSObject
 
--(Condition *)createCondidion:(NSString *)id;
+
+
+- (Condition *)createCondition:(NSString *)reminderId :(NSString *)myKey :(NSData *)myValue;
+
 -(NSArray *)fetchCondition:(NSFetchRequest *)request;
 -(void)deleteCondition:(NSFetchRequest *)request;
+-(void)saveCondition;
 @end

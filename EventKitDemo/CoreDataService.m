@@ -21,17 +21,14 @@ if((self = [super init])){
     return self;
 }
 
-- (Condition *)createCondidion:(NSString *)id {
+- (Condition *)createCondition:(NSString *)reminderId:(NSString *)myKey:(NSData *)myValue {
     Condition *condition = [NSEntityDescription insertNewObjectForEntityForName:@"Condition" inManagedObjectContext:self.managedObjectContext];
-    condition .myReminderID = id;
-    condition.myKey = @"time";
-    condition.myValue= @"0800";
+    condition .myReminderID = reminderId;
+    condition.myKey = myKey;
+    condition.myValue = myValue;
     condition.sattus = @YES;
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        FATAL_CORE_DATA_ERROR(error);
-    }
-return condition;
+    [self saveCondition];
+    return condition;
 }
 
 - (NSArray *)fetchCondition:(NSFetchRequest *)request {
@@ -53,6 +50,13 @@ return condition;
 
     }
 
+}
+
+- (void)saveCondition {
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        FATAL_CORE_DATA_ERROR(error);
+    }
 }
 
 
