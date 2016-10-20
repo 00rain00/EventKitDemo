@@ -80,11 +80,6 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 #pragma mark - Navigation
@@ -133,12 +128,25 @@
             }
             else{
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
+                Condition *condition = self.arrCondition[(NSUInteger) (indexPath.row-1)];
                 UILabel * key = (UILabel *)[cell.contentView viewWithTag:1];
-                key.text= [(Condition *) self.arrCondition[(NSUInteger) (indexPath.row - 1)] myKey];
+                key.text= condition.myKey;
                 UISwitch *status = (UISwitch *) [cell.contentView viewWithTag:3];
-                status.on = [[(Condition *) self.arrCondition[(NSUInteger) (indexPath.row - 1)] sattus]boolValue];
-//                UILabel * value = (UILabel *)[cell.contentView viewWithTag:1];
-//                value.text= [(Condition *) self.arrCondition[indexPath.row - 1] myKey];
+                status.on = [condition.sattus boolValue];
+
+                [status addTarget:self action:@selector(changeStatus:) forControlEvents:UIControlEventValueChanged];
+                UILabel * valueLabel = (UILabel *)[cell.contentView viewWithTag:2];
+                //detact which type of value
+                if([condition.myKey containsString:@"Switch"]){
+                   // BOOL myValue = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] boolValue];
+                    valueLabel.hidden = YES;
+                }
+                else if([condition.myKey containsString:@"Time"]){
+                    NSDate * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    valueLabel.text = [NSDate stringForDisplayFromDate:myValue prefixed:YES];
+                }
+
+
             }
 
 
@@ -162,7 +170,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if(editingStyle == UITableViewCellEditingStyleDelete){
-     // [self deleteCondition];
+      [self deleteCondition:(NSUInteger) indexPath.row];
   }
 }
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -226,8 +234,17 @@
 }
 
 - (void)deleteCondition:(NSUInteger)objectIndex {
-    //Todo DELETE the object in database than delete the obj in arrCondition
-    [self.arrCondition removeObjectAtIndex:objectIndex];
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =self.editedEvent.calendarItemIdentifier;
+    Condition *conditionToDelete = self.arrCondition[objectIndex-1];
+    NSString * key = conditionToDelete.myKey;
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
+    [request setPredicate:predicate];
+    [self.coreDataService deleteCondition:request];
+
+    [self.arrCondition removeObjectAtIndex:objectIndex-1];
+    [self.tblEvent reloadData];
 }
 
 - (NSArray *)fetchCondition:(NSString *)reminderID {
@@ -238,6 +255,18 @@
 
          return  [self.coreDataService fetchCondition:request];
 
+}
+
+-(void)changeStatus:(UISwitch *)sender{
+    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tblEvent];
+    NSIndexPath * indexPath = [self.tblEvent indexPathForRowAtPoint:hitPoint];
+    Condition *condition = self.arrCondition[(NSUInteger) (indexPath.row-1)];
+    condition.sattus = @(@(sender.isOn).integerValue);
+    if([condition.myKey containsString:@"Switch"]){
+        NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
+        condition.myValue = newValue;
+    }
+    [self.coreDataService saveCondition];
 }
 
 

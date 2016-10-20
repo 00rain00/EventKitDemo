@@ -10,10 +10,12 @@
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
 #import "CoreDataService.h"
-NSString *const kallDay = @"allDay";
+#import <FFGlobalAlertController/UIAlertController+Window.h>
+#import "UIAlertController+Window.h"
+NSString *const kallDay = @"allDaySwitch";
 NSString * const kstartTime = @"startTime";
 NSString *const  kendTime = @"endTime";
-NSString * const  kendTimeSwitch=@"endTimeSwitch";
+NSString * const  kendTimeSwitch=@"endSwitch";
 
 @interface DatePickerViewController ()
 
@@ -141,20 +143,27 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
         [section addFormRow:monthRow];
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    self.form = form;
-    
-    
-    
-}
 
+    self.form = form;
+
+}
+-(BOOL)saveValidation:(NSString *)reminderID{
+    BOOL flag  = NO;
+    CoreDataService *coreDataService = [[CoreDataService alloc] init];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =reminderID;
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
+    [request setPredicate:predicate];
+   NSArray *result =  [coreDataService fetchCondition:request];
+    for(Condition * condition in result){
+        if([condition.myKey isEqualToString:kallDay]||[condition.myKey isEqualToString:kstartTime]||[condition.myKey isEqualToString:kendTime]||[condition.myKey isEqualToString:kendTimeSwitch]){
+            flag = YES;
+            break;
+        }
+    }
+    coreDataService=nil;
+    return flag;
+}
 
 
 #pragma mark - IBAction method implementation
@@ -165,7 +174,16 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
     if(OBJECT_IS_EMPTY(reminderID)){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     }else {
-        DDLogDebug(reminderID);
+        if([self saveValidation:reminderID]){
+            __weak typeof(self) weakSelf=self;
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"We found that there is/are condition(s) repeating! \n Please delete the exsit one then add a new condition" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+            }]];
+            [alertController show];
+        }else{
+
         CoreDataService *coreDataService = [[CoreDataService alloc] init];
         NSDictionary *formDic = [self formValues];
         LOOP_DICTIONARY(formDic);
@@ -175,13 +193,17 @@ NSString * const  kendTimeSwitch=@"endTimeSwitch";
             if( [key isEqualToString:kendTimeSwitch]){
                 continue;
             }
+            if([key isEqualToString:kallDay]&&OBJECT_ISNOT_EMPTY(formDic[kstartTime])){
+                continue;
+            }
             NSData * myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
             [coreDataService createCondition:reminderID :key :myValue];
 
         }
-
+        coreDataService = nil;
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 
+    }
     }
 
 }

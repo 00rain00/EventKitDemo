@@ -59,6 +59,13 @@ if((self = [super init])){
     }
 }
 
+- (void)saveCondtion:(NSManagedObjectContext *)managedObjectContext {
+    NSError *error = nil;
+    if (![managedObjectContext save:&error]) {
+        FATAL_CORE_DATA_ERROR(error);
+    }
+}
+
 
 -(void)initCoreData{
     NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Reminder" withExtension:@"momd"];

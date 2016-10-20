@@ -19,4 +19,5 @@
 -(NSArray *)fetchCondition:(NSFetchRequest *)request;
 -(void)deleteCondition:(NSFetchRequest *)request;
 -(void)saveCondition;
+-(void)saveCondtion:(NSManagedObjectContext *)managedObjectContext;
 @end

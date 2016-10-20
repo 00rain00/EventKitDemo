@@ -50,10 +50,11 @@
 
 -(void)testDeleteCondition{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"12345";
+    NSString * ID =@"D98DC6FA-9AC7-434C-81C7-CAEEC342E39D";
     NSString * key = @"endTime";
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
-    [request setPredicate:predicate];
+    NSPredicate *deleteAll = [NSPredicate predicateWithFormat:@"myReminderID==%@",ID];
+    [request setPredicate:deleteAll];
     CoreDataService *cd  = [[CoreDataService alloc]init];
     [cd deleteCondition:request];
     cd = nil;
