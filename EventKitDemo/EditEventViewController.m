@@ -12,6 +12,7 @@
 #import <FFGlobalAlertController/UIAlertController+Window.h>
 #import "UIAlertController+Window.h"
 #import "NSDate+Helper.h"
+static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
 @interface EditEventViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -63,6 +64,8 @@
 
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
         DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
+   
+    DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //    for(EKAlarm * alarm1 in self.arrAlarms){
 //            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
 //                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
@@ -143,7 +146,27 @@
                 }
                 else if([condition.myKey containsString:@"Time"]){
                     NSDate * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
-                    valueLabel.text = [NSDate stringForDisplayFromDate:myValue prefixed:YES];
+                    valueLabel.text = [NSDate stringFromDate:myValue withFormat:kNSDateHelperFormatTimeWithPrefix];
+                }else if ([condition.myKey containsString:@"MonthDay"]){
+                    NSMutableArray *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSMutableString *text = [NSMutableString stringWithFormat:@""];
+                    for(NSObject * day in myValue){
+                        if([[day description] containsString:@"Day"]){
+                            [text appendString:day.description];
+                        }
+                    }
+                    valueLabel.text = text;
+                }else if([condition.myKey containsString:@"WeekDay"]){
+                    NSDictionary *myValue  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSMutableString *text = [NSMutableString stringWithFormat:@""];
+                    for(NSObject *kkey in myValue){
+                        NSString *weekDay = [NSString stringWithFormat:@"%@",myValue[kkey]];
+                        if([weekDay isEqualToString:@"1"]){
+                            [text appendString:[kkey description]];
+
+                        }
+                    }
+                    valueLabel.text = text;
                 }
 
 
