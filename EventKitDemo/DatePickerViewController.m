@@ -9,9 +9,8 @@
 #import "DatePickerViewController.h"
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
-#import "CoreDataService.h"
-#import <FFGlobalAlertController/UIAlertController+Window.h>
-#import "UIAlertController+Window.h"
+
+
 NSString *const kallDay = @"allDaySwitch";
 NSString * const kstartTime = @"startTime";
 NSString *const  kendTime = @"endTime";

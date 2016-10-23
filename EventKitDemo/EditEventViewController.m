@@ -9,9 +9,7 @@
 #import "EditEventViewController.h"
 #import "AddAlarm.h"
 #import "AppDelegate.h"
-#import <FFGlobalAlertController/UIAlertController+Window.h>
-#import "UIAlertController+Window.h"
-#import "NSDate+Helper.h"
+
 static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
 @interface EditEventViewController ()
 
@@ -130,8 +128,13 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
                 titleTextfile.text=self.editedEvent.title;
             }
             else{
+
                 cell = [tableView dequeueReusableCellWithIdentifier:@"idCellCondition"];
                 Condition *condition = self.arrCondition[(NSUInteger) (indexPath.row-1)];
+
+
+
+
                 UILabel * key = (UILabel *)[cell.contentView viewWithTag:1];
                 key.text= condition.myKey;
                 UISwitch *status = (UISwitch *) [cell.contentView viewWithTag:3];
@@ -167,6 +170,11 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
                         }
                     }
                     valueLabel.text = text;
+                }
+                else if([condition.myKey isEqualToString:@"LocationDetails"]){
+                    NSDictionary *locationDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSString *displayAddress = locationDetails[@"LocationDisplay"];
+                    valueLabel.text = displayAddress;
                 }
 
 

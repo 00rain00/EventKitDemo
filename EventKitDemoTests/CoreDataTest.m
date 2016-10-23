@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "CoreDataService.h"
+#import <MapKit/MapKit.h>
+
 
 @interface CoreDataTest : XCTestCase
 
@@ -33,7 +35,7 @@
 //    NSData * end = [NSKeyedArchiver archivedDataWithRootObject:endTime];
 //    [cd createCondition:@"12345" :@"startTime" :start];
 //    [cd createCondition:@"12345" :@"endTime" :end];
-    
+
     cd = nil;
 }
 -(void)testFetchCondion{
@@ -53,7 +55,7 @@
             }
     //        NSMutableArray *value  =[NSKeyedUnarchiver unarchiveObjectWithData:con.myValue];
             if([value respondsToSelector:@selector(countByEnumeratingWithState:objects:count:)]){
-              
+
                 for (NSObject * obj in value) {
                    // NSNumber * string  = obj;
                     DDLogDebug(@"%@, %@",[obj description],value[obj]);
@@ -76,11 +78,36 @@
 //                // DDLogDebug(@"%@ %@,%@,%@",con.myReminderID,con.myKey,key,value[key]);
 //            }
      //       LOOP_DICTIONARY(value);
-       
+
         }
-       
+
     }
 }
+
+-(void)testFetchLocationCondion{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
+    [request setPredicate:predicate];
+    CoreDataService *cd  = [[CoreDataService alloc]init];
+    NSArray * re =  [cd fetchCondition:request];
+    NSString * title ;
+    for (Condition * con in re) {
+        if([con.myKey isEqualToString:@"locationAddress"]){
+            title = [NSString stringWithFormat:@"%@",con.myKey];
+            MKMapItem * mapItem = [NSKeyedUnarchiver unarchiveObjectWithData:con.myValue];
+
+            DDLogDebug(@"%@,%@",title,mapItem);
+        }
+        if([con.myKey isEqualToString:@"locationType"]){
+            NSNumber * type  = [NSKeyedUnarchiver unarchiveObjectWithData:con.myValue];
+            DDLogDebug(@"type: %d",type.integerValue);
+        }
+
+}
+
+}
+
 
 -(void)testDeleteCondition{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
