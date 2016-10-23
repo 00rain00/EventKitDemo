@@ -9,14 +9,14 @@
 #import "DatePickerViewController.h"
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
-#import "CoreDataService.h"
-#import <FFGlobalAlertController/UIAlertController+Window.h>
-#import "UIAlertController+Window.h"
+
+
 NSString *const kallDay = @"allDaySwitch";
 NSString * const kstartTime = @"startTime";
 NSString *const  kendTime = @"endTime";
 NSString * const  kendTimeSwitch=@"endSwitch";
-
+NSString *const kWeekDay  = @"WeekDay";
+NSString *const kMonthDay  = @"MonthDay";
 @interface DatePickerViewController ()
 
 @property (nonatomic,strong) DateAndTimeViewController * controller;
@@ -100,11 +100,11 @@ NSString * const  kendTimeSwitch=@"endSwitch";
         [form addFormSection:section];
         
         // WeekDays
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"WeekDay" rowType:XLFormRowDescriptorTypeWeekDays];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:kWeekDay rowType:XLFormRowDescriptorTypeWeekDays];
         row.value =  @{
                        kSunday: @(NO),
                        kMonday: @(NO),
-                       kTuesday: @(YES),
+                       kTuesday: @(NO),
                        kWednesday: @(NO),
                        kThursday: @(NO),
                        kFriday: @(NO),
@@ -137,7 +137,7 @@ NSString * const  kendTimeSwitch=@"endSwitch";
         row.hidden = [NSString stringWithFormat:@"$%@==0||$%@==1", kendTimeSwitch,kallDay];
         [section addFormRow:row];
 
-        XLFormRowDescriptor *  monthRow = [XLFormRowDescriptor formRowDescriptorWithTag:@"Day selector" rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
+        XLFormRowDescriptor *  monthRow = [XLFormRowDescriptor formRowDescriptorWithTag:kMonthDay rowType:XLFormRowDescriptorTypeMultipleSelector title:@"Date"];
         monthRow.selectorOptions = @[@"Day 1",@"Day 2",@"Day 3",@"Day 4",@"Day 5",@"Day 6",@"Day 7",@"Day 8",@"Day 9",@"Day 10",@"Day 11",@"Day 12",@"Day 13",@"Day 14",@"Day 15",@"Day 16",@"Day 17",@"Day 18",@"Day 19",@"Day 20",@"Day 21",@"Day 22",@"Day 23",@"Day 24",@"Day 25",@"Day 26",@"Day 27",@"Day 28",@"Day 29",@"Day 30"];
         monthRow.value = @[@1,@2,@3,@4,@5,@6,@7,@8,@9,@10,@11,@12,@13,@14,@15,@16,@17,@18,@19,@20,@21,@22,@23,@24,@25,@26,@27,@28,@29,@30];
         [section addFormRow:monthRow];
@@ -189,17 +189,21 @@ NSString * const  kendTimeSwitch=@"endSwitch";
         LOOP_DICTIONARY(formDic);
        // BOOL alldaySwitch = [formDic[kallDay] boolValue];
       //  BOOL endtimeSwitch = [formDic[kendTimeSwitch] boolValue];
-        for(NSString *key in formDic){
-            if( [key isEqualToString:kendTimeSwitch]){
+        for(NSString *key in formDic) {
+            if ([key isEqualToString:kendTimeSwitch]) {
+                continue;
+            } else if ([key isEqualToString:kallDay] && OBJECT_ISNOT_EMPTY(formDic[kstartTime])) {
                 continue;
             }
-            if([key isEqualToString:kallDay]&&OBJECT_ISNOT_EMPTY(formDic[kstartTime])){
-                continue;
-            }
-            NSData * myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
-            [coreDataService createCondition:reminderID :key :myValue];
+//            DDLogDebug(@"%@is array :%d",key, [formDic[key] isKindOfClass:[NSArray class]]);
+//            DDLogDebug(@"%@is Marray :%d",key, [formDic[key] isKindOfClass:[NSMutableArray class]]);
+//            DDLogDebug(@"%@is Dic :%d",key, [formDic[key] isKindOfClass:[NSDictionary class]]);
 
+
+            NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
+            [coreDataService createCondition:reminderID :key :myValue];
         }
+
         coreDataService = nil;
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 

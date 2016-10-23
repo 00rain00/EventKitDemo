@@ -20,6 +20,7 @@ typedef void(^DidReceiveLocation)(CLLocation *currentlocation);
 @property(nonatomic,weak)IBOutlet MKMapView *mapView;
 @property(nonatomic,weak)IBOutlet UISegmentedControl *editingTypeSegentedControl;
 @property (nonatomic, strong)DidReceiveLocation callbackForDidReceiceLocation;
+@property (nonatomic, copy)NSString *locationType;
 @property (nonatomic,weak) id <AddLocationViewControllerDelegate> delegate;
 - (IBAction)finishAddLocation:(id)sender;
 

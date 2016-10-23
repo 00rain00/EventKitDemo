@@ -13,11 +13,14 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
+
+
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"
 #import "NSDate+Helper.h"
+#import <FFGlobalAlertController/UIAlertController+Window.h>
+#import <MBProgressHUD/MBProgressHUD.h>
+#import "CoreDataService.h"
 
 
 
