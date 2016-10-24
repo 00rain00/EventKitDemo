@@ -33,4 +33,5 @@ typedef void(^FetchRemindersBlock)(NSArray *reminders);
 -(NSArray *)getEventsOfSelectedCalendar;
 -(NSMutableArray*)getCalendarBy:(NSArray *)calendarIdentifiers;
 -(void)getRemembersOfSelectedCalendar:(NSArray *)calenders;
+-(BOOL)checkCondition:(NSArray *)conditions;
 @end

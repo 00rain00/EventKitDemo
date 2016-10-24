@@ -211,5 +211,49 @@
    
 }
 
+- (BOOL)checkCondition:(NSArray *)conditions {
+    DDLogDebug(@"start");
+
+
+
+        NSMutableArray *fullfillConditions = [NSMutableArray new];
+        //loop the condition to check if the condition fullfill
+        for(Condition *condition in conditions){
+            NSString *key  = condition.myKey;
+            NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+            if([key containsString:@"Time"]){
+                [fullfillConditions addObject:@([self compareTime:myValue])];
+            }
+            if([key containsString:@"Location"]){
+                [fullfillConditions addObject:@([self compareTime:myValue])];
+            }
+            //todo  other conditions
+        }
+        //check whether add alarm to conditions
+        BOOL flag  = YES;
+        for(id result in fullfillConditions){
+            flag  = flag && [result boolValue];
+        }
+        return flag;
+
+
+
+
+}
+
+-(BOOL)compareTime:(NSDictionary *)dic{
+    for(NSObject *key in dic){
+
+    }
+
+
+
+    return YES;
+
+}
+
+-(BOOL)compareLocation:(NSDictionary *)dic{
+    return  YES;
+}
 
 @end

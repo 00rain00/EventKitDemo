@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "EngineService.h"
+#import "CoreDataService.h"
 
 @interface EngineServieTest : XCTestCase
 
@@ -39,6 +40,27 @@
             @"Time" :[NSDate new]};
 
     [es generateFacts:facts];
+}
+
+-(void)testTransformRules{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES",ID];
+    [request setPredicate:predicate];
+    CoreDataService *cd  = [[CoreDataService alloc]init];
+    NSArray * re =  [cd fetchCondition:request];
+    EngineService * es = [EngineService new];
+    [es writeConditionToFile:re];
+    DDLogDebug(@"size : %ld",re.count);
+
+
+
+
+
+
+
+    cd = nil;
+    es = nil;
 }
 
 @end

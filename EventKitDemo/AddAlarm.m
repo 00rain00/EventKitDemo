@@ -6,12 +6,12 @@
 //  Copyright © 2016 Appcoda. All rights reserved.
 //
 
-#import <EventKit/EventKit.h>
+
 #import "AddAlarm.h"
 #import "AppDelegate.h"
 #import "EditEventViewController.h"
 
-NSString *const kTime = @"time";
+NSString *const kTime1 = @"time";
 @implementation AddAlarm
 - (id)initWithCoder:(NSCoder *)aDecoder {
     DDLogDebug(@"");
@@ -39,7 +39,7 @@ NSString *const kTime = @"time";
 //    [section addFormRow:row];
 
     // Starts
-    row = [XLFormRowDescriptor formRowDescriptorWithTag:kTime rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Starts"];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:kTime1 rowType:XLFormRowDescriptorTypeDateTimeInline title:@"Starts"];
     row.value = [NSDate dateWithTimeIntervalSinceNow:60*60*24];
     [section addFormRow:row];
 
@@ -99,7 +99,7 @@ NSString *const kTime = @"time";
    NSDictionary *formValue = [self.form formValues];
     for(id key in formValue){
         DDLogDebug(@"key:%@",key);
-        if(  [key isEqualToString:kTime]){
+        if(  [key isEqualToString:kTime1]){
 
             NSDate *alarmTime = (NSDate *)formValue[key];
            EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarmTime];

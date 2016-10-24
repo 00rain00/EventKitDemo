@@ -12,8 +12,9 @@
 
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
 #import <Foundation/Foundation.h>
-
+#import <NSDate_Escort/NSDate+Escort.h>
 
 #import <CocoaLumberjack/CocoaLumberjack.h>
 #import "LogFormatter.h"

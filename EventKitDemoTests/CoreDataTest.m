@@ -29,12 +29,12 @@
 
 -(void)testCreateCondtion{
     CoreDataService *cd  = [[CoreDataService alloc]init];
-//    NSString *startTime = @"0700";
-//    NSString * endTime  = @"0800";
-//    NSData * start = [NSKeyedArchiver archivedDataWithRootObject:startTime];
-//    NSData * end = [NSKeyedArchiver archivedDataWithRootObject:endTime];
-//    [cd createCondition:@"12345" :@"startTime" :start];
-//    [cd createCondition:@"12345" :@"endTime" :end];
+    NSString *startTime = @"0700";
+    NSString * endTime  = @"0800";
+    NSData * start = [NSKeyedArchiver archivedDataWithRootObject:startTime];
+    NSData * end = [NSKeyedArchiver archivedDataWithRootObject:endTime];
+    [cd createCondition:@"12345" :@"startTime" :start];
+    [cd createCondition:@"12345" :@"endTime" :end];
 
     cd = nil;
 }
@@ -91,6 +91,7 @@
     [request setPredicate:predicate];
     CoreDataService *cd  = [[CoreDataService alloc]init];
     NSArray * re =  [cd fetchCondition:request];
+    DDLogDebug(@"size : %ld",re.count);
     NSString * title ;
     for (Condition * con in re) {
         if([con.myKey isEqualToString:@"locationAddress"]){
@@ -111,7 +112,7 @@
 
 -(void)testDeleteCondition{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
+    NSString * ID =@"A778F024-AEA6-42C0-89FD-4FCA7A990804";
     NSString * key = @"endTime";
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
     NSPredicate *deleteAll = [NSPredicate predicateWithFormat:@"myReminderID==%@",ID];

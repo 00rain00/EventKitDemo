@@ -17,6 +17,7 @@ NSString *const  kendTime = @"endTime";
 NSString * const  kendTimeSwitch=@"endSwitch";
 NSString *const kWeekDay  = @"WeekDay";
 NSString *const kMonthDay  = @"MonthDay";
+NSString * const kTime  = @"Time";
 @interface DatePickerViewController ()
 
 @property (nonatomic,strong) DateAndTimeViewController * controller;
@@ -156,7 +157,7 @@ NSString *const kMonthDay  = @"MonthDay";
     [request setPredicate:predicate];
    NSArray *result =  [coreDataService fetchCondition:request];
     for(Condition * condition in result){
-        if([condition.myKey isEqualToString:kallDay]||[condition.myKey isEqualToString:kstartTime]||[condition.myKey isEqualToString:kendTime]||[condition.myKey isEqualToString:kendTimeSwitch]){
+        if([condition.myKey isEqualToString:kTime]){
             flag = YES;
             break;
         }
@@ -189,20 +190,20 @@ NSString *const kMonthDay  = @"MonthDay";
         LOOP_DICTIONARY(formDic);
        // BOOL alldaySwitch = [formDic[kallDay] boolValue];
       //  BOOL endtimeSwitch = [formDic[kendTimeSwitch] boolValue];
-        for(NSString *key in formDic) {
-            if ([key isEqualToString:kendTimeSwitch]) {
-                continue;
-            } else if ([key isEqualToString:kallDay] && OBJECT_ISNOT_EMPTY(formDic[kstartTime])) {
-                continue;
-            }
+//        for(NSString *key in formDic) {
+//            if ([key isEqualToString:kendTimeSwitch]) {
+//                continue;
+//            } else if ([key isEqualToString:kallDay] && OBJECT_ISNOT_EMPTY(formDic[kstartTime])) {
+//                continue;
+//            }
 //            DDLogDebug(@"%@is array :%d",key, [formDic[key] isKindOfClass:[NSArray class]]);
 //            DDLogDebug(@"%@is Marray :%d",key, [formDic[key] isKindOfClass:[NSMutableArray class]]);
 //            DDLogDebug(@"%@is Dic :%d",key, [formDic[key] isKindOfClass:[NSDictionary class]]);
 
 
-            NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
-            [coreDataService createCondition:reminderID :key :myValue];
-        }
+            NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic];
+            [coreDataService createCondition:reminderID :kTime :myValue];
+        //}
 
         coreDataService = nil;
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];

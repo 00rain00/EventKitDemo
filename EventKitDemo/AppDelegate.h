@@ -21,6 +21,6 @@
 
 @property(strong,nonatomic)ViewController * controller;
 
-
+@property (strong, nonatomic) NSString *startTime;  
 
 @end
