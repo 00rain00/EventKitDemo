@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Appcoda. All rights reserved.
 //
 
+#import <NSDate_Escort/NSDate+Escort.h>
 #import "DatePickerViewController.h"
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
@@ -187,7 +188,26 @@ NSString * const kTime  = @"Time";
 
         CoreDataService *coreDataService = [[CoreDataService alloc] init];
         NSDictionary *formDic = [self formValues];
-        LOOP_DICTIONARY(formDic);
+            if(OBJECT_ISNOT_EMPTY(formDic[@"endSwitch"])){
+                if([[NSString stringWithFormat:@"%@", formDic[@"endSwitch"]] isEqualToString:@"1"]){
+                    NSDate *startDate = formDic[@"startTime"];
+                    NSDate *endDate = formDic[@"endTime"];
+                    if([endDate isEarlierThanOrEqualDateIgnoringDate:startDate]){
+                        __weak typeof(self) weakSelf=self;
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"End time is earlier than start time" preferredStyle:UIAlertControllerStyleAlert];
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                           // [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+                        }]];
+                        [alertController show];
+                        return;
+                    }
+                }
+
+            }
+
+
+       // LOOP_DICTIONARY(formDic);
        // BOOL alldaySwitch = [formDic[kallDay] boolValue];
       //  BOOL endtimeSwitch = [formDic[kendTimeSwitch] boolValue];
 //        for(NSString *key in formDic) {

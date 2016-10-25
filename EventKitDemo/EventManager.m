@@ -1,5 +1,7 @@
 
+#import <NSDate_Escort/NSDate+Escort.h>
 #import "EventManager.h"
+static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
 @end
@@ -241,19 +243,140 @@
 
 }
 
--(BOOL)compareTime:(NSDictionary *)dic{
-    for(NSObject *key in dic){
+-(BOOL)compareTime:(NSDictionary *)myValue{
+    //抽象出一个tempate?
+    DDLogDebug(@"start");
+    BOOL haveWeekDay = NO;
+    BOOL haveMonthDay = NO;
+    BOOL isALlDay = NO;
+    BOOL haveEndTime = NO;
+    NSDate *current = [NSDate new];
+    NSObject *monthDaySwitch;
+    //identify the compare type
+    for(NSObject *key in myValue){
+        if([key.description isEqualToString: @"WeekDay"]){
+            haveWeekDay = YES;
+        }
+        if([key.description isEqualToString:@"MonthDay"]){
+            haveMonthDay = YES;
+        }
+        if([key.description isEqualToString:@"allDaySwitch"]){
+            NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
+            if([allDaySwitch isEqualToString:@"1"]){
+                isALlDay = YES;
+            }
+        }
+        if([key.description isEqualToString:@"endSwitch"]){
+            NSString *endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
+            if([endSwitch isEqualToString:@"1"]){
+                haveEndTime = YES;
+            }
+        }
 
     }
+  //  DDLogDebug(@"have Weed Day: %d have monthDay: %d, is all day %d",haveWeekDay,haveMonthDay,isALlDay);
+    DDLogDebug(@"cueent week : %d, current day: %d",current.weekday,current.day);
+    BOOL isTodayTheWeekDay = NO;
+    BOOL isInTheTimeRange = NO;
+    if(haveWeekDay){
+        DDLogDebug(@"haveWeekDay : %d",haveWeekDay);
+        //extract the week day
+        NSDictionary *dicWeek   = myValue[@"WeekDay"];
+        NSMutableArray *marrWeekDays = [NSMutableArray new];
+        for(NSObject *weekDay in dicWeek){
+            if([[NSString stringWithFormat:@"%@", dicWeek[weekDay]] isEqualToString:@"1"]){
+                [marrWeekDays addObject:weekDay.description];
+            }
+        }
+        NSMutableArray *marrNumberWeekDay = [self wordWeekDay2NumberWeekDay:marrWeekDays];
+        //check if it is today
+        for(NSNumber *numDay in marrNumberWeekDay){
+            DDLogDebug(@"current week day : %d   numDay : %d",current.weekday,numDay.integerValue);
+            if([numDay isEqualToNumber:@(current.weekday)]){
+                DDLogDebug(@"check is today");
+                isTodayTheWeekDay = YES;
+                break;
+            }
+        }
+        //check if it is in time-range
+        DDLogDebug(@"isAllDay : %d",isALlDay);
+        if(!isALlDay){
+            NSDate * startTime = myValue[@"startTime"];
+            DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+            if(haveEndTime){
 
+                NSDate *endTime = myValue[@"endTime"];
+                DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }else{
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }
 
+        }else{
+            isInTheTimeRange=YES;
+        }
 
-    return YES;
+        return isInTheTimeRange&&isTodayTheWeekDay;
+    }
+
+//    //first compare all day switch
+//    NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
+//    if([allDaySwitch isEqualToString:@"1"]){
+//        NSArray *allKeys = myValue.allKeys;
+//    }
+//    //then endTime switch
+//    for(NSObject *kkey in myValue){
+//
+//
+//        NSString *strKey = [NSString stringWithFormat:@"%@",kkey.description];
+//
+//        if([strKey isEqualToString:@"allDaySwitch"]){
+//            NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
+//            if([value isEqualToString:@"1"]){
+//                return YES;
+//            }
+//
+//        }
+//    }
+
+        DDLogDebug(@"end of class");
+    return isInTheTimeRange&&isTodayTheWeekDay;
+
 
 }
 
 -(BOOL)compareLocation:(NSDictionary *)dic{
     return  YES;
+}
+
+-(NSMutableArray *)wordWeekDay2NumberWeekDay:(NSMutableArray *)marrWeekDay{
+    NSMutableArray *re = [NSMutableArray new];
+    for(NSString *weekDay in marrWeekDay){
+        if([weekDay isEqualToString:@"sunday"]){
+            [re addObject:@(1)];
+        }
+        if([weekDay isEqualToString:@"monday"]){
+            [re addObject:@(2)];
+        }
+        if([weekDay isEqualToString:@"tuesday"]){
+            [re addObject:@(3)];
+        }
+        if([weekDay isEqualToString:@"wednesday"]){
+            [re addObject:@(4)];
+        }
+        if([weekDay isEqualToString:@"thursday"]){
+            [re addObject:@(5)];
+        }
+        if([weekDay isEqualToString:@"friday"]){
+            [re addObject:@(6)];
+        }
+        if([weekDay isEqualToString:@"saturday"]){
+            [re addObject:@(7)];
+        }
+    }
+    return re;
 }
 
 @end

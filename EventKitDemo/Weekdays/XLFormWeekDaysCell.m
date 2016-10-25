@@ -26,14 +26,13 @@
 
 NSString * const XLFormRowDescriptorTypeWeekDays = @"XLFormRowDescriptorTypeWeekDays";
 
-NSString *const kSunday= @"sunday";
 NSString *const kMonday = @"monday";
 NSString *const kTuesday = @"tuesday";
 NSString *const kWednesday = @"wednesday";
 NSString *const kThursday = @"thursday";
 NSString *const kFriday = @"friday";
 NSString *const kSaturday = @"saturday";
-
+NSString *const kSunday = @"sunday";
 @interface XLFormWeekDaysCell()
 @property (weak, nonatomic) IBOutlet UIButton *sundayButton;
 @property (weak, nonatomic) IBOutlet UIButton *mondayButton;

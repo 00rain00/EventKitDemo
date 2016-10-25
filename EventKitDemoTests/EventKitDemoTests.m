@@ -81,5 +81,14 @@
     eventManager = nil;
 }
 
+-(void)testCompareDate{
+    NSDate * current  = [NSDate new];
+   NSDate * oneDayAfterCorrent =  [current dateByAddingDays:1];
+    oneDayAfterCorrent= [oneDayAfterCorrent dateBySubtractingHours:1];
+    BOOL re = [current isEarlierThanOrEqualDateIgnoringDate:oneDayAfterCorrent];
+    DDLogDebug(@"%d",re);
+}
+
+
 
 @end

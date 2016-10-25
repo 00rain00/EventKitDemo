@@ -191,15 +191,15 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
                             if([value isEqualToString:@"0"]){
                                 DDLogDebug(@"time label : %@",timeLabel);
-                                [timeLabel appendString:@"-24:00 PM"];
-                                valueLabel.text = timeLabel;
+                                [timeLabel appendString:@"~"];
+
                                 continue;
                             }
                         }else if([strKey isEqualToString:@"endTime"]){
                             NSDate *endDate = myValue[kkey];
                             NSString *strEndDate = [endDate stringWithFormat:kNSDateHelperFormatTime];
                             [timeLabel appendFormat:@"-%@",strEndDate];
-                            valueLabel.text = timeLabel;
+
                             continue;
                         }else if ([strKey isEqualToString:@"WeekDay"]){
                             NSDictionary *dicWeek  = myValue[kkey];
@@ -211,6 +211,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
                                 }
                             }
+
                             key.text = text;
                         }
 
@@ -224,6 +225,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             }
                             key.text = text;
                         }
+                        valueLabel.text = timeLabel;
                     }
 
                 }
