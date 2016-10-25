@@ -42,6 +42,8 @@
 {
 
     [super viewDidLoad];
+
+
     // Do any additional setup after loading the view.
     
     // Make self the delegate and datasource of the table view.
@@ -55,6 +57,10 @@
     // Instantiate the appDelegate property.
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [self loadEventCalendars];
+
+    // register change in photo library
+
+
 }
 
 - (void)requestAccessToEvents {

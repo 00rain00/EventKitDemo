@@ -39,7 +39,8 @@
     // Make self the delegate and datasource of the table view.
     self.tblEvents.delegate = self;
     self.tblEvents.dataSource = self;
-
+    self.tblEvents.rowHeight = UITableViewAutomaticDimension;
+    self.tblEvents.estimatedRowHeight = 60.0;
     [self performSelector:@selector(loadEvents) withObject:nil afterDelay:0.5];
 
 }
@@ -160,9 +161,7 @@
 }
 
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60.0;
-}
+
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     // Keep the identifier of the event that's about to be edited.
    NSString *reminderIdentifer = [self.arrEvents [(NSUInteger) indexPath.row] calendarItemIdentifier];

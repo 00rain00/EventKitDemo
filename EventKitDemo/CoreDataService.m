@@ -8,7 +8,7 @@
 
 #import "CoreDataService.h"
 
-@interface CoreDataService()
+@interface CoreDataService()<PHPhotoLibraryChangeObserver>
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @end
 
@@ -17,6 +17,7 @@
 -(instancetype)init{
 if((self = [super init])){
     [self initCoreData];
+    [self requestAccess];
 }
     return self;
 }
@@ -88,5 +89,17 @@ if((self = [super init])){
     });
 }
 
+-(void)requestAccess{
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        if (status == PHAuthorizationStatusAuthorized) {
+            [PHPhotoLibrary.sharedPhotoLibrary registerChangeObserver:self];
+        }
+    }];
+}
+
+- (void)photoLibraryDidChange:(PHChange *)changeInstance
+{
+    DDLogDebug(@"Here");
+}
 
 @end

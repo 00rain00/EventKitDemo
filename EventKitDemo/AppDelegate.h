@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 #import "EventManager.h"
 #import "EngineService.h"
 #import "ViewController.h"

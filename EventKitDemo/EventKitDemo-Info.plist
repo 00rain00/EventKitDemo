@@ -2,29 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Used to read calender</string>
-	<key>NSContactsUsageDescription</key>
-	<string>Used to read contacts</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>Used to read reminder</string>
-	<key>NSAppleMusicUsageDescription</key>
-	<string>Used to read photos</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>Used to listen </string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string></string>
-	</array>
-	<key>Item 0 </key>
-	<string>App plays audio</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
-	</dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app notify you of places. It needs access to the GPS coordinates for your lacation</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -45,8 +22,33 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>Item 0 </key>
+	<string>App plays audio</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Used to read photos</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Used to read calender</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Used to read contacts</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app notify you of places. It needs access to the GPS coordinates for your lacation</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Used to read photos</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>Used to read reminder</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Used to listen </string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string></string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
 	<key>UIMainStoryboardFile</key>

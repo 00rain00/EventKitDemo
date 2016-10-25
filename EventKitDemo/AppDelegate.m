@@ -12,6 +12,9 @@
 
 NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
 
+@interface AppDelegate()<PHPhotoLibraryChangeObserver>
+
+@end
 
 
 @implementation AppDelegate
@@ -32,28 +35,29 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     DDLogDebug(@"application start");
     
     
-//    //stay in background
-//    AVAudioSession *session = [AVAudioSession sharedInstance];
-//    [session setActive:YES error:nil];
-//    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-//    //让 app 支持接受远程控制事件
-//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-//    
-//    //播放背景音乐
-//    NSString *musicPath=[[NSBundle mainBundle] pathForResource:@"0db" ofType:@"mp3"];
-//    NSURL *url=[[NSURL alloc]initFileURLWithPath:musicPath];
-//    
-//    //创建播放器
-//    AVAudioPlayer *audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-//    
-//    [audioPlayer prepareToPlay];
-//    
-//    //无限循环播放
-//    audioPlayer.numberOfLoops=-1;
-//    [audioPlayer play];
-//    
+    //stay in background
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //让 app 支持接受远程控制事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+
+    //播放背景音乐
+    NSString *musicPath=[[NSBundle mainBundle] pathForResource:@"0db" ofType:@"mp3"];
+    NSURL *url=[[NSURL alloc]initFileURLWithPath:musicPath];
+
+    //创建播放器
+    AVAudioPlayer *audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+
+    [audioPlayer prepareToPlay];
+
+    //无限循环播放
+    audioPlayer.numberOfLoops=-1;
+    [audioPlayer play];
+    //play
 //    [NSTimer scheduledTimerWithTimeInterval:1.f target:self selector:@selector(printCurrentTime:) userInfo:nil repeats:YES];
-    
+
+    [self requestAccess];
     return YES;
     
     }
@@ -68,6 +72,19 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     self.startTime=dateTime;
     return self.startTime;
 }
-							
+-(void)requestAccess{
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        if (status == PHAuthorizationStatusAuthorized) {
+            [PHPhotoLibrary.sharedPhotoLibrary registerChangeObserver:self];
+        }
+    }];
+}
+
+- (void)photoLibraryDidChange:(PHChange *)changeInstance
+{
+    DDLogDebug(@"Here");
+}
+
+
 
 @end

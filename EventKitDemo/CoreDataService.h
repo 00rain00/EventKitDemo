@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 #import "Condition.h"
-
+#import <Photos/Photos.h>
 @interface CoreDataService : NSObject
 
 
@@ -20,4 +20,5 @@
 -(void)deleteCondition:(NSFetchRequest *)request;
 -(void)saveCondition;
 -(void)saveCondtion:(NSManagedObjectContext *)managedObjectContext;
+- (void)photoLibraryDidChange:(PHChange *)changeInstance;
 @end
