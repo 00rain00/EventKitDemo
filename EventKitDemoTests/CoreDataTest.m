@@ -10,9 +10,11 @@
 #import "CoreDataService.h"
 #import <MapKit/MapKit.h>
 
+@import INTULocationManager;
+
 
 @interface CoreDataTest : XCTestCase
-
+@property (assign, nonatomic) INTULocationRequestID locationRequestID;
 @end
 
 @implementation CoreDataTest
@@ -38,6 +40,69 @@
 
     cd = nil;
 }
+
+-(void)testCreateFact{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test get location workds"];
+     __weak __typeof(self) weakSelf = self;
+     INTULocationManager *locMgr = [INTULocationManager sharedInstance];
+    dispatch_async(dispatch_get_main_queue(),^{
+        self.locationRequestID=[locMgr requestLocationWithDesiredAccuracy:
+                                INTULocationAccuracyNeighborhood timeout:5.0 block:^(CLLocation * currentLocation,INTULocationAccuracy achievedAccuracy, INTULocationStatus status){
+                                    if (status == INTULocationStatusSuccess) {
+                                        // achievedAccuracy is at least the desired accuracy (potentially better)
+                                        
+                                        NSString *location = [NSString stringWithFormat:@"Location request successful! Current Location:\n%@", currentLocation];
+                                        DDLogDebug(@"%@",location);
+                                        CoreDataService *cd  = [[CoreDataService alloc]init];
+                                        NSString * key  = @"location";
+                                        NSDate * current = [NSDate new];
+                                        NSDictionary * locationData = @{
+                                                                        @"CLLocation":currentLocation
+                                                                        };
+                                        NSData * value = [NSKeyedArchiver archivedDataWithRootObject:locationData];
+                                        [cd createFact:key :value :current];
+                                        cd = nil;
+                                        
+                                        [expectation fulfill];
+                                        
+                                    }
+                                    else if (status == INTULocationStatusTimedOut) {
+                                        // You may wish to inspect achievedAccuracy here to see if it is acceptable, if you plan to use currentLocation
+                                        NSString *sutt= [NSString stringWithFormat:@"Location request timed out. Current Location:\n%@", currentLocation];
+                                        DDLogDebug(@"%@",sutt);
+                                    }
+                                    else {
+                                        // An error occurred
+                                        NSString *string=  [weakSelf getLocationErrorDescription:status];
+                                        DDLogDebug(string);
+                                    }
+                                    
+                                    weakSelf.locationRequestID = NSNotFound;
+                                    
+                                    
+                                    
+                                }];
+    });
+    
+    [self waitForExpectationsWithTimeout:10.0 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+
+-(void)testFetchFact{
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    CoreDataService *cd = [[CoreDataService alloc]init];
+    NSArray * re = [cd fetchFacts:request];
+    DDLogDebug(@"size: %d",re.count);
+    cd = nil;
+}
+
+
 -(void)testFetchCondion{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
@@ -121,5 +186,36 @@
     [cd deleteCondition:request];
     cd = nil;
 }
+
+-(void)testDeleteFact{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+   
+    CoreDataService *cd  = [[CoreDataService alloc]init];
+    [cd deleteCondition:request];
+    cd = nil;
+
+    
+}
+
+
+
+- (NSString *)getLocationErrorDescription:(INTULocationStatus)status
+{
+    if (status == INTULocationStatusServicesNotDetermined) {
+        return @"Error: User has not responded to the permissions alert.";
+    }
+    if (status == INTULocationStatusServicesDenied) {
+        return @"Error: User has denied this app permissions to access device location.";
+    }
+    if (status == INTULocationStatusServicesRestricted) {
+        return @"Error: User is restricted from using location services by a usage policy.";
+    }
+    if (status == INTULocationStatusServicesDisabled) {
+        return @"Error: Location services are turned off for all apps on this device.";
+    }
+    return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
+}
+
+
 
 @end

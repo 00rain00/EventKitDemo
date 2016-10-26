@@ -289,8 +289,8 @@
                                 <frame key="frameInset" minY="595" width="375" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="When arriving"/>
-                                    <segment title="When leaving"/>
+                                    <segment title="Inside"/>
+                                    <segment title="Outside"/>
                                 </segments>
                                 <connections>
                                     <action selector="fillingModeSegmentedControlValueDidChange:" destination="ZVg-5f-IRw" eventType="valueChanged" id="Hnr-Yv-7dg"/>

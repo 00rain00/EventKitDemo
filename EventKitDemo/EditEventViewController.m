@@ -361,7 +361,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
         NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
         condition.myValue = newValue;
     }
-    [self.coreDataService saveCondition];
+    [self.coreDataService save];
 }
 
 

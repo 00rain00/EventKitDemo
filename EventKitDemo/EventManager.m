@@ -1,10 +1,13 @@
 
 #import <NSDate_Escort/NSDate+Escort.h>
 #import "EventManager.h"
-#import <Photos/Photos.h>
+#import "Fact+CoreDataClass.h"
+@import INTULocationManager;
 static NSString *kNSDateHelperFormatTime                = @"h:mm a";
-@interface EventManager()<PHPhotoLibraryChangeObserver>
+@interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
+@property (assign, nonatomic) INTULocationRequestID locationRequestID;
+
 @end
 @implementation EventManager
 
@@ -232,9 +235,6 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
             if([key containsString:@"Location"]){
                 [fullfillConditions addObject:@([self compareLocation:myValue])];
             }
-            if([key containsString:@"Contact"]){
-
-            }
 
         }
         //check whether add alarm to conditions
@@ -392,8 +392,36 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 }
 
--(BOOL)compareLocation:(NSDictionary *)dic{
-    return  YES;
+-(BOOL)compareLocation:(NSDictionary *)myValue{
+   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"factKey == %@",@"location"];
+    [request setSortDescriptors:@[timesorter]];
+    [request setPredicate:predicate];
+        CoreDataService *coreDataService = [[CoreDataService alloc] init];
+    NSArray *facts = [coreDataService fetchFacts:request];
+    Fact *fact = facts.firstObject;
+    NSDictionary *locationdata = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+    CLLocation *location = locationdata[@"CLLocation"];
+    if(OBJECT_IS_EMPTY(location)){
+        DDLogDebug(@"empty location");
+        return NO;
+    }else{
+        CLLocationDegrees latidude =  [myValue[@"locationLatitude"] doubleValue];
+        CLLocationDegrees longtitidue =  [myValue[@"locationLongtitude"] doubleValue];
+        CLLocationDistance radius = [myValue[@"locationRadius"] doubleValue];
+        BOOL isInside = [myValue[@"locationType"] boolValue];
+        DDLogDebug(@"lat : %g , long :%g radius : %g , inside : %@",latidude,longtitidue,radius, isInside? @"YES":@"No");
+        CLLocation *targetLocation = [[CLLocation alloc] initWithLatitude:latidude longitude:longtitidue];
+        if(isInside){
+
+          return  [location distanceFromLocation:targetLocation]<=radius;
+        }else{
+            return [location distanceFromLocation:targetLocation]>=radius;
+        }
+    }
+
+
 }
 
 
@@ -437,5 +465,69 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     }
     return re;
 }
+
+
+-(CLLocation *)getCurrentLocation{
+    DDLogDebug(@"start");
+    __block CLLocation *clLocation = nil;
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),^{
+        __weak __typeof(self) weakSelf = self;
+
+        INTULocationManager *locMgr = [INTULocationManager sharedInstance];
+        self.locationRequestID = [locMgr requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood
+                                                                    timeout:5.0
+                                                       delayUntilAuthorized:YES
+                                                                      block:
+                                                                              ^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+DDLogDebug(@"start");
+                                                                                  clLocation = currentLocation;
+                                                                                  if (status == INTULocationStatusSuccess) {
+                                                                                      // achievedAccuracy is at least the desired accuracy (potentially better)
+
+                                                                                      NSString *location = [NSString stringWithFormat:@"Location request successful! Current Location:\n%@", currentLocation];
+                                                                                      DDLogDebug(@"%@",location);
+
+                                                                                  }
+                                                                                  else if (status == INTULocationStatusTimedOut) {
+                                                                                      // You may wish to inspect achievedAccuracy here to see if it is acceptable, if you plan to use currentLocation
+                                                                                      NSString *sutt= [NSString stringWithFormat:@"Location request timed out. Current Location:\n%@", currentLocation];
+                                                                                      DDLogDebug(@"%@",sutt);
+                                                                                  }
+                                                                                  else {
+                                                                                      // An error occurred
+                                                                                      NSString *string=  [weakSelf getLocationErrorDescription:status];
+                                                                                      DDLogDebug(string);
+                                                                                  }
+
+                                                                                  weakSelf.locationRequestID = NSNotFound;
+
+
+
+                                                                              }];
+
+    });
+DDLogDebug(@"end");
+    return clLocation;
+}
+
+- (NSString *)getLocationErrorDescription:(INTULocationStatus)status
+{
+    if (status == INTULocationStatusServicesNotDetermined) {
+        return @"Error: User has not responded to the permissions alert.";
+    }
+    if (status == INTULocationStatusServicesDenied) {
+        return @"Error: User has denied this app permissions to access device location.";
+    }
+    if (status == INTULocationStatusServicesRestricted) {
+        return @"Error: User is restricted from using location services by a usage policy.";
+    }
+    if (status == INTULocationStatusServicesDisabled) {
+        return @"Error: Location services are turned off for all apps on this device.";
+    }
+    return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
+}
+
+
+
 
 @end

@@ -11,7 +11,7 @@
 #import "EventManager.h"
 #import "EngineService.h"
 #import "ViewController.h"
-
+#import <OpenWeatherMapAPI/OWMWeatherAPI.h>
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -22,6 +22,9 @@
 
 @property(strong,nonatomic)ViewController * controller;
 
-@property (strong, nonatomic) NSString *startTime;  
+@property (strong, nonatomic) NSString *startTime;
 
+
+-(void)generateFacts;
+-(void)evaluationCondition;
 @end
