@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "EventManager.h"
+#import "CoreDataService.h"
 @interface EventKitDemoTests : XCTestCase
 
 @end
@@ -58,6 +59,36 @@
 //    }
     eventManager=nil;
 }
+
+-(void)testCheckCondition{
+     EventManager *eventManager = [EventManager new];
+
+            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+
+    NSString * ID =@"A778F024-AEA6-42C0-89FD-4FCA7A990804";
+            NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND sattus = YES",ID];
+            [request setPredicate:predicate];
+            CoreDataService *cd  = [[CoreDataService alloc]init];
+            NSArray * re =  [cd fetchCondition:request];
+            DDLogDebug(@"size : %ld",re.count);
+            BOOL check = [eventManager checkCondition:re];
+            DDLogDebug(@"check: %d",check);
+
+    
+    
+    
+    
+    eventManager = nil;
+}
+
+-(void)testCompareDate{
+    NSDate * current  = [NSDate new];
+   NSDate * oneDayAfterCorrent =  [current dateByAddingDays:1];
+    oneDayAfterCorrent= [oneDayAfterCorrent dateBySubtractingHours:1];
+    BOOL re = [current isEarlierThanOrEqualDateIgnoringDate:oneDayAfterCorrent];
+    DDLogDebug(@"%d",re);
+}
+
 
 
 @end

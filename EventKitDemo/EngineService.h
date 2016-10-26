@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
 //transform devides information to clips fasts
 -(BOOL)generateFacts:(NSDictionary *)facts;
 -(BOOL)runEngine:(NSDictionary *)factsAndRules;
+-(void)writeConditionToFile:(NSArray *)condition;
 
 
 @end

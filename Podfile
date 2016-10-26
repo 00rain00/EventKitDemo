@@ -9,6 +9,7 @@ target 'EventKitDemo' do
   pod 'MBProgressHUD'
   pod 'DBMapSelectorViewController'
   pod 'INTULocationManager'
+  pod 'NSDate-Escort'
 
 end
 
@@ -21,5 +22,6 @@ target 'EventKitDemoTests' do
   pod 'MBProgressHUD'
   pod 'DBMapSelectorViewController'
   pod 'INTULocationManager'
+  pod 'NSDate-Escort'
 end
 

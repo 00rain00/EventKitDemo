@@ -53,6 +53,28 @@ return nil;
     EnvReset(clipsEnv);
     return NO;
 }
+
+- (void)writeConditionToFile:(NSArray *)condition {
+    DDLogDebug(@"");
+    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
+    DDLogDebug(filepath);
+    NSError *error ;
+   // NSMutableData *data;
+
+    NSString *str = @"hello";
+  //  char *cha  ="heello";
+  //  data = [NSMutableData dataWithBytes:cha length:strlen(cha)];
+   // NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filepath];
+    // [file writeData:data];
+    //[file closeFile];
+
+      [str writeToFile:filepath atomically:NO encoding:NSUTF8StringEncoding error:&error];
+
+    if(OBJECT_ISNOT_EMPTY(error)){
+        FATAL_CORE_DATA_ERROR(error);
+    }
+}
+
 - (int)evalString: (NSString *) evalString
 {
     char *cEvalString;

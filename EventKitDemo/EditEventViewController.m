@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 
 static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
+static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
+static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 @interface EditEventViewController ()
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
@@ -58,28 +60,44 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
 
 
         self.eventTitle = self.editedEvent.title;
-        [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
+    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
+
+    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
+    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
+    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
+    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
+    [self.editedEvent addAlarm:alarm1];
+   // [self.editedEvent addAlarm:alarm2];
+   // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
+    [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
 
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
         DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
    
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
-    //    for(EKAlarm * alarm1 in self.arrAlarms){
-//            if(OBJECT_ISNOT_EMPTY(alarm1.absoluteDate)){
-//                DDLogDebug(@"%@,",[NSDate stringForDisplayFromDate:alarm1.absoluteDate]);
+    //test two time alarm
+
+
+
+
+//
+//        for(EKAlarm * alarm in self.arrAlarms){
+//            if(OBJECT_ISNOT_EMPTY(alarm.absoluteDate)){
+//                DDLogDebug(@"%@, %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime],alarm.emailAddress);
 //            }
 //
-//            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
-//            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
-//            DDLogDebug(@"arriving : %d",alarm1.proximity);
- //       }
+//
+////            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
+////            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
+////            DDLogDebug(@"arriving : %d",alarm1.proximity);
+//        }
+//
+    }
 
-   // }
 
 
 
 
-}
 
 
 
@@ -148,28 +166,68 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
                     valueLabel.hidden = YES;
                 }
                 else if([condition.myKey containsString:@"Time"]){
-                    NSDate * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
-                    valueLabel.text = [NSDate stringFromDate:myValue withFormat:kNSDateHelperFormatTimeWithPrefix];
-                }else if ([condition.myKey containsString:@"MonthDay"]){
-                    NSMutableArray *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
-                    NSMutableString *text = [NSMutableString stringWithFormat:@""];
-                    for(NSObject * day in myValue){
-                        if([[day description] containsString:@"Day"]){
-                            [text appendString:day.description];
-                        }
-                    }
-                    valueLabel.text = text;
-                }else if([condition.myKey containsString:@"WeekDay"]){
-                    NSDictionary *myValue  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
-                    NSMutableString *text = [NSMutableString stringWithFormat:@""];
+
+                    NSDictionary * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSMutableString *timeLabel =[NSMutableString stringWithFormat:@""] ;
                     for(NSObject *kkey in myValue){
-                        NSString *weekDay = [NSString stringWithFormat:@"%@",myValue[kkey]];
-                        if([weekDay isEqualToString:@"1"]){
-                            [text appendString:[kkey description]];
+                        NSString *strKey = [NSString stringWithFormat:@"%@",kkey.description];
+
+                        if([strKey isEqualToString:@"allDaySwitch"]){
+                            NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
+                            if([value isEqualToString:@"1"]){
+                                valueLabel.text  = @"ALL-DAY";
+                            }else{
+                                continue;
+                            }
 
                         }
+                        else if([strKey isEqualToString:@"startTime"]){
+                            NSDate *startDate = myValue[kkey];
+                            NSString *strStartDate = [startDate stringWithFormat:kNSDateHelperFormatTime];
+                            DDLogDebug(@"str start date: %@",strStartDate);
+                            [timeLabel appendString:strStartDate];
+                            DDLogDebug(@"time label:%@",timeLabel);
+                        } else if ([strKey isEqualToString:@"endSwitch"]){
+                            NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
+                            if([value isEqualToString:@"0"]){
+                                DDLogDebug(@"time label : %@",timeLabel);
+                                [timeLabel appendString:@"~"];
+
+                                continue;
+                            }
+                        }else if([strKey isEqualToString:@"endTime"]){
+                            NSDate *endDate = myValue[kkey];
+                            NSString *strEndDate = [endDate stringWithFormat:kNSDateHelperFormatTime];
+                            [timeLabel appendFormat:@"-%@",strEndDate];
+
+                            continue;
+                        }else if ([strKey isEqualToString:@"WeekDay"]){
+                            NSDictionary *dicWeek  = myValue[kkey];
+                            NSMutableString *text = [NSMutableString stringWithFormat:@""];
+                            for(NSObject *week in dicWeek){
+                                NSString *weekDay = [NSString stringWithFormat:@"%@",dicWeek[week]];
+                                if([weekDay isEqualToString:@"1"]){
+                                    [text appendString:[week description]];
+
+                                }
+                            }
+
+                            key.text = text;
+                        }
+
+                        else if ([strKey containsString:@"MonthDay"]){
+                            NSMutableArray *monthArr = myValue[kkey];
+                            NSMutableString *text = [NSMutableString stringWithFormat:@""];
+                            for(NSObject * day in monthArr){
+                                if([[day description] containsString:@"Day"]){
+                                    [text appendString:day.description];
+                                }
+                            }
+                            key.text = text;
+                        }
+                        valueLabel.text = timeLabel;
                     }
-                    valueLabel.text = text;
+
                 }
                 else if([condition.myKey isEqualToString:@"LocationDetails"]){
                     NSDictionary *locationDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
@@ -220,39 +278,39 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
 #pragma mark - IBAction method implementation
 
 - (IBAction)saveEvent:(id)sender {
-    if(OBJECT_IS_EMPTY(self.eventTitle)){
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"Title is empty" preferredStyle:UIAlertControllerStyleAlert];
-        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
-        [alert show];
-        return;
-
-    }
-    DDLogDebug(@"eventTitle:%@",self.eventTitle);
-    [self dismissViewControllerAnimated:YES completion:nil];
-
-    self.editedEvent.title = self.eventTitle;
-    //TODO start engine
-    self.appDelegate.engineService.setUpClipsEnvironment;
-
-    //TODO push facts fo engine
-    NSDictionary *facts = [NSDictionary new];
-    facts = @{@"time": [NSDate new]};
-    [self.appDelegate.engineService generateFacts:facts];
-    //TODO PUSH rules to engine
-    NSDictionary *rules  = [NSDictionary new];
-    [self.appDelegate.engineService transformRules:facts];
-    //TODO EVALUE RESULT
-    //TODO ADD alarm to reminder
-
-
-    NSError *error;
-    if([self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:&error]){
-        [self.delegate eventWasSuccessfullySaved];
-        [self.navigationController popViewControllerAnimated:YES];
-    }else{
-        FATAL_CORE_DATA_ERROR(error);
-    }
-    [self.tblEvent reloadData];
+//    if(OBJECT_IS_EMPTY(self.eventTitle)){
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"Title is empty" preferredStyle:UIAlertControllerStyleAlert];
+//        [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil]];
+//        [alert show];
+//        return;
+//
+//    }
+//    DDLogDebug(@"eventTitle:%@",self.eventTitle);
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//
+//    self.editedEvent.title = self.eventTitle;
+//    //TODO start engine
+//    self.appDelegate.engineService.setUpClipsEnvironment;
+//
+//    //TODO push facts fo engine
+//    NSDictionary *facts = [NSDictionary new];
+//    facts = @{@"time": [NSDate new]};
+//    [self.appDelegate.engineService generateFacts:facts];
+//    //TODO PUSH rules to engine
+//    NSDictionary *rules  = [NSDictionary new];
+//    [self.appDelegate.engineService transformRules:facts];
+//    //TODO EVALUE RESULT
+//    //TODO ADD alarm to reminder
+//
+//
+//    NSError *error;
+//    if([self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:&error]){
+//        [self.delegate eventWasSuccessfullySaved];
+//        [self.navigationController popViewControllerAnimated:YES];
+//    }else{
+//        FATAL_CORE_DATA_ERROR(error);
+//    }
+//    [self.tblEvent reloadData];
 }
 
 - (IBAction)NewCondition:(id)sender {
@@ -263,6 +321,12 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }
+
+- (IBAction)generate:(id)sender {
+    DDLogDebug(@"generate rull start");
+
+}
+
 
 - (void)deleteCondition:(NSUInteger)objectIndex {
 
@@ -297,7 +361,7 @@ static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
         NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
         condition.myValue = newValue;
     }
-    [self.coreDataService saveCondition];
+    [self.coreDataService save];
 }
 
 

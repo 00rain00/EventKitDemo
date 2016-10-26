@@ -9,44 +9,51 @@
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>3</integer>
 		</dict>
 		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>4</integer>
 		</dict>
 		<key>DBMapSelectorViewController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>5</integer>
 		</dict>
 		<key>FFGlobalAlertController-FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>6</integer>
 		</dict>
 		<key>FFGlobalAlertController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>7</integer>
 		</dict>
 		<key>INTULocationManager.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>8</integer>
 		</dict>
 		<key>MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>NSDate-Escort.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
@@ -84,7 +91,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03BE33219E324CF6DDD7CF45ED4709AF</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
 		<key>5AF1C612F4CDA296FC4C82D9BD0BD25D</key>
+		<dict>
+			<key>primary</key>
+			<true />
+		</dict>
+		<key>6CF1624652C366B0A7F63B3FB7582132</key>
 		<dict>
 			<key>primary</key>
 			<true />
@@ -94,7 +111,7 @@
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>7BF0A6FE820C825708F045082CC214A6</key>
+		<key>8214D49124EEAD347580B5B8369FBC59</key>
 		<dict>
 			<key>primary</key>
 			<true />
@@ -104,12 +121,12 @@
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>AF9231FABC1ABD66B51BBB24E5BCE138</key>
+		<key>9B64D7AEB49F7F23A6FFD34E74869AE7</key>
 		<dict>
 			<key>primary</key>
 			<true />
 		</dict>
-		<key>B1F2ACD242BBB0246A14BFFCFD7EBA69</key>
+		<key>AF9231FABC1ABD66B51BBB24E5BCE138</key>
 		<dict>
 			<key>primary</key>
 			<true />
@@ -120,11 +137,6 @@
 			<true />
 		</dict>
 		<key>DBA6001481CEA0EBA031CC5C94508FAA</key>
-		<dict>
-			<key>primary</key>
-			<true />
-		</dict>
-		<key>E91BD871C890BD2BDEA8E3A4452F0256</key>
 		<dict>
 			<key>primary</key>
 			<true />

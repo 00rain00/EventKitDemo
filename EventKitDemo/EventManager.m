@@ -1,7 +1,13 @@
 
+#import <NSDate_Escort/NSDate+Escort.h>
 #import "EventManager.h"
+#import "Fact+CoreDataClass.h"
+@import INTULocationManager;
+static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
+@property (assign, nonatomic) INTULocationRequestID locationRequestID;
+
 @end
 @implementation EventManager
 
@@ -26,6 +32,8 @@
         }else{
             self.customerCalendarIdentifiers = [NSMutableArray new];
         }
+
+
     }
     return self;
 }
@@ -210,6 +218,316 @@
     }];
    
 }
+
+- (BOOL)checkCondition:(NSArray *)conditions {
+    DDLogDebug(@"start");
+
+
+
+        NSMutableArray *fullfillConditions = [NSMutableArray new];
+        //loop the condition to check if the condition fullfill
+        for(Condition *condition in conditions){
+            NSString *key  = condition.myKey;
+            NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+            if([key containsString:@"Time"]){
+                [fullfillConditions addObject:@([self compareTime:myValue])];
+            }
+            if([key containsString:@"Location"]){
+                [fullfillConditions addObject:@([self compareLocation:myValue])];
+            }
+
+        }
+        //check whether add alarm to conditions
+        BOOL flag  = YES;
+        for(id result in fullfillConditions){
+            flag  = flag && [result boolValue];
+        }
+        return flag;
+
+
+
+
+}
+
+-(BOOL)compareTime:(NSDictionary *)myValue{
+    //抽象出一个tempate?
+    DDLogDebug(@"start");
+    BOOL haveWeekDay = NO;
+    BOOL haveMonthDay = NO;
+    BOOL isALlDay = NO;
+    BOOL haveEndTime = NO;
+    NSDate *current = [NSDate new];
+    NSObject *monthDaySwitch;
+    //identify the compare type
+    for(NSObject *key in myValue){
+        if([key.description isEqualToString: @"WeekDay"]){
+            haveWeekDay = YES;
+        }
+        if([key.description isEqualToString:@"MonthDay"]){
+            haveMonthDay = YES;
+        }
+        if([key.description isEqualToString:@"allDaySwitch"]){
+            NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
+            if([allDaySwitch isEqualToString:@"1"]){
+                isALlDay = YES;
+            }
+        }
+        if([key.description isEqualToString:@"endSwitch"]){
+            NSString *endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
+            if([endSwitch isEqualToString:@"1"]){
+                haveEndTime = YES;
+            }
+        }
+
+    }
+  //  DDLogDebug(@"have Weed Day: %d have monthDay: %d, is all day %d",haveWeekDay,haveMonthDay,isALlDay);
+    DDLogDebug(@"cueent week : %d, current day: %d",current.weekday,current.day);
+    BOOL isTodayTheWeekDay = NO;
+    BOOL isTodayTheMonthDay = NO;
+    BOOL isInTheTimeRange = NO;
+    if(haveWeekDay){
+        DDLogDebug(@"haveWeekDay : %d",haveWeekDay);
+        //extract the week day
+        NSDictionary *dicWeek   = myValue[@"WeekDay"];
+        NSMutableArray *marrWeekDays = [NSMutableArray new];
+        for(NSObject *weekDay in dicWeek){
+            if([[NSString stringWithFormat:@"%@", dicWeek[weekDay]] isEqualToString:@"1"]){
+                [marrWeekDays addObject:weekDay.description];
+            }
+        }
+        NSMutableArray *marrNumberWeekDay = [self wordWeekDay2NumberWeekDay:marrWeekDays];
+        //check if it is today
+        for(NSNumber *numDay in marrNumberWeekDay){
+            DDLogDebug(@"current week day : %d   numDay : %d",current.weekday,numDay.integerValue);
+            if([numDay isEqualToNumber:@(current.weekday)]){
+                DDLogDebug(@"check is today");
+                isTodayTheWeekDay = YES;
+                break;
+            }
+        }
+        //check if it is in time-range
+        DDLogDebug(@"isAllDay : %d",isALlDay);
+        if(!isALlDay){
+            NSDate * startTime = myValue[@"startTime"];
+            DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+            if(haveEndTime){
+
+                NSDate *endTime = myValue[@"endTime"];
+                DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }else{
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }
+
+        }else{
+            isInTheTimeRange=YES;
+        }
+
+        return isInTheTimeRange&&isTodayTheWeekDay;
+    }
+        if(haveMonthDay){
+            DDLogDebug(@"haveMonthDay : %d",haveMonthDay);
+            //extract the month day
+            NSMutableArray *marrMonthDays   = myValue[@"MonthDay"];
+
+            NSMutableArray *marrNumberDate = [self extractMonthDay:marrMonthDays];
+            //check if it is today
+            for(NSString *date in marrNumberDate){
+                DDLogDebug(@"current date : %d   range date : %@",current.day,date);
+                if(current.day==date.integerValue){
+                    DDLogDebug(@"check is today");
+                    isTodayTheMonthDay = YES;
+                    break;
+                }
+            }
+            //check if it is in time-range
+            DDLogDebug(@"isAllDay : %d",isALlDay);
+            if(!isALlDay){
+                NSDate * startTime = myValue[@"startTime"];
+                DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+                if(haveEndTime){
+
+                    NSDate *endTime = myValue[@"endTime"];
+                    DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+                    isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+                    DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+                }else{
+                    isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+                    DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+                }
+
+            }else{
+                isInTheTimeRange=YES;
+            }
+
+            return isInTheTimeRange&&isTodayTheMonthDay;
+
+
+        }
+    DDLogDebug(@"isAllDay : %d",isALlDay);
+    if(!isALlDay){
+        NSDate * startTime = myValue[@"startTime"];
+        DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+        if(haveEndTime){
+
+            NSDate *endTime = myValue[@"endTime"];
+            DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+        }else{
+            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+        }
+
+    }else{
+        isInTheTimeRange=YES;
+    }
+
+
+        DDLogDebug(@"end of class");
+    return isInTheTimeRange;
+
+
+}
+
+-(BOOL)compareLocation:(NSDictionary *)myValue{
+   NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"factKey == %@",@"location"];
+    [request setSortDescriptors:@[timesorter]];
+    [request setPredicate:predicate];
+        CoreDataService *coreDataService = [[CoreDataService alloc] init];
+    NSArray *facts = [coreDataService fetchFacts:request];
+    Fact *fact = facts.firstObject;
+    NSDictionary *locationdata = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+    CLLocation *location = locationdata[@"CLLocation"];
+    if(OBJECT_IS_EMPTY(location)){
+        DDLogDebug(@"empty location");
+        return NO;
+    }else{
+        CLLocationDegrees latidude =  [myValue[@"locationLatitude"] doubleValue];
+        CLLocationDegrees longtitidue =  [myValue[@"locationLongtitude"] doubleValue];
+        CLLocationDistance radius = [myValue[@"locationRadius"] doubleValue];
+        BOOL isInside = [myValue[@"locationType"] boolValue];
+        DDLogDebug(@"lat : %g , long :%g radius : %g , inside : %@",latidude,longtitidue,radius, isInside? @"YES":@"No");
+        CLLocation *targetLocation = [[CLLocation alloc] initWithLatitude:latidude longitude:longtitidue];
+        if(isInside){
+
+          return  [location distanceFromLocation:targetLocation]<=radius;
+        }else{
+            return [location distanceFromLocation:targetLocation]>=radius;
+        }
+    }
+
+
+}
+
+
+
+-(NSMutableArray *)wordWeekDay2NumberWeekDay:(NSMutableArray *)marrWeekDay{
+    NSMutableArray *re = [NSMutableArray new];
+    for(NSString *weekDay in marrWeekDay){
+        if([weekDay isEqualToString:@"sunday"]){
+            [re addObject:@(1)];
+        }
+        if([weekDay isEqualToString:@"monday"]){
+            [re addObject:@(2)];
+        }
+        if([weekDay isEqualToString:@"tuesday"]){
+            [re addObject:@(3)];
+        }
+        if([weekDay isEqualToString:@"wednesday"]){
+            [re addObject:@(4)];
+        }
+        if([weekDay isEqualToString:@"thursday"]){
+            [re addObject:@(5)];
+        }
+        if([weekDay isEqualToString:@"friday"]){
+            [re addObject:@(6)];
+        }
+        if([weekDay isEqualToString:@"saturday"]){
+            [re addObject:@(7)];
+        }
+    }
+    return re;
+}
+
+-(NSMutableArray *)extractMonthDay:(NSMutableArray *)marrMonthdays{
+    NSMutableArray *re = [NSMutableArray new];
+
+    for(NSObject *day in marrMonthdays){
+        if([[day description] containsString:@"Day"]){
+          NSArray *temp = [day.description componentsSeparatedByString:@" "];
+            [re addObject:temp.lastObject];
+        }
+    }
+    return re;
+}
+
+
+-(CLLocation *)getCurrentLocation{
+    DDLogDebug(@"start");
+    __block CLLocation *clLocation = nil;
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0),^{
+        __weak __typeof(self) weakSelf = self;
+
+        INTULocationManager *locMgr = [INTULocationManager sharedInstance];
+        self.locationRequestID = [locMgr requestLocationWithDesiredAccuracy:INTULocationAccuracyNeighborhood
+                                                                    timeout:5.0
+                                                       delayUntilAuthorized:YES
+                                                                      block:
+                                                                              ^(CLLocation *currentLocation, INTULocationAccuracy achievedAccuracy, INTULocationStatus status) {
+DDLogDebug(@"start");
+                                                                                  clLocation = currentLocation;
+                                                                                  if (status == INTULocationStatusSuccess) {
+                                                                                      // achievedAccuracy is at least the desired accuracy (potentially better)
+
+                                                                                      NSString *location = [NSString stringWithFormat:@"Location request successful! Current Location:\n%@", currentLocation];
+                                                                                      DDLogDebug(@"%@",location);
+
+                                                                                  }
+                                                                                  else if (status == INTULocationStatusTimedOut) {
+                                                                                      // You may wish to inspect achievedAccuracy here to see if it is acceptable, if you plan to use currentLocation
+                                                                                      NSString *sutt= [NSString stringWithFormat:@"Location request timed out. Current Location:\n%@", currentLocation];
+                                                                                      DDLogDebug(@"%@",sutt);
+                                                                                  }
+                                                                                  else {
+                                                                                      // An error occurred
+                                                                                      NSString *string=  [weakSelf getLocationErrorDescription:status];
+                                                                                      DDLogDebug(string);
+                                                                                  }
+
+                                                                                  weakSelf.locationRequestID = NSNotFound;
+
+
+
+                                                                              }];
+
+    });
+DDLogDebug(@"end");
+    return clLocation;
+}
+
+- (NSString *)getLocationErrorDescription:(INTULocationStatus)status
+{
+    if (status == INTULocationStatusServicesNotDetermined) {
+        return @"Error: User has not responded to the permissions alert.";
+    }
+    if (status == INTULocationStatusServicesDenied) {
+        return @"Error: User has denied this app permissions to access device location.";
+    }
+    if (status == INTULocationStatusServicesRestricted) {
+        return @"Error: User is restricted from using location services by a usage policy.";
+    }
+    if (status == INTULocationStatusServicesDisabled) {
+        return @"Error: Location services are turned off for all apps on this device.";
+    }
+    return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
+}
+
+
 
 
 @end

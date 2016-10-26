@@ -62,7 +62,7 @@ NSString *const klocationDetails = @"LocationDetails";
 
 
         weakself.mapSelectorManager.circleCoordinate = weakself.currentLocation.coordinate;
-        weakself.mapSelectorManager.circleRadius = 3000;
+        weakself.mapSelectorManager.circleRadius = 500;
         weakself.mapSelectorManager.circleRadiusMax = 25000;
         weakself.mapSelectorManager.circleRadiusMin= 100;
         [weakself.mapSelectorManager applySelectorSettings];

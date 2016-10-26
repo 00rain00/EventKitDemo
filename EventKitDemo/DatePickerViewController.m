@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Appcoda. All rights reserved.
 //
 
+#import <NSDate_Escort/NSDate+Escort.h>
 #import "DatePickerViewController.h"
 #import "XLFormWeekDaysCell.h"
 #import "DateAndTimeViewController.h"
@@ -17,6 +18,7 @@ NSString *const  kendTime = @"endTime";
 NSString * const  kendTimeSwitch=@"endSwitch";
 NSString *const kWeekDay  = @"WeekDay";
 NSString *const kMonthDay  = @"MonthDay";
+NSString * const kTime  = @"Time";
 @interface DatePickerViewController ()
 
 @property (nonatomic,strong) DateAndTimeViewController * controller;
@@ -156,7 +158,7 @@ NSString *const kMonthDay  = @"MonthDay";
     [request setPredicate:predicate];
    NSArray *result =  [coreDataService fetchCondition:request];
     for(Condition * condition in result){
-        if([condition.myKey isEqualToString:kallDay]||[condition.myKey isEqualToString:kstartTime]||[condition.myKey isEqualToString:kendTime]||[condition.myKey isEqualToString:kendTimeSwitch]){
+        if([condition.myKey isEqualToString:kTime]){
             flag = YES;
             break;
         }
@@ -186,23 +188,42 @@ NSString *const kMonthDay  = @"MonthDay";
 
         CoreDataService *coreDataService = [[CoreDataService alloc] init];
         NSDictionary *formDic = [self formValues];
-        LOOP_DICTIONARY(formDic);
+            if(OBJECT_ISNOT_EMPTY(formDic[@"endSwitch"])){
+                if([[NSString stringWithFormat:@"%@", formDic[@"endSwitch"]] isEqualToString:@"1"]){
+                    NSDate *startDate = formDic[@"startTime"];
+                    NSDate *endDate = formDic[@"endTime"];
+                    if([endDate isEarlierThanOrEqualDateIgnoringDate:startDate]){
+                        __weak typeof(self) weakSelf=self;
+                        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"End time is earlier than start time" preferredStyle:UIAlertControllerStyleAlert];
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                           // [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+                        }]];
+                        [alertController show];
+                        return;
+                    }
+                }
+
+            }
+
+
+       // LOOP_DICTIONARY(formDic);
        // BOOL alldaySwitch = [formDic[kallDay] boolValue];
       //  BOOL endtimeSwitch = [formDic[kendTimeSwitch] boolValue];
-        for(NSString *key in formDic) {
-            if ([key isEqualToString:kendTimeSwitch]) {
-                continue;
-            } else if ([key isEqualToString:kallDay] && OBJECT_ISNOT_EMPTY(formDic[kstartTime])) {
-                continue;
-            }
+//        for(NSString *key in formDic) {
+//            if ([key isEqualToString:kendTimeSwitch]) {
+//                continue;
+//            } else if ([key isEqualToString:kallDay] && OBJECT_ISNOT_EMPTY(formDic[kstartTime])) {
+//                continue;
+//            }
 //            DDLogDebug(@"%@is array :%d",key, [formDic[key] isKindOfClass:[NSArray class]]);
 //            DDLogDebug(@"%@is Marray :%d",key, [formDic[key] isKindOfClass:[NSMutableArray class]]);
 //            DDLogDebug(@"%@is Dic :%d",key, [formDic[key] isKindOfClass:[NSDictionary class]]);
 
 
-            NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic[key]];
-            [coreDataService createCondition:reminderID :key :myValue];
-        }
+            NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic];
+            [coreDataService createCondition:reminderID :kTime :myValue];
+        //}
 
         coreDataService = nil;
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];

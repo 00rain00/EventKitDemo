@@ -17,6 +17,7 @@
 -(instancetype)init{
 if((self = [super init])){
     [self initCoreData];
+
 }
     return self;
 }
@@ -27,7 +28,7 @@ if((self = [super init])){
     condition.myKey = myKey;
     condition.myValue = myValue;
     condition.sattus = @YES;
-    [self saveCondition];
+    [self save];
     return condition;
 }
 
@@ -41,6 +42,26 @@ if((self = [super init])){
     return results ;
 }
 
+- (Fact *)createFact:(NSString *)myKey :(NSData *)myValue :(NSDate *)createTime {
+    Fact *fact = [NSEntityDescription insertNewObjectForEntityForName:@"Fact" inManagedObjectContext:self.managedObjectContext];
+    fact .factKey = myKey;
+    fact.factValue = myValue;
+    fact.time = createTime;
+    [self save];
+    return fact;
+}
+
+- (NSArray *)fetchFacts:(NSFetchRequest *)request {
+    NSError *error = nil;
+    NSArray *results = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (OBJECT_ISNOT_EMPTY(error)) {
+        FATAL_CORE_DATA_ERROR(error);
+
+    }
+    return results ;
+}
+
+
 - (void)deleteCondition:(NSFetchRequest *)request {
     NSBatchDeleteRequest * deleteRequest  = [[NSBatchDeleteRequest alloc] initWithFetchRequest:request];
     NSError *error = nil;
@@ -52,7 +73,7 @@ if((self = [super init])){
 
 }
 
-- (void)saveCondition {
+- (void)save {
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {
         FATAL_CORE_DATA_ERROR(error);
@@ -79,14 +100,19 @@ if((self = [super init])){
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"Reminder.sqlite"];
+    NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
+    [options setObject:[NSNumber numberWithBool:YES] forKey:NSMigratePersistentStoresAutomaticallyOption];
+    [options setObject:[NSNumber numberWithBool:YES] forKey:NSInferMappingModelAutomaticallyOption];
 
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
         NSError *error = nil;
         NSPersistentStoreCoordinator *psc = [[self managedObjectContext] persistentStoreCoordinator];
-        NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];
+        NSPersistentStore *store = [psc addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];
         NSAssert(store != nil, @"Error initializing PSC: %@\n%@", [error localizedDescription], [error userInfo]);
     });
 }
+
+
 
 
 @end
