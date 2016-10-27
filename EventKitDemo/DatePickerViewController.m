@@ -60,7 +60,8 @@ NSString * const kTime  = @"Time";
     
     if (self.selection == 1) {
       XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
-        alldaySwitch.value = @1;
+        alldaySwitch.value = @0;
+        alldaySwitch.hidden = [NSString stringWithFormat:@"$%@==0",kallDay];
         [section addFormRow:alldaySwitch];
 
       XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];
@@ -80,7 +81,8 @@ NSString * const kTime  = @"Time";
     }
     else if (self.selection==2){
         XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
-        alldaySwitch.value = @1;
+        alldaySwitch.value = @0;
+        alldaySwitch.hidden = [NSString stringWithFormat:@"$%@==0",kallDay];
         [section addFormRow:alldaySwitch];
 
         XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];
@@ -121,7 +123,8 @@ NSString * const kTime  = @"Time";
 
 
         XLFormRowDescriptor *  alldaySwitch = [XLFormRowDescriptor formRowDescriptorWithTag:kallDay rowType:XLFormRowDescriptorTypeBooleanSwitch title:@"All-Day"];
-        alldaySwitch.value = @1;
+        alldaySwitch.value = @0;
+        alldaySwitch.hidden = [NSString stringWithFormat:@"$%@==0",kallDay];
         [section addFormRow:alldaySwitch];
 
         XLFormRowDescriptor * startrow = [XLFormRowDescriptor formRowDescriptorWithTag:kstartTime rowType:XLFormRowDescriptorTypeTimeInline title:@"Start-Time"];

@@ -234,6 +234,12 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                     NSString *displayAddress = locationDetails[@"LocationDisplay"];
                     valueLabel.text = displayAddress;
                 }
+                else if([condition.myKey isEqualToString:@"weatherDetails"]){
+                    NSDictionary *weatherDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSString *time = weatherDetails[@"forecastTime"];
+                    NSString *type = weatherDetails[@"forecastType"];
+                    valueLabel.text = [NSString stringWithFormat:@" %@ is %@",time,type];
+                }
 
 
             }

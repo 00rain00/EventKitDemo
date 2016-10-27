@@ -205,8 +205,7 @@
                     <connections>
                         <segue destination="VWs-Fi-3K2" kind="push" identifier="idSegueDateAndTime" id="HS2-yD-5Up"/>
                         <segue destination="ZVg-5f-IRw" kind="push" identifier="idSegueAddLocation" id="1f2-Hp-yyZ"/>
-                        <segue destination="tPI-sU-9TE" kind="push" identifier="idSegueContacts" id="HgT-Bs-7EN"/>
-                        <segue destination="YVq-O7-oYT" kind="push" identifier="idSeguePhotos" id="3Hq-lr-EXe"/>
+                        <segue destination="tux-i7-XPD" kind="push" identifier="idSegueAddWeather" id="SK7-aE-Bdd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYn-dd-vN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -235,43 +234,30 @@
             </objects>
             <point key="canvasLocation" x="2734" y="1765"/>
         </scene>
-        <!--Photo View Controller-->
-        <scene sceneID="9nP-Nt-xN8">
+        <!--Add Weather View Controller-->
+        <scene sceneID="bpZ-dK-88M">
             <objects>
-                <viewController id="YVq-O7-oYT" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController id="tux-i7-XPD" customClass="AddWeatherViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jAh-Vl-nGX"/>
-                        <viewControllerLayoutGuide type="bottom" id="JZF-lt-Pzr"/>
+                        <viewControllerLayoutGuide type="top" id="1tk-M7-Me3"/>
+                        <viewControllerLayoutGuide type="bottom" id="QNG-u6-C4i"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="e2K-Mq-rvZ">
+                    <view key="view" contentMode="scaleToFill" id="DyX-pa-ZYV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hfQ-wQ-boq"/>
+                    <navigationItem key="navigationItem" id="sHc-Mb-mqe">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0rr-2a-45x">
+                            <connections>
+                                <action selector="save:" destination="tux-i7-XPD" id="bVv-GB-KnE"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2DW-aN-fGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZRH-R0-Uz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3009" y="326"/>
-        </scene>
-        <!--Contact View Controller-->
-        <scene sceneID="aQJ-Jt-Lhq">
-            <objects>
-                <viewController id="tPI-sU-9TE" customClass="ContactViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vhv-cc-tS2"/>
-                        <viewControllerLayoutGuide type="bottom" id="aB3-Pf-LQk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GBM-nz-zNc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="DBC-SA-qsS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e0X-gT-VtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3009" y="-326"/>
+            <point key="canvasLocation" x="3099" y="99"/>
         </scene>
         <!--Add Location View Controller-->
         <scene sceneID="umW-NS-zsl">
