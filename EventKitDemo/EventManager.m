@@ -231,6 +231,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             NSString *key  = condition.myKey;
             NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
             if([key containsString:@"Time"]){
+
                 [fullfillConditions addObject:@([self compareTime:myValue])];
             }
             if([key containsString:@"Location"]){
@@ -254,83 +255,92 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 }
 
 -(BOOL)compareTime:(NSDictionary *)myValue{
-    //抽象出一个tempate?
-    DDLogDebug(@"start");
-    BOOL haveWeekDay = NO;
-    BOOL haveMonthDay = NO;
-    BOOL isALlDay = NO;
-    BOOL haveEndTime = NO;
-    NSDate *current = [NSDate new];
-    NSObject *monthDaySwitch;
-    //identify the compare type
-    for(NSObject *key in myValue){
-        if([key.description isEqualToString: @"WeekDay"]){
-            haveWeekDay = YES;
-        }
-        if([key.description isEqualToString:@"MonthDay"]){
-            haveMonthDay = YES;
-        }
-        if([key.description isEqualToString:@"allDaySwitch"]){
-            NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
-            if([allDaySwitch isEqualToString:@"1"]){
-                isALlDay = YES;
-            }
-        }
-        if([key.description isEqualToString:@"endSwitch"]){
-            NSString *endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
-            if([endSwitch isEqualToString:@"1"]){
-                haveEndTime = YES;
-            }
-        }
-
-    }
-  //  DDLogDebug(@"have Weed Day: %d have monthDay: %d, is all day %d",haveWeekDay,haveMonthDay,isALlDay);
-    DDLogDebug(@"cueent week : %d, current day: %d",current.weekday,current.day);
-    BOOL isTodayTheWeekDay = NO;
-    BOOL isTodayTheMonthDay = NO;
-    BOOL isInTheTimeRange = NO;
-    if(haveWeekDay){
-        DDLogDebug(@"haveWeekDay : %d",haveWeekDay);
-        //extract the week day
-        NSDictionary *dicWeek   = myValue[@"WeekDay"];
-        NSMutableArray *marrWeekDays = [NSMutableArray new];
-        for(NSObject *weekDay in dicWeek){
-            if([[NSString stringWithFormat:@"%@", dicWeek[weekDay]] isEqualToString:@"1"]){
-                [marrWeekDays addObject:weekDay.description];
-            }
-        }
-        NSMutableArray *marrNumberWeekDay = [self wordWeekDay2NumberWeekDay:marrWeekDays];
-        //check if it is today
-        for(NSNumber *numDay in marrNumberWeekDay){
-            DDLogDebug(@"current week day : %d   numDay : %d",current.weekday,numDay.integerValue);
-            if([numDay isEqualToNumber:@(current.weekday)]){
-                DDLogDebug(@"check is today");
-                isTodayTheWeekDay = YES;
-                break;
-            }
-        }
-        //check if it is in time-range
-        DDLogDebug(@"isAllDay : %d",isALlDay);
-        if(!isALlDay){
-            NSDate * startTime = myValue[@"startTime"];
-            DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
-            if(haveEndTime){
-
-                NSDate *endTime = myValue[@"endTime"];
-                DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
-                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
-                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
-            }else{
-                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
-                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
-            }
-
+    @try {
+        if(OBJECT_ISNOT_EMPTY(myValue)){
+       //     LOOP_DICTIONARY(myValue);
         }else{
-            isInTheTimeRange=YES;
+            DDLogDebug(@"myValue is empty");
         }
+        
+        DDLogDebug(@"start");
+        BOOL haveWeekDay = NO;
+        BOOL haveMonthDay = NO;
+        BOOL isALlDay = NO;
+        BOOL haveEndTime = NO;
+        NSDate *current = [NSDate new];
 
-        return isInTheTimeRange&&isTodayTheWeekDay;
-    }
+        NSString *endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
+        //identify the compare type
+        for(NSObject * kkkey in myValue){
+            NSString *str = [NSString stringWithFormat:@"%@",kkkey.description];
+
+            if([str isEqualToString: @"WeekDay"]){
+                haveWeekDay = YES;
+            }
+            if([str isEqualToString:@"MonthDay"]){
+                haveMonthDay = YES;
+            }
+            if([str isEqualToString:@"allDaySwitch"]){
+                NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
+                if([allDaySwitch isEqualToString:@"1"]){
+                    isALlDay = YES;
+                }
+            }
+            if([str isEqualToString:@"endSwitch"]){
+                NSString *endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
+                if([endSwitch isEqualToString:@"1"]){
+                    haveEndTime = YES;
+                }
+            }
+            
+        }
+        //  DDLogDebug(@"have Weed Day: %d have monthDay: %d, is all day %d",haveWeekDay,haveMonthDay,isALlDay);
+        DDLogDebug(@"cueent week : %lu, current day: %lu",(unsigned long)current.weekday,(unsigned long)current.day);
+        BOOL isTodayTheWeekDay = NO;
+        BOOL isTodayTheMonthDay = NO;
+        BOOL isInTheTimeRange = NO;
+        if(haveWeekDay){
+            DDLogDebug(@"haveWeekDay : %d",haveWeekDay);
+            //extract the week day
+            NSDictionary *dicWeek   = myValue[@"WeekDay"];
+            NSMutableArray *marrWeekDays = [NSMutableArray new];
+            for(NSObject *weekDay in dicWeek){
+                if([[NSString stringWithFormat:@"%@", dicWeek[weekDay]] isEqualToString:@"1"]){
+                    [marrWeekDays addObject:weekDay.description];
+                }
+            }
+            NSMutableArray *marrNumberWeekDay = [self wordWeekDay2NumberWeekDay:marrWeekDays];
+            //check if it is today
+            for(NSNumber *numDay in marrNumberWeekDay){
+                DDLogDebug(@"current week day : %lu   numDay : %ld",(unsigned long)current.weekday,(long)numDay.integerValue);
+                if([numDay isEqualToNumber:@(current.weekday)]){
+                    DDLogDebug(@"check is today");
+                    isTodayTheWeekDay = YES;
+                    break;
+                }
+            }
+            //check if it is in time-range
+            DDLogDebug(@"isAllDay : %d",isALlDay);
+            if(!isALlDay){
+                NSDate * startTime = myValue[@"startTime"];
+                DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+                if(haveEndTime){
+
+                    NSDate *endTime = myValue[@"endTime"];
+                    DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+                    isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+                    DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+                }else{
+                    isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+                    DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+                }
+
+            }else{
+                isInTheTimeRange=YES;
+            }
+
+            return isInTheTimeRange&&isTodayTheWeekDay;
+        }
         if(haveMonthDay){
             DDLogDebug(@"haveMonthDay : %d",haveMonthDay);
             //extract the month day
@@ -339,7 +349,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             NSMutableArray *marrNumberDate = [self extractMonthDay:marrMonthDays];
             //check if it is today
             for(NSString *date in marrNumberDate){
-                DDLogDebug(@"current date : %d   range date : %@",current.day,date);
+                DDLogDebug(@"current date : %lu   range date : %@",(unsigned long)current.day,date);
                 if(current.day==date.integerValue){
                     DDLogDebug(@"check is today");
                     isTodayTheMonthDay = YES;
@@ -370,28 +380,32 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 
         }
-    DDLogDebug(@"isAllDay : %d",isALlDay);
-    if(!isALlDay){
-        NSDate * startTime = myValue[@"startTime"];
-        DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
-        if(haveEndTime){
+        DDLogDebug(@"isAllDay : %d",isALlDay);
+        if(!isALlDay){
+            NSDate * startTime = myValue[@"startTime"];
+            DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+            if(haveEndTime){
 
-            NSDate *endTime = myValue[@"endTime"];
-            DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
-            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
-            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+                NSDate *endTime = myValue[@"endTime"];
+                DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }else{
+                isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+                DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            }
+
         }else{
-            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
-            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+            isInTheTimeRange=YES;
         }
-
-    }else{
-        isInTheTimeRange=YES;
-    }
 
 
         DDLogDebug(@"end of class");
-    return isInTheTimeRange;
+
+    } @catch (NSException *exception) {
+        DDLogDebug(@"exp : %@",exception.description);
+    }     //抽象出一个tempate?
+     return YES;
 
 
 }
@@ -436,7 +450,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     [request2 setSortDescriptors:@[timesorter]];
     [request2 setPredicate:predicate2];
     NSArray * re2 = [cd fetchFacts:request2];
-    DDLogDebug(@"size: %d",re2.count);
+    DDLogDebug(@"size: %lu",(unsigned long)re2.count);
     cd = nil;
     Fact * fact = re2.firstObject;
     NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];

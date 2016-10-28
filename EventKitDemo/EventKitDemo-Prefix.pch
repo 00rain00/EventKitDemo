@@ -37,7 +37,7 @@ DDLogDebug(@"*** Fatal error: %@ \n %@", error, [error userInfo]);\
 [[NSNotificationCenter defaultCenter] postNotificationName:\
 ManagedObjectContextSaveDidFailNotification object:error];
 //loop NSDictionary
-#define LOOP_DICTIONARY(_dictionary) for(id key in _dictionary){DDLogDebug(@"key : %@, value:%@",key,_dictionary[key]);}
+#define LOOP_DICTIONARY(_dictionary) for(id key in _dictionary){DDLogDebug(@"########################");   DDLogDebug(@"key : %@, value:%@",key,_dictionary[key]);}
 
 
 //检查空对象

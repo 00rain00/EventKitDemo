@@ -60,38 +60,34 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 
         self.eventTitle = self.editedEvent.title;
-    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
-
-    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
-    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
-    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
-    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
-    [self.editedEvent addAlarm:alarm1];
+//    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
+//
+//    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
+//    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
+//    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
+//    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
+//    [self.editedEvent addAlarm:alarm1];
    // [self.editedEvent addAlarm:alarm2];
    // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
     [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
 
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
-        DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
-   
+        DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
+   DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //test two time alarm
 
 
 
 
-//
-//        for(EKAlarm * alarm in self.arrAlarms){
-//            if(OBJECT_ISNOT_EMPTY(alarm.absoluteDate)){
-//                DDLogDebug(@"%@, %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime],alarm.emailAddress);
-//            }
-//
-//
-////            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
-////            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
-////            DDLogDebug(@"arriving : %d",alarm1.proximity);
-//        }
-//
+
+        for(EKAlarm * alarm in self.arrAlarms){
+
+          //      DDLogDebug(@"alarm time: %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime]);
+
+
+        }
+
     }
 
 
@@ -329,8 +325,9 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 }
 
 - (IBAction)generate:(id)sender {
-    DDLogDebug(@"evaluatin condition");
-    //todo add a loading status,
+
+
+
     [self.appDelegate evaluationCondition];
 
 }

@@ -72,6 +72,7 @@
 		C1E6F8151DB39AE000381D20 /* XLFormWeekDaysCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F8131DB39AE000381D20 /* XLFormWeekDaysCell.m */; };
 		C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
+		C1F257FE1DC3BB2A0032F491 /* Butter-fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
 		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
 /* End PBXBuildFile section */
@@ -191,6 +192,7 @@
 		C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XLFormWeekDaysCell.xib; sourceTree = "<group>"; };
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
 		C1EAFB621D9972D300234B31 /* EventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventService.m; sourceTree = "<group>"; };
+		C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Butter-fly.mp3"; sourceTree = "<group>"; };
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
 		C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmFormViewController.m; sourceTree = "<group>"; };
 		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -301,6 +303,7 @@
 				C12BFD801DB15EB60059A7B7 /* NSDate+Helper.m */,
 				C17095661DAF8270007B5059 /* rules.clp */,
 				C12529FE1DBE208700A0CA82 /* 0db.mp3 */,
+				C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */,
 				C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */,
 				C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */,
 				C0062F211970321800B71762 /* EventKitDemo-Info.plist */,
@@ -504,7 +507,7 @@
 		C0062F0E1970321800B71762 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Appcoda;
 				TargetAttributes = {
 					C0062F151970321800B71762 = {
@@ -541,6 +544,7 @@
 			files = (
 				C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */,
 				C12529FF1DBE208700A0CA82 /* 0db.mp3 in Resources */,
+				C1F257FE1DC3BB2A0032F491 /* Butter-fly.mp3 in Resources */,
 				C0062F321970321800B71762 /* Images.xcassets in Resources */,
 				C17095671DAF8270007B5059 /* rules.clp in Resources */,
 				C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */,
@@ -785,8 +789,10 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos10.0;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -817,8 +823,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				SDKROOT = iphoneos;
+				NEW_SETTING = "";
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos10.0;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

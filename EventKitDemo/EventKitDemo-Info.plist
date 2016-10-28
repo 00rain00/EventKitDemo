@@ -48,6 +48,9 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string></string>
+		<string>audio</string>
+		<string>fetch</string>
+		<string>location</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>

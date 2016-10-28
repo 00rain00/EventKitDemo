@@ -168,6 +168,20 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     cd = nil;
 }
 
+-(void)testFetchAllCondition{
+    DDLogDebug(@"start");
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"sattus = YES"];
+    [request setPredicate:predicate];
+    CoreDataService * cd = [[CoreDataService alloc] init];
+    NSArray *conditions = [cd fetchCondition:request];
+    Condition * condition = conditions.firstObject;
+    
+    DDLogDebug(@"conditins sieze : %lu , %@",(unsigned long)conditions.count,condition.myKey);
+    cd= nil;
+}
+
+
 
 -(void)testFetchCondion{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];

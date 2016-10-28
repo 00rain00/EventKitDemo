@@ -9,7 +9,7 @@
 
 
 #import "AddWeatherViewController.h"
-NSString * const kWeatherDetails  = @"weatherDetails";
+NSString * const kWeatherDetails  = @"Weather";
 NSString * const kforecastTime = @"forecastTime";
 NSString * const kforecastType = @"forecastType";
 @interface AddWeatherViewController ()
@@ -44,8 +44,7 @@ NSString * const kforecastType = @"forecastType";
     XLFormSectionDescriptor * section;
 
     form = [XLFormDescriptor formDescriptor];
-    __typeof(self) __weak weakSelf = self;
-
+  
 
     section = [XLFormSectionDescriptor formSectionWithTitle:@"Weather"];
     [form addFormSection:section];

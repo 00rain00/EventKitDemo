@@ -17,7 +17,7 @@
 
 - (Condition *)createCondition:(NSString *)reminderId :(NSString *)myKey :(NSData *)myValue;
 -(NSArray *)fetchCondition:(NSFetchRequest *)request;
--(Fact *)createFact:(NSString *)myKey:(NSData *)myValue:(NSDate *)createTime;
+-(Fact *)createFact:(NSString *)factKey:(NSData *)factValue:(NSDate *)createTime;
 -(NSArray *)fetchFacts:(NSFetchRequest *)request;
 -(void)deleteCondition:(NSFetchRequest *)request;
 -(void)save;
