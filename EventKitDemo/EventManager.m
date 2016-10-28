@@ -8,13 +8,14 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
-
+@property (nonatomic, strong)CoreDataService *cd;
 @end
 @implementation EventManager
 
 -(instancetype)init{
     if((self=[super init])){
         self.ekEventStore=[EKEventStore new];
+        self.cd = [[CoreDataService alloc] init];
         NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
         if(OBJECT_ISNOT_EMPTY([userDefaults valueForKey:@"eventkit_events_access_granted"])){
             self.eventsAccessGranted= [[userDefaults valueForKey:@"eventkit_events_access_granted"] intValue];
@@ -394,7 +395,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
                 isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
                 DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
             }
-
+            return isInTheTimeRange;
         }else{
             isInTheTimeRange=YES;
         }
@@ -416,8 +417,8 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"factKey == %@",@"location"];
     [request setSortDescriptors:@[timesorter]];
     [request setPredicate:predicate];
-        CoreDataService *coreDataService = [[CoreDataService alloc] init];
-    NSArray *facts = [coreDataService fetchFacts:request];
+
+    NSArray *facts = [self.cd fetchFacts:request];
     Fact *fact = facts.firstObject;
     NSDictionary *locationdata = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
     CLLocation *location = locationdata[@"CLLocation"];
@@ -428,14 +429,15 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
         CLLocationDegrees latidude =  [myValue[@"locationLatitude"] doubleValue];
         CLLocationDegrees longtitidue =  [myValue[@"locationLongtitude"] doubleValue];
         CLLocationDistance radius = [myValue[@"locationRadius"] doubleValue];
-        BOOL isInside = [myValue[@"locationType"] boolValue];
-        DDLogDebug(@"lat : %g , long :%g radius : %g , inside : %@",latidude,longtitidue,radius, isInside? @"YES":@"No");
+        BOOL isOutside = [myValue[@"locationType"] boolValue];
+        DDLogDebug(@"target:lat : %g , long :%g radius : %g , inside : %d",latidude,longtitidue,radius, isOutside);
+        DDLogDebug(@"current:lat : %g , long :%g ",location.coordinate.latitude,location.coordinate.longitude);
         CLLocation *targetLocation = [[CLLocation alloc] initWithLatitude:latidude longitude:longtitidue];
-        if(isInside){
-
-          return  [location distanceFromLocation:targetLocation]<=radius;
-        }else{
+        if(isOutside){
             return [location distanceFromLocation:targetLocation]>=radius;
+
+        }else{
+            return  [location distanceFromLocation:targetLocation]<=radius;
         }
     }
 
@@ -443,22 +445,20 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 }
 
 -(BOOL)compareWeather:(NSDictionary *)myValue{
-    CoreDataService *cd = [[CoreDataService alloc] init];
+
     NSFetchRequest * request2 = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
     NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
     NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
     [request2 setSortDescriptors:@[timesorter]];
     [request2 setPredicate:predicate2];
-    NSArray * re2 = [cd fetchFacts:request2];
+    NSArray * re2 = [self.cd fetchFacts:request2];
     DDLogDebug(@"size: %lu",(unsigned long)re2.count);
-    cd = nil;
+
     Fact * fact = re2.firstObject;
     NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
     LOOP_DICTIONARY(weatherDetails);
     NSMutableArray *mutableArray = weatherDetails[@"weather"];
-    for(NSDictionary *dic in mutableArray){
-        LOOP_DICTIONARY(dic);
-    }
+    DDLogDebug(@"mutableArray size: %lu",mutableArray.count);
 
     NSString *forecastType = myValue[@"forecastType"];
     NSString *forecastTime = myValue[@"forecastTime"];

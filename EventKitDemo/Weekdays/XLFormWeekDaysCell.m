@@ -92,9 +92,9 @@ NSString *const kSunday = @"sunday";
 -(void)updateButtons
 {
     NSDictionary * value = self.rowDescriptor.value;
-    self.sundayButton.selected = [[value objectForKey:kSunday] boolValue];
-    self.mondayButton.selected = [[value objectForKey:kMonday] boolValue];
-    self.tuesdayButton.selected = [[value objectForKey:kTuesday] boolValue];
+    self.sundayButton.selected = [value[kSunday] boolValue];
+    self.mondayButton.selected = [value[kMonday] boolValue];
+    self.tuesdayButton.selected = [value[kTuesday] boolValue];
     self.wednesdayButton.selected = [[value objectForKey:kWednesday] boolValue];
     self.thursdayButton.selected = [[value objectForKey:kThursday] boolValue];
     self.fridayButton.selected = [[value objectForKey:kFriday] boolValue];

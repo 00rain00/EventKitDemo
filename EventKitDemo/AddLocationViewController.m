@@ -25,7 +25,7 @@ NSString *const klocationDetails = @"LocationDetails";
 @property (nonatomic, strong)DBMapSelectorManager *mapSelectorManager;
 @property (assign, nonatomic) INTULocationAccuracy desiredAccuracy;
 @property (assign, nonatomic) NSTimeInterval timeout;
-
+@property (nonatomic, strong)CoreDataService *cd;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
 @property (assign, nonatomic) INTUHeadingRequestID headingRequestID;
 @property (nonatomic, strong)CLLocation *currentLocation;
@@ -52,7 +52,7 @@ NSString *const klocationDetails = @"LocationDetails";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.cd = [[CoreDataService alloc] init];
     self.mapSelectorManager = [[DBMapSelectorManager alloc] initWithMapView:self.mapView];
     self.mapSelectorManager.delegate = self;
     __weak typeof(self) weakself= self;
@@ -270,13 +270,13 @@ NSString *const klocationDetails = @"LocationDetails";
 //            while (OBJECT_IS_EMPTY(self.nearbyInfoArray)) {
 //                DDLogDebug(@"");
 //            };
-            CoreDataService *coreDataService = [[CoreDataService alloc] init];
+
 
             NSString * displayString;
-            if(self.editingTypeSegentedControl.selectedSegmentIndex== (NSInteger) @(0)){
-                displayString  = [NSString stringWithFormat:@"%@ %@",@"arriving",self.closeAddress.name];
+            if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
+                displayString  = [NSString stringWithFormat:@"%@ %@",@"Inside",self.closeAddress.name];
             }else{
-                displayString  = [NSString stringWithFormat:@"%@ %@",@"leaving",self.closeAddress.name];
+                displayString  = [NSString stringWithFormat:@"%@ %@",@"Outside",self.closeAddress.name];
             }
             DDLogDebug(displayString);
             NSDictionary *locationDetails = [ NSDictionary new];
@@ -313,19 +313,9 @@ NSString *const klocationDetails = @"LocationDetails";
             
 
                        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:locationDetails];
-            [coreDataService createCondition:reminderId :klocationDetails :data];
-
-            coreDataService= nil;
-
-
-
+            [self.cd createCondition:reminderId :klocationDetails :data];
 
         }
-
-
-
-
-
 
     }
 }

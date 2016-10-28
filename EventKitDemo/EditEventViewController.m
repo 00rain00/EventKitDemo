@@ -164,6 +164,8 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 else if([condition.myKey containsString:@"Time"]){
 
                     NSDictionary * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSString *startTime;
+                    NSString *endTime;
                     NSMutableString *timeLabel =[NSMutableString stringWithFormat:@""] ;
                     for(NSObject *kkey in myValue){
                         NSString *strKey = [NSString stringWithFormat:@"%@",kkey.description];
@@ -181,20 +183,12 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             NSDate *startDate = myValue[kkey];
                             NSString *strStartDate = [startDate stringWithFormat:kNSDateHelperFormatTime];
                             DDLogDebug(@"str start date: %@",strStartDate);
-                            [timeLabel appendString:strStartDate];
-                            DDLogDebug(@"time label:%@",timeLabel);
-                        } else if ([strKey isEqualToString:@"endSwitch"]){
-                            NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
-                            if([value isEqualToString:@"0"]){
-                                DDLogDebug(@"time label : %@",timeLabel);
-                                [timeLabel appendString:@"~"];
-
-                                continue;
-                            }
-                        }else if([strKey isEqualToString:@"endTime"]){
+                          startTime=strStartDate;
+                        }
+                        else if([strKey isEqualToString:@"endTime"]){
                             NSDate *endDate = myValue[kkey];
                             NSString *strEndDate = [endDate stringWithFormat:kNSDateHelperFormatTime];
-                            [timeLabel appendFormat:@"-%@",strEndDate];
+                          endTime = strEndDate;
 
                             continue;
                         }else if ([strKey isEqualToString:@"WeekDay"]){
@@ -221,7 +215,11 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             }
                             key.text = text;
                         }
-                        valueLabel.text = timeLabel;
+                        if(OBJECT_ISNOT_EMPTY(startTime)&&OBJECT_ISNOT_EMPTY(endTime)){
+                            valueLabel.text= [NSString stringWithFormat:@"%@~%@",startTime,endTime];
+                        }else{
+                            valueLabel.text = [NSString stringWithFormat:@"%@~",startTime];
+                        }
                     }
 
                 }
@@ -230,7 +228,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                     NSString *displayAddress = locationDetails[@"LocationDisplay"];
                     valueLabel.text = displayAddress;
                 }
-                else if([condition.myKey isEqualToString:@"weatherDetails"]){
+                else if([condition.myKey isEqualToString:@"Weather"]){
                     NSDictionary *weatherDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
                     NSString *time = weatherDetails[@"forecastTime"];
                     NSString *type = weatherDetails[@"forecastType"];

@@ -177,6 +177,7 @@ NSString * const kTime  = @"Time";
 
     NSString *reminderID = [[NSUserDefaults standardUserDefaults] valueForKey:@"selected_reminder_identifier"];
     if(OBJECT_IS_EMPTY(reminderID)){
+        //todo pop up a indicator
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     }else {
         if([self saveValidation:reminderID]){
@@ -198,13 +199,55 @@ NSString * const kTime  = @"Time";
                     if([endDate isEarlierThanOrEqualDateIgnoringDate:startDate]){
                         __weak typeof(self) weakSelf=self;
                         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"End time is earlier than start time" preferredStyle:UIAlertControllerStyleAlert];
-                        [alertController addAction:[UIAlertAction actionWithTitle:@"Cancle" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                        [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
                            // [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
 
                         }]];
                         [alertController show];
                         return;
                     }
+                }
+
+            }
+            if(self.selection==2){
+                    NSDictionary *dictionary = formDic[kWeekDay];
+              int i =0;
+                for(NSObject *week in dictionary){
+                NSString *string = [NSString stringWithFormat:@"%@",dictionary[week]];
+                    if([string isEqualToString:@"1"]){
+                       i += 1;
+                    }
+
+                }
+                if(i==0){
+                    __weak typeof(self) weakSelf=self;
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"At least pick one week day" preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                        // [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+                    }]];
+                    [alertController show];
+                    return;
+                }
+
+            }
+            if(self.selection==3){
+                int i =0;
+                NSMutableArray *arr = formDic[kMonthDay];
+                for(NSObject * obj in arr){
+                    if([[obj description] containsString:@"Day"]){
+                       i +=1;
+                    }
+                }
+                if(i==0){
+                    __weak typeof(self) weakSelf=self;
+                    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ooops" message:@"At least pick one  day" preferredStyle:UIAlertControllerStyleAlert];
+                    [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *alertAction){
+                        // [weakSelf.navigationController popToViewController:[weakSelf.navigationController.viewControllers objectAtIndex:0] animated:YES];
+
+                    }]];
+                    [alertController show];
+                    return;
                 }
 
             }

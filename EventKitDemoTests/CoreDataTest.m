@@ -15,17 +15,20 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 @interface CoreDataTest : XCTestCase
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
+@property(nonatomic,strong)CoreDataService * cd;
 @end
 
 @implementation CoreDataTest
 
 - (void)setUp {
     [super setUp];
+    self.cd = [[CoreDataService alloc]init];
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    self.cd= nil;
     [super tearDown];
 }
 
@@ -160,13 +163,15 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 -(void)testFetchFact{
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
-    CoreDataService *cd = [[CoreDataService alloc]init];
-    NSArray * re = [cd fetchFacts:request];
-    DDLogDebug(@"size: %d",re.count);
-    Fact * fact = re.firstObject;
-    DDLogDebug(@"key : %@",fact.factKey);
-    cd = nil;
-}
+        NSArray * re = [self.cd fetchFacts:request];
+    DDLogDebug(@"size: %lu",re.count);
+    for (Fact * fact in re) {
+        DDLogDebug(@"key: %@",fact.factKey);
+        NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+        LOOP_DICTIONARY(data);
+    }
+   
+    }
 
 -(void)testFetchAllCondition{
     DDLogDebug(@"start");
@@ -388,6 +393,15 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 
 
+}
+
+-(void)testBool
+{
+    BOOL a= YES;
+    NSObject * v = @(1);
+    NSNumber * o= (NSNumber *)v;
+   a |=  [o boolValue];
+    DDLogDebug(@"%d",a);
 }
 
 @end

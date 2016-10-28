@@ -29,7 +29,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 -(void)applicationDidEnterBackground:(UIApplication *)application {
     DDLogDebug(@"enter background");
 
-    [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 // [NSTimer scheduledTimerWithTimeInterval:15.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
