@@ -9,9 +9,9 @@
 #import <XCTest/XCTest.h>
 #import "CoreDataService.h"
 #import <MapKit/MapKit.h>
-
+#import <OpenWeatherMapAPI/OWMWeatherAPI.h>
 @import INTULocationManager;
-
+static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
 
 @interface CoreDataTest : XCTestCase
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
@@ -41,7 +41,7 @@
     cd = nil;
 }
 
--(void)testCreateFact{
+-(void)testCreateLocationFact{
     XCTestExpectation *expectation = [self expectationWithDescription:@"test get location workds"];
      __weak __typeof(self) weakSelf = self;
      INTULocationManager *locMgr = [INTULocationManager sharedInstance];
@@ -94,11 +94,77 @@
     }];
 }
 
+-(void)testCreateWeatherFact{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"test get weather works"];
+    __weak __typeof(self) weakself = self;
+    DDLogDebug(@"start get weather");
+    NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";
+    OWMWeatherAPI *weatherAPI = [[OWMWeatherAPI alloc] initWithAPIKey:apiKey];
+    [weatherAPI setTemperatureFormat:kOWMTempCelcius];
+
+    [weatherAPI dailyForecastWeatherByCityId:@"1733046" withCount:15 andCallback:^(NSError *error,NSDictionary *result){
+        DDLogDebug(@"start get weather");
+        if (OBJECT_ISNOT_EMPTY(error)) {
+            FATAL_CORE_DATA_ERROR(error);
+        } else {
+            CoreDataService *cd = [[CoreDataService alloc] init];
+            NSString *key = @"weather";
+            NSDate *current = [NSDate new];
+            NSMutableArray *arrData = [NSMutableArray new];
+            
+            NSArray *weatherjson = (result[@"list"]);
+            DDLogDebug(@"weatherjson size ; %d",weatherjson.count);
+            for(NSDictionary *data in weatherjson) {
+              //  LOOP_DICTIONARY(data);
+                NSArray *arr = data[@"weather"];
+                NSString * str;
+                for (NSDictionary*dic in arr) {
+                    if(OBJECT_ISNOT_EMPTY(str)){
+                        break;
+                    }
+                    for (id key in dic) {
+                        if ([[key description] isEqualToString:@"main"]) {
+                            str  = dic[key];
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                NSDate *time = data[@"dt"];
+                DDLogDebug(@"tiem %@: main :%@",[time stringWithFormat:kNSDateHelperFormatSQLDateWithTime],str);
+                NSDictionary *dic = @{@"time": time,
+                        @"main": str};
+                [arrData addObject:dic];
+            }
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"weather":arrData}];
+            [cd createFact:key : data:current];
+            [expectation fulfill];
+            //Rains Clouds Clear
+        }
+    }];
+
+    [self waitForExpectationsWithTimeout:10.0 handler:^(NSError *error) {
+
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+
+    }];
+}
+
+
+
+
+
 -(void)testFetchFact{
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
     CoreDataService *cd = [[CoreDataService alloc]init];
     NSArray * re = [cd fetchFacts:request];
     DDLogDebug(@"size: %d",re.count);
+    Fact * fact = re.firstObject;
+    DDLogDebug(@"key : %@",fact.factKey);
     cd = nil;
 }
 
@@ -181,7 +247,7 @@
     NSString * key = @"endTime";
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
     NSPredicate *deleteAll = [NSPredicate predicateWithFormat:@"myReminderID==%@",ID];
-    [request setPredicate:deleteAll];
+   // [request setPredicate:deleteAll];
     CoreDataService *cd  = [[CoreDataService alloc]init];
     [cd deleteCondition:request];
     cd = nil;
@@ -216,6 +282,98 @@
     return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
 }
 
+-(void)testEvalueWeatherCondition{
+    //pull the condition
+    CoreDataService *cd = [[CoreDataService alloc] init];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+    NSString * ID =@"813F615D-1EC9-49EF-865B-77049D08EBC0";
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey ==%@",ID,@"weatherDetails"];
+    [request setPredicate:predicate];
 
+    NSArray * re =  [cd fetchCondition:request];
+    DDLogDebug(@"size : %ld",re.count);
+    Condition * condition =re.firstObject;
+    NSData *myValue = condition.myValue;
+    NSDictionary *dictionary = [NSKeyedUnarchiver unarchiveObjectWithData:myValue];
+    NSString *forecastTime = dictionary[@"forecastTime"];
+    NSString *forecastType = dictionary[@"forecastType"];
+    DDLogDebug(@"time : %@  type :%@",forecastTime,forecastType);
+
+    //pull the fact
+    NSFetchRequest * request2 = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request2 setSortDescriptors:@[timesorter]];
+    [request2 setPredicate:predicate2];
+    NSArray * re2 = [cd fetchFacts:request2];
+    DDLogDebug(@"size: %d",re2.count);
+    cd = nil;
+    Fact * fact = re2.firstObject;
+    NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+     LOOP_DICTIONARY(weatherDetails);
+    NSMutableArray *mutableArray = weatherDetails[@"weather"];
+    for(NSDictionary *dic in mutableArray){
+        LOOP_DICTIONARY(dic);
+    }
+
+
+
+    //evaluea it
+    BOOL fullfil = NO;
+    NSString *compareType ;
+    if([forecastType isEqualToString:@"Sunny"]){
+        compareType = @"Clear";
+    }else if([forecastType isEqualToString:@"Rainy"]){
+        compareType = @"Rain";
+    }else{
+        compareType = @"Clouds";
+    }
+    if([forecastTime isEqualToString:@"Tomorrow"]){
+        DDLogDebug(@"forecast tomottow");
+        for(NSDictionary *data in mutableArray){
+            NSDate *date = data[@"time"];
+            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
+            if( date.isInFuture){
+               DDLogDebug(@"future time");
+                NSString *type = data[@"main"];
+                DDLogDebug(@" %@ %@",type,compareType);
+                if([type isEqualToString:compareType]){
+                   DDLogDebug(@"checked");
+
+                    fullfil=YES;
+                    break;
+                }
+            }else{
+                continue;
+            }
+        }
+    }
+    if([forecastTime isEqualToString:@"Next3"]){
+
+        DDLogDebug(@"forecast next 3");
+        for(NSDictionary *data in mutableArray){
+            NSDate *date = data[@"time"];
+            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
+            if([date isEarlierThanOrEqualDate:[[NSDate new] dateByAddingHours:6]]&& [date isLaterThanOrEqualDate:[NSDate new]]){
+               DDLogDebug(@" next 3 time interval");
+                NSString *type = data[@"main"];
+                DDLogDebug(@" %@ %@",type,compareType);
+                if([type isEqualToString:compareType]){
+                    DDLogDebug(@"checked");
+                    fullfil = YES;
+                    break;
+                }
+
+            }else{
+                continue;
+            }
+        }
+    }
+
+    DDLogDebug(@"fullfill : %d",fullfil);
+
+
+
+}
 
 @end

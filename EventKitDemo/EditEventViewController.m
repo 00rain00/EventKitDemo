@@ -329,7 +329,9 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 }
 
 - (IBAction)generate:(id)sender {
-    DDLogDebug(@"generate rull start");
+    DDLogDebug(@"evaluatin condition");
+    //todo add a loading status,
+    [self.appDelegate evaluationCondition];
 
 }
 

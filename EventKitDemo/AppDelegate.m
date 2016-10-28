@@ -24,7 +24,14 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 
 @implementation AppDelegate
 
+-(BOOL)applicationDidEnterBackground:(UIApplication *)application {
+    DDLogDebug(@"enter background");
+    [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
+ //[NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+
+    return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -42,34 +49,37 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     DDLogDebug(@"application start");
     
     
-//    //stay in background
-//    AVAudioSession *session = [AVAudioSession sharedInstance];
-//    [session setActive:YES error:nil];
-//    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
-//    //让 app 支持接受远程控制事件
-//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-//
-//    //播放背景音乐
-//    NSString *musicPath=[[NSBundle mainBundle] pathForResource:@"0db" ofType:@"mp3"];
-//    NSURL *url=[[NSURL alloc]initFileURLWithPath:musicPath];
-//
-//    //创建播放器
-//    AVAudioPlayer *audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-//
-//    [audioPlayer prepareToPlay];
-//
-//    //无限循环播放
-//    audioPlayer.numberOfLoops=-1;
-//    [audioPlayer play];
-//    //play
-//    [NSTimer scheduledTimerWithTimeInterval:20.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
-//
-////    [NSTimer scheduledTimerWithTimeInterval:360.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+    //stay in background
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    //让 app 支持接受远程控制事件
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+
+    //播放背景音乐
+    NSString *musicPath=[[NSBundle mainBundle] pathForResource:@"0db" ofType:@"mp3"];
+    NSURL *url=[[NSURL alloc]initFileURLWithPath:musicPath];
+
+    //创建播放器
+    AVAudioPlayer *audioPlayer;
+   audioPlayer= [AVAudioPlayer alloc];
+    assert(audioPlayer);
+    NSError * error;
+    audioPlayer = [audioPlayer initWithContentsOfURL:url error:&error];
+    if (OBJECT_ISNOT_EMPTY(error)) {
+        FATAL_CORE_DATA_ERROR(error);
+    }
+    [audioPlayer prepareToPlay];
+
+    //无限循环播放
+    audioPlayer.numberOfLoops=-1;
+    [audioPlayer play];
+   // play
+    [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
 
     return YES;
     
     }
-
 -(void)printCurrentTime:(id)sender{
     NSLog(@"当前的时间是---%@---",[self getCurrentTime]);
 }
@@ -83,7 +93,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 
 -(void)evaluationCondition{
     DDLogDebug(@"start");
-  NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"sattus = YES"];
     [request setPredicate:predicate];
     CoreDataService * cd = [[CoreDataService alloc] init];
@@ -135,26 +145,49 @@ cd = nil;
           NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";
         OWMWeatherAPI *weatherAPI = [[OWMWeatherAPI alloc] initWithAPIKey:apiKey];
         [weatherAPI setTemperatureFormat:kOWMTempCelcius];
-        [weatherAPI forecastWeatherByCityId:@"1733046" withCallback:^(NSError *error, NSDictionary *result) {
 
-            DDLogDebug(@"start get weather");
-            if (OBJECT_ISNOT_EMPTY(error)) {
-                FATAL_CORE_DATA_ERROR(error);
-            } else {
-                CoreDataService *cd = [[CoreDataService alloc] init];
-                NSString *key = @"weather";
-                NSDate *current = [NSDate new];
-                NSDictionary *weatherData = @{
-                        @"weather": result
-                };
-                LOOP_DICTIONARY(result);
-                NSData *value = [NSKeyedArchiver archivedDataWithRootObject:weatherData];
-                [cd createFact:key :value :current];
+    [weatherAPI dailyForecastWeatherByCityId:@"1733046" withCount:15 andCallback:^(NSError *error,NSDictionary *result){
+        DDLogDebug(@"start get weather");
+        if (OBJECT_ISNOT_EMPTY(error)) {
+            FATAL_CORE_DATA_ERROR(error);
+        } else {
+            CoreDataService *cd = [[CoreDataService alloc] init];
+            NSString *key = @"weather";
+            NSDate *current = [NSDate new];
+            NSMutableArray *arrData = [NSMutableArray new];
+
+            NSArray *weatherjson = (result[@"list"]);
+            DDLogDebug(@"weatherjson size ; %d",weatherjson.count);
+            for(NSDictionary *data in weatherjson) {
+                //  LOOP_DICTIONARY(data);
+                NSArray *arr = data[@"weather"];
+                NSString * str;
+                for (NSDictionary*dic in arr) {
+                    if(OBJECT_ISNOT_EMPTY(str)){
+                        break;
+                    }
+                    for (id key1 in dic) {
+                        if ([[key1 description] isEqualToString:@"main"]) {
+                            str  = dic[key1];
+                            break;
+                        } else {
+                            continue;
+                        }
+                    }
+                }
+                NSDate *time = data[@"dt"];
+
+                NSDictionary *dic = @{@"time": time,
+                        @"main": str};
+                [arrData addObject:dic];
+            }
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"weather":arrData}];
+            [cd createFact:key : data:current];
                 cd = nil;
 
-                //Rains Clouds Clear
-            }
-        }];
+            //Rains Clouds Clear
+        }
+    }];
 
 
     INTULocationManager *locMgr = [INTULocationManager sharedInstance];

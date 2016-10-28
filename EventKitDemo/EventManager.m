@@ -4,6 +4,7 @@
 #import "Fact+CoreDataClass.h"
 @import INTULocationManager;
 static NSString *kNSDateHelperFormatTime                = @"h:mm a";
+static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
@@ -235,6 +236,9 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
             if([key containsString:@"Location"]){
                 [fullfillConditions addObject:@([self compareLocation:myValue])];
             }
+            if([key containsString:@"Weather"]){
+                [fullfillConditions addObject:@([self compareWeather:myValue])];
+            }
 
         }
         //check whether add alarm to conditions
@@ -424,7 +428,84 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 }
 
+-(BOOL)compareWeather:(NSDictionary *)myValue{
+    CoreDataService *cd = [[CoreDataService alloc] init];
+    NSFetchRequest * request2 = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request2 setSortDescriptors:@[timesorter]];
+    [request2 setPredicate:predicate2];
+    NSArray * re2 = [cd fetchFacts:request2];
+    DDLogDebug(@"size: %d",re2.count);
+    cd = nil;
+    Fact * fact = re2.firstObject;
+    NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+    LOOP_DICTIONARY(weatherDetails);
+    NSMutableArray *mutableArray = weatherDetails[@"weather"];
+    for(NSDictionary *dic in mutableArray){
+        LOOP_DICTIONARY(dic);
+    }
 
+    NSString *forecastType = myValue[@"forecastType"];
+    NSString *forecastTime = myValue[@"forecastTime"];
+
+
+
+    BOOL fullfil = NO;
+    NSString *compareType ;
+    if([forecastType isEqualToString:@"Sunny"]){
+        compareType = @"Clear";
+    }else if([forecastType isEqualToString:@"Rainy"]){
+        compareType = @"Rain";
+    }else{
+        compareType = @"Clouds";
+    }
+    if([forecastTime isEqualToString:@"Tomorrow"]){
+        DDLogDebug(@"forecast tomottow");
+        for(NSDictionary *data in mutableArray){
+            NSDate *date = data[@"time"];
+            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
+            if( date.isInFuture){
+                DDLogDebug(@"future time");
+                NSString *type = data[@"main"];
+                DDLogDebug(@" %@ %@",type,compareType);
+                if([type isEqualToString:compareType]){
+                    DDLogDebug(@"checked");
+
+                    fullfil=YES;
+                    break;
+                }
+            }else{
+                continue;
+            }
+        }
+    }
+    if([forecastTime isEqualToString:@"Next3"]){
+
+        DDLogDebug(@"forecast next 3");
+        for(NSDictionary *data in mutableArray){
+            NSDate *date = data[@"time"];
+            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
+            if([date isEarlierThanOrEqualDate:[[NSDate new] dateByAddingHours:6]]&& [date isLaterThanOrEqualDate:[NSDate new]]){
+                DDLogDebug(@" next 3 time interval");
+                NSString *type = data[@"main"];
+                DDLogDebug(@" %@ %@",type,compareType);
+                if([type isEqualToString:compareType]){
+                    DDLogDebug(@"checked");
+                    fullfil = YES;
+                    break;
+                }
+
+            }else{
+                continue;
+            }
+        }
+    }
+
+    DDLogDebug(@"fullfill : %d",fullfil);
+    return fullfil;
+
+}
 
 -(NSMutableArray *)wordWeekDay2NumberWeekDay:(NSMutableArray *)marrWeekDay{
     NSMutableArray *re = [NSMutableArray new];
