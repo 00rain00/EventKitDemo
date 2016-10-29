@@ -21,7 +21,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 @property (nonatomic, strong) NSMutableArray *arrAlarms;
 
-@property (nonatomic, strong)EKAlarm *ekAlarm;
+@property (nonatomic,strong)Condition * ruleType;
 
 @property (nonatomic, strong)CoreDataService *coreDataService;
 
@@ -72,7 +72,15 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
 
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
-        DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
+    for(Condition *condition in self.arrCondition){
+        if([condition.myKey containsString:@"ruleType"]){
+
+            self.ruleType  = condition;
+
+        }
+    }
+    [self.arrCondition removeObject:self.ruleType];
+    DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
    DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //test two time alarm
@@ -141,19 +149,16 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 titleTextfile.delegate = self;
                 titleTextfile.text=self.editedEvent.title;
                 UISegmentedControl *segment = (UISegmentedControl *) [cell.contentView viewWithTag:20];
-                Condition *condition;
-                for(Condition * con  in self.arrCondition){
-                    if([con.myKey isEqualToString:@"ruleType"]){
-                        condition = con;
-                        break;
-                    }
-                }
-                if(OBJECT_IS_EMPTY(condition)){
+
+                if(OBJECT_IS_EMPTY(self.ruleType)){
                     segment.selectedSegmentIndex=0;
+                    [self.coreDataService createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(segment.selectedSegmentIndex)]];
+
                 }else{
-                    NSInteger selectedIndex = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] integerValue];
-                    segment.selectedSegmentIndex = selectedIndex;
+
+                    segment.selectedSegmentIndex = [[NSKeyedUnarchiver unarchiveObjectWithData:self.ruleType.myValue] integerValue];
                 }
+                [segment addTarget:self action:@selector(segmentChange:) forControlEvents:UIControlEventValueChanged];
             }
             else{
 
@@ -338,9 +343,6 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 - (IBAction)generate:(id)sender {
 
-  UITableViewCell *  cell = [self.tblEvent dequeueReusableCellWithIdentifier:@"idCellTitle"];
-    UISegmentedControl *control = (UISegmentedControl *)[cell viewWithTag:20];
-    [self.coreDataService createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(control.selectedSegmentIndex)]];
 
 
     [self.appDelegate evaluationCondition];
@@ -381,6 +383,12 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
         NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
         condition.myValue = newValue;
     }
+    [self.coreDataService save];
+}
+
+-(void)segmentChange:(UISegmentedControl *)sender{
+    NSData *ruleType = [NSKeyedArchiver archivedDataWithRootObject:@(sender.selectedSegmentIndex)];
+    self.ruleType.myValue = ruleType;
     [self.coreDataService save];
 }
 
