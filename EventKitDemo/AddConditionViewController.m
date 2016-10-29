@@ -8,10 +8,8 @@
 
 #import "AddConditionViewController.h"
 
-NSString * const kDates = @"Date";
 NSString * const kSelectors = @"Selectors";
-NSString * const kFormatters = @"Formatters";
-NSString * const  kPhoto = @"Photo";
+
 @interface AddConditionViewController ()
 
 @end
@@ -55,17 +53,16 @@ NSString * const  kPhoto = @"Photo";
     
     
 
-XLFormRowDescriptor *    Locationrow = [XLFormRowDescriptor formRowDescriptorWithTag:kDates rowType:XLFormRowDescriptorTypeButton title:@"Location"];
+XLFormRowDescriptor *    Locationrow = [XLFormRowDescriptor formRowDescriptorWithTag:kSelectors rowType:XLFormRowDescriptorTypeButton title:@"Location"];
     Locationrow.action.formSegueIdentifier=@"idSegueAddLocation";
     [section addFormRow:Locationrow];
 
- XLFormRowDescriptor *   Contactsrow = [XLFormRowDescriptor formRowDescriptorWithTag:kFormatters rowType:XLFormRowDescriptorTypeButton title:@"Contacts"];
-    Contactsrow.action.formSegueIdentifier=@"idSegueContacts";
-    [section addFormRow:Contactsrow];
-    
-XLFormRowDescriptor *    Photorow = [XLFormRowDescriptor formRowDescriptorWithTag:kPhoto rowType:XLFormRowDescriptorTypeButton title:@"photo"];
-    Photorow.action.formSegueIdentifier=@"idSeguePhotos";
-    [section addFormRow:Photorow];
+
+    XLFormRowDescriptor *    weatherrow = [XLFormRowDescriptor formRowDescriptorWithTag:kSelectors rowType:XLFormRowDescriptorTypeButton title:@"Weather"];
+    weatherrow.action.formSegueIdentifier=@"idSegueAddWeather";
+    [section addFormRow:weatherrow];
+
+
         self.form = form;
     
 

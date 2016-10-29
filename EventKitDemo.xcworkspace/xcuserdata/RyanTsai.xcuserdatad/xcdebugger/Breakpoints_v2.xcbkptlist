@@ -106,13 +106,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemo/AddConditionViewController.m"
-            timestampString = "498299512.292937"
+            timestampString = "499276985.143493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "-initializeForm"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -168,12 +168,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemoTests/CoreDataTest.m"
-            timestampString = "499189250.515593"
+            timestampString = "499370077.656269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
-            landmarkName = "-testFetchCondion"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "-testCreateWeatherFact"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -184,11 +184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemoTests/CoreDataTest.m"
-            timestampString = "499158101.267691"
+            timestampString = "499370077.656269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
             landmarkName = "-testCreateCondtion"
             landmarkType = "7">
          </BreakpointContent>
@@ -200,12 +200,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemoTests/CoreDataTest.m"
-            timestampString = "499189250.515593"
+            timestampString = "499370077.656269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
-            landmarkName = "-testDeleteCondition"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "-testFetchCondion"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -216,12 +216,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemoTests/CoreDataTest.m"
-            timestampString = "499188745.158892"
+            timestampString = "499370077.656269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-testFetchFact"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-testCreateWeatherFact"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -232,13 +232,39 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EventKitDemoTests/CoreDataTest.m"
-            timestampString = "499193061.675834"
+            timestampString = "499370077.656269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "-testDeleteFact"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
+            landmarkName = "-testFetchCondion"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EventKitDemoTests/CoreDataTest.m"
+            timestampString = "499370077.656269"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "-testCreateWeatherFact"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

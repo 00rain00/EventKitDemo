@@ -77,7 +77,7 @@
 }
 
 - (void)requestAccessToReminders {
-    __weak typeof(self) weakSelf;
+ 
     [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error){
         if(OBJECT_IS_EMPTY(error)){
             DDLogInfo(@"reminder access Yes");

@@ -57,7 +57,7 @@ return nil;
 - (void)writeConditionToFile:(NSArray *)condition {
     DDLogDebug(@"");
     NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
-    DDLogDebug(filepath);
+    DDLogDebug(@"%@",filepath);
     NSError *error ;
    // NSMutableData *data;
 

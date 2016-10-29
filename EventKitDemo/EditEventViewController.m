@@ -60,38 +60,34 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 
         self.eventTitle = self.editedEvent.title;
-    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
-
-    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
-    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
-    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
-    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
-    [self.editedEvent addAlarm:alarm1];
+//    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
+//
+//    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
+//    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
+//    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
+//    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
+//    [self.editedEvent addAlarm:alarm1];
    // [self.editedEvent addAlarm:alarm2];
    // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
     [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
 
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
-        DDLogDebug(@"arr condtion count : %d",self.arrCondition.count);
-   
+        DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
+   DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //test two time alarm
 
 
 
 
-//
-//        for(EKAlarm * alarm in self.arrAlarms){
-//            if(OBJECT_ISNOT_EMPTY(alarm.absoluteDate)){
-//                DDLogDebug(@"%@, %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime],alarm.emailAddress);
-//            }
-//
-//
-////            DDLogDebug(@"%f,%f",alarm1.structuredLocation.geoLocation.coordinate.latitude,alarm1.structuredLocation.geoLocation.coordinate.longitude);
-////            DDLogDebug(@"%f",alarm1.structuredLocation.radius);
-////            DDLogDebug(@"arriving : %d",alarm1.proximity);
-//        }
-//
+
+        for(EKAlarm * alarm in self.arrAlarms){
+
+          //      DDLogDebug(@"alarm time: %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime]);
+
+
+        }
+
     }
 
 
@@ -168,6 +164,8 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 else if([condition.myKey containsString:@"Time"]){
 
                     NSDictionary * myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSString *startTime;
+                    NSString *endTime;
                     NSMutableString *timeLabel =[NSMutableString stringWithFormat:@""] ;
                     for(NSObject *kkey in myValue){
                         NSString *strKey = [NSString stringWithFormat:@"%@",kkey.description];
@@ -185,20 +183,12 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             NSDate *startDate = myValue[kkey];
                             NSString *strStartDate = [startDate stringWithFormat:kNSDateHelperFormatTime];
                             DDLogDebug(@"str start date: %@",strStartDate);
-                            [timeLabel appendString:strStartDate];
-                            DDLogDebug(@"time label:%@",timeLabel);
-                        } else if ([strKey isEqualToString:@"endSwitch"]){
-                            NSString *value  = [NSString stringWithFormat:@"%@",myValue[kkey]];
-                            if([value isEqualToString:@"0"]){
-                                DDLogDebug(@"time label : %@",timeLabel);
-                                [timeLabel appendString:@"~"];
-
-                                continue;
-                            }
-                        }else if([strKey isEqualToString:@"endTime"]){
+                          startTime=strStartDate;
+                        }
+                        else if([strKey isEqualToString:@"endTime"]){
                             NSDate *endDate = myValue[kkey];
                             NSString *strEndDate = [endDate stringWithFormat:kNSDateHelperFormatTime];
-                            [timeLabel appendFormat:@"-%@",strEndDate];
+                          endTime = strEndDate;
 
                             continue;
                         }else if ([strKey isEqualToString:@"WeekDay"]){
@@ -225,7 +215,11 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                             }
                             key.text = text;
                         }
-                        valueLabel.text = timeLabel;
+                        if(OBJECT_ISNOT_EMPTY(startTime)&&OBJECT_ISNOT_EMPTY(endTime)){
+                            valueLabel.text= [NSString stringWithFormat:@"%@~%@",startTime,endTime];
+                        }else{
+                            valueLabel.text = [NSString stringWithFormat:@"%@~",startTime];
+                        }
                     }
 
                 }
@@ -233,6 +227,12 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                     NSDictionary *locationDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
                     NSString *displayAddress = locationDetails[@"LocationDisplay"];
                     valueLabel.text = displayAddress;
+                }
+                else if([condition.myKey isEqualToString:@"Weather"]){
+                    NSDictionary *weatherDetails  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                    NSString *time = weatherDetails[@"forecastTime"];
+                    NSString *type = weatherDetails[@"forecastType"];
+                    valueLabel.text = [NSString stringWithFormat:@" %@ is %@",time,type];
                 }
 
 
@@ -323,7 +323,10 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 }
 
 - (IBAction)generate:(id)sender {
-    DDLogDebug(@"generate rull start");
+
+
+
+    [self.appDelegate evaluationCondition];
 
 }
 

@@ -17,4 +17,5 @@
 @end
 @interface AddWeatherViewController : XLFormViewController
 @property (nonatomic, weak)id <AddWeatherViewControllerDelegate> delegate;
+-(IBAction)save:(id)sender;
 @end

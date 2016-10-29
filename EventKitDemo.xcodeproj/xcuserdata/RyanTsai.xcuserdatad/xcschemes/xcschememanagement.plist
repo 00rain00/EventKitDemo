@@ -9,35 +9,35 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>-[CoreDataTest testFetchCondion].xcscheme</key>
+		<key>-[CoreDataTest testFetchLocationCondion].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[CoreDataTest testFetchLocationCondion].xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 		<key>-[EngineServieTest testTransformRules].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>14</integer>
 		</dict>
 		<key>-[CoreDataTest testDeleteCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>15</integer>
 		</dict>
 		<key>-[EventKitDemoTests testCheckCondition].xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>16</integer>
+		</dict>
+		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
