@@ -225,7 +225,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     DDLogDebug(@"start");
 
 
-
+        BOOL isAny  = NO;
         NSMutableArray *fullfillConditions = [NSMutableArray new];
         //loop the condition to check if the condition fullfill
         for(Condition *condition in conditions){
@@ -241,13 +241,25 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             if([key containsString:@"Weather"]){
                 [fullfillConditions addObject:@([self compareWeather:myValue])];
             }
+            if([key containsString:@"ruleType"]){
+                NSInteger flag = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] integerValue];
+                isAny = (BOOL) flag;
+            }
 
         }
         //check whether add alarm to conditions
         BOOL flag  = YES;
-        for(id result in fullfillConditions){
-            flag  = flag && [result boolValue];
+    //1 for any 0 for all
+        if(isAny){
+            for(id result in fullfillConditions){
+                flag  = flag || [result boolValue];
+            }
+        }else{
+            for(id result in fullfillConditions){
+                flag  = flag && [result boolValue];
+            }
         }
+
         return flag;
 
 

@@ -34,13 +34,11 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 -(void)testCreateCondtion{
     CoreDataService *cd  = [[CoreDataService alloc]init];
-    NSString *startTime = @"0700";
-    NSString * endTime  = @"0800";
-    NSData * start = [NSKeyedArchiver archivedDataWithRootObject:startTime];
-    NSData * end = [NSKeyedArchiver archivedDataWithRootObject:endTime];
-    [cd createCondition:@"12345" :@"startTime" :start];
-    [cd createCondition:@"12345" :@"endTime" :end];
-
+    NSString * key = @"ruleType";
+    NSString *reminder = @"813F615D-1EC9-49EF-865B-77049D08EBC0";
+    int i = 1;
+    NSData * value  = [NSKeyedArchiver archivedDataWithRootObject:@(i)];
+    [cd createCondition:reminder :key :value];
     cd = nil;
 }
 

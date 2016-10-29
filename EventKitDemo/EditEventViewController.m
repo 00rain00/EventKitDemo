@@ -140,6 +140,20 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 UITextField *titleTextfile = (UITextField *) [cell.contentView viewWithTag:10];
                 titleTextfile.delegate = self;
                 titleTextfile.text=self.editedEvent.title;
+                UISegmentedControl *segment = (UISegmentedControl *) [cell.contentView viewWithTag:20];
+                Condition *condition;
+                for(Condition * con  in self.arrCondition){
+                    if([con.myKey isEqualToString:@"ruleType"]){
+                        condition = con;
+                        break;
+                    }
+                }
+                if(OBJECT_IS_EMPTY(condition)){
+                    segment.selectedSegmentIndex=0;
+                }else{
+                    NSInteger selectedIndex = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] integerValue];
+                    segment.selectedSegmentIndex = selectedIndex;
+                }
             }
             else{
 
@@ -271,7 +285,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60.0;
+    return 120.0;
 }
 
 
@@ -324,6 +338,9 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 - (IBAction)generate:(id)sender {
 
+  UITableViewCell *  cell = [self.tblEvent dequeueReusableCellWithIdentifier:@"idCellTitle"];
+    UISegmentedControl *control = (UISegmentedControl *)[cell viewWithTag:20];
+    [self.coreDataService createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(control.selectedSegmentIndex)]];
 
 
     [self.appDelegate evaluationCondition];
