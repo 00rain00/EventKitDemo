@@ -28,11 +28,11 @@
                                         <rect key="frame" x="0.0" y="86" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgr-M1-A7O" id="XAR-ZC-2yu">
-                                            <frame key="frameInset" width="328" height="59.5"/>
+                                            <frame key="frameInset" width="328" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2Yb-GJ-9rn">
-                                                    <frame key="frameInset" minX="15" width="313" height="59.5"/>
+                                                    <frame key="frameInset" minX="15" width="313" height="59"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,7 +45,7 @@
                                         <rect key="frame" x="0.0" y="146" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nXo-Gj-PJC" id="B0h-Mh-WeI">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a title for the event..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c3x-9k-nSV">
@@ -96,7 +96,7 @@
         <!--Edit Event-->
         <scene sceneID="LET-Se-ber">
             <objects>
-                <viewController id="5tr-Hb-dvp" customClass="EditEventViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editEventViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5tr-Hb-dvp" customClass="EditEventViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RGR-Xk-Svj"/>
                         <viewControllerLayoutGuide type="bottom" id="AEJ-G7-Wbj"/>
@@ -114,11 +114,11 @@
                                         <rect key="frame" x="0.0" y="119.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pvC-u4-2eX" id="tgF-tM-0nr">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a title for the event..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zdc-1m-9cc">
-                                                    <frame key="frameInset" minX="20" minY="15" width="267" height="30"/>
+                                                    <frame key="frameInset" minX="20" minY="15" width="347" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
@@ -130,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="179.5" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zZ8-FB-NJS" id="1DR-W7-482">
-                                            <frame key="frameInset" width="375" height="60"/>
+                                            <frame key="frameInset" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Condition Type" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFC-4J-cTN">
@@ -204,7 +204,7 @@
                     <navigationItem key="navigationItem" id="1zO-6x-MAG"/>
                     <connections>
                         <segue destination="VWs-Fi-3K2" kind="push" identifier="idSegueDateAndTime" id="HS2-yD-5Up"/>
-                        <segue destination="ZVg-5f-IRw" kind="push" identifier="idSegueAddLocation" id="1f2-Hp-yyZ"/>
+                        <segue destination="EQP-7K-ats" kind="modal" identifier="idSegueAddLocation" id="1f2-Hp-yyZ"/>
                         <segue destination="tux-i7-XPD" kind="push" identifier="idSegueAddWeather" id="SK7-aE-Bdd"/>
                     </connections>
                 </viewController>
@@ -271,9 +271,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2No-iT-lOT">
+                                <frame key="frameInset" minY="64" maxY="70"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="ZVg-5f-IRw" id="fNy-gU-f1n"/>
+                                </connections>
+                            </mapView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fsg-Kf-QDn">
-                                <frame key="frameInset" minX="0.0%" width="375" height="29" maxY="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <frame key="frameInset" height="29" maxY="43"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <segments>
                                     <segment title="Inside"/>
                                     <segment title="Outside"/>
@@ -282,18 +289,16 @@
                                     <action selector="fillingModeSegmentedControlValueDidChange:" destination="ZVg-5f-IRw" eventType="valueChanged" id="Hnr-Yv-7dg"/>
                                 </connections>
                             </segmentedControl>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2No-iT-lOT">
-                                <frame key="frameInset" minX="0.0%" minY="9.60%" width="100.00%" height="75.86%"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="ZVg-5f-IRw" id="fNy-gU-f1n"/>
-                                </connections>
-                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oFS-Fq-oFq">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="ItZ-ZO-HOw">
+                            <connections>
+                                <action selector="back:" destination="ZVg-5f-IRw" id="JEe-Pt-sOe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Kxq-Mk-Kms">
                             <connections>
                                 <action selector="finishAddLocation:" destination="ZVg-5f-IRw" id="lbc-Ur-wAR"/>
@@ -304,11 +309,20 @@
                     <connections>
                         <outlet property="editingTypeSegentedControl" destination="Fsg-Kf-QDn" id="RFY-gk-Ui5"/>
                         <outlet property="mapView" destination="2No-iT-lOT" id="Aid-i8-Gev"/>
+                        <outlet property="searchDisplayController" destination="zvs-Zc-WCq" id="g8a-ww-u8v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Unl-7h-wne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="zvs-Zc-WCq">
+                    <connections>
+                        <outlet property="delegate" destination="ZVg-5f-IRw" id="H3y-b8-yWA"/>
+                        <outlet property="searchContentsController" destination="ZVg-5f-IRw" id="kcx-3G-GyU"/>
+                        <outlet property="searchResultsDataSource" destination="ZVg-5f-IRw" id="oXQ-oD-mx2"/>
+                        <outlet property="searchResultsDelegate" destination="ZVg-5f-IRw" id="kmR-xV-px0"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3008.5" y="1005.5"/>
+            <point key="canvasLocation" x="3595.5" y="1005.5"/>
         </scene>
         <!--Pick a date...-->
         <scene sceneID="jMO-lQ-6db">
@@ -356,11 +370,11 @@
                                         <rect key="frame" x="0.0" y="86" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gZU-l6-ytG" id="eil-z2-VQz">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qwR-4I-aN7">
-                                                    <frame key="frameInset" minX="15" width="345" height="43.5"/>
+                                                    <frame key="frameInset" minX="15" width="345" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -373,7 +387,7 @@
                                         <rect key="frame" x="0.0" y="130" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pez-gd-6km" id="w3g-KA-aoX">
-                                            <frame key="frameInset" width="375" height="44"/>
+                                            <frame key="frameInset" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type the calendar title..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqG-t5-laQ">
@@ -447,6 +461,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZ3-Wu-O0u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-32" y="117"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F5F-EH-O0Y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EQP-7K-ats" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="eZY-5S-Xyp"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gD4-55-y3o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZVg-5f-IRw" kind="relationship" relationship="rootViewController" id="iSR-7W-asP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLU-n6-aJq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3008.5" y="1005.5"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
