@@ -182,7 +182,7 @@
                                     <segue destination="Lth-kN-cSd" kind="push" identifier="idSegueCreateCondition" id="CIR-wU-3eu"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Gene" id="edp-mj-l0r">
+                            <barButtonItem title="Sechedule" id="edp-mj-l0r">
                                 <connections>
                                     <action selector="generate:" destination="5tr-Hb-dvp" id="smk-T3-vwD"/>
                                 </connections>

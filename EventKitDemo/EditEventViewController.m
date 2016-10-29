@@ -151,12 +151,16 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 UISegmentedControl *segment = (UISegmentedControl *) [cell.contentView viewWithTag:20];
 
                 if(OBJECT_IS_EMPTY(self.ruleType)){
+                    DDLogDebug(@"create new tule type");
                     segment.selectedSegmentIndex=0;
                     [self.coreDataService createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(segment.selectedSegmentIndex)]];
 
                 }else{
 
+
                     segment.selectedSegmentIndex = [[NSKeyedUnarchiver unarchiveObjectWithData:self.ruleType.myValue] integerValue];
+
+                    DDLogDebug(@"rule type : %d",segment.selectedSegmentIndex);
                 }
                 [segment addTarget:self action:@selector(segmentChange:) forControlEvents:UIControlEventValueChanged];
             }

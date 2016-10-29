@@ -53,7 +53,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     DDLogDebug(@"application start");
     
 
-   // [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
     NSError *error;
     NSString *soundFilePath = [NSString stringWithFormat:@"%@/0db.mp3",
                                                          [[NSBundle mainBundle] resourcePath]];
@@ -125,7 +125,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
             isFulfil = [self.eventManager checkCondition:tempConditions];
             DDLogDebug(@" full fill : %d", isFulfil);
             if (isFulfil) {
-                DDLogDebug(@"add alarm for reminder");
+
                 EKReminder *reminder = (EKReminder *) [self.eventManager.ekEventStore calendarItemWithIdentifier:rID];
                 NSDate *current = [NSDate new];
 
@@ -135,6 +135,8 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
                 [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
                 if (OBJECT_ISNOT_EMPTY(error)) {
                     FATAL_CORE_DATA_ERROR(error);
+                }else{
+                    DDLogDebug(@"add alarm for reminder : %@", reminder.title);
                 }
             }
         }
@@ -202,7 +204,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     INTULocationManager *locMgr = [INTULocationManager sharedInstance];
     dispatch_async(dispatch_get_main_queue(),^{
         weakself.locationRequestID=[locMgr requestLocationWithDesiredAccuracy:
-                INTULocationAccuracyNeighborhood timeout:5.0 block:^(CLLocation * currentLocation,INTULocationAccuracy achievedAccuracy, INTULocationStatus status){
+                INTULocationAccuracyNeighborhood timeout:20.0 block:^(CLLocation * currentLocation,INTULocationAccuracy achievedAccuracy, INTULocationStatus status){
             if (status == INTULocationStatusSuccess) {
                 // achievedAccuracy is at least the desired accuracy (potentially better)
 
@@ -210,13 +212,6 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
                 DDLogDebug(@"%@",location);
 
 
-                NSString * key  = @"location";
-                NSDate * current = [NSDate new];
-                NSDictionary * locationData = @{
-                        @"CLLocation":currentLocation
-                };
-                NSData * value = [NSKeyedArchiver archivedDataWithRootObject:locationData];
-                [weakself.cd createFact:key :value :current];
 
 
 
@@ -230,6 +225,16 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
                 // An error occurred
                 NSString *string=  [weakself getLocationErrorDescription:status];
                 DDLogDebug(@"%@",string);
+            }
+            if(OBJECT_ISNOT_EMPTY(currentLocation)){
+                NSString * key  = @"location";
+                NSDate * current = [NSDate new];
+                NSDictionary * locationData = @{
+                        @"CLLocation":currentLocation
+                };
+                NSData * value = [NSKeyedArchiver archivedDataWithRootObject:locationData];
+                [weakself.cd createFact:key :value :current];
+
             }
 
             weakself.locationRequestID = NSNotFound;

@@ -151,7 +151,10 @@
 
         // Set its title to the cell's text label.
         cell.textLabel.text = event.title;
+        if(event.isCompleted){
+            cell.textLabel.textColor = UIColor.grayColor;
 
+        }
         if (!self.tblEvents.isEditing) {
             cell.accessoryType = UITableViewCellAccessoryDetailButton;
         }
@@ -209,7 +212,25 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.selectedEvent = self.arrEvents[(NSUInteger) indexPath.row];
+    //todo add indicator image
+   self.selectedEvent =  ((EKReminder *) self.arrEvents[(NSUInteger) indexPath.row]);
+  BOOL flag =  ((EKReminder *) self.arrEvents[(NSUInteger) indexPath.row]).isCompleted;
+    DDLogDebug(@"flag : %d",flag);
+   self.selectedEvent.completed = !flag;
+    NSError *error;
+    [self.appDelegate.eventManager.ekEventStore saveReminder:self.selectedEvent commit:YES error:&error];
+    if(OBJECT_ISNOT_EMPTY(error)){
+        FATAL_CORE_DATA_ERROR(error);
+    }
+  UITableViewCell *cell = [self.tblEvents cellForRowAtIndexPath:indexPath];
+    UITextField * textField = (UITextField *)[cell viewWithTag:10];
+    textField.textColor = [UIColor blackColor];
+    [UIView setAnimationsEnabled:YES];
+    [self.tblEvents beginUpdates];
+    [self.tblEvents reloadData];
+//    [self.tblEvents reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil]
+//                          withRowAnimation:UITableViewRowAnimationNone];
+    [self.tblEvents endUpdates];
 }
 
 
