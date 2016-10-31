@@ -50,6 +50,7 @@
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
 		C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C17DCA711DB4BBC800155100 /* Main.storyboard */; };
+		C19F2FEE1DC79C4100A01C52 /* Party.xml in Resources */ = {isa = PBXBuildFile; fileRef = C19F2FED1DC79C4100A01C52 /* Party.xml */; };
 		C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */; };
 		C1B2A57F1DB7760C00B6DB8B /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */; };
 		C1BCEB9A1DC0866A0024EC42 /* Fact+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BCEB971DC0866A0024EC42 /* Fact+CoreDataClass.m */; };
@@ -154,6 +155,7 @@
 		C17BE5131D8ED25C001F5C87 /* EventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManager.m; sourceTree = "<group>"; };
 		C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = "../../../Library/Developer/Xcode/DerivedData/EventKitDemo-byhgmjfvcngwqpemkfvixanrvars/Build/Products/Debug-iphoneos/CocoaLumberjack/CocoaLumberjack.framework"; sourceTree = "<group>"; };
 		C17DCA721DB4BBC800155100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C19F2FED1DC79C4100A01C52 /* Party.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Party.xml; sourceTree = "<group>"; };
 		C1B2A57B1DB7732500B6DB8B /* CoreDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataService.h; sourceTree = "<group>"; };
 		C1B2A57C1DB7732500B6DB8B /* CoreDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataService.m; sourceTree = "<group>"; };
 		C1B2A57E1DB7760C00B6DB8B /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		C0062F201970321800B71762 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C19F2FED1DC79C4100A01C52 /* Party.xml */,
 				C1E6F8111DB39AE000381D20 /* Weekdays */,
 				C1E6F7F01DB22C9200381D20 /* system_en.fct */,
 				C12BFD7F1DB15EB60059A7B7 /* NSDate+Helper.h */,
@@ -550,6 +553,7 @@
 				C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */,
 				C12529FF1DBE208700A0CA82 /* 0db.mp3 in Resources */,
 				C1F257FE1DC3BB2A0032F491 /* Butter-fly.mp3 in Resources */,
+				C19F2FEE1DC79C4100A01C52 /* Party.xml in Resources */,
 				C0062F321970321800B71762 /* Images.xcassets in Resources */,
 				C17095671DAF8270007B5059 /* rules.clp in Resources */,
 				C17DCA731DB4BBC800155100 /* Main.storyboard in Resources */,

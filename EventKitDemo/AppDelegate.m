@@ -13,7 +13,8 @@
 #import <OpenWeatherMapAPI/OWMWeatherAPI.h>
 @import INTULocationManager;
 NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
-
+static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
+static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 @interface AppDelegate()
 @property (nonatomic, strong)NSDictionary *locationdata;
 @property (nonatomic, strong)NSDictionary *weatherdata;
@@ -28,10 +29,10 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
 
 -(void)applicationDidEnterBackground:(UIApplication *)application {
     DDLogDebug(@"enter background");
-    [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
+  //  [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 
-[NSTimer scheduledTimerWithTimeInterval:90.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+//[NSTimer scheduledTimerWithTimeInterval:90.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
     
 }
@@ -121,7 +122,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
                 }
 
             }
-            DDLogDebug(@"total condition for %@ : %lu", rID, (unsigned long) tempConditions.count);
+            DDLogDebug(@"total condition for %@  %@: %lu", rID, [self.eventManager.ekEventStore calendarItemWithIdentifier:rID].title, (unsigned long) tempConditions.count);
             isFulfil = [self.eventManager checkCondition:tempConditions];
             DDLogDebug(@" full fill : %d", isFulfil);
             if (isFulfil) {
@@ -152,7 +153,7 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
     //todo change to localnoticiation that can fire at midnight every day
     __weak typeof(self) weakself = self;
 
-        DDLogDebug(@"start get weather");
+
           NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";
         OWMWeatherAPI *weatherAPI = [[OWMWeatherAPI alloc] initWithAPIKey:apiKey];
         [weatherAPI setTemperatureFormat:kOWMTempCelcius];
@@ -187,14 +188,17 @@ NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectCo
                     }
                 }
                 NSDate *time = data[@"dt"];
-
-                NSDictionary *dic = @{@"time": time,
+                NSString *strDate = [time stringWithFormat:kNSDateHelperFormatSQLDate];
+                NSString *strTime = [time stringWithFormat:kNSDateHelperFormatSQLTime];
+                NSDictionary *dic = @{
+                        @"date":strDate,
+                        @"time": strTime,
                         @"main": str};
                 [arrData addObject:dic];
             }
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"weather":arrData}];
             [weakself.cd createFact:key : data:current];
-              ;
+
 
             //Rains Clouds Clear
         }

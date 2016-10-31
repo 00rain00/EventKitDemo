@@ -13,6 +13,27 @@ const NSString * factPath;
 void *clipsEnv;
 DATA_OBJECT theResult;
 
++ (NSString *)dataFilePath:(BOOL)forSave {
+    return [[NSBundle mainBundle] pathForResource:@"Party" ofType:@"xml"];
+}
+
++ (NSString *)loadXml {
+
+    NSString *filePath = [self dataFilePath:FALSE];
+    NSData *xmlData = [[NSMutableData alloc] initWithContentsOfFile:filePath];
+    NSError *error;
+    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:xmlData error:&error];
+    RETURN_NIL_WHEN_OBJECT_IS_EMPTY(doc);
+    if(OBJECT_ISNOT_EMPTY(error)){
+        FATAL_CORE_DATA_ERROR(error);
+    }else{
+       // NSLog(@"%@", doc.rootElement);
+    }
+    NSString *fact  = [NSString stringWithFormat:@"%@",doc.rootElement];
+    return fact;
+
+}
+
 
 -(int)setUpClipsEnvironment{
     clipsEnv = CreateEnvironment();
@@ -27,7 +48,15 @@ DATA_OBJECT theResult;
 return nil;
 }
 
-- (BOOL)generateFacts:(NSDictionary *)facts {
++ (BOOL)generateFacts:(NSDictionary *)facts {
+    NSString *factTemp = [self loadXml];
+    
+
+
+
+
+
+
     EnvReset(clipsEnv);
     NSMutableArray *marrFacts = [NSMutableArray new];
     for(id key in facts){
@@ -42,17 +71,17 @@ return nil;
 
     for(NSString * fact in marrFacts){
      NSString *   assertCommand = [NSString stringWithFormat: @"(assert %@)",fact];
-      int r =  [self evalString:assertCommand];
-        DDLogDebug(@"eval string : %@, result :%d",assertCommand,r);
+    //  int r =  [self evalString:assertCommand];
+//        DDLogDebug(@"eval string : %@, result :%d",assertCommand,r);
     }
 
     return NO;
 }
 
-- (BOOL)runEngine:(NSDictionary *)factsAndRules {
-    EnvReset(clipsEnv);
-    return NO;
-}
+//- (BOOL)runEngine:(NSDictionary *)factsAndRules {
+//    EnvReset(clipsEnv);
+//    return NO;
+//}
 
 - (void)writeConditionToFile:(NSArray *)condition {
     DDLogDebug(@"");

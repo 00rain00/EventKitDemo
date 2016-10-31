@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XLForm/XLForm.h>
-
+#import "CoreDataService.h"
 @class AddWeatherViewController;
 @class EKAlarm;
 

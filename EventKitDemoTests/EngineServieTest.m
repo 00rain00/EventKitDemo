@@ -11,14 +11,16 @@
 #import "CoreDataService.h"
 
 @interface EngineServieTest : XCTestCase
-
+@property(nonatomic,strong)EngineService * es;
+@property(nonatomic,strong)CoreDataService * cd;
 @end
 
 @implementation EngineServieTest
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.es = [EngineService new];
+    
 }
 
 - (void)tearDown {
@@ -27,19 +29,19 @@
 }
 
 -(void)testSetUpEngine{
-    EngineService * es = [EngineService new];
+   
     
-    int result = es.setUpClipsEnvironment;
+    int result = self.es.setUpClipsEnvironment;
     NSLog(@"%d",result);
     XCTAssertEqual(result, 1);
 }
 -(void)testTransformFacts{
-    EngineService * es = [EngineService new];
-    es.setUpClipsEnvironment;
+   
+    [self.es setUpClipsEnvironment];
     NSDictionary *facts = @{
             @"Time" :[NSDate new]};
 
-    [es generateFacts:facts];
+    //[self.es generateFacts:facts];
 }
 
 -(void)testTransformRules{
@@ -47,20 +49,18 @@
     NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES",ID];
     [request setPredicate:predicate];
-    CoreDataService *cd  = [[CoreDataService alloc]init];
-    NSArray * re =  [cd fetchCondition:request];
-    EngineService * es = [EngineService new];
-    [es writeConditionToFile:re];
+   
+    NSArray * re =  [self.cd fetchCondition:request];
+      [self.es writeConditionToFile:re];
     DDLogDebug(@"size : %ld",re.count);
 
-
-
-
-
-
-
-    cd = nil;
-    es = nil;
+   
 }
+-(void)testReadXml{
+  //NSString * result =   [EngineService loadXml];
+    //DDLogDebug(@"%@",result);
+}
+
+
 
 @end

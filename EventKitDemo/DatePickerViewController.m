@@ -22,6 +22,7 @@ NSString * const kTime  = @"Time";
 @interface DatePickerViewController ()
 
 @property (nonatomic,strong) DateAndTimeViewController * controller;
+@property(nonatomic,strong)CoreDataService * cd;
 @end
 
 @implementation DatePickerViewController
@@ -154,20 +155,19 @@ NSString * const kTime  = @"Time";
 }
 -(BOOL)saveValidation:(NSString *)reminderID{
     BOOL flag  = NO;
-    CoreDataService *coreDataService = [[CoreDataService alloc] init];
+    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSString * ID =reminderID;
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
-   NSArray *result =  [coreDataService fetchCondition:request];
+   NSArray *result =  [self.cd fetchCondition:request];
     for(Condition * condition in result){
         if([condition.myKey isEqualToString:kTime]){
             flag = YES;
             break;
         }
     }
-    coreDataService=nil;
-    return flag;
+        return flag;
 }
 
 

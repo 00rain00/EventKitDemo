@@ -423,19 +423,19 @@ NSString *const klocationDetails = @"LocationDetails";
 
 -(BOOL)saveValidation:(NSString *)reminderID{
     BOOL flag  = NO;
-    CoreDataService *coreDataService = [[CoreDataService alloc] init];
+   
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSString * ID =reminderID;
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
-    NSArray *result =  [coreDataService fetchCondition:request];
+    NSArray *result =  [self.cd fetchCondition:request];
     for(Condition * condition in result){
         if([condition.myKey isEqualToString:klocationDetails]){
             flag = YES;
             break;
         }
     }
-    coreDataService=nil;
+   
     return flag;
 }
 - (XLFormRowDescriptor *)rowDescriptor {

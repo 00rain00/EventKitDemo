@@ -5,6 +5,8 @@
 @import INTULocationManager;
 static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
+static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
+static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
@@ -498,7 +500,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
     BOOL fullfil = NO;
     NSString *compareType ;
-    if([forecastType isEqualToString:@"Sunny"]){
+    if([forecastType isEqualToString:@"Clear Sky"]){
         compareType = @"Clear";
     }else if([forecastType isEqualToString:@"Rainy"]){
         compareType = @"Rain";
@@ -508,10 +510,10 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     if([forecastTime isEqualToString:@"Tomorrow"]){
         DDLogDebug(@"forecast tomottow");
         for(NSDictionary *data in mutableArray){
-            NSDate *date = data[@"time"];
-            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
-            if( date.isInFuture){
-                DDLogDebug(@"future time");
+            NSString *strDate = data[@"date"];
+          NSDate *date = [NSDate dateFromString:strDate withFormat:kNSDateHelperFormatSQLDate];
+            if( date.isTomorrow){
+                DDLogDebug(@"tomorrow");
                 NSString *type = data[@"main"];
                 DDLogDebug(@"constrain:%@  fact:%@",type,compareType);
                 if([type isEqualToString:compareType]){
@@ -525,25 +527,33 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             }
         }
     }
-    if([forecastTime isEqualToString:@"Next3"]){
+    if([forecastTime isEqualToString:@"Next 3 hours"]){
 
         DDLogDebug(@"forecast next 3");
         for(NSDictionary *data in mutableArray){
-            NSDate *date = data[@"time"];
-            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
-            if([date isEarlierThanOrEqualDate:[[NSDate new] dateByAddingHours:6]]&& [date isLaterThanOrEqualDate:[NSDate new]]){
-                DDLogDebug(@" next 3 time interval");
-                NSString *type = data[@"main"];
-                DDLogDebug(@" %@ %@",type,compareType);
-                if([type isEqualToString:compareType]){
-                    DDLogDebug(@"checked");
-                    fullfil = YES;
-                    break;
-                }
+            NSString *strDate = data[@"date"];
+            NSString *strTime = data[@"time"];
 
+            NSDate *date = [NSDate dateFromString:strDate withFormat:kNSDateHelperFormatSQLDate];
+            if(date.isToday){
+                NSDate *time = [NSDate dateFromString:strTime withFormat:kNSDateHelperFormatSQLTime];
+                if([time isEarlierThanOrEqualDateIgnoringDate:[[NSDate new] dateByAddingHours:6]]&& [time isLaterThanOrEqualDateIgnoringDate:[NSDate new]]){
+                    DDLogDebug(@" next 6 time interval");
+                    NSString *type = data[@"main"];
+                    DDLogDebug(@" %@ %@",type,compareType);
+                    if([type isEqualToString:compareType]){
+                        DDLogDebug(@"checked");
+                        fullfil = YES;
+                        break;
+                    }
+
+                }else{
+                    continue;
+                }
             }else{
                 continue;
             }
+
         }
     }
 

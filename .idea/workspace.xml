@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b1dc6cb-9f81-495f-ba0a-d1e80f91900e" name="Default" comment="">
+    <list default="true" id="3b1dc6cb-9f81-495f-ba0a-d1e80f91900e" name="Default" comment="change">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/EventKitDemo/Party.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/EventKitDemo.iml" afterPath="$PROJECT_DIR$/.idea/EventKitDemo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/CocoaLumberjack.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/CocoaLumberjack.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/FFGlobalAlertController-FFGlobalAlertController.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/FFGlobalAlertController-FFGlobalAlertController.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/FFGlobalAlertController.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/FFGlobalAlertController.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/MBProgressHUD.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/MBProgressHUD.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/EventKitDemo.xcodeproj/project.pbxproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CoreDataService.m" afterPath="$PROJECT_DIR$/EventKitDemo/CoreDataService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EngineService.h" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EngineService.m" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EventManager.m" afterPath="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" afterPath="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m" afterPath="$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/Pods-EventKitDemo.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/Pods-EventKitDemo.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/XLForm.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/XLForm.xcscheme" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-frameworks.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo-frameworks.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.debug.xcconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-EventKitDemo/Pods-EventKitDemo.release.xcconfig" />
     </list>
     <ignored path="EventKitDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,18 +35,30 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_ca35c0521136722c15b6fa99881a7802d6d26b0a" />
   <component name="FavoritesManager">
     <favorites_list name="EventKitDemo" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EventManager.m" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EventManager.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6168">
-              <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
+            <state relative-caret-position="306">
+              <caret line="548" column="0" selection-start-line="548" selection-start-column="0" selection-end-line="548" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EngineService.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="329">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+              <folding>
+                <element signature="e#138#171#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -51,8 +66,8 @@
       <file leaf-file-name="AppDelegate.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="144">
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding>
                 <element signature="e#149#172#0" expanded="true" />
               </folding>
@@ -60,53 +75,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreDataTest.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#137#162#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Podfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Podfile">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="main.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/main.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EventKitDemo/ViewController.m">
+      <file leaf-file-name="EngineService.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5040">
-              <caret line="210" column="5" selection-start-line="210" selection-start-column="5" selection-end-line="210" selection-end-column="5" />
+            <state relative-caret-position="-1643">
+              <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EditEventViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EventKitDemo/EditEventViewController.m">
+      <file leaf-file-name="CoreDataTest.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3384">
-              <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+            <state relative-caret-position="293">
+              <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddWeatherViewController.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AddWeatherViewController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="771">
+              <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EngineServieTest.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="984">
+              <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -118,11 +141,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="clipsengine" />
+        <entry key="$PROJECT_DIR$" value="CLIPS" />
       </map>
     </option>
     <option name="PUSH_TAGS">
-      <GitPushTagMode />
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
     </option>
   </component>
   <component name="IdeDocumentHistory">
@@ -150,22 +176,17 @@
         <option value="$PROJECT_DIR$/EventKitDemo/ContactViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/PhotoViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/AddAlarm.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.h" />
-        <option value="$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EventManager.h" />
         <option value="$PROJECT_DIR$/EventKitDemoTests/EventKitDemoTests.m" />
         <option value="$PROJECT_DIR$/Pods/NSDate-Escort/NSDate-Escort/NSDate+Escort.h" />
         <option value="$PROJECT_DIR$/Pods/NSDate-Escort/NSDate-Escort/NSDate+Escort.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/CoreDataService.h" />
-        <option value="$PROJECT_DIR$/EventKitDemo/CoreDataService.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/Fact+CoreDataProperties.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/AddConditionViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/EventKitDemo-Prefix.pch" />
-        <option value="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemoTests/EventKitDemoTests-Info.plist" />
         <option value="$PROJECT_DIR$/EventKitDemo/Weekdays/XLFormWeekDaysCell.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" />
@@ -175,10 +196,15 @@
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewModel.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/ViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
+        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/EventKitDemo/CoreDataService.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/EngineService.h" />
+        <option value="$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
         <option value="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" />
-        <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
       </list>
     </option>
   </component>
@@ -191,8 +217,8 @@
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
-    <option name="width" value="1624" />
-    <option name="height" value="1023" />
+    <option name="width" value="1630" />
+    <option name="height" value="1027" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -415,24 +441,6 @@
               <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeRootNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EventKitDemo" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EventKitDemo" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Model" />
-              <option name="myItemType" value="com.jetbrains.cidr.projectView.XcodeViewNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Cidr.FilesView" />
@@ -445,24 +453,24 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="SearchEverywhereHistoryKey" value="NSUserD&#9;null&#9;null" />
   </component>
-  <component name="RunManager" selected="XCTest/Kiwi.-[CoreDataTest testFetchAllCondition]">
-    <configuration default="false" name="-[CoreDataTest testFetchLocationCondion]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchLocationCondion]" TEST_CLASS="CoreDataTest" TEST_METHOD="testFetchLocationCondion" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="948098281">
+  <component name="RunManager" selected="XCTest/Kiwi.-[CoreDataTest testEvalueWeatherCondition]">
+    <configuration default="false" name="-[EngineServieTest testReadXml]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[EngineServieTest testReadXml]" TEST_CLASS="EngineServieTest" TEST_METHOD="testReadXml" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="-989657131">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[CoreDataTest testDeleteCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testDeleteCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testDeleteCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="1362375964">
+    <configuration default="false" name="-[CoreDataTest testFetchFact]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchFact]" TEST_CLASS="CoreDataTest" TEST_METHOD="testFetchFact" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="1765741830">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[EventKitDemoTests testCheckCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[EventKitDemoTests testCheckCondition]" TEST_CLASS="EventKitDemoTests" TEST_METHOD="testCheckCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="583659882">
+    <configuration default="false" name="-[CoreDataTest testDeleteFact]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testDeleteFact]" TEST_CLASS="CoreDataTest" TEST_METHOD="testDeleteFact" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="1419368649">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="-[CoreDataTest testCreateWeatherFact]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testCreateWeatherFact]" TEST_CLASS="CoreDataTest" TEST_METHOD="testCreateWeatherFact" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="-1219258008">
       <envs />
       <method />
     </configuration>
     <configuration default="false" name="-[CoreDataTest testEvalueWeatherCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testEvalueWeatherCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testEvalueWeatherCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="806942893">
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="-[CoreDataTest testFetchAllCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchAllCondition]" TEST_PATTERN="APPdelegateTest,CoreDataTest" TEST_MODE="PATTERN" XCODE_SKIPPED_TESTS_HASH_CODE="786482888">
       <envs />
       <method />
     </configuration>
@@ -516,19 +524,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.EventKitDemo" />
       <item index="1" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchCondion]" />
-      <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchLocationCondion]" />
-      <item index="3" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testDeleteCondition]" />
-      <item index="4" class="java.lang.String" itemvalue="XCTest/Kiwi.-[EventKitDemoTests testCheckCondition]" />
-      <item index="5" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testEvalueWeatherCondition]" />
-      <item index="6" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchAllCondition]" />
+      <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.-[EngineServieTest testReadXml]" />
+      <item index="3" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchFact]" />
+      <item index="4" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testDeleteFact]" />
+      <item index="5" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testCreateWeatherFact]" />
+      <item index="6" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testEvalueWeatherCondition]" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchAllCondition]" />
-        <item index="1" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testEvalueWeatherCondition]" />
-        <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.-[EventKitDemoTests testCheckCondition]" />
-        <item index="3" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchLocationCondion]" />
-        <item index="4" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testDeleteCondition]" />
+        <item index="0" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testEvalueWeatherCondition]" />
+        <item index="1" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testFetchFact]" />
+        <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testCreateWeatherFact]" />
+        <item index="3" class="java.lang.String" itemvalue="XCTest/Kiwi.-[CoreDataTest testDeleteFact]" />
+        <item index="4" class="java.lang.String" itemvalue="XCTest/Kiwi.-[EngineServieTest testReadXml]" />
       </list>
     </recent_temporary>
   </component>
@@ -574,7 +582,7 @@
       <workItem from="1477581060679" duration="8495000" />
       <workItem from="1477626434770" duration="52612000" />
       <workItem from="1477894329213" duration="1214000" />
-      <workItem from="1477927279162" duration="208000" />
+      <workItem from="1477927279162" duration="9874000" />
     </task>
     <task id="LOCAL-00001" summary="alert">
       <created>1474209786167</created>
@@ -835,43 +843,57 @@
       <option name="project" value="LOCAL" />
       <updated>1477927337707</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="install xml pods">
+      <created>1477927496644</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1477927496644</updated>
+    </task>
+    <task id="LOCAL-00039" summary="install xml pods">
+      <created>1477927606226</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1477927606226</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="-[CoreDataTest_testFetchAllCondition] - 2016.10.31 at 14h 47m 58s.xml">
-      <configuration name="-[CoreDataTest testFetchAllCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testCreateWeatherFact] - 2016.11.01 at 01h 41m 02s.xml">
+      <configuration name="-[CoreDataTest testCreateWeatherFact]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[CoreDataTest_testFetchAllCondition] - 2016.10.31 at 14h 48m 40s.xml">
-      <configuration name="-[CoreDataTest testFetchAllCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 01h 57m 38s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[CoreDataTest_testFetchAllCondition] - 2016.10.31 at 14h 50m 34s.xml">
-      <configuration name="-[CoreDataTest testFetchAllCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 01m 02s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EngineServieTest_testTransformRules] - 2016.10.24 at 20h 47m 54s.xml">
-      <configuration name="-[EngineServieTest testTransformRules]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 03m 08s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EngineServieTest_testTransformRules] - 2016.10.24 at 20h 49m 11s.xml">
-      <configuration name="-[EngineServieTest testTransformRules]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 04m 49s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EngineServieTest_testTransformRules] - 2016.10.24 at 20h 51m 05s.xml">
-      <configuration name="-[EngineServieTest testTransformRules]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 17m 24s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EngineServieTest_testTransformRules] - 2016.10.24 at 20h 53m 13s.xml">
-      <configuration name="-[EngineServieTest testTransformRules]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 18m 08s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EventKitDemoTests_testCheckCondition] - 2016.10.25 at 02h 02m 06s.xml">
-      <configuration name="-[EventKitDemoTests testCheckCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 24m 41s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EventKitDemoTests_testCheckCondition] - 2016.10.25 at 02h 03m 06s.xml">
-      <configuration name="-[EventKitDemoTests testCheckCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testEvalueWeatherCondition] - 2016.11.01 at 02h 26m 56s.xml">
+      <configuration name="-[CoreDataTest testEvalueWeatherCondition]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
-    <history-entry file="-[EventKitDemoTests_testCheckCondition] - 2016.10.25 at 20h 18m 51s.xml">
-      <configuration name="-[EventKitDemoTests testCheckCondition]" configurationId="OCUnitRunConfiguration" />
+    <history-entry file="-[CoreDataTest_testFetchFact] - 2016.11.01 at 01h 49m 10s.xml">
+      <configuration name="-[CoreDataTest testFetchFact]" configurationId="OCUnitRunConfiguration" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354173000" />
+    <option name="totallyTimeSpent" value="363839000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -883,28 +905,28 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1624" height="1023" extended-state="6" />
+    <frame x="0" y="23" width="1630" height="1027" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16718653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16656308" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36231884" sideWeight="0.49257424" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3608361" sideWeight="0.49257424" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16721672" sideWeight="0.09164087" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281768" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.60176015" sideWeight="0.9083591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43234324" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34988964" sideWeight="0.9083591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7568757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334651" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -958,7 +980,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="editRemember" />
     <MESSAGE value="change add notification" />
     <MESSAGE value="add absulte time alarm" />
     <MESSAGE value="add location view" />
@@ -983,7 +1004,8 @@
     <MESSAGE value="add search location" />
     <MESSAGE value="add rule type&#10;" />
     <MESSAGE value="core functions release with ui bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="core functions release with ui bugs" />
+    <MESSAGE value="install xml pods" />
+    <option name="LAST_COMMIT_MESSAGE" value="install xml pods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -995,13 +1017,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m</url>
-          <line>344</line>
+          <line>347</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m</url>
-          <line>182</line>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -1047,27 +1064,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
-          <caret line="26" column="21" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/EventService.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
@@ -1086,14 +1082,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="833">
           <caret line="59" column="21" selection-start-line="59" selection-start-column="21" selection-end-line="59" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/NSDate+Helper.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="156" column="14" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1130,13 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="195" column="67" selection-start-line="195" selection-start-column="67" selection-end-line="195" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/CoreDataService.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="45" column="1" selection-start-line="45" selection-start-column="1" selection-end-line="45" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1210,13 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Pods/NSDate-Escort/NSDate-Escort/NSDate+Escort.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4704">
-          <caret line="197" column="8" selection-start-line="197" selection-start-column="8" selection-end-line="197" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/AddConditionViewController.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -1228,6 +1202,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1240,13 +1215,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1275,6 +1243,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1314,13 +1283,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="2" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIControl.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-336">
@@ -1344,46 +1306,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
+    <entry file="file://$PROJECT_DIR$/Podfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6168">
-          <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
+        <state relative-caret-position="120">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/CoreDataService.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2088">
+          <caret line="87" column="1" selection-start-line="87" selection-start-column="1" selection-end-line="87" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Pods/NSDate-Escort/NSDate-Escort/NSDate+Escort.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="173" column="8" selection-start-line="173" selection-start-column="8" selection-end-line="173" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="e#138#171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/NSDate+Helper.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="262" column="14" selection-start-line="262" selection-start-column="14" selection-end-line="262" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="984">
+          <caret line="43" column="36" selection-start-line="43" selection-start-column="36" selection-end-line="43" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EngineService.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1643">
+          <caret line="16" column="65" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="144">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#149#172#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/main.m">
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="771">
+          <caret line="63" column="30" selection-start-line="63" selection-start-column="30" selection-end-line="63" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#137#162#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="293">
+          <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Podfile">
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/main.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+        <state relative-caret-position="240">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="548" column="0" selection-start-line="548" selection-start-column="0" selection-end-line="548" selection-end-column="0" />
           <folding />
         </state>
       </provider>
