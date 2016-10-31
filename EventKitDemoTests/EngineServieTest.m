@@ -20,7 +20,7 @@
 - (void)setUp {
     [super setUp];
     self.es = [EngineService new];
-    
+    self.cd = [[CoreDataService alloc] init];
 }
 
 - (void)tearDown {
@@ -57,8 +57,27 @@
    
 }
 -(void)testReadXml{
-  //NSString * result =   [EngineService loadXml];
-    //DDLogDebug(@"%@",result);
+  
+}
+
+-(void)testGenerateFact{
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSPredicate *predicate =   [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request setPredicate:predicate];
+    NSArray * re = [self.cd fetchFacts:request];
+    DDLogDebug(@"size: %lu",re.count);
+//    for (Fact * fact in re) {
+//       // DDLogDebug(@"key: %@",fact.factKey);
+//        NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+//        LOOP_DICTIONARY(data);
+//    }
+    Fact * fact1 = re.firstObject;
+    NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact1.factValue];
+
+//    LOOP_DICTIONARY(fact1);
+    NSMutableArray * arrFact = data[@"weather"];
+    [EngineService generateFacts:arrFact.firstObject];
+
 }
 
 

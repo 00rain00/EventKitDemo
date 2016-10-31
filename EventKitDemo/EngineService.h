@@ -26,6 +26,6 @@ typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
 -(BOOL)runEngine:(NSDictionary *)factsAndRules;
 -(void)writeConditionToFile:(NSArray *)condition;
 + (NSString *)dataFilePath:(BOOL)forSave;
-+ (NSString *)loadXml;
++ (GDataXMLDocument *)loadXml;
 
 @end

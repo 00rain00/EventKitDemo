@@ -14,35 +14,35 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[EngineServieTest testReadXml].xcscheme</key>
+		<key>-[CoreDataTest testFetchFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>-[CoreDataTest testFetchFact].xcscheme</key>
+		<key>-[CoreDataTest testCreateWeatherFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>-[CoreDataTest testDeleteFact].xcscheme</key>
+		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>-[CoreDataTest testCreateWeatherFact].xcscheme</key>
+		<key>-[EngineServieTest testGenerateFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
+		<key>-[EngineServieTest testReadXml].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

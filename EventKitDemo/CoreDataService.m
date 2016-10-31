@@ -100,6 +100,7 @@ if((self = [super init])){
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentsURL = [[fileManager URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     NSURL *storeURL = [documentsURL URLByAppendingPathComponent:@"Reminder.sqlite"];
+    DDLogDebug(@"storeURL: %@",storeURL.absoluteString);
     NSMutableDictionary *options = [[NSMutableDictionary alloc] init];
     options[NSMigratePersistentStoresAutomaticallyOption] = @YES;
     options[NSInferMappingModelAutomaticallyOption] = @YES;

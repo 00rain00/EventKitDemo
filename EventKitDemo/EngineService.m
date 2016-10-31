@@ -17,20 +17,21 @@ DATA_OBJECT theResult;
     return [[NSBundle mainBundle] pathForResource:@"Party" ofType:@"xml"];
 }
 
-+ (NSString *)loadXml {
-
++ (GDataXMLDocument *)loadXml {
+DDLogDebug(@"");
     NSString *filePath = [self dataFilePath:FALSE];
     NSData *xmlData = [[NSMutableData alloc] initWithContentsOfFile:filePath];
     NSError *error;
     GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:xmlData error:&error];
-    RETURN_NIL_WHEN_OBJECT_IS_EMPTY(doc);
     if(OBJECT_ISNOT_EMPTY(error)){
         FATAL_CORE_DATA_ERROR(error);
     }else{
-       // NSLog(@"%@", doc.rootElement);
+         NSLog(@"%@", doc.rootElement);
     }
-    NSString *fact  = [NSString stringWithFormat:@"%@",doc.rootElement];
-    return fact;
+    RETURN_NIL_WHEN_OBJECT_IS_EMPTY(doc);
+
+
+    return doc;
 
 }
 
@@ -49,7 +50,33 @@ return nil;
 }
 
 + (BOOL)generateFacts:(NSDictionary *)facts {
-    NSString *factTemp = [self loadXml];
+    DDLogDebug(@"");
+    GDataXMLDocument *xmlDocument = [self loadXml];
+   NSError *error;
+   // NSArray *factMembers =[xmlDocument nodesForXPath:@"//CLIPSScriptConfig/Script[name = \"Fact_01\"]" error:&error];
+    NSArray *factMembers =[xmlDocument nodesForXPath:@"//CLIPSScriptConfig/Script[1]" error:&error];
+    
+    if(OBJECT_IS_EMPTY(factMembers)){
+        DDLogDebug(@"factMembers is empty");
+    }
+    if(OBJECT_ISNOT_EMPTY(error)){
+        FATAL_CORE_DATA_ERROR(error)
+    }else{
+        NSString *string;
+        for(GDataXMLElement *element in factMembers){
+           string = element.stringValue;
+            DDLogDebug(@"%@",string);
+        }
+
+            NSString *fact = [string stringByReplacingOccurrencesOfString:@"@weather" withString:facts[@"main"]];
+            fact = [fact stringByReplacingOccurrencesOfString:@"@date" withString:facts[@"date"]];
+            fact = [fact stringByReplacingOccurrencesOfString:@"@time" withString:facts[@"time"]];
+            DDLogDebug(@"%@",fact);
+        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
+        DDLogDebug(@"path : %@",filepath);
+ [fact writeToFile:filepath atomically:NO encoding:NSUTF8StringEncoding error:&error];
+    }
+
     
 
 
@@ -57,23 +84,23 @@ return nil;
 
 
 
-    EnvReset(clipsEnv);
-    NSMutableArray *marrFacts = [NSMutableArray new];
-    for(id key in facts){
-      NSString *  theString = [NSString stringWithFormat: @"(%@ %@)",
-                                                key,
-                                                facts[key]];
-        [marrFacts addObject:theString];
-    }
-   NSString * filePath = [[NSBundle mainBundle] pathForResource: @"system_en" ofType: @"fct"];
- char*  cFilePath = (char *) [filePath UTF8String];
-    EnvLoadFacts(clipsEnv,cFilePath);
-
-    for(NSString * fact in marrFacts){
-     NSString *   assertCommand = [NSString stringWithFormat: @"(assert %@)",fact];
-    //  int r =  [self evalString:assertCommand];
-//        DDLogDebug(@"eval string : %@, result :%d",assertCommand,r);
-    }
+//    EnvReset(clipsEnv);
+//    NSMutableArray *marrFacts = [NSMutableArray new];
+//    for(id key in facts){
+//      NSString *  theString = [NSString stringWithFormat: @"(%@ %@)",
+//                                                key,
+//                                                facts[key]];
+//        [marrFacts addObject:theString];
+//    }
+//   NSString * filePath = [[NSBundle mainBundle] pathForResource: @"system_en" ofType: @"fct"];
+// char*  cFilePath = (char *) [filePath UTF8String];
+//    EnvLoadFacts(clipsEnv,cFilePath);
+//
+//    for(NSString * fact in marrFacts){
+//     NSString *   assertCommand = [NSString stringWithFormat: @"(assert %@)",fact];
+//    //  int r =  [self evalString:assertCommand];
+////        DDLogDebug(@"eval string : %@, result :%d",assertCommand,r);
+//    }
 
     return NO;
 }

@@ -1,7 +1,6 @@
-<Model>
 <CLIPSScriptConfig>
 <Script name = "Fact_01">
 (weather @weather date @date time @time)
 </Script>
 </CLIPSScriptConfig>
-</Model>
+
