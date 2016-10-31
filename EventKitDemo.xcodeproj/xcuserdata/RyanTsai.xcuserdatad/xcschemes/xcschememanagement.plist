@@ -21,28 +21,28 @@
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>3</integer>
 		</dict>
 		<key>-[EventKitDemoTests testCheckCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>4</integer>
 		</dict>
 		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>5</integer>
 		</dict>
 		<key>-[CoreDataTest testFetchAllCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>6</integer>
 		</dict>
 		<key>-[CoreDataTest testFetchCondion].xcscheme</key>
 		<dict>
