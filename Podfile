@@ -10,6 +10,7 @@ target 'EventKitDemo' do
   pod 'DBMapSelectorViewController'
   pod 'INTULocationManager'
   pod 'NSDate-Escort'
+  pod 'GDataXML-HTML'
 
 end
 
@@ -23,5 +24,6 @@ target 'EventKitDemoTests' do
   pod 'DBMapSelectorViewController'
   pod 'INTULocationManager'
   pod 'NSDate-Escort'
+  pod 'GDataXML-HTML'
 end
 
