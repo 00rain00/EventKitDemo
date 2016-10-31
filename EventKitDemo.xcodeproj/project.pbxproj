@@ -73,6 +73,7 @@
 		C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
 		C1F257FE1DC3BB2A0032F491 /* Butter-fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */; };
+		C1F258011DC515BE0032F491 /* EditEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F258001DC515BE0032F491 /* EditEventViewModel.m */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
 		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
 /* End PBXBuildFile section */
@@ -193,6 +194,8 @@
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
 		C1EAFB621D9972D300234B31 /* EventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventService.m; sourceTree = "<group>"; };
 		C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Butter-fly.mp3"; sourceTree = "<group>"; };
+		C1F257FF1DC515BE0032F491 /* EditEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEventViewModel.h; sourceTree = "<group>"; };
+		C1F258001DC515BE0032F491 /* EditEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEventViewModel.m; sourceTree = "<group>"; };
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
 		C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmFormViewController.m; sourceTree = "<group>"; };
 		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -370,6 +373,8 @@
 				C1E6F7FF1DB2B48800381D20 /* Condition+CoreDataProperties.m */,
 				C1E6F8001DB2B48800381D20 /* Condition.h */,
 				C1E6F8011DB2B48800381D20 /* Condition.m */,
+				C1F257FF1DC515BE0032F491 /* EditEventViewModel.h */,
+				C1F258001DC515BE0032F491 /* EditEventViewModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -691,6 +696,7 @@
 				C1E6F8091DB2B9E700381D20 /* DateAndTimeViewController.m in Sources */,
 				C1E6F80F1DB2BA0D00381D20 /* ContactViewController.m in Sources */,
 				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,
+				C1F258011DC515BE0032F491 /* EditEventViewModel.m in Sources */,
 				C0062F261970321800B71762 /* main.m in Sources */,
 				C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */,
 				C1E6F7F41DB268A300381D20 /* NewEventViewController.m in Sources */,

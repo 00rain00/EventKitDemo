@@ -16,28 +16,28 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[EngineServieTest testTransformRules].xcscheme</key>
+		<key>-[CoreDataTest testDeleteCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
-		<key>-[CoreDataTest testDeleteCondition].xcscheme</key>
+		<key>-[EventKitDemoTests testCheckCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>-[EventKitDemoTests testCheckCondition].xcscheme</key>
+		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
+		<key>-[CoreDataTest testFetchAllCondition].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

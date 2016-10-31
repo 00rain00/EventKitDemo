@@ -27,7 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblEvent;
 @property (nonatomic, strong)EKReminder *editedEvent;
-
+@property (strong, nonatomic)IBOutlet UISegmentedControl *control;
 
 
 - (IBAction)saveEvent:(id)sender;

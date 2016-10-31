@@ -225,29 +225,60 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     DDLogDebug(@"start");
 
 
-
+        BOOL isAny  = NO;
         NSMutableArray *fullfillConditions = [NSMutableArray new];
         //loop the condition to check if the condition fullfill
         for(Condition *condition in conditions){
             NSString *key  = condition.myKey;
             NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
             if([key containsString:@"Time"]){
-
-                [fullfillConditions addObject:@([self compareTime:myValue])];
+                BOOL result = [self compareTime:myValue];
+                DDLogDebug(@"Time : %d",result);
+                [fullfillConditions addObject:@(result)];
             }
             if([key containsString:@"Location"]){
-                [fullfillConditions addObject:@([self compareLocation:myValue])];
+                BOOL result = [self compareLocation:myValue];
+                DDLogDebug(@"location: %d",result);
+                [fullfillConditions addObject:@(result)];
             }
             if([key containsString:@"Weather"]){
-                [fullfillConditions addObject:@([self compareWeather:myValue])];
+                BOOL result = [self compareWeather:myValue];
+                [fullfillConditions addObject:@(result)];
+                DDLogDebug(@"weather : %d", result);
+            }
+            if([key containsString:@"ruleType"]){
+                NSInteger flag = [[NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue] integerValue];
+                isAny = (BOOL) flag;
+                DDLogDebug(@"rule type: %@",isAny? @"any":@"all");
             }
 
         }
         //check whether add alarm to conditions
-        BOOL flag  = YES;
-        for(id result in fullfillConditions){
-            flag  = flag && [result boolValue];
+        int i = 0;
+        BOOL flag;
+    //1 for any 0 for all
+        if(isAny){
+            for(id result in fullfillConditions){
+               if([result boolValue]){
+                   i+=1;
+               }
+                if(i>=1){
+                    flag = YES;
+                    break;
+                }
+            }
+        }else{
+            for(id result in fullfillConditions){
+                if([result boolValue]){
+                    i+=1;
+                }
+
+            }
+            if(i==fullfillConditions.count){
+                flag = YES;
+            }
         }
+        DDLogDebug(@"flag : %d",flag);
         return flag;
 
 
@@ -456,7 +487,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
     Fact * fact = re2.firstObject;
     NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
-    LOOP_DICTIONARY(weatherDetails);
+    //LOOP_DICTIONARY(weatherDetails);
     NSMutableArray *mutableArray = weatherDetails[@"weather"];
     DDLogDebug(@"mutableArray size: %lu",mutableArray.count);
 
@@ -482,7 +513,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             if( date.isInFuture){
                 DDLogDebug(@"future time");
                 NSString *type = data[@"main"];
-                DDLogDebug(@" %@ %@",type,compareType);
+                DDLogDebug(@"constrain:%@  fact:%@",type,compareType);
                 if([type isEqualToString:compareType]){
                     DDLogDebug(@"checked");
 
