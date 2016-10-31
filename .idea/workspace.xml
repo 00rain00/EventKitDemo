@@ -5,9 +5,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/EventKitDemo.iml" afterPath="$PROJECT_DIR$/.idea/EventKitDemo.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/EventKitDemo.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="$PROJECT_DIR$/EventKitDemo.xcworkspace/xcuserdata/RyanTsai.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" afterPath="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/RyanTsai.xcuserdatad/xcschemes/xcschememanagement.plist" />
     </list>
     <ignored path="EventKitDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +28,7 @@
       <file leaf-file-name="EventManager.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6096">
+            <state relative-caret-position="6168">
               <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
               <folding />
             </state>
@@ -40,7 +38,7 @@
       <file leaf-file-name="AppDelegate.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="816">
               <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
                 <element signature="e#149#172#0" expanded="true" />
@@ -52,11 +50,9 @@
       <file leaf-file-name="CoreDataTest.m" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-              <folding>
-                <marker date="1477896497000" expanded="true" signature="409:481" ph="..." />
-              </folding>
+            <state relative-caret-position="192">
+              <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -64,7 +60,7 @@
       <file leaf-file-name="main.m" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/EventKitDemo/main.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
+            <state relative-caret-position="360">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
@@ -232,7 +228,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Cidr.FilesView" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,6 +410,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Cidr.FilesView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,23 +421,23 @@
     <property name="SearchEverywhereHistoryKey" value="NSUserD&#9;null&#9;null" />
   </component>
   <component name="RunManager" selected="XCTest/Kiwi.-[CoreDataTest testFetchAllCondition]">
-    <configuration default="false" name="-[CoreDataTest testFetchLocationCondion]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchLocationCondion]" TEST_CLASS="CoreDataTest" TEST_METHOD="testFetchLocationCondion" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="347264028">
+    <configuration default="false" name="-[CoreDataTest testFetchLocationCondion]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchLocationCondion]" TEST_CLASS="CoreDataTest" TEST_METHOD="testFetchLocationCondion" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="948098281">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[CoreDataTest testDeleteCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testDeleteCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testDeleteCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="761541711">
+    <configuration default="false" name="-[CoreDataTest testDeleteCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testDeleteCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testDeleteCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="1362375964">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[EventKitDemoTests testCheckCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[EventKitDemoTests testCheckCondition]" TEST_CLASS="EventKitDemoTests" TEST_METHOD="testCheckCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="-1799571554">
+    <configuration default="false" name="-[EventKitDemoTests testCheckCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[EventKitDemoTests testCheckCondition]" TEST_CLASS="EventKitDemoTests" TEST_METHOD="testCheckCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="583659882">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[CoreDataTest testEvalueWeatherCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testEvalueWeatherCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testEvalueWeatherCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="983185327">
+    <configuration default="false" name="-[CoreDataTest testEvalueWeatherCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testEvalueWeatherCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testEvalueWeatherCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="806942893">
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="-[CoreDataTest testFetchAllCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchAllCondition]" TEST_CLASS="CoreDataTest" TEST_METHOD="testFetchAllCondition" TEST_MODE="SUITE_TEST" XCODE_SKIPPED_TESTS_HASH_CODE="-1129945352">
+    <configuration default="false" name="-[CoreDataTest testFetchAllCondition]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchAllCondition]" TEST_PATTERN="APPdelegateTest,CoreDataTest" TEST_MODE="PATTERN" XCODE_SKIPPED_TESTS_HASH_CODE="786482888">
       <envs />
       <method />
     </configuration>
@@ -488,7 +484,7 @@
       </EXTENSION>
       <method />
     </configuration>
-    <configuration default="false" name="-[CoreDataTest testFetchCondion]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchCondion]" TEST_PATTERN="APPdelegateTest,CoreDataTest/testCreateLocationFact,CoreDataTest/testCreateWeatherFact,CoreDataTest/testDeleteFact,CoreDataTest/testEvalueWeatherCondition,CoreDataTest/testFetchAllCondition,CoreDataTest/testFetchCondion,CoreDataTest/testFetchFact,CoreDataTest/testFetchLocationCondion" TEST_MODE="PATTERN" XCODE_SKIPPED_TESTS_HASH_CODE="-1152853622">
+    <configuration default="false" name="-[CoreDataTest testFetchCondion]" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" WORKING_DIR="" PASS_PARENT_ENVS_2="true" PROJECT_NAME="EventKitDemo" TARGET_NAME="EventKitDemoTests" CONFIG_NAME="Debug" SCHEME_NAME="-[CoreDataTest testFetchCondion]" TEST_PATTERN="APPdelegateTest,CoreDataTest/testCreateLocationFact,CoreDataTest/testCreateWeatherFact,CoreDataTest/testDeleteFact,CoreDataTest/testEvalueWeatherCondition,CoreDataTest/testFetchAllCondition,CoreDataTest/testFetchCondion,CoreDataTest/testFetchFact,CoreDataTest/testFetchLocationCondion" TEST_MODE="PATTERN" XCODE_SKIPPED_TESTS_HASH_CODE="-1609954438">
       <envs />
       <method />
     </configuration>
@@ -553,6 +549,7 @@
       <workItem from="1477581060679" duration="8495000" />
       <workItem from="1477626434770" duration="52612000" />
       <workItem from="1477894329213" duration="1214000" />
+      <workItem from="1477927279162" duration="56000" />
     </task>
     <task id="LOCAL-00001" summary="alert">
       <created>1474209786167</created>
@@ -842,7 +839,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353965000" />
+    <option name="totallyTimeSpent" value="354021000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -860,22 +857,22 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16718653" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36231884" sideWeight="0.49257424" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16721672" sideWeight="0.09164087" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34988964" sideWeight="0.9083591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334651" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36231884" sideWeight="0.49257424" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34988964" sideWeight="0.9083591" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7568757" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4334651" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1206,7 +1203,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
           <caret line="29" column="4" selection-start-line="29" selection-start-column="4" selection-end-line="29" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1254,7 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1326,7 +1321,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6096">
+        <state relative-caret-position="6168">
           <caret line="257" column="18" selection-start-line="257" selection-start-column="18" selection-end-line="257" selection-end-column="18" />
           <folding />
         </state>
@@ -1334,7 +1329,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="816">
           <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding>
             <element signature="e#149#172#0" expanded="true" />
@@ -1344,7 +1339,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/main.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
+        <state relative-caret-position="360">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
         </state>
@@ -1352,11 +1347,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding>
-            <marker date="1477896497000" expanded="true" signature="409:481" ph="..." />
-          </folding>
+        <state relative-caret-position="192">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
