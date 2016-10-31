@@ -173,16 +173,22 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 -(void)testFetchAllCondition{
     DDLogDebug(@"start");
+
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"sattus = YES"];
-    [request setPredicate:predicate];
-    CoreDataService * cd = [[CoreDataService alloc] init];
-    NSArray *conditions = [cd fetchCondition:request];
-    Condition * condition = conditions.firstObject;
+   // [request setPredicate:predicate];
+   
+    NSArray *conditions = [self.cd fetchCondition:request];
+    DDLogDebug(@"Conditions count: %lu",conditions.count);
+    for(Condition * con  in conditions){
+        DDLogDebug(@"###############");
+        DDLogDebug(@"reminder id : %@",con.myReminderID);
+        DDLogDebug(@"key: %@",con.myKey);
+        DDLogDebug(@"stattus: %d",con.sattus.integerValue);
+    }
     
-    DDLogDebug(@"conditins sieze : %lu , %@",(unsigned long)conditions.count,condition.myKey);
-    cd= nil;
-}
+   
+   }
 
 
 
@@ -401,5 +407,6 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
    a |=  [o boolValue];
     DDLogDebug(@"%d",a);
 }
+
 
 @end
