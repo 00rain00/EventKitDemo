@@ -9,6 +9,8 @@
 #import "EngineService.h"
 #import <CLIPSios/clips.h>
 #import "Fact+CoreDataClass.h"
+#import "Condition.h"
+static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
 @interface EngineService()
 {
     void *clipsEnv;
@@ -20,7 +22,7 @@ DATA_OBJECT theResult;
 
 -(instancetype)init{
     if((self = [super init])){
-        [self setUpClipsEnvironment];
+
 
     }
     return self;
@@ -59,7 +61,7 @@ DATA_OBJECT theResult;
     void *theFact;
     const char *theString;
     //get the fact list: the fact that name weather-result
-    EnvEval(clipsEnv,"(find-fact ((?f weather-result)) TRUE)",&theDO);
+    EnvEval(clipsEnv,"(find-fact ((?f temp-weather-result)) TRUE)",&theDO);
     if ((GetType(theDO) != MULTIFIELD) ||
             (GetDOLength(theDO) == 0))
     {
@@ -94,10 +96,7 @@ DATA_OBJECT theResult;
     return   EnvLoad(clipsEnv,Filepath);
 }
 
-- (NSDictionary *)transformRules:(NSDictionary *)rules {
 
-return nil;
-}
 
 + (void)generateFacts:(NSArray *)facts {
     DDLogDebug(@"");
@@ -151,94 +150,64 @@ return nil;
     DDLogDebug(@"");
     GDataXMLDocument *xmlDocument = [self loadXml:NO];
     NSError *error;
+    NSString *stringToWrite = @"";
+    NSArray *ruleMembers =[xmlDocument nodesForXPath:@"//CLIPSRuleConfig/Script" error:&error];
 
-    NSArray *factMembers =[xmlDocument nodesForXPath:@"//CLIPSScriptConfig/Script[1]" error:&error];
-
-    if(OBJECT_IS_EMPTY(factMembers)){
+    if(OBJECT_IS_EMPTY(ruleMembers)){
         DDLogDebug(@"factMembers is empty");
     }
     if(OBJECT_ISNOT_EMPTY(error)){
         FATAL_CORE_DATA_ERROR(error)
     }else{
+        //read the template, the template need to load before the defrule
+        GDataXMLElement *template = ruleMembers[2];
+     stringToWrite=   [stringToWrite stringByAppendingFormat:@"%@\n",template.stringValue];
+        GDataXMLElement *template1 = ruleMembers[1];
+        stringToWrite = [stringToWrite stringByAppendingFormat:@"%@\n",template1.stringValue];
+
         NSString *string;
-        for(GDataXMLElement *element in factMembers){
-            string = element.stringValue;
-            DDLogDebug(@"%@",string);
+       GDataXMLElement *element = ruleMembers.firstObject;
+        string = element.stringValue;
+        for(Condition * condition  in rules){
+            if([condition.myKey isEqualToString:@"Weather"]){
+                NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
+                NSString *forecastTime = myValue[@"forecastTime"];
+
+                NSString *forecastType = myValue[@"forecastType"];
+                NSString *rule = [string stringByReplacingOccurrencesOfString:@"@weather" withString:@"Rain"];
+                if([forecastTime isEqualToString:@"Tomorrow"]){
+                    rule = [rule stringByReplacingOccurrencesOfString:@"@date" withString:[NSDate.dateTomorrow stringWithFormat:kNSDateHelperFormatSQLDate]];
+                    rule = [rule stringByReplacingOccurrencesOfString:@"@time" withString:@"?"];
+                }else{
+                    rule = [rule stringByReplacingOccurrencesOfString:@"@date" withString:[[NSDate new] stringWithFormat:kNSDateHelperFormatSQLDate]];
+                    rule = [rule stringByReplacingOccurrencesOfString:@"@time" withString:@"?"];
+                }
+          DDLogDebug(@"rule : %@",rule);
+                NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
+                stringToWrite = [stringToWrite stringByAppendingFormat:@"%@\n",rule];
+                DDLogDebug(@"path : %@",filepath);
+                DDLogDebug(@"string to write : %@",stringToWrite);
+                [stringToWrite writeToFile:filepath atomically:NO encoding:NSUTF8StringEncoding error:&error];
+            }
         }
 
-        NSString *rule = [string stringByReplacingOccurrencesOfString:@"@weather" withString:rules[@"main"]];
-        rule = [rule stringByReplacingOccurrencesOfString:@"@date" withString:rules[@"date"]];
-        rule = [rule stringByReplacingOccurrencesOfString:@"@time" withString:rules[@"time"]];
-        DDLogDebug(@"%@",rule);
-        NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
-        DDLogDebug(@"path : %@",filepath);
-        [rule writeToFile:filepath atomically:NO encoding:NSUTF8StringEncoding error:&error];
+
     }
 
 
 }
 
-
-
-
-//- (BOOL)runEngine:(NSDictionary *)factsAndRules {
-//    EnvReset(clipsEnv);
-//    return NO;
-//}
-
-- (void)writeConditionToFile:(NSArray *)condition {
-    DDLogDebug(@"");
-    NSString *filepath = [[NSBundle mainBundle] pathForResource:@"rules" ofType:@"clp"];
-    DDLogDebug(@"%@",filepath);
-    NSError *error ;
-   // NSMutableData *data;
-
-    NSString *str = @"hello";
-  //  char *cha  ="heello";
-  //  data = [NSMutableData dataWithBytes:cha length:strlen(cha)];
-   // NSFileHandle *file = [NSFileHandle fileHandleForWritingAtPath:filepath];
-    // [file writeData:data];
-    //[file closeFile];
-
-      [str writeToFile:filepath atomically:NO encoding:NSUTF8StringEncoding error:&error];
-
-    if(OBJECT_ISNOT_EMPTY(error)){
-        FATAL_CORE_DATA_ERROR(error);
-    }
-}
-
-- (int)evalString: (NSString *) evalString
-{
-    char *cEvalString;
-    DATA_OBJECT theRV;
-
-    cEvalString = (char *) [evalString UTF8String];
-   return EnvEval(clipsEnv,cEvalString,&theRV);
-}
 - (void) processRules
 {
     NSString *filePath;
     char *cFilePath;
-
-
-
-
     EnvReset(clipsEnv);
-
-
     filePath = [[NSBundle mainBundle] pathForResource: @"facts" ofType: @"fct"];
     cFilePath = (char *) [filePath UTF8String];
     EnvLoadFacts(clipsEnv,cFilePath);
-
-
-
      EnvRun(clipsEnv,-1);
-
     [self handleResponse];
 }
--(void)writeToFact
-{
 
-}
 
 @end

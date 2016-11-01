@@ -44,18 +44,7 @@
     //[self.es generateFacts:facts];
 }
 
--(void)testGenerateRules{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"813F615D-1EC9-49EF-865B-77049D08EBC0";
-    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES AND myKey == %@",ID,@"Weather"];
-    [request setPredicate:predicate];
-   
-    NSArray * re =  [self.cd fetchCondition:request];
-    [EngineService generateRules:re];
 
-
-   
-}
 
 -(void)testGenerateFact{
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
@@ -71,7 +60,26 @@
        [EngineService generateFacts:re];
 
 }
-
+    
+-(void)testGenerateRules{
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+        NSString * ID =@"813F615D-1EC9-49EF-865B-77049D08EBC0";
+        NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES AND myKey == %@",ID,@"Weather"];
+        [request setPredicate:predicate];
+        
+        NSArray * re =  [self.cd fetchCondition:request];
+        [EngineService generateRules:re];
+        
+        
+        
+    }
+-(void)testRunEngine{
+    [self testGenerateFact];
+    
+    [self testGenerateRules];
+    [self.es setUpClipsEnvironment];
+    [self.es processRules];
+}
 
 
 @end

@@ -12,6 +12,7 @@
 NSString * const kWeatherDetails  = @"Weather";
 NSString * const kforecastTime = @"forecastTime";
 NSString * const kforecastType = @"forecastType";
+
 @interface AddWeatherViewController ()
 @property(nonatomic,strong)CoreDataService *cd ;
 @end

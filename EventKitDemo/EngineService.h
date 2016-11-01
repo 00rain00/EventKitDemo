@@ -19,15 +19,13 @@ typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
 
 -(int)setUpClipsEnvironment;
 
-//get the dictionaary of user's setting and transform to clips rules with reminder identifier
--(NSDictionary *)transformRules:(NSDictionary *)rules;
-//transform devides information to clips fasts
+
 +(void)generateFacts:(NSArray *)facts;
 +(void)generateRules:(NSArray *)rules;
--(BOOL)runEngine:(NSDictionary *)factsAndRules;
--(void)writeConditionToFile:(NSArray *)condition;
+
 + (NSString *)dataFilePath:(BOOL)forFact;
 + (GDataXMLDocument *)loadXml:(BOOL)forFact;
 -(void)handleResponse;
+- (void) processRules;
 
 @end
