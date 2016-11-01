@@ -180,7 +180,8 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                     }
                     for (id key1 in dic) {
                         if ([[key1 description] isEqualToString:@"main"]) {
-                            str  = dic[key1];
+                            str  = [NSString stringWithFormat:@"%@",dic[key1]];
+                            dic[key1];
                             break;
                         } else {
                             continue;

@@ -121,12 +121,10 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 NSArray *arr = data[@"weather"];
                 NSString * str;
                 for (NSDictionary*dic in arr) {
-                    if(OBJECT_ISNOT_EMPTY(str)){
-                        break;
-                    }
+
                     for (id key in dic) {
                         if ([[key description] isEqualToString:@"main"]) {
-                            str  = dic[key];
+                          str   = [NSString stringWithFormat:@"%@",dic[key]];
                             break;
                         } else {
                             continue;

@@ -1,0 +1,16 @@
+
+  <CLIPSRuleConfig>
+      <Script name = "weather">
+          (defrule MAIN::weather
+          (weather @weather date @date time @time)
+          =>
+          (assert(trigger weather)))
+          </Script>
+              <Script name = "Template_01">
+                  (deftemplate MAIN::temp-weather (slot weather)(slot date)(slot time))
+              </Script>
+              <Script name = "Template_02">
+                  (deftemplate MAIN::temp-weather-result(slot trigger))
+                  </Script>
+      </CLIPSRuleConfig>
+

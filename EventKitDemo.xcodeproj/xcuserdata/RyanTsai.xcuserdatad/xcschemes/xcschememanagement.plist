@@ -28,21 +28,21 @@
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
+		<key>-[EngineServieTest testGenerateFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>-[EngineServieTest testGenerateFact].xcscheme</key>
+		<key>-[EngineServieTest testReadXml].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>-[EngineServieTest testReadXml].xcscheme</key>
+		<key>-[CoreDataTest testDeleteFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

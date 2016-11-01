@@ -44,20 +44,17 @@
     //[self.es generateFacts:facts];
 }
 
--(void)testTransformRules{
+-(void)testGenerateRules{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
-    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES",ID];
+    NSString * ID =@"813F615D-1EC9-49EF-865B-77049D08EBC0";
+    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES AND myKey == %@",ID,@"Weather"];
     [request setPredicate:predicate];
    
     NSArray * re =  [self.cd fetchCondition:request];
-      [self.es writeConditionToFile:re];
-    DDLogDebug(@"size : %ld",re.count);
+    [EngineService generateRules:re];
+
 
    
-}
--(void)testReadXml{
-  
 }
 
 -(void)testGenerateFact{
@@ -71,12 +68,7 @@
 //        NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
 //        LOOP_DICTIONARY(data);
 //    }
-    Fact * fact1 = re.firstObject;
-    NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact1.factValue];
-
-//    LOOP_DICTIONARY(fact1);
-    NSMutableArray * arrFact = data[@"weather"];
-    [EngineService generateFacts:arrFact.firstObject];
+       [EngineService generateFacts:re];
 
 }
 
