@@ -7,7 +7,7 @@
 //
 
 #import "EditEventViewController.h"
-#import "AddAlarm.h"
+//#import "AddAlarm.h"
 #import "AppDelegate.h"
 
 static NSString *kNSDateHelperFormatTimeWithPrefix      = @"'at' h:mm a";
@@ -132,7 +132,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
 
-        return @"Event Settings";
+        return @"Reminder Settings";
 
 }
 

@@ -28,7 +28,7 @@
 
 @implementation XLFormButtonCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 }
@@ -57,7 +57,7 @@
         [self.tintColor getRed:&red green:&green blue:&blue alpha:&alpha];
         self.textLabel.textColor  = [UIColor colorWithRed:red green:green blue:blue alpha:(isDisabled ? 0.3 : 1.0)];
     }
-    
+
     self.detailTextLabel.text = self.rowDescriptor.value;
 }
 

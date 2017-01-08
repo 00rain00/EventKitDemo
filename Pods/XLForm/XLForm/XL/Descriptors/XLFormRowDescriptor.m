@@ -28,7 +28,7 @@
 #import "XLFormRowDescriptor.h"
 #import "NSString+XLFormAdditions.h"
 
-CGFloat XLFormUnspecifiedCellHeight = -1.0;
+CGFloat XLFormUnspecifiedCellHeight = -3.0;
 CGFloat XLFormRowInitialHeight = -2;
 
 @interface XLFormDescriptor (_XLFormRowDescriptor)
@@ -69,6 +69,7 @@ CGFloat XLFormRowInitialHeight = -2;
 @synthesize hidePredicateCache = _hidePredicateCache;
 @synthesize disablePredicateCache = _disablePredicateCache;
 @synthesize cellConfig = _cellConfig;
+@synthesize cellConfigForSelector = _cellConfigForSelector;
 @synthesize cellConfigIfDisabled = _cellConfigIfDisabled;
 @synthesize cellConfigAtConfigure = _cellConfigAtConfigure;
 @synthesize height = _height;
@@ -164,6 +165,14 @@ CGFloat XLFormRowInitialHeight = -2;
     _cellConfig = [NSMutableDictionary dictionary];
     return _cellConfig;
 }
+
+-(NSMutableDictionary *)cellConfigForSelector
+{
+    if (_cellConfigForSelector) return _cellConfigForSelector;
+    _cellConfigForSelector = [NSMutableDictionary dictionary];
+    return _cellConfigForSelector;
+}
+
 
 -(NSMutableDictionary *)cellConfigIfDisabled
 {
@@ -580,7 +589,7 @@ CGFloat XLFormRowInitialHeight = -2;
 }
 
 
--(id)initWithLeftValue:(NSString *)leftValue httpParameterKey:(NSString *)httpParameterKey rightOptions:(NSArray *)rightOptions
+-(instancetype)initWithLeftValue:(NSString *)leftValue httpParameterKey:(NSString *)httpParameterKey rightOptions:(NSArray *)rightOptions
 {
     self = [super init];
     if (self){

@@ -17,8 +17,8 @@
         <attribute name="reminderTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Condition" positionX="-290" positionY="-9" width="128" height="103"/>
-        <element name="Fact" positionX="-171" positionY="27" width="128" height="90"/>
-        <element name="Reminder" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Condition" positionX="171" positionY="18" width="128" height="103"/>
+        <element name="Fact" positionX="-198" positionY="18" width="128" height="90"/>
+        <element name="Reminder" positionX="-11" positionY="18" width="128" height="88"/>
     </elements>
 </model>

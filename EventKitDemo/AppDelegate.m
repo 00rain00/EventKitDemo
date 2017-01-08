@@ -32,13 +32,17 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
   //  [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 
-//[NSTimer scheduledTimerWithTimeInterval:90.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+[NSTimer scheduledTimerWithTimeInterval:90.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
     
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.autoSizeScaleX = [UIScreen mainScreen].bounds.size.width/375;
+    self.autoSizeScaleY = [UIScreen mainScreen].bounds.size.height/667;
+    
+    
     //init DDlog
     [DDTTYLogger sharedInstance].logFormatter=[CustomerFormatter new];
     
@@ -90,10 +94,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
      NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"sattus = YES"];
     [request setPredicate:predicate];
-
-
-
-        NSArray *conditions = [self.cd fetchCondition:request];
+    NSArray *conditions = [self.cd fetchCondition:request];
         DDLogDebug(@"condition size: %lu", (unsigned long) conditions.count);
         NSMutableArray *remindersID = [NSMutableArray new];
         //extract the reminder ID
@@ -115,6 +116,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
         for (NSString *rID in IDsets) {
             DDLogDebug(@" reminder id :%@", rID);
             BOOL isFulfil = NO;
+            //extract conditions
             NSMutableArray *tempConditions = [NSMutableArray new];
             for (Condition *con in conditions) {
                 if ([con.myReminderID isEqualToString:rID]) {
@@ -123,6 +125,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
             }
             DDLogDebug(@"total condition for %@  %@: %lu", rID, [self.eventManager.ekEventStore calendarItemWithIdentifier:rID].title, (unsigned long) tempConditions.count);
+            //pass the condition to engine and collect the result
             isFulfil = [self.eventManager checkCondition:tempConditions];
             DDLogDebug(@" full fill : %d", isFulfil);
             if (isFulfil) {
@@ -130,7 +133,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 EKReminder *reminder = (EKReminder *) [self.eventManager.ekEventStore calendarItemWithIdentifier:rID];
                 NSDate *current = [NSDate new];
 
-                EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:60]];
+                EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:5]];
                 NSError *error;
                 [reminder addAlarm:alarm1];
                 [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
@@ -150,14 +153,14 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 -(void)generateFacts{
     DDLogDebug(@"start");
 
-    //todo change to localnoticiation that can fire at midnight every day
+  //generate weather contextual information
     __weak typeof(self) weakself = self;
 
-
-          NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";
+    //provide API key
+    NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";
         OWMWeatherAPI *weatherAPI = [[OWMWeatherAPI alloc] initWithAPIKey:apiKey];
         [weatherAPI setTemperatureFormat:kOWMTempCelcius];
-
+    //set the parameters for API call
     [weatherAPI dailyForecastWeatherByCityId:@"1733046" withCount:15 andCallback:^(NSError *error,NSDictionary *result){
         DDLogDebug(@"start get weather");
         if (OBJECT_ISNOT_EMPTY(error)) {
@@ -167,11 +170,11 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
             NSString *key = @"weather";
             NSDate *current = [NSDate new];
             NSMutableArray *arrData = [NSMutableArray new];
-
+            //store the result in array
             NSArray *weatherjson = (result[@"list"]);
-            DDLogDebug(@"weatherjson size ; %d",weatherjson.count);
+            DDLogDebug(@"weatherjson size ; %lu",weatherjson.count);
             for(NSDictionary *data in weatherjson) {
-                //  LOOP_DICTIONARY(data);
+                //filtering the data
                 NSArray *arr = data[@"weather"];
                 NSString * str;
                 for (NSDictionary*dic in arr) {
@@ -179,9 +182,10 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                         break;
                     }
                     for (id key1 in dic) {
+                        //change the data type in order to store in DB easily
                         if ([[key1 description] isEqualToString:@"main"]) {
                             str  = [NSString stringWithFormat:@"%@",dic[key1]];
-                            dic[key1];
+                           
                             break;
                         } else {
                             continue;
@@ -195,10 +199,11 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                         @"date":strDate,
                         @"time": strTime,
                         @"main": str};
-                [arrData addObject:dic];
+                [arrData addObject:dic]; //add to the collection
             }
+            //
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:@{@"weather":arrData}];
-            [weakself.cd createFact:key : data:current];
+            [weakself.cd createFact:key : data:current]; //save to database
 
 
             //Rains Clouds Clear

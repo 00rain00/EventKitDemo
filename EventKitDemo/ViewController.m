@@ -150,11 +150,9 @@
         EKReminder *event = self.arrEvents[(NSUInteger) row];
 
         // Set its title to the cell's text label.
-        cell.textLabel.text = event.title;
-        if(event.isCompleted){
-            cell.textLabel.textColor = UIColor.grayColor;
-
-        }
+        UILabel * label = [cell viewWithTag:1002];
+        label.text= event.title;
+        [self configureCheckmarkForCell:cell withReminder:event];
         if (!self.tblEvents.isEditing) {
             cell.accessoryType = UITableViewCellAccessoryDetailButton;
         }
@@ -169,7 +167,7 @@
     // Keep the identifier of the event that's about to be edited.
    NSString *reminderIdentifer = [self.arrEvents [(NSUInteger) indexPath.row] calendarItemIdentifier];
     self.appDelegate.eventManager.selectedEventIdentifier=reminderIdentifer;
-  self.selectedEvent = self.arrEvents[indexPath.row];
+  self.selectedEvent = self.arrEvents[(NSUInteger) indexPath.row];
     [self performSegueWithIdentifier:@"idSegueEvent" sender:self];
 }
 
@@ -222,9 +220,8 @@
     if(OBJECT_ISNOT_EMPTY(error)){
         FATAL_CORE_DATA_ERROR(error);
     }
-  UITableViewCell *cell = [self.tblEvents cellForRowAtIndexPath:indexPath];
-    UITextField * textField = (UITextField *)[cell viewWithTag:10];
-    textField.textColor = [UIColor blackColor];
+
+
     [UIView setAnimationsEnabled:YES];
     [self.tblEvents beginUpdates];
     [self.tblEvents reloadData];
@@ -232,6 +229,16 @@
 //                          withRowAnimation:UITableViewRowAnimationNone];
     [self.tblEvents endUpdates];
 }
+
+-(void) configureCheckmarkForCell:(UITableViewCell *)cell withReminder:(EKReminder *)reminder {
+    UILabel *label = (UILabel *) [cell viewWithTag:1001];
+    label.text = reminder.completed ?  @"√": @" ";
+
+}
+
+
+
+
 
 
 #pragma mark - EditEventViewControllerDelegate method implementation

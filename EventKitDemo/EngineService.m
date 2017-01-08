@@ -56,7 +56,7 @@ DATA_OBJECT theResult;
 }
 
 - (void)handleResponse {
-        DATA_OBJECT theDO;
+    DATA_OBJECT theDO;
     struct multifield *theMultifield;
     void *theFact;
     const char *theString;
@@ -118,15 +118,18 @@ DATA_OBJECT theResult;
             DDLogDebug(@"%@",string);
 
         NSString *stringToWrite = @"";
+        //loop the contextual information collecion
         for(Fact *fact in facts){
             if([fact.factKey containsString:@"weather"]){
                 NSDictionary * factValue = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
                 NSMutableArray *arr  = factValue[@"weather"];
                 for(NSDictionary *dic in arr){
+                    //replace the value accordingly
                     NSString *strFact = [string stringByReplacingOccurrencesOfString:@"@weather" withString:dic[@"main"]];
                     strFact = [strFact stringByReplacingOccurrencesOfString:@"@date" withString:dic[@"date"]];
                     strFact = [strFact stringByReplacingOccurrencesOfString:@"@time" withString:dic[@"time"]];
                     DDLogDebug(@"%@",strFact);
+                    //write to file
                    stringToWrite= [stringToWrite stringByAppendingFormat:@"%@\n",strFact];
                 }
 
@@ -144,6 +147,39 @@ DATA_OBJECT theResult;
     }
 
 }
++(BOOL)validation:(NSDictionary *)factValue withtemplae:(NSString *)template{
+    BOOL flag = NO;
+   
+    //get the wildcard element
+  NSArray *arrElement =   [template componentsSeparatedByString:@"@"];
+    //loop the collection
+    //check the size
+    if(factValue.count!=arrElement.count){
+        return NO;
+    }else{
+        for(NSObject *key in factValue){
+            //get the key
+            NSString *strKey = [NSString stringWithFormat:@"%@", key.description];
+            BOOL pair = NO;
+            for(NSString *element in arrElement){
+                //check if the key can pair any element
+                if([element compare:strKey]){
+                    pair = YES;
+                    break;
+                }
+            }
+            //if no pair then return false
+            if(!pair){
+                return NO;
+            }
+        }
+        flag = YES;
+    }
+
+    
+    return flag;
+}
+
 
 + (void)generateRules:(NSArray *)rules {
     //todo require condition preprocessing
@@ -191,9 +227,7 @@ DATA_OBJECT theResult;
             }
         }
 
-
     }
-
 
 }
 

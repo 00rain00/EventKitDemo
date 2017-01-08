@@ -12,7 +12,7 @@
 NSString * const kEveryDay = @"Every Day At";
 NSString * const kEveryDayOfWeekAt = @"Every Day Of Week At";
 
-NSString * const kEveryMonthOn = @"Every Month On";
+NSString * const kEveryMonthOn = @"Every Month At";
 
 NSString * const kEveryYear = @"Every Year on";
 

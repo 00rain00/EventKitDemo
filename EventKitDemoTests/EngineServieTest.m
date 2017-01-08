@@ -35,14 +35,7 @@
     NSLog(@"%d",result);
     XCTAssertEqual(result, 1);
 }
--(void)testTransformFacts{
-   
-    [self.es setUpClipsEnvironment];
-    NSDictionary *facts = @{
-            @"Time" :[NSDate new]};
 
-    //[self.es generateFacts:facts];
-}
 
 
 

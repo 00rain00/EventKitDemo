@@ -63,6 +63,8 @@
 
 }
 
+
+
 - (void)requestAccessToEvents {
     [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
         if(OBJECT_IS_EMPTY(error)){
@@ -268,7 +270,6 @@ return numRow;
     if(editingStyle==UITableViewCellEditingStyleDelete){
         self.indexOfCalendarToDelete = (NSUInteger) row;
         [self confirmCalendarDeletion];
-
     }
 }
 

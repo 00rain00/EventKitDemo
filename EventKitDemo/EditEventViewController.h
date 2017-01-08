@@ -21,7 +21,7 @@
 
 
 @interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,
-        AddAlarmDelegate,AddLocationViewControllerDelegate,AddWeatherViewControllerDelegate>
+        AddAlarmDelegate,AddLocationViewControllerDelegate>
 
 @property (nonatomic, strong) id<EditEventViewControllerDelegate> delegate;
 

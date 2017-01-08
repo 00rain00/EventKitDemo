@@ -40,14 +40,6 @@
 		C170956E1DAF94C2007B5059 /* AddAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = C170956C1DAF94C2007B5059 /* AddAlarm.m */; };
 		C17095711DAFE025007B5059 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095701DAFE025007B5059 /* AddLocationViewController.m */; };
 		C17095721DAFE025007B5059 /* AddLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C17095701DAFE025007B5059 /* AddLocationViewController.m */; };
-		C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7DF1D999CF700BBDC78 /* WELDataSource.m */; };
-		C177A7E41D999E0200BBDC78 /* WELTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E31D999E0200BBDC78 /* WELTableDelegate.m */; };
-		C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7E71D999F7200BBDC78 /* WELWordCell.m */; };
-		C177A7EB1D99A4E400BBDC78 /* WELWordCell+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7EA1D99A4E400BBDC78 /* WELWordCell+Configure.m */; };
-		C177A7EE1D99A68C00BBDC78 /* testCreateTable.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7ED1D99A68C00BBDC78 /* testCreateTable.m */; };
-		C177A7F11D99AB2300BBDC78 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7F01D99AB2300BBDC78 /* CustomerCell.m */; };
-		C177A7F41D99ABAA00BBDC78 /* CustomerCell+Configure.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7F31D99ABAA00BBDC78 /* CustomerCell+Configure.m */; };
-		C177A7F71D99B25B00BBDC78 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = C177A7F61D99B25B00BBDC78 /* Event.m */; };
 		C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */; };
 		C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C17BE5131D8ED25C001F5C87 /* EventManager.m */; };
 		C17CC6DB1DAD276200EC08E8 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C17CC6DA1DAD276200EC08E8 /* CocoaLumberjack.framework */; };
@@ -59,10 +51,8 @@
 		C1BCEB9B1DC0866A0024EC42 /* Fact+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BCEB991DC0866A0024EC42 /* Fact+CoreDataProperties.m */; };
 		C1BCEB9D1DC0F2B20024EC42 /* APPdelegateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BCEB9C1DC0F2B20024EC42 /* APPdelegateTest.m */; };
 		C1BCEBA51DC1023E0024EC42 /* TestingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BCEBA41DC1023E0024EC42 /* TestingAppDelegate.m */; };
-		C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */; };
 		C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */; };
 		C1E6F7F11DB22C9200381D20 /* system_en.fct in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F7F01DB22C9200381D20 /* system_en.fct */; };
-		C1E6F7F41DB268A300381D20 /* NewEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F31DB268A300381D20 /* NewEventViewController.m */; };
 		C1E6F7F71DB2AC8200381D20 /* Reminder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */; };
 		C1E6F7FC1DB2B0B800381D20 /* Reminder+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */; };
 		C1E6F7FD1DB2B0B800381D20 /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = C1E6F7FB1DB2B0B800381D20 /* Reminder.m */; };
@@ -76,7 +66,6 @@
 		C1E6F8161DB39AE000381D20 /* XLFormWeekDaysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */; };
 		C1EAFB631D9972D300234B31 /* EventService.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EAFB621D9972D300234B31 /* EventService.m */; };
 		C1F257FE1DC3BB2A0032F491 /* Butter-fly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */; };
-		C1F258011DC515BE0032F491 /* EditEventViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F258001DC515BE0032F491 /* EditEventViewModel.m */; };
 		C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */; };
 		C98356F7BE67133486294A5C /* Pods_EventKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */; };
 /* End PBXBuildFile section */
@@ -136,23 +125,6 @@
 		C170956C1DAF94C2007B5059 /* AddAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAlarm.m; sourceTree = "<group>"; };
 		C170956F1DAFE025007B5059 /* AddLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddLocationViewController.h; sourceTree = "<group>"; };
 		C17095701DAFE025007B5059 /* AddLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddLocationViewController.m; sourceTree = "<group>"; };
-		C177A7DE1D999CF700BBDC78 /* WELDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELDataSource.h; sourceTree = "<group>"; };
-		C177A7DF1D999CF700BBDC78 /* WELDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELDataSource.m; sourceTree = "<group>"; };
-		C177A7E11D999D9500BBDC78 /* WELCellConfigure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WELCellConfigure.h; sourceTree = "<group>"; };
-		C177A7E21D999E0200BBDC78 /* WELTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELTableDelegate.h; sourceTree = "<group>"; };
-		C177A7E31D999E0200BBDC78 /* WELTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELTableDelegate.m; sourceTree = "<group>"; };
-		C177A7E61D999F7200BBDC78 /* WELWordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELWordCell.h; sourceTree = "<group>"; };
-		C177A7E71D999F7200BBDC78 /* WELWordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELWordCell.m; sourceTree = "<group>"; };
-		C177A7E91D99A4E400BBDC78 /* WELWordCell+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WELWordCell+Configure.h"; sourceTree = "<group>"; };
-		C177A7EA1D99A4E400BBDC78 /* WELWordCell+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WELWordCell+Configure.m"; sourceTree = "<group>"; };
-		C177A7EC1D99A68C00BBDC78 /* testCreateTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testCreateTable.h; sourceTree = "<group>"; };
-		C177A7ED1D99A68C00BBDC78 /* testCreateTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testCreateTable.m; sourceTree = "<group>"; };
-		C177A7EF1D99AB2300BBDC78 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
-		C177A7F01D99AB2300BBDC78 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
-		C177A7F21D99ABAA00BBDC78 /* CustomerCell+Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CustomerCell+Configure.h"; sourceTree = "<group>"; };
-		C177A7F31D99ABAA00BBDC78 /* CustomerCell+Configure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CustomerCell+Configure.m"; sourceTree = "<group>"; };
-		C177A7F51D99B25B00BBDC78 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		C177A7F61D99B25B00BBDC78 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		C17BE50A1D8C7DAC001F5C87 /* LogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogFormatter.h; path = ../LogFormatter.h; sourceTree = "<group>"; };
 		C17BE50B1D8C7DAC001F5C87 /* LogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogFormatter.m; path = ../LogFormatter.m; sourceTree = "<group>"; };
 		C17BE5121D8ED25C001F5C87 /* EventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManager.h; sourceTree = "<group>"; };
@@ -170,13 +142,9 @@
 		C1BCEB9C1DC0F2B20024EC42 /* APPdelegateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APPdelegateTest.m; sourceTree = "<group>"; };
 		C1BCEBA31DC1023E0024EC42 /* TestingAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestingAppDelegate.h; sourceTree = "<group>"; };
 		C1BCEBA41DC1023E0024EC42 /* TestingAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestingAppDelegate.m; sourceTree = "<group>"; };
-		C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalenderListTableViewController.h; sourceTree = "<group>"; };
-		C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalenderListTableViewController.m; sourceTree = "<group>"; };
 		C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddWeatherViewController.h; sourceTree = "<group>"; };
 		C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddWeatherViewController.m; sourceTree = "<group>"; };
 		C1E6F7F01DB22C9200381D20 /* system_en.fct */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = system_en.fct; sourceTree = "<group>"; };
-		C1E6F7F21DB268A300381D20 /* NewEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewEventViewController.h; sourceTree = "<group>"; };
-		C1E6F7F31DB268A300381D20 /* NewEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewEventViewController.m; sourceTree = "<group>"; };
 		C1E6F7F61DB2AC8200381D20 /* Reminder.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reminder.xcdatamodel; sourceTree = "<group>"; };
 		C1E6F7F81DB2B0B800381D20 /* Reminder+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Reminder+CoreDataProperties.h"; sourceTree = "<group>"; };
 		C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Reminder+CoreDataProperties.m"; sourceTree = "<group>"; };
@@ -200,8 +168,6 @@
 		C1EAFB611D9972D300234B31 /* EventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventService.h; sourceTree = "<group>"; };
 		C1EAFB621D9972D300234B31 /* EventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventService.m; sourceTree = "<group>"; };
 		C1F257FD1DC3BB2A0032F491 /* Butter-fly.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Butter-fly.mp3"; sourceTree = "<group>"; };
-		C1F257FF1DC515BE0032F491 /* EditEventViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditEventViewModel.h; sourceTree = "<group>"; };
-		C1F258001DC515BE0032F491 /* EditEventViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditEventViewModel.m; sourceTree = "<group>"; };
 		C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAlarmFormViewController.h; sourceTree = "<group>"; };
 		C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAlarmFormViewController.m; sourceTree = "<group>"; };
 		C51D4CBA07E3A92614C2BB75 /* Pods_EventKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EventKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,7 +219,6 @@
 		C0062F0D1970321800B71762 = {
 			isa = PBXGroup;
 			children = (
-				C177A7E51D999F5400BBDC78 /* TableHelperCell */,
 				C0062F1F1970321800B71762 /* EventKitDemo */,
 				C0062F3E1970321800B71762 /* EventKitDemoTests */,
 				C0062F181970321800B71762 /* Frameworks */,
@@ -291,7 +256,6 @@
 		C0062F1F1970321800B71762 /* EventKitDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C1EAFB641D999AA400234B31 /* TableHelper */,
 				C17BE5111D8ED1F5001F5C87 /* Service */,
 				C17BE5101D8ED1EF001F5C87 /* View */,
 				C17BE50E1D8ED1CE001F5C87 /* Model */,
@@ -349,21 +313,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C177A7E51D999F5400BBDC78 /* TableHelperCell */ = {
-			isa = PBXGroup;
-			children = (
-				C177A7E61D999F7200BBDC78 /* WELWordCell.h */,
-				C177A7E71D999F7200BBDC78 /* WELWordCell.m */,
-				C177A7E91D99A4E400BBDC78 /* WELWordCell+Configure.h */,
-				C177A7EA1D99A4E400BBDC78 /* WELWordCell+Configure.m */,
-				C177A7EF1D99AB2300BBDC78 /* CustomerCell.h */,
-				C177A7F01D99AB2300BBDC78 /* CustomerCell.m */,
-				C177A7F21D99ABAA00BBDC78 /* CustomerCell+Configure.h */,
-				C177A7F31D99ABAA00BBDC78 /* CustomerCell+Configure.m */,
-			);
-			name = TableHelperCell;
-			sourceTree = "<group>";
-		};
 		C17BE50E1D8ED1CE001F5C87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -371,8 +320,6 @@
 				C1BCEB971DC0866A0024EC42 /* Fact+CoreDataClass.m */,
 				C1BCEB981DC0866A0024EC42 /* Fact+CoreDataProperties.h */,
 				C1BCEB991DC0866A0024EC42 /* Fact+CoreDataProperties.m */,
-				C177A7F51D99B25B00BBDC78 /* Event.h */,
-				C177A7F61D99B25B00BBDC78 /* Event.m */,
 				C1E6F7F51DB2AC8200381D20 /* Reminder.xcdatamodeld */,
 				C1E6F7F81DB2B0B800381D20 /* Reminder+CoreDataProperties.h */,
 				C1E6F7F91DB2B0B800381D20 /* Reminder+CoreDataProperties.m */,
@@ -382,8 +329,6 @@
 				C1E6F7FF1DB2B48800381D20 /* Condition+CoreDataProperties.m */,
 				C1E6F8001DB2B48800381D20 /* Condition.h */,
 				C1E6F8011DB2B48800381D20 /* Condition.m */,
-				C1F257FF1DC515BE0032F491 /* EditEventViewModel.h */,
-				C1F258001DC515BE0032F491 /* EditEventViewModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -392,13 +337,20 @@
 			isa = PBXGroup;
 			children = (
 				C17DCA711DB4BBC800155100 /* Main.storyboard */,
-				C1E6F8101DB2BA1D00381D20 /* ViewWithData */,
-				C1BD50431D992E6F005288DD /* CalenderListTableViewController.h */,
-				C1BD50441D992E6F005288DD /* CalenderListTableViewController.m */,
-				C177A7EC1D99A68C00BBDC78 /* testCreateTable.h */,
-				C177A7ED1D99A68C00BBDC78 /* testCreateTable.m */,
-				C1E6F7F21DB268A300381D20 /* NewEventViewController.h */,
-				C1E6F7F31DB268A300381D20 /* NewEventViewController.m */,
+				C0062F501970354A00B71762 /* CalendarsViewController.h */,
+				C0062F511970354A00B71762 /* CalendarsViewController.m */,
+				C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */,
+				C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */,
+				C170956B1DAF94C2007B5059 /* AddAlarm.h */,
+				C170956C1DAF94C2007B5059 /* AddAlarm.m */,
+				C0062F2E1970321800B71762 /* ViewController.h */,
+				C0062F2F1970321800B71762 /* ViewController.m */,
+				C0062F531970380600B71762 /* EditEventViewController.h */,
+				C0062F541970380600B71762 /* EditEventViewController.m */,
+				C170956F1DAFE025007B5059 /* AddLocationViewController.h */,
+				C17095701DAFE025007B5059 /* AddLocationViewController.m */,
+				C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */,
+				C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */,
 				C1E6F8041DB2B86400381D20 /* AddConditionViewController.h */,
 				C1E6F8051DB2B86400381D20 /* AddConditionViewController.m */,
 				C1E6F8071DB2B9E700381D20 /* DateAndTimeViewController.h */,
@@ -428,27 +380,6 @@
 			name = Service;
 			sourceTree = "<group>";
 		};
-		C1E6F8101DB2BA1D00381D20 /* ViewWithData */ = {
-			isa = PBXGroup;
-			children = (
-				C0062F501970354A00B71762 /* CalendarsViewController.h */,
-				C0062F511970354A00B71762 /* CalendarsViewController.m */,
-				C1F97FBD1D9E5C960050255F /* CreateAlarmFormViewController.h */,
-				C1F97FBE1D9E5C960050255F /* CreateAlarmFormViewController.m */,
-				C170956B1DAF94C2007B5059 /* AddAlarm.h */,
-				C170956C1DAF94C2007B5059 /* AddAlarm.m */,
-				C0062F2E1970321800B71762 /* ViewController.h */,
-				C0062F2F1970321800B71762 /* ViewController.m */,
-				C0062F531970380600B71762 /* EditEventViewController.h */,
-				C0062F541970380600B71762 /* EditEventViewController.m */,
-				C170956F1DAFE025007B5059 /* AddLocationViewController.h */,
-				C17095701DAFE025007B5059 /* AddLocationViewController.m */,
-				C1E6F7ED1DB203A800381D20 /* AddWeatherViewController.h */,
-				C1E6F7EE1DB203A800381D20 /* AddWeatherViewController.m */,
-			);
-			name = ViewWithData;
-			sourceTree = "<group>";
-		};
 		C1E6F8111DB39AE000381D20 /* Weekdays */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,18 +388,6 @@
 				C1E6F8141DB39AE000381D20 /* XLFormWeekDaysCell.xib */,
 			);
 			path = Weekdays;
-			sourceTree = "<group>";
-		};
-		C1EAFB641D999AA400234B31 /* TableHelper */ = {
-			isa = PBXGroup;
-			children = (
-				C177A7E11D999D9500BBDC78 /* WELCellConfigure.h */,
-				C177A7DE1D999CF700BBDC78 /* WELDataSource.h */,
-				C177A7DF1D999CF700BBDC78 /* WELDataSource.m */,
-				C177A7E21D999E0200BBDC78 /* WELTableDelegate.h */,
-				C177A7E31D999E0200BBDC78 /* WELTableDelegate.m */,
-			);
-			name = TableHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -526,6 +445,7 @@
 				TargetAttributes = {
 					C0062F151970321800B71762 = {
 						DevelopmentTeam = 3LLN762WT3;
+						ProvisioningStyle = Automatic;
 					};
 					C0062F361970321800B71762 = {
 						TestTargetID = C0062F151970321800B71762;
@@ -681,37 +601,26 @@
 			files = (
 				C1EAFB631D9972D300234B31 /* EventService.m in Sources */,
 				C11117F01DADFAD6000A6210 /* EngineService.m in Sources */,
-				C177A7F41D99ABAA00BBDC78 /* CustomerCell+Configure.m in Sources */,
-				C177A7EB1D99A4E400BBDC78 /* WELWordCell+Configure.m in Sources */,
 				C1BCEB9A1DC0866A0024EC42 /* Fact+CoreDataClass.m in Sources */,
 				C1B2A57D1DB7732500B6DB8B /* CoreDataService.m in Sources */,
 				C0062F521970354A00B71762 /* CalendarsViewController.m in Sources */,
 				C0062F301970321800B71762 /* ViewController.m in Sources */,
-				C177A7EE1D99A68C00BBDC78 /* testCreateTable.m in Sources */,
 				C0062F2A1970321800B71762 /* AppDelegate.m in Sources */,
-				C177A7E41D999E0200BBDC78 /* WELTableDelegate.m in Sources */,
 				C1BCEB9B1DC0866A0024EC42 /* Fact+CoreDataProperties.m in Sources */,
 				C1E6F80C1DB2B9FB00381D20 /* PhotoViewController.m in Sources */,
 				C0062F551970380600B71762 /* EditEventViewController.m in Sources */,
-				C177A7E81D999F7200BBDC78 /* WELWordCell.m in Sources */,
 				C1E6F8151DB39AE000381D20 /* XLFormWeekDaysCell.m in Sources */,
 				C1E6F7F71DB2AC8200381D20 /* Reminder.xcdatamodeld in Sources */,
-				C1BD50451D992E6F005288DD /* CalenderListTableViewController.m in Sources */,
 				C170956D1DAF94C2007B5059 /* AddAlarm.m in Sources */,
 				C1E6F7EF1DB203A800381D20 /* AddWeatherViewController.m in Sources */,
 				C1E6F7FC1DB2B0B800381D20 /* Reminder+CoreDataProperties.m in Sources */,
-				C177A7E01D999CF700BBDC78 /* WELDataSource.m in Sources */,
 				C12BFD811DB15EB60059A7B7 /* NSDate+Helper.m in Sources */,
 				C1E6F8021DB2B48800381D20 /* Condition+CoreDataProperties.m in Sources */,
-				C177A7F71D99B25B00BBDC78 /* Event.m in Sources */,
-				C177A7F11D99AB2300BBDC78 /* CustomerCell.m in Sources */,
 				C1E6F8091DB2B9E700381D20 /* DateAndTimeViewController.m in Sources */,
 				C1E6F80F1DB2BA0D00381D20 /* ContactViewController.m in Sources */,
 				C0062F581970392C00B71762 /* DatePickerViewController.m in Sources */,
-				C1F258011DC515BE0032F491 /* EditEventViewModel.m in Sources */,
 				C0062F261970321800B71762 /* main.m in Sources */,
 				C17BE5141D8ED25C001F5C87 /* EventManager.m in Sources */,
-				C1E6F7F41DB268A300381D20 /* NewEventViewController.m in Sources */,
 				C17095711DAFE025007B5059 /* AddLocationViewController.m in Sources */,
 				C1F97FBF1D9E5C960050255F /* CreateAlarmFormViewController.m in Sources */,
 				C17BE50C1D8C7DAC001F5C87 /* LogFormatter.m in Sources */,
@@ -789,9 +698,10 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
+				ENABLE_TESTABILITY = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -806,10 +716,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos10.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = NO;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -830,6 +741,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -840,10 +752,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				NEW_SETTING = "";
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos10.0;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -866,7 +778,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ST.yulin-cai.EventKitDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -891,7 +803,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EventKitDemo/EventKitDemo-Prefix.pch";
 				INFOPLIST_FILE = "EventKitDemo/EventKitDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "ST.yulin-cai.EventKitDemo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

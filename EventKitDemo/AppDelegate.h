@@ -24,6 +24,9 @@
 
 @property (strong, nonatomic) NSString *startTime;
 
+@property(nonatomic,assign)CGFloat autoSizeScaleX;
+ @property(nonatomic,assign)CGFloat autoSizeScaleY;
+
 
 -(void)generateFacts;
 -(void)evaluationCondition;

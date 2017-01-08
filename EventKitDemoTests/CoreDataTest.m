@@ -158,15 +158,17 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 }
 
 
-
-
-
 -(void)testFetchFact{
+    //set fetch query
     NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
-        NSArray * re = [self.cd fetchFacts:request];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request setPredicate:predicate2];
+    //fetch the weather data
+    NSArray * re = [self.cd fetchFacts:request];
     DDLogDebug(@"size: %lu",re.count);
     for (Fact * fact in re) {
         DDLogDebug(@"key: %@",fact.factKey);
+        //store in dictionary
         NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
         LOOP_DICTIONARY(data);
     }
@@ -287,25 +289,6 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     
 }
 
-
-
-- (NSString *)getLocationErrorDescription:(INTULocationStatus)status
-{
-    if (status == INTULocationStatusServicesNotDetermined) {
-        return @"Error: User has not responded to the permissions alert.";
-    }
-    if (status == INTULocationStatusServicesDenied) {
-        return @"Error: User has denied this app permissions to access device location.";
-    }
-    if (status == INTULocationStatusServicesRestricted) {
-        return @"Error: User is restricted from using location services by a usage policy.";
-    }
-    if (status == INTULocationStatusServicesDisabled) {
-        return @"Error: Location services are turned off for all apps on this device.";
-    }
-    return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
-}
-
 -(void)testEvalueWeatherCondition{
     //pull the condition
 
@@ -334,7 +317,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
     Fact * fact = re2.firstObject;
     NSDictionary *weatherDetails = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
-     LOOP_DICTIONARY(weatherDetails);
+    LOOP_DICTIONARY(weatherDetails);
     NSMutableArray *mutableArray = weatherDetails[@"weather"];
     for(NSDictionary *dic in mutableArray){
         LOOP_DICTIONARY(dic);
@@ -407,6 +390,25 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
 
 }
+
+- (NSString *)getLocationErrorDescription:(INTULocationStatus)status
+{
+    if (status == INTULocationStatusServicesNotDetermined) {
+        return @"Error: User has not responded to the permissions alert.";
+    }
+    if (status == INTULocationStatusServicesDenied) {
+        return @"Error: User has denied this app permissions to access device location.";
+    }
+    if (status == INTULocationStatusServicesRestricted) {
+        return @"Error: User is restricted from using location services by a usage policy.";
+    }
+    if (status == INTULocationStatusServicesDisabled) {
+        return @"Error: Location services are turned off for all apps on this device.";
+    }
+    return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
+}
+
+
 
 -(void)testBool
 {
