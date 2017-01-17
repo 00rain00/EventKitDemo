@@ -354,9 +354,18 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 - (IBAction)generate:(id)sender {
     DDLogDebug(@"start");
+    __weak typeof(self) weakSelf=self;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = NSLocalizedString(@"Scheduling", @"HUD loading title");
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [weakSelf.appDelegate evaluationCondition];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    });
 
 
-    [self.appDelegate evaluationCondition];
+
     DDLogDebug(@"finish");
 
 }

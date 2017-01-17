@@ -22,6 +22,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
 @property (nonatomic, strong)CoreDataService *cd;
 @property (nonatomic, strong)AVAudioPlayer *player;
+@property (nonatomic, strong)NSArray *arrEvents;
 
 @end
 
@@ -33,7 +34,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
   //  [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 
-//[NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+[NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
     
 }
@@ -99,65 +100,91 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     [request setPredicate:predicate];
     NSArray *conditions = [self.cd fetchCondition:request];
         DDLogDebug(@"condition size: %lu", (unsigned long) conditions.count);
-        NSMutableArray *remindersID = [NSMutableArray new];
-        //extract the reminder ID
-        for (Condition *condition in conditions) {
-            NSDictionary *data  = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
-            @try {
-                LOOP_DICTIONARY(data);
 
-            } @catch (NSException *exception) {
-                DDLogDebug(@"exception: %@",exception.reason);
-                LOOP_DICTIONARY(exception.userInfo);
-            }
+    NSArray *calendars = self.eventManager.getiCloudReminders;
+    NSPredicate *predicate1 = [self.eventManager.ekEventStore predicateForRemindersInCalendars:calendars];
+    [self.eventManager.ekEventStore fetchRemindersMatchingPredicate:predicate1 completion:^(NSArray *events){
+        for(EKReminder *reminder in events){
+            DDLogDebug(@"!!!!!!!!!!!!!!!!!!!!!!!");
+            DDLogDebug(@"reminder id %@  name : %@",reminder.calendarItemIdentifier, reminder.title);
 
-            [remindersID addObject:condition.myReminderID];
-        }
-    //filter the conditionsID
-        NSSet *IDsets = [NSSet setWithArray:remindersID];
-
-        DDLogDebug(@"IDsets size: %lu", (unsigned long) IDsets.count);
-        for (NSString *rID in IDsets) {
-            DDLogDebug(@" reminder id :%@", rID);
             BOOL isFulfil = NO;
             //extract conditions 把所有相同ID 的conditions 提取出来
             NSMutableArray *tempConditions = [NSMutableArray new];
             for (Condition *con in conditions) {
-                if ([con.myReminderID isEqualToString:rID]) {
+                if ([con.myReminderID isEqualToString:reminder.calendarItemIdentifier]) {
                     [tempConditions addObject:con];
                 }
 
             }
-            DDLogDebug(@"total condition for %@  %@: %lu", rID, [self.eventManager.ekEventStore calendarItemWithIdentifier:rID].title, (unsigned long) tempConditions.count);
+            DDLogDebug(@"total condition for remindername: %@ : %lu", reminder.title, (unsigned long) tempConditions.count);
             //pass the condition to engine and collect the result
             //check the reminder is completed nor not
 
-            EKReminder *reminder = (EKReminder *) [self.eventManager.ekEventStore calendarItemWithIdentifier:rID];
 
-            if(reminder.completed||reminder.alarms.count>0){
-                DDLogDebug(@"%@ completed or alarms>0--> skip", reminder.title);
+            DDLogDebug(@"completed : %d,, alarms count : %d", reminder.completed, reminder.alarms.count);
+            if(reminder.completed){
+                DDLogDebug(@"%@ completed --> skip", reminder.title);
             }else{
                 DDLogDebug(@"add alarm for %@",reminder.title);
                 isFulfil = [self.eventManager checkCondition:tempConditions];
                 DDLogDebug(@" full fill : %d", isFulfil);
                 if (isFulfil) {
+                NSArray *ALARMS = reminder.alarms;
+                    BOOL haveFutureAlarms = NO;
 
+                    EKAlarm *latest = ALARMS.firstObject;
+                    int passAlarm = 0;
+                    int futureAlarm =0;
+                    for(EKAlarm *alarm2 in ALARMS){
+                        NSDate *date = alarm2.absoluteDate;
 
-                    NSDate *current = [NSDate new];
+                        if( date.isInFuture){
+                            futureAlarm++;
+                            haveFutureAlarms=YES;
 
-                    EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:3]];
-                    NSError *error;
-                    [reminder addAlarm:alarm1];
-                    [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
-                    if (OBJECT_ISNOT_EMPTY(error)) {
-                        FATAL_CORE_DATA_ERROR(error);
-                    }else{
-                        DDLogDebug(@"add alarm for reminder : %@", reminder.title);
+                        }
+                        if(date.isInPast){
+                            passAlarm++;
+                        }
                     }
+                    DDLogDebug(@"total alarm : %d, future: %d, pass %d",ALARMS.count,futureAlarm,passAlarm);
+                    for(EKAlarm *alarm2 in ALARMS){
+                        NSDate *date = alarm2.absoluteDate;
+
+                        if([date isLaterThanDate:latest.absoluteDate]){
+                            latest = alarm2;
+                        }
+                    }
+                    NSDate *latestDate = latest.absoluteDate;
+                    NSDate *current = [NSDate new];
+                    NSTimeInterval secondsBetween = [latestDate timeIntervalSinceNow];
+                    NSInteger ti = (NSInteger)secondsBetween;
+                    NSInteger seconds = ti % 60;
+                    NSInteger minutes = (ti / 60) % 60;
+                    NSInteger hours = (ti / 3600);
+                    NSString *str =  [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
+
+                    DDLogDebug(@"seconds betwwen : %@",str);
+                    if(minutes<0&&!haveFutureAlarms){
+                        EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:3]];
+                        NSError *error;
+                        [reminder addAlarm:alarm1];
+                        [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
+                        if (OBJECT_ISNOT_EMPTY(error)) {
+                            FATAL_CORE_DATA_ERROR(error);
+                        }else{
+                            DDLogDebug(@"add alarm for reminder : %@", reminder.title);
+                        }
+                    }else{
+                        DDLogDebug(@"have future alarms or interval too short");
+                    }
+
                 }
             }
-
         }
+    }];
+
 
 
         DDLogDebug(@"end");

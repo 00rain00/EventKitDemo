@@ -20,12 +20,13 @@ typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
 -(int)setUpClipsEnvironment;
 
 
-+(void)generateFacts:(NSArray *)facts;
++(NSString *)generateFacts:(NSArray *)facts;
 +(void)generateRules:(NSArray *)rules;
-
++(NSString *)generateWeatherRules:(NSDictionary *)rules;
 + (NSString *)dataFilePath:(BOOL)forFact;
 + (GDataXMLDocument *)loadXml:(BOOL)forFact;
--(void)handleResponse;
+-(NSString *)handleResponse;
 - (void) processRules;
+-(NSString *)executeWeather:(NSString *)rulePath:(NSString *)factPath;
 
 @end

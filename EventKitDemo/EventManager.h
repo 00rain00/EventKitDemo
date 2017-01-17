@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EngineService.h"
 @import EventKit;
 
 //declare a block
@@ -15,7 +16,7 @@ typedef void(^FetchRemindersBlock)(NSArray *reminders);
 
 @property (nonatomic, strong)FetchRemindersBlock callbackForFetchReminders;
 @property (nonatomic, strong) EKEventStore *ekEventStore;
-
+@property (nonatomic, strong)EngineService *es;
 @property (nonatomic)BOOL eventsAccessGranted;
 
 @property (nonatomic, strong)NSString *selectedCalenderIdentifier;

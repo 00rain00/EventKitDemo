@@ -18,6 +18,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     if((self=[super init])){
         self.ekEventStore=[EKEventStore new];
         self.cd = [[CoreDataService alloc] init];
+        self.es = [[EngineService alloc] init];
         NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
         if(OBJECT_ISNOT_EMPTY([userDefaults valueForKey:@"eventkit_events_access_granted"])){
             self.eventsAccessGranted= [[userDefaults valueForKey:@"eventkit_events_access_granted"] intValue];
@@ -259,7 +260,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 [fullfillConditions addObject:@(result)];
             }
             if([key containsString:@"Weather"]){
-                BOOL result = [self compareWeather:myValue];
+                BOOL result = [self compareWeather2:myValue];
                 [fullfillConditions addObject:@(result)];
                 DDLogDebug(@"weather : %d", result);
             }
@@ -291,7 +292,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 }
 
             }
-            if(i==fullfillConditions.count){
+            if(i==fullfillConditions.count&&fullfillConditions.count!=0){
                 flag = YES;
             }
         }
@@ -678,6 +679,24 @@ DDLogDebug(@"end");
     return @"An unknown error occurred.\n(Are you using iOS Simulator with location set to 'None'?)";
 }
 
+
+-(BOOL)compareWeather2:(NSDictionary *)myValue{
+    NSFetchRequest * request2 = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request2 setSortDescriptors:@[timesorter]];
+    [request2 setPredicate:predicate2];
+    NSArray * re2 = [self.cd fetchFacts:request2];
+    DDLogDebug(@"size: %lu",(unsigned long)re2.count);
+    NSString *factPath = [EngineService generateFacts:re2];
+   NSString *rulePath =  [EngineService generateWeatherRules:myValue];
+//    int i = [self.es setUpClipsEnvironment];
+//    DDLogDebug(@"setupenvironment : %d",i);
+//   [self.es processRules];
+    NSString *result = [self.es executeWeather:rulePath :factPath];
+    return [result isEqualToString:@"YES"];
+
+}
 
 
 
