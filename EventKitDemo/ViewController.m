@@ -41,8 +41,9 @@
     self.tblEvents.dataSource = self;
     self.tblEvents.rowHeight = UITableViewAutomaticDimension;
     self.tblEvents.estimatedRowHeight = 60.0;
-    [self performSelector:@selector(loadEvents) withObject:nil afterDelay:0.5];
 
+    [self performSelector:@selector(loadEvents) withObject:nil afterDelay:0.5];
+    self.navigationItem.title =  self.selectedCalendar.title;
 }
 
 

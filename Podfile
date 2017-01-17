@@ -25,5 +25,6 @@ target 'EventKitDemoTests' do
   pod 'INTULocationManager'
   pod 'NSDate-Escort'
   pod 'GDataXML-HTML'
+
 end
 

@@ -40,9 +40,8 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     // Do any additional setup after loading the view.
     
     // Instantiate the appDelegate property, so we can access its eventManager property.
@@ -51,51 +50,59 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     // Make self the delegate and datasource of the table view.
     self.tblEvent.delegate = self;
     self.tblEvent.dataSource = self;
-
+    
     self.coreDataService = [[CoreDataService alloc] init];
-
+    
     self.arrAlarms= [NSMutableArray new];
     self.arrCondition = [NSMutableArray new];
     RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
-
-
-        self.eventTitle = self.editedEvent.title;
-//    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
-//
-//    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
-//    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
-//    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
-//    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
-//    [self.editedEvent addAlarm:alarm1];
-   // [self.editedEvent addAlarm:alarm2];
-   // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
+    
+    
+    self.eventTitle = self.editedEvent.title;
+    //    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
+    //
+    //    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
+    //    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
+    //    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
+    //    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
+    //    [self.editedEvent addAlarm:alarm1];
+    // [self.editedEvent addAlarm:alarm2];
+    // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
     [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
-
+    
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
     for(Condition *condition in self.arrCondition){
         if([condition.myKey containsString:@"ruleType"]){
-
+            
             self.ruleType  = condition;
-
+            
         }
     }
     [self.arrCondition removeObject:self.ruleType];
     DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
-   DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
+    DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //test two time alarm
+    
+    
+    
+    
+    
+    for(EKAlarm * alarm in self.arrAlarms){
+        
+        //      DDLogDebug(@"alarm time: %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime]);
+        
+        
+    }
+    [self.tblEvent reloadData];
+    
+    
+}
 
-
-
-
-
-        for(EKAlarm * alarm in self.arrAlarms){
-
-          //      DDLogDebug(@"alarm time: %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime]);
-
-
-        }
-
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
     }
 
 
@@ -346,10 +353,11 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 }
 
 - (IBAction)generate:(id)sender {
-
+    DDLogDebug(@"start");
 
 
     [self.appDelegate evaluationCondition];
+    DDLogDebug(@"finish");
 
 }
 

@@ -38,27 +38,29 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [self performSelector:@selector(requestAccessToEvents) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(requestAccessToReminders) withObject:nil afterDelay:1];
+
+
+    self.tblCalendars.delegate = self;
+    self.tblCalendars.dataSource = self;
+
+    // Instantiate the appDelegate property.
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [self loadEventCalendars];
+
+}
+
 - (void)viewDidLoad
 {
 
     [super viewDidLoad];
 
 
-    // Do any additional setup after loading the view.
-    
-    // Make self the delegate and datasource of the table view.
-    [self performSelector:@selector(requestAccessToEvents) withObject:nil afterDelay:0.5];
-    [self performSelector:@selector(requestAccessToReminders) withObject:nil afterDelay:1];
 
-    
-    self.tblCalendars.delegate = self;
-    self.tblCalendars.dataSource = self;
-    
-    // Instantiate the appDelegate property.
-    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [self loadEventCalendars];
-
-    // register change in photo library
 
 
 }
@@ -173,6 +175,8 @@ return numRow;
 
 
 
+
+
 #pragma mark - UITableView Delegate and Datasource method implementation
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -207,8 +211,14 @@ return numRow;
         NSInteger row = self.tblCalendars.isEditing ? indexPath.row - 1 : indexPath.row;
 
         EKCalendar *currentCalendar = self.calendars[(NSUInteger) row];
-
-        cell.textLabel.text = currentCalendar.title;
+        UILabel *title = [cell viewWithTag:1001];
+        title.text = currentCalendar.title;
+        NSArray *calArray = @[currentCalendar];
+       NSPredicate *predicate =  [self.appDelegate.eventManager.ekEventStore predicateForIncompleteRemindersWithDueDateStarting:nil ending:nil calendars:calArray];
+        [self.appDelegate.eventManager.ekEventStore fetchRemindersMatchingPredicate:predicate completion:^(NSArray* result){
+           UILabel * reminItem = [cell viewWithTag:1002];
+            reminItem.text = [NSString stringWithFormat:@"%d Remaining", result.count];
+        }];
 
         if (!self.tblCalendars.isEditing) {
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -237,7 +247,7 @@ return numRow;
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44.0;
+    return 60.0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

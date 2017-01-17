@@ -10,6 +10,9 @@
 #import "DBMapSelectorViewController/DBMapSelectorManager.h"
 #import "CoreDataService.h"
 @import INTULocationManager;
+#import <CoreLocation/CoreLocation.h>
+
+
 
 #import "EditEventViewController.h"
 double const DEFAULTSPAN = 500;
@@ -38,11 +41,14 @@ NSString *const klocationDetails = @"LocationDetails";
 @property (nonatomic, strong)CLPlacemark *place;
 @property (nonatomic)BOOL arrive;
 @property (nonatomic, strong)MKMapItem *closeAddress;
+@property (nonatomic,copy)NSString *address;
 
 @end
 
 @implementation AddLocationViewController {
     DBMapSelectorManager *_mapSelectorManager;
+    CLGeocoder *_geocoder;
+    CLPlacemark *_placemark;
 }
 @synthesize rowDescriptor = _rowDescriptor;
 
@@ -55,14 +61,25 @@ NSString *const klocationDetails = @"LocationDetails";
     [self getCurrentLocation];
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder])) {
+
+        _geocoder = [[CLGeocoder alloc] init];
+
+
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.cd = [[CoreDataService alloc] init];
     self.mapSelectorManager = [[DBMapSelectorManager alloc] initWithMapView:self.mapView];
     self.mapSelectorManager.delegate = self;
     __weak typeof(self) weakself= self;
     weakself.callbackForDidReceiceLocation = ^(CLLocation *currentLocation){
-        DDLogDebug(@"call back executed");
+        DDLogDebug(@"callbackForDidReceiceLocation executed");
 
 
 
@@ -73,10 +90,10 @@ NSString *const klocationDetails = @"LocationDetails";
         [weakself.mapSelectorManager applySelectorSettings];
         weakself.mapSelectorManager.editingType = DBMapSelectorEditingTypeFull;
         weakself.mapSelectorManager.fillInside=YES;
-
+        weakself.mapSelectorManager.shouldLongPressGesture = NO;
         weakself.mapSelectorManager.shouldShowRadiusText=YES;
         weakself.mapSelectorManager.hidden=NO;
-    UIColor *uiColorO = [UIColor orangeColor];
+        UIColor *uiColorO = [UIColor orangeColor];
         [weakself mapSelectorManager].fillColor =uiColorO;
         weakself.mapSelectorManager.strokeColor = [UIColor blueColor];
 
@@ -98,9 +115,6 @@ NSString *const klocationDetails = @"LocationDetails";
 
 }
 
--(void)setupLocationManager{
-
-}
 
 -(void)setupSearchController{
 
@@ -168,7 +182,7 @@ NSString *const klocationDetails = @"LocationDetails";
         //			}
 
         self.results = response;
-
+        self.searchKeyWords = query;
         [[(UITableViewController *)self.searchController.searchResultsController tableView] reloadData];
     }];
 }
@@ -262,24 +276,61 @@ NSString *const klocationDetails = @"LocationDetails";
 -(void)fetchMearByInfo{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 
+
+
     // Set the label text.
     hud.label.text = NSLocalizedString(@"Saving...", @"HUD loading title");
 
 
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+//reverse geocoding
+        CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.mapSelectorManager.circleCoordinate.latitude
+                                                     longitude:self.mapSelectorManager.circleCoordinate.longitude];
 
-        MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(self.mapSelectorManager.circleCoordinate, self.mapSelectorManager.circleRadius,self.mapSelectorManager.circleRadius );
+        [_geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
+            DDLogDebug(@"*** Found placemarks: %@, error: %@", placemarks, error);
+
+
+            if (error == nil && [placemarks count] > 0) {
+
+                _placemark = [placemarks lastObject];
+            } else {
+                _placemark = nil;
+            }
+            if(_placemark !=nil){
+
+
+                NSDictionary *placesOfInterset = _placemark.addressDictionary;
+                NSArray *address = [placesOfInterset valueForKey:@"FormattedAddressLines"];
+                self.address = address.firstObject;
+                DDLogDebug(@"place address: %@",address.firstObject);
+            }
+
+
+        }];
+
+
+//end reverse geocoding
+        MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(self.mapSelectorManager.circleCoordinate, 5.0,5.0);
 
         MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
         requst.region = region;
-        requst.naturalLanguageQuery = @"place"; //想要的信息
+        if(OBJECT_ISNOT_EMPTY(self.searchKeyWords)){
+            requst.naturalLanguageQuery = self.searchKeyWords; //想要的信息
+        }else{
+            requst.naturalLanguageQuery = @"";
+        }
+
         MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
         __weak typeof(self) weakSelf=self;
         [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
             if (OBJECT_IS_EMPTY(error))
             {
                 [weakSelf.nearbyInfoArray addObjectsFromArray:response.mapItems];
-                weakSelf.closeAddress = response.mapItems.firstObject;
+
+                    weakSelf.closeAddress = response.mapItems.firstObject;
+
+
 
 
             for (MKMapItem * place in response.mapItems) {
@@ -355,6 +406,7 @@ NSString *const klocationDetails = @"LocationDetails";
 -(void)saveLocation{
     NSString *reminderId = [[NSUserDefaults standardUserDefaults] valueForKey:@"selected_reminder_identifier"];
     if(OBJECT_IS_EMPTY(reminderId)){
+        DDLogDebug(@"missing reminderID in saveLocation");
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
     }else{
         if([self saveValidation:reminderId]){
@@ -372,18 +424,29 @@ NSString *const klocationDetails = @"LocationDetails";
 
 
             NSString * displayString;
-            if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
-                displayString  = [NSString stringWithFormat:@"%@ %@",@"Inside",self.closeAddress.name];
+            if(OBJECT_ISNOT_EMPTY(self.closeAddress)){
+                if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
+                    displayString  = [NSString stringWithFormat:@"%@ %@",@"Inside",self.closeAddress.name];
+                }else{
+                    displayString  = [NSString stringWithFormat:@"%@ %@",@"Outside",self.closeAddress.name];
+                }
             }else{
-                displayString  = [NSString stringWithFormat:@"%@ %@",@"Outside",self.closeAddress.name];
+                if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
+                    displayString  =[NSString stringWithFormat:@"%@ %@ ",@"Inside", self.address];
+                }else{
+                    displayString  = [NSString stringWithFormat:@"%@ %@ ",@"Outside", self.address];
+                }
+
+
             }
+
             DDLogDebug(displayString);
             NSDictionary *locationDetails = [NSDictionary new];
             
             
             
             if(OBJECT_IS_EMPTY(self.nearbyInfoArray)){
-                DDLogDebug(@"nearByinfo arra y empty");
+                DDLogDebug(@"nearByinfo array empty");
                 locationDetails  = @{
                                      klocationlatitude:@(self.mapSelectorManager.circleCoordinate.latitude),
                                      klocationlongtitude: @(self.mapSelectorManager.circleCoordinate.longitude),
@@ -508,18 +571,18 @@ NSString *const klocationDetails = @"LocationDetails";
 
     self.mapSelectorManager.circleCoordinate = item.placemark.location.coordinate;
 
-    self.mapSelectorManager.circleRadius = 500;
-    self.mapSelectorManager.circleRadiusMax = 25000;
-    self.mapSelectorManager.circleRadiusMin= 100;
-    [self.mapSelectorManager applySelectorSettings];
-    self.mapSelectorManager.editingType = DBMapSelectorEditingTypeFull;
-    self.mapSelectorManager.fillInside=YES;
-
-    self.mapSelectorManager.shouldShowRadiusText=YES;
-    self.mapSelectorManager.hidden=NO;
-    UIColor *uiColorO = [UIColor orangeColor];
-    [self mapSelectorManager].fillColor =uiColorO;
-    self.mapSelectorManager.strokeColor = [UIColor blueColor];
+//    self.mapSelectorManager.circleRadius = 500;
+//    self.mapSelectorManager.circleRadiusMax = 25000;
+//    self.mapSelectorManager.circleRadiusMin= 100;
+//    [self.mapSelectorManager applySelectorSettings];
+//    self.mapSelectorManager.editingType = DBMapSelectorEditingTypeFull;
+//    self.mapSelectorManager.fillInside=YES;
+//
+//    self.mapSelectorManager.shouldShowRadiusText=YES;
+//    self.mapSelectorManager.hidden=NO;
+//    UIColor *uiColorO = [UIColor orangeColor];
+//    [self mapSelectorManager].fillColor =uiColorO;
+//    self.mapSelectorManager.strokeColor = [UIColor blueColor];
 //    [self.mapView addAnnotation:item.placemark];
 //    [self.mapView selectAnnotation:item.placemark animated:YES];
 //

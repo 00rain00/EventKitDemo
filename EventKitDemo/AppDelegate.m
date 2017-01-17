@@ -12,6 +12,7 @@
 #import "CoreDataService.h"
 #import <OpenWeatherMapAPI/OWMWeatherAPI.h>
 @import INTULocationManager;
+
 NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
 static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
 static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
@@ -39,6 +40,8 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//googleplace
+
     self.autoSizeScaleX = [UIScreen mainScreen].bounds.size.width/375;
     self.autoSizeScaleY = [UIScreen mainScreen].bounds.size.height/667;
     
@@ -104,7 +107,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 LOOP_DICTIONARY(data);
 
             } @catch (NSException *exception) {
-                DDLogDebug(@"expection: %@",exception.reason);
+                DDLogDebug(@"exception: %@",exception.reason);
                 LOOP_DICTIONARY(exception.userInfo);
             }
 
