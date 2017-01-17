@@ -93,6 +93,8 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
 - (NSArray *)getiCloudReminders {
     NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeReminder];
+
+
     NSMutableArray *localCalenders = [NSMutableArray new];
     for(int i =0; i<allCalendars.count;i++){
         EKCalendar *calendar= allCalendars[i];
@@ -102,9 +104,16 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
             [localCalenders addObject:calendar];
 
     }
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title"
+                                                 ascending:YES];
+    NSArray *sortDescriptors;
+    sortDescriptors = @[sortDescriptor];
+    NSArray *sortedArray = [localCalenders sortedArrayUsingDescriptors:sortDescriptors];
     DDLogDebug(@"Size of local Calenders:%lu",(unsigned long)localCalenders.count);
-    return (NSArray *)localCalenders;
+    return sortedArray;
 }
+
 
 - (void)saveCustomerCalendarIdentifier:(NSString *)identifier {
  //   [self.customerCalendarIdentifiers addObject:identifier];
@@ -216,7 +225,13 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
         //call the block
         if(self.callbackForFetchReminders){
-            self.callbackForFetchReminders(reminders);
+            NSSortDescriptor *sortDescriptor;
+            sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title"
+                                                         ascending:YES];
+            NSArray *sortDescriptors;
+            sortDescriptors = @[sortDescriptor];
+            NSArray *sortedArray = [reminders sortedArrayUsingDescriptors:sortDescriptors];
+            self.callbackForFetchReminders(sortedArray);
         }
 
     }];

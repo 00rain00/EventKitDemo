@@ -412,6 +412,8 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     self.eventTitle=textField.text;
 
     [textField resignFirstResponder];
+    self.editedEvent.title = self.eventTitle;
+    [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
     return YES;
 }
 

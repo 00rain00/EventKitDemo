@@ -26,30 +26,33 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    //request access to events
-   
-    // Do any additional setup after loading the view, typically from a nib.
-    
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     // Instantiate the appDelegate property.
     self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    
+
     // Make self the delegate and datasource of the table view.
     self.tblEvents.delegate = self;
     self.tblEvents.dataSource = self;
     self.tblEvents.rowHeight = UITableViewAutomaticDimension;
     self.tblEvents.estimatedRowHeight = 60.0;
 
-    [self performSelector:@selector(loadEvents) withObject:nil afterDelay:0.5];
+    [self performSelector:@selector(loadEvents) ];
     self.navigationItem.title =  self.selectedCalendar.title;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    
+
 }
 
 
 - (void)loadEvents {
     if (self.appDelegate.eventManager.eventsAccessGranted) {
-        DDLogDebug(@"access granted");
+        DDLogDebug(@"events access granted");
 
 
         RETURN_WHEN_OBJECT_IS_EMPTY(self.selectedCalendar);

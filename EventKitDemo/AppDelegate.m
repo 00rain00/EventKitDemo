@@ -33,7 +33,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
   //  [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 
-[NSTimer scheduledTimerWithTimeInterval:90.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+//[NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
     
 }
@@ -113,13 +113,14 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
             [remindersID addObject:condition.myReminderID];
         }
+    //filter the conditionsID
         NSSet *IDsets = [NSSet setWithArray:remindersID];
 
         DDLogDebug(@"IDsets size: %lu", (unsigned long) IDsets.count);
         for (NSString *rID in IDsets) {
             DDLogDebug(@" reminder id :%@", rID);
             BOOL isFulfil = NO;
-            //extract conditions
+            //extract conditions 把所有相同ID 的conditions 提取出来
             NSMutableArray *tempConditions = [NSMutableArray new];
             for (Condition *con in conditions) {
                 if ([con.myReminderID isEqualToString:rID]) {
@@ -129,23 +130,33 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
             }
             DDLogDebug(@"total condition for %@  %@: %lu", rID, [self.eventManager.ekEventStore calendarItemWithIdentifier:rID].title, (unsigned long) tempConditions.count);
             //pass the condition to engine and collect the result
-            isFulfil = [self.eventManager checkCondition:tempConditions];
-            DDLogDebug(@" full fill : %d", isFulfil);
-            if (isFulfil) {
+            //check the reminder is completed nor not
 
-                EKReminder *reminder = (EKReminder *) [self.eventManager.ekEventStore calendarItemWithIdentifier:rID];
-                NSDate *current = [NSDate new];
+            EKReminder *reminder = (EKReminder *) [self.eventManager.ekEventStore calendarItemWithIdentifier:rID];
 
-                EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:5]];
-                NSError *error;
-                [reminder addAlarm:alarm1];
-                [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
-                if (OBJECT_ISNOT_EMPTY(error)) {
-                    FATAL_CORE_DATA_ERROR(error);
-                }else{
-                    DDLogDebug(@"add alarm for reminder : %@", reminder.title);
+            if(reminder.completed||reminder.alarms.count>0){
+                DDLogDebug(@"%@ completed or alarms>0--> skip", reminder.title);
+            }else{
+                DDLogDebug(@"add alarm for %@",reminder.title);
+                isFulfil = [self.eventManager checkCondition:tempConditions];
+                DDLogDebug(@" full fill : %d", isFulfil);
+                if (isFulfil) {
+
+
+                    NSDate *current = [NSDate new];
+
+                    EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:3]];
+                    NSError *error;
+                    [reminder addAlarm:alarm1];
+                    [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
+                    if (OBJECT_ISNOT_EMPTY(error)) {
+                        FATAL_CORE_DATA_ERROR(error);
+                    }else{
+                        DDLogDebug(@"add alarm for reminder : %@", reminder.title);
+                    }
                 }
             }
+
         }
 
 
