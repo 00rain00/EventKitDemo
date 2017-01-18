@@ -62,7 +62,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     DDLogDebug(@"application start");
     
 
-   // [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
     NSError *error;
     NSString *soundFilePath = [NSString stringWithFormat:@"%@/0db.mp3",
                                                          [[NSBundle mainBundle] resourcePath]];
@@ -79,7 +79,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
     [self.player play];
- //   [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
     return YES;
     
     }

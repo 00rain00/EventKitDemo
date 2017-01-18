@@ -4,15 +4,9 @@
     <list default="true" id="3b1dc6cb-9f81-495f-ba0a-d1e80f91900e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" afterPath="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/EventKitDemo/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" afterPath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EngineService.m" afterPath="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/Reminder.xcdatamodeld/Reminder.xcdatamodel/contents" afterPath="$PROJECT_DIR$/EventKitDemo/Reminder.xcdatamodeld/Reminder.xcdatamodel/contents" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" afterPath="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EventKitDemo/EventManager.m" afterPath="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
     </list>
     <ignored path="EventKitDemo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,24 +26,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DatePickerViewController.m" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m">
+      <file leaf-file-name="AddLocationViewController.m" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="46" column="49" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="49" />
+            <state relative-caret-position="249">
+              <caret line="569" column="42" lean-forward="true" selection-start-line="569" selection-start-column="42" selection-end-line="569" selection-end-column="42" />
               <folding>
-                <element signature="e#161#200#0" expanded="true" />
+                <marker date="1484770956000" expanded="false" signature="7037:10329" ph="{...}" />
+                <marker date="1484770956000" expanded="false" signature="10375:11374" ph="{...}" />
+                <marker date="1484770956000" expanded="false" signature="11444:12148" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AddWeatherViewController.m" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m">
+      <file leaf-file-name="EventManager.m" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="31" />
-              <folding />
+            <state relative-caret-position="429">
+              <caret line="756" column="4" lean-forward="false" selection-start-line="756" selection-start-column="4" selection-end-line="756" selection-end-column="4" />
+              <folding>
+                <element signature="e#677#1809#0" expanded="false" />
+                <element signature="e#2476#3120#0" expanded="false" />
+                <element signature="e#3124#3762#0" expanded="false" />
+                <element signature="e#3764#4667#0" expanded="false" />
+                <element signature="e#4670#4924#0" expanded="false" />
+                <element signature="e#4926#5282#0" expanded="false" />
+                <element signature="e#5284#5535#0" expanded="false" />
+                <element signature="e#5537#5931#0" expanded="false" />
+                <element signature="e#5934#6245#0" expanded="false" />
+                <element signature="e#6247#7669#0" expanded="false" />
+                <element signature="e#7671#8393#0" expanded="false" />
+                <element signature="e#8396#9384#0" expanded="false" />
+                <element signature="e#18307#19909#0" expanded="false" />
+                <element signature="e#19911#23056#0" expanded="false" />
+                <element signature="e#23058#23898#0" expanded="false" />
+                <element signature="e#24269#27446#0" expanded="false" />
+                <element signature="e#27448#28221#0" expanded="false" />
+                <element signature="e#28224#29110#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,6 +91,7 @@
       <find>16:00:00</find>
       <find>17:00</find>
       <find>core</find>
+      <find>address</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,7 +142,6 @@
         <option value="$PROJECT_DIR$/EventKitDemo/rule.xml" />
         <option value="$PROJECT_DIR$/EventKitDemoTests/APPdelegateTest.m" />
         <option value="$PROJECT_DIR$/Pods/DBMapSelectorViewController/Source/MapSelectorOverlay/DBMapSelectorOverlayRenderer.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
         <option value="$PROJECT_DIR$/Podfile" />
         <option value="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/ViewController.m" />
@@ -135,17 +150,18 @@
         <option value="$PROJECT_DIR$/EventKitDemoTests/EngineServieTest.m" />
         <option value="$PROJECT_DIR$/EventKitDemoTests/CoreDataTest.m" />
         <option value="$PROJECT_DIR$/Pods/NSDate-Escort/NSDate-Escort/NSDate+Escort.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EngineService.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/EngineService.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" />
-        <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/EditEventViewController.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.h" />
         <option value="$PROJECT_DIR$/EventKitDemo/DatePickerViewController.m" />
         <option value="$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/AppDelegate.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m" />
+        <option value="$PROJECT_DIR$/EventKitDemo/EventManager.m" />
       </list>
     </option>
   </component>
@@ -459,7 +475,7 @@
       <workItem from="1484238562252" duration="39077000" />
       <workItem from="1484676395083" duration="14425000" />
       <workItem from="1484715315306" duration="9505000" />
-      <workItem from="1484760058554" duration="6740000" />
+      <workItem from="1484760058554" duration="11196000" />
     </task>
     <task id="LOCAL-00001" summary="alert">
       <created>1474209786167</created>
@@ -797,7 +813,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484725345922</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="fix saveValidation problem">
+      <created>1484767329595</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1484767329595</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -833,7 +856,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="467761000" />
+    <option name="totallyTimeSpent" value="472217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -849,15 +872,15 @@
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3278328" sideWeight="0.49782202" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8932806" sideWeight="0.43950438" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29776022" sideWeight="0.43950438" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22397892" sideWeight="0.23833819" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30039525" sideWeight="0.49782202" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55599475" sideWeight="0.7616618" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.56653494" sideWeight="0.7616618" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32893288" sideWeight="0.8413192" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25439882" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7312253" sideWeight="0.49782202" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4677207" sideWeight="0.49782202" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43214756" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -923,7 +946,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test case" />
     <MESSAGE value="fetch condition" />
     <MESSAGE value="create new condition validation in datepicker" />
     <MESSAGE value="weeday and month day display" />
@@ -948,7 +970,8 @@
     <MESSAGE value="rename event title" />
     <MESSAGE value="CLIPS for weather" />
     <MESSAGE value="CLIPS for time" />
-    <option name="LAST_COMMIT_MESSAGE" value="CLIPS for time" />
+    <MESSAGE value="fix saveValidation problem" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix saveValidation problem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1046,14 +1069,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-600">
           <caret line="12" column="4" lean-forward="true" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2328">
-          <caret line="109" column="0" lean-forward="true" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1258,33 +1273,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="718" column="50" lean-forward="false" selection-start-line="718" selection-start-column="50" selection-end-line="718" selection-end-column="50" />
-          <folding>
-            <element signature="e#1#40#0" expanded="false" />
-            <element signature="e#677#1809#0" expanded="false" />
-            <element signature="e#2476#3120#0" expanded="false" />
-            <element signature="e#3124#3762#0" expanded="false" />
-            <element signature="e#3764#4667#0" expanded="false" />
-            <element signature="e#4670#4924#0" expanded="false" />
-            <element signature="e#4926#5282#0" expanded="false" />
-            <element signature="e#5284#5535#0" expanded="false" />
-            <element signature="e#5537#5931#0" expanded="false" />
-            <element signature="e#5934#6245#0" expanded="false" />
-            <element signature="e#6247#7669#0" expanded="false" />
-            <element signature="e#7671#8393#0" expanded="false" />
-            <element signature="e#8396#9384#0" expanded="false" />
-            <element signature="e#18307#19909#0" expanded="false" />
-            <element signature="e#19911#23056#0" expanded="false" />
-            <element signature="e#23058#23898#0" expanded="false" />
-            <element signature="e#24269#27446#0" expanded="false" />
-            <element signature="e#27448#28221#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/CoreDataService.m">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="78">
@@ -1298,18 +1286,6 @@
         <state relative-caret-position="216">
           <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
-          <folding>
-            <element signature="e#8683#12952#0" expanded="false" />
-            <element signature="e#12954#13727#0" expanded="false" />
-            <marker date="1484765109000" expanded="true" signature="3142:3394" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1367,11 +1343,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m">
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/AppDelegate.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-24">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="244">
+          <caret line="81" column="1" lean-forward="false" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+          <folding>
+            <element signature="e#8679#12948#0" expanded="false" />
+            <element signature="e#12950#13723#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1387,9 +1366,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/EventKitDemo/AddWeatherViewController.m">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
+        <state relative-caret-position="116">
           <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="31" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/CalendarsViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="75" column="41" lean-forward="true" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/AddLocationViewController.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="569" column="42" lean-forward="true" selection-start-line="569" selection-start-column="42" selection-end-line="569" selection-end-column="42" />
+          <folding>
+            <marker date="1484770956000" expanded="false" signature="7037:10329" ph="{...}" />
+            <marker date="1484770956000" expanded="false" signature="10375:11374" ph="{...}" />
+            <marker date="1484770956000" expanded="false" signature="11444:12148" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventKitDemo/EventManager.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="756" column="4" lean-forward="false" selection-start-line="756" selection-start-column="4" selection-end-line="756" selection-end-column="4" />
+          <folding>
+            <element signature="e#677#1809#0" expanded="false" />
+            <element signature="e#2476#3120#0" expanded="false" />
+            <element signature="e#3124#3762#0" expanded="false" />
+            <element signature="e#3764#4667#0" expanded="false" />
+            <element signature="e#4670#4924#0" expanded="false" />
+            <element signature="e#4926#5282#0" expanded="false" />
+            <element signature="e#5284#5535#0" expanded="false" />
+            <element signature="e#5537#5931#0" expanded="false" />
+            <element signature="e#5934#6245#0" expanded="false" />
+            <element signature="e#6247#7669#0" expanded="false" />
+            <element signature="e#7671#8393#0" expanded="false" />
+            <element signature="e#8396#9384#0" expanded="false" />
+            <element signature="e#18307#19909#0" expanded="false" />
+            <element signature="e#19911#23056#0" expanded="false" />
+            <element signature="e#23058#23898#0" expanded="false" />
+            <element signature="e#24269#27446#0" expanded="false" />
+            <element signature="e#27448#28221#0" expanded="false" />
+            <element signature="e#28224#29110#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

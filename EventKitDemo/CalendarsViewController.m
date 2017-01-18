@@ -71,6 +71,7 @@
     [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
         if(OBJECT_IS_EMPTY(error)){
             self.appDelegate.eventManager.eventsAccessGranted=granted;
+            [self.tblCalendars reloadData];
         }else{
             FATAL_CORE_DATA_ERROR(error);
         }
@@ -85,10 +86,7 @@
     [self.appDelegate.eventManager.ekEventStore requestAccessToEntityType:EKEntityTypeReminder completion:^(BOOL granted, NSError *error){
         if(OBJECT_IS_EMPTY(error)){
             DDLogInfo(@"reminder access Yes");
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-            });
-
+            [self.tblCalendars reloadData];
 
         }else{
             FATAL_CORE_DATA_ERROR(error);

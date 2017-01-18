@@ -749,10 +749,13 @@ DDLogDebug(@"end");
         isInTheTimeRange=YES;
     }
     //generate rules
-    NSString *rulePath =  [EngineService generateTimeRules:myValue:haveWeekDay:haveMonthDay];
-    NSString *factPath = [EngineService generateTimeFacts];
-    NSString *result = [self.es executeTime:rulePath :factPath];
-    return [result isEqualToString:@"YES"];
+
+        NSString *rulePath =  [EngineService generateTimeRules:myValue:haveWeekDay:haveMonthDay];
+        NSString *factPath = [EngineService generateTimeFacts];
+        NSString *result = [self.es executeTime:rulePath :factPath];
+        return [result isEqualToString:@"YES"]&&isInTheTimeRange;
+
+
     }
 
 

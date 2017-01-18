@@ -276,20 +276,19 @@ NSString *const klocationDetails = @"LocationDetails";
 -(void)fetchMearByInfo{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
 
-
+    __weak typeof(self) weakSelf=self;
 
     // Set the label text.
-    hud.label.text = NSLocalizedString(@"Saving...", @"HUD loading title");
+    hud.label.text = @"Saving";
 
 
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
 //reverse geocoding
         CLLocation *loc = [[CLLocation alloc] initWithLatitude:self.mapSelectorManager.circleCoordinate.latitude
                                                      longitude:self.mapSelectorManager.circleCoordinate.longitude];
 
         [_geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error){
             DDLogDebug(@"*** Found placemarks: %@, error: %@", placemarks, error);
-
 
             if (error == nil && [placemarks count] > 0) {
 
@@ -306,54 +305,24 @@ NSString *const klocationDetails = @"LocationDetails";
                 DDLogDebug(@"place address: %@",address.firstObject);
             }
 
-
+            [weakSelf saveLocation];
         }];
 
 
 //end reverse geocoding
-        MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(self.mapSelectorManager.circleCoordinate, 5.0,5.0);
-
-        MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
-        requst.region = region;
-        if(OBJECT_ISNOT_EMPTY(self.searchKeyWords)){
-            requst.naturalLanguageQuery = self.searchKeyWords; //想要的信息
-        }else{
-            requst.naturalLanguageQuery = @"";
-        }
-
-        MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
-        __weak typeof(self) weakSelf=self;
-        [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
-            if (OBJECT_IS_EMPTY(error))
-            {
-                [weakSelf.nearbyInfoArray addObjectsFromArray:response.mapItems];
-
-                    weakSelf.closeAddress = response.mapItems.firstObject;
 
 
+         dispatch_async(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-
-            for (MKMapItem * place in response.mapItems) {
-                DDLogDebug(@"place: %@",place.name);
-            }
-            }
-            else
-            {
-                FATAL_CORE_DATA_ERROR(error);
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-               
-                [weakSelf saveLocation];
-                [hud hideAnimated:YES];
-                [self dismissViewControllerAnimated:YES completion:nil];
-
-            });
-
-        }];
-        
-
+        });
     });
+
+
+
+
+
+
 
 
 }
@@ -424,19 +393,20 @@ NSString *const klocationDetails = @"LocationDetails";
 
 
             NSString * displayString;
-            if(OBJECT_ISNOT_EMPTY(self.closeAddress)){
+            if(OBJECT_ISNOT_EMPTY(self.closeAddress.name)){
                 if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
                     displayString  = [NSString stringWithFormat:@"%@ %@",@"Inside",self.closeAddress.name];
                 }else{
                     displayString  = [NSString stringWithFormat:@"%@ %@",@"Outside",self.closeAddress.name];
                 }
+                DDLogDebug(@"closeAddress: %@",displayString);
             }else{
                 if(self.editingTypeSegentedControl.selectedSegmentIndex==0){
                     displayString  =[NSString stringWithFormat:@"%@ %@ ",@"Inside", self.address];
                 }else{
                     displayString  = [NSString stringWithFormat:@"%@ %@ ",@"Outside", self.address];
                 }
-
+                DDLogDebug(@"self.address: %@",self.address);
 
             }
 
@@ -480,6 +450,7 @@ NSString *const klocationDetails = @"LocationDetails";
         }
 
     }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
@@ -589,6 +560,38 @@ NSString *const klocationDetails = @"LocationDetails";
     [self.mapView setCenterCoordinate:item.placemark.location.coordinate animated:YES];
 //
     [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
+    MKCoordinateRegion region=MKCoordinateRegionMakeWithDistance(self.mapSelectorManager.circleCoordinate, 5.0,5.0);
+    __weak typeof(self) weakSelf=self;
+    MKLocalSearchRequest *requst = [[MKLocalSearchRequest alloc] init];
+    requst.region = region;
+    if(OBJECT_ISNOT_EMPTY(self.searchKeyWords)){
+        requst.naturalLanguageQuery = self.searchKeyWords; //想要的信息
+    }else{
+        requst.naturalLanguageQuery = @"";
+    }
+    MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:requst];
+
+    [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error){
+        if (OBJECT_IS_EMPTY(error))
+        {
+            [weakSelf.nearbyInfoArray addObjectsFromArray:response.mapItems];
+
+            weakSelf.closeAddress = response.mapItems.firstObject;
+
+            for (MKMapItem * place in response.mapItems) {
+                DDLogDebug(@"place: %@",place.name);
+            }
+        }
+        else
+        {
+            FATAL_CORE_DATA_ERROR(error);
+        }
+
+
+
+
+    }];
+
 
 }
 
