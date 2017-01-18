@@ -24,6 +24,7 @@
 @property(strong,nonatomic)ViewController * controller;
 
 @property (strong, nonatomic) NSString *startTime;
+@property (nonatomic, strong)CoreDataService *cd;
 
 @property(nonatomic,assign)CGFloat autoSizeScaleX;
  @property(nonatomic,assign)CGFloat autoSizeScaleY;

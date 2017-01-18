@@ -20,7 +20,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 @property (nonatomic, strong)NSDictionary *locationdata;
 @property (nonatomic, strong)NSDictionary *weatherdata;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
-@property (nonatomic, strong)CoreDataService *cd;
+
 @property (nonatomic, strong)AVAudioPlayer *player;
 @property (nonatomic, strong)NSArray *arrEvents;
 
@@ -34,7 +34,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
   //  [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(generateFacts) userInfo:nil repeats:YES];
 
 
-[NSTimer scheduledTimerWithTimeInterval:10.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
+//[NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
 
     
 }
@@ -62,7 +62,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     DDLogDebug(@"application start");
     
 
-    [NSTimer scheduledTimerWithTimeInterval:5.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
+   // [NSTimer scheduledTimerWithTimeInterval:30.f target:self selector:@selector(generateFacts) userInfo:nil repeats:NO];
     NSError *error;
     NSString *soundFilePath = [NSString stringWithFormat:@"%@/0db.mp3",
                                                          [[NSBundle mainBundle] resourcePath]];
@@ -79,6 +79,7 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
     [self.player play];
+ //   [NSTimer scheduledTimerWithTimeInterval:60.f target:self selector:@selector(evaluationCondition) userInfo:nil repeats:YES];
     return YES;
     
     }
@@ -130,43 +131,10 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                 isFulfil = [self.eventManager checkCondition:tempConditions];
                 DDLogDebug(@" full fill : %d", isFulfil);
                 if (isFulfil) {
-                NSArray *ALARMS = reminder.alarms;
-                    BOOL haveFutureAlarms = NO;
 
-                    EKAlarm *latest = ALARMS.firstObject;
-                    int passAlarm = 0;
-                    int futureAlarm =0;
-                    for(EKAlarm *alarm2 in ALARMS){
-                        NSDate *date = alarm2.absoluteDate;
-
-                        if( date.isInFuture){
-                            futureAlarm++;
-                            haveFutureAlarms=YES;
-
-                        }
-                        if(date.isInPast){
-                            passAlarm++;
-                        }
-                    }
-                    DDLogDebug(@"total alarm : %d, future: %d, pass %d",ALARMS.count,futureAlarm,passAlarm);
-                    for(EKAlarm *alarm2 in ALARMS){
-                        NSDate *date = alarm2.absoluteDate;
-
-                        if([date isLaterThanDate:latest.absoluteDate]){
-                            latest = alarm2;
-                        }
-                    }
-                    NSDate *latestDate = latest.absoluteDate;
                     NSDate *current = [NSDate new];
-                    NSTimeInterval secondsBetween = [latestDate timeIntervalSinceNow];
-                    NSInteger ti = (NSInteger)secondsBetween;
-                    NSInteger seconds = ti % 60;
-                    NSInteger minutes = (ti / 60) % 60;
-                    NSInteger hours = (ti / 3600);
-                    NSString *str =  [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long)hours, (long)minutes, (long)seconds];
-
-                    DDLogDebug(@"seconds betwwen : %@",str);
-                    if(minutes<0&&!haveFutureAlarms){
+                NSArray *ALARMS = reminder.alarms;
+                    if(ALARMS.count==0){
                         EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:3]];
                         NSError *error;
                         [reminder addAlarm:alarm1];
@@ -176,10 +144,56 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
                         }else{
                             DDLogDebug(@"add alarm for reminder : %@", reminder.title);
                         }
-                    }else{
-                        DDLogDebug(@"have future alarms or interval too short");
-                    }
+                    }else {
+                        BOOL haveFutureAlarms = NO;
 
+                        EKAlarm *latest = ALARMS.firstObject;
+                        int passAlarm = 0;
+                        int futureAlarm = 0;
+                        for (EKAlarm *alarm2 in ALARMS) {
+                            NSDate *date = alarm2.absoluteDate;
+
+                            if (date.isInFuture) {
+                                futureAlarm++;
+                                haveFutureAlarms = YES;
+
+                            }
+                            if (date.isInPast) {
+                                passAlarm++;
+                            }
+                        }
+                        DDLogDebug(@"total alarm : %d, future: %d, pass %d", ALARMS.count, futureAlarm, passAlarm);
+                        for (EKAlarm *alarm2 in ALARMS) {
+                            NSDate *date = alarm2.absoluteDate;
+
+                            if ([date isLaterThanDate:latest.absoluteDate]) {
+                                latest = alarm2;
+                            }
+                        }
+                        NSDate *latestDate = latest.absoluteDate;
+
+                        NSTimeInterval secondsBetween = [latestDate timeIntervalSinceNow];
+                        NSInteger ti = (NSInteger) secondsBetween;
+                        NSInteger seconds = ti % 60;
+                        NSInteger minutes = (ti / 60) % 60;
+                        NSInteger hours = (ti / 3600);
+                        NSString *str = [NSString stringWithFormat:@"%02ld:%02ld:%02ld", (long) hours, (long) minutes, (long) seconds];
+
+                        DDLogDebug(@"seconds betwwen : %@", str);
+                        if (minutes < 0 && !haveFutureAlarms) {
+                            EKAlarm *alarm1 = [EKAlarm alarmWithAbsoluteDate:[current dateByAddingSeconds:3]];
+                            NSError *error;
+                            [reminder addAlarm:alarm1];
+                            [self.eventManager.ekEventStore saveReminder:reminder commit:YES error:&error];
+                            if (OBJECT_ISNOT_EMPTY(error)) {
+                                FATAL_CORE_DATA_ERROR(error);
+                            } else {
+                                DDLogDebug(@"add alarm for reminder : %@", reminder.title);
+                            }
+                        } else {
+                            DDLogDebug(@" interval too short");
+                        }
+                    }
                 }
             }
         }

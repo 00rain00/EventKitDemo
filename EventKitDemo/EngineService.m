@@ -134,7 +134,7 @@ DATA_OBJECT theResult;
     if(OBJECT_ISNOT_EMPTY(error)){
         FATAL_CORE_DATA_ERROR(error);
     }else{
-         DDLogDebug(@"%@", doc.rootElement);
+        // DDLogDebug(@"%@", doc.rootElement);
     }
     RETURN_NIL_WHEN_OBJECT_IS_EMPTY(doc);
 
@@ -216,7 +216,7 @@ DATA_OBJECT theResult;
                     NSString *strFact = [string stringByReplacingOccurrencesOfString:@"@weather" withString:dic[@"main"]];
                     strFact = [strFact stringByReplacingOccurrencesOfString:@"@date" withString:dic[@"date"]];
                     strFact = [strFact stringByReplacingOccurrencesOfString:@"@time" withString:dic[@"time"]];
-                    DDLogDebug(@"%@",strFact);
+                   // DDLogDebug(@"%@",strFact);
                     //write to file
                    stringToWrite= [stringToWrite stringByAppendingFormat:@"%@\n",strFact];
                 }
@@ -461,7 +461,7 @@ return filepath;
                     NSDate *Threehourlater = [[NSDate new] dateByAddingHoursClearMinutesAndSeconds:3];
                     rule = [rule stringByReplacingOccurrencesOfString:@"@time" withString:[Threehourlater stringWithFormat:kNSDateHelperFormatSQLTime]];
                 }
-                DDLogDebug(@"rule : %@",rule);
+             //   DDLogDebug(@"rule : %@",rule);
 
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask, YES);
         NSString *documentsDirectory = paths[0];

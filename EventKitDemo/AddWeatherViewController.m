@@ -33,7 +33,7 @@ NSString * const kforecastType = @"forecastType";
 
 {
 
-
+    self.cd = [[CoreDataService alloc] init];
     self = [super initWithCoder:aDecoder];
     if (self){
         [self initializeForm];
@@ -71,7 +71,7 @@ NSString * const kforecastType = @"forecastType";
 }
 
 - (IBAction)save:(id)sender {
-
+    DDLogDebug(@"start");
     NSString *reminderID = [[NSUserDefaults standardUserDefaults] valueForKey:@"selected_reminder_identifier"];
     if(OBJECT_IS_EMPTY(reminderID)){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
@@ -86,7 +86,7 @@ NSString * const kforecastType = @"forecastType";
             [alertController show];
         }else{
 
-            CoreDataService *coreDataService = [[CoreDataService alloc] init];
+
             NSDictionary *formDic = [self formValues];
 
 
@@ -106,10 +106,10 @@ NSString * const kforecastType = @"forecastType";
 
 
             NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic];
-            [coreDataService createCondition:reminderID :kWeatherDetails :myValue];
+            [self.cd createCondition:reminderID :kWeatherDetails :myValue];
             //}
 
-            coreDataService = nil;
+
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 
         }

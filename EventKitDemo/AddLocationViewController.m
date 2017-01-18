@@ -583,12 +583,12 @@ NSString *const klocationDetails = @"LocationDetails";
 //    UIColor *uiColorO = [UIColor orangeColor];
 //    [self mapSelectorManager].fillColor =uiColorO;
 //    self.mapSelectorManager.strokeColor = [UIColor blueColor];
-//    [self.mapView addAnnotation:item.placemark];
-//    [self.mapView selectAnnotation:item.placemark animated:YES];
+    [self.mapView addAnnotation:item.placemark];
+    [self.mapView selectAnnotation:item.placemark animated:YES];
 //
-//    [self.mapView setCenterCoordinate:item.placemark.location.coordinate animated:YES];
+    [self.mapView setCenterCoordinate:item.placemark.location.coordinate animated:YES];
 //
-//    [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
+    [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
 
 }
 

@@ -19,11 +19,11 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
 @property (nonatomic, strong) NSString *eventTitle;
 
-@property (nonatomic, strong) NSMutableArray *arrAlarms;
+
 
 @property (nonatomic,strong)Condition * ruleType;
 
-@property (nonatomic, strong)CoreDataService *coreDataService;
+
 
 @property (nonatomic, strong)NSMutableArray *arrCondition;
 
@@ -51,36 +51,30 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     self.tblEvent.delegate = self;
     self.tblEvent.dataSource = self;
     
-    self.coreDataService = [[CoreDataService alloc] init];
+
     
-    self.arrAlarms= [NSMutableArray new];
+
     self.arrCondition = [NSMutableArray new];
     RETURN_WHEN_OBJECT_IS_EMPTY(self.editedEvent);
     
     
     self.eventTitle = self.editedEvent.title;
-    //    NSDate *alarm2m = [[NSDate new] dateByAddingMinutes:2];
-    //
-    //    NSDate *alarm4m = [[NSDate new] dateByAddingMinutes:4];
-    //    EKAlarm *alarm1= [EKAlarm alarmWithAbsoluteDate:alarm2m];
-    //    //alarm1.emailAddress = [NSString stringWithFormat:@"%@.com",@"google"];
-    //    EKAlarm *alarm2 = [EKAlarm alarmWithAbsoluteDate:alarm4m];
-    //    [self.editedEvent addAlarm:alarm1];
-    // [self.editedEvent addAlarm:alarm2];
-    // [self.appDelegate.eventManager.ekEventStore saveReminder:self.editedEvent commit:YES error:nil];
-    [self.arrAlarms addObjectsFromArray:self.editedEvent.alarms];
+
+
     
     [self.arrCondition addObjectsFromArray:[self fetchCondition:self.editedEvent.calendarItemIdentifier]];
+    NSMutableArray *conditionsNeedToRemoveFromTable = [NSMutableArray new];
     for(Condition *condition in self.arrCondition){
         if([condition.myKey containsString:@"ruleType"]){
-            
+            DDLogDebug(@"rule type string found");
             self.ruleType  = condition;
-            
+            [conditionsNeedToRemoveFromTable addObject:condition];
         }
     }
-    [self.arrCondition removeObject:self.ruleType];
+    [self.arrCondition removeObjectsInArray:conditionsNeedToRemoveFromTable];
+
     DDLogDebug(@"arr condtion count : %lu",self.arrCondition.count);
-    DDLogDebug(@"arr alarms : %lu",self.arrAlarms.count);
+
     DDLogDebug(@"reminder identitifer: %@",self.editedEvent.calendarItemIdentifier);
     //test two time alarm
     
@@ -88,12 +82,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     
     
     
-    for(EKAlarm * alarm in self.arrAlarms){
-        
-        //      DDLogDebug(@"alarm time: %@", [NSDate stringFromDate:alarm.absoluteDate withFormat:kNSDateHelperFormatSQLDateWithTime]);
-        
-        
-    }
+
     [self.tblEvent reloadData];
     
     
@@ -158,9 +147,9 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
                 UISegmentedControl *segment = (UISegmentedControl *) [cell.contentView viewWithTag:20];
 
                 if(OBJECT_IS_EMPTY(self.ruleType)){
-                    DDLogDebug(@"create new tule type");
+                    DDLogDebug(@"self.ruleType is empty->create new rule type");
                     segment.selectedSegmentIndex=0;
-                    [self.coreDataService createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(segment.selectedSegmentIndex)]];
+                    [self.appDelegate.cd createCondition:self.editedEvent.calendarItemIdentifier :@"ruleType" :[NSKeyedArchiver archivedDataWithRootObject:@(segment.selectedSegmentIndex)]];
 
                 }else{
 
@@ -379,7 +368,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     NSString * key = conditionToDelete.myKey;
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@ AND myKey == %@",ID,key];
     [request setPredicate:predicate];
-    [self.coreDataService deleteCondition:request];
+    [self.appDelegate.cd deleteCondition:request];
 
     [self.arrCondition removeObjectAtIndex:objectIndex-1];
     [self.tblEvent reloadData];
@@ -391,7 +380,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
 
-         return  [self.coreDataService fetchCondition:request];
+         return  [self.appDelegate.cd fetchCondition:request];
 
 }
 
@@ -404,13 +393,13 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
         NSData *newValue = [NSKeyedArchiver archivedDataWithRootObject:condition.sattus];
         condition.myValue = newValue;
     }
-    [self.coreDataService save];
+    [self.appDelegate.cd save];
 }
 
 -(void)segmentChange:(UISegmentedControl *)sender{
     NSData *ruleType = [NSKeyedArchiver archivedDataWithRootObject:@(sender.selectedSegmentIndex)];
     self.ruleType.myValue = ruleType;
-    [self.coreDataService save];
+    [self.appDelegate.cd save];
 }
 
 
