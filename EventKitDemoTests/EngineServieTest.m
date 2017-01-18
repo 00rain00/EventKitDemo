@@ -62,10 +62,12 @@
         
         NSArray * re =  [self.cd fetchCondition:request];
         [EngineService generateRules:re];
-        
-        
-        
+
     }
+
+
+
+
 -(void)testRunEngine{
     [self testGenerateFact];
     

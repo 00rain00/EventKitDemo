@@ -13,7 +13,7 @@
          </Script>
       <Script name = "time">
           (defrule MAIN::trigger_time
-          (temp-time (minutes @minutes)(hour @hour)(date @date)(weekDay @weekDay)(monthDay @monthDay))
+          (temp-time (weekDay @weekDay)(monthDay @monthDay))
           =>(assert(temp-time-result(trigger "YES"))))
           </Script>
               <Template name = "Template_01">
@@ -23,7 +23,7 @@
                   (deftemplate MAIN::temp-location (slot longtidute)(slot latlitude)(slot radius)(slot inside))
                   </Template>
               <Template name = "Template_04">
-                  (deftemplate MAIN::temp-time (slot minutes)(slot hour)(slot date)(slot weekDay)(slot monthDay))
+                  (deftemplate MAIN::temp-time (slot weekDay)(slot monthDay))
                   </Template>
               <Template name = "Template_02">
                   (deftemplate MAIN::temp-weather-result(slot trigger))

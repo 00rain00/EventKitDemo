@@ -167,7 +167,7 @@ static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 
                     segment.selectedSegmentIndex = [[NSKeyedUnarchiver unarchiveObjectWithData:self.ruleType.myValue] integerValue];
 
-                    DDLogDebug(@"rule type : %d",segment.selectedSegmentIndex);
+                    DDLogDebug(@"rule type(0>all,1>any) : %d",segment.selectedSegmentIndex);
                 }
                 [segment addTarget:self action:@selector(segmentChange:) forControlEvents:UIControlEventValueChanged];
             }

@@ -6,7 +6,7 @@
     (temp-location (longtidute @longtitude)(latlitude @latitude)(radius @radius)(inside @inside))
     </Script>
 <Script name = "Fact_03">
-    (temp-time (minutes @minutes)(hour @hour)(date @date)(weekDay @weekDay)(monthDay @monthDay))
+    (temp-time (weekDay @weekDay)(monthDay @monthDay))
     </Script>
 
 </CLIPSScriptConfig>

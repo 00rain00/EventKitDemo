@@ -198,11 +198,12 @@ static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 
 -(void)testFetchCondion{
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
+    NSString * ID =@"FA66D48D-9E17-4496-AB1C-E11BF08BE3E1";
    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
     CoreDataService *cd  = [[CoreDataService alloc]init];
    NSArray * re =  [cd fetchCondition:request];
+    DDLogDebug(@"conditions size : %lu",(unsigned long)re.count);
     for (Condition * con in re) {
      //   NSString *value = [NSKeyedUnarchiver unarchiveObjectWithData:con.myValue];
         if ([con.myKey containsString:@"Day"]) {
