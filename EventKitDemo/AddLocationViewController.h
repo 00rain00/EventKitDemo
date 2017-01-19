@@ -32,6 +32,7 @@ typedef void(^DidReceiveLocation)(CLLocation *currentlocation);
 @property (strong, nonatomic) UISearchController *searchController;
 @property (strong, nonatomic) MKLocalSearch *localSearch;
 @property (strong, nonatomic) MKLocalSearchResponse *results;
+@property (nonatomic, copy)NSString *searchKeyWords;
 
 
 - (void)viewDidLoad;

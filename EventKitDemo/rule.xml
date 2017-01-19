@@ -1,0 +1,38 @@
+
+  <CLIPSRuleConfig>
+      <Script name = "weather">
+        (defrule MAIN::trigger_weather
+        (temp-weather(weather @weather)(date @date)(time @time))
+            =>
+            (assert (temp-weather-result(trigger "YES"))))
+          </Script>
+      <Script name = "location">
+          (defrule MAIN::trigger_location
+         (temp-location (longtidute @longtitude)(latlitude @latitude)(radius @radius)(inside @inside))
+         => (assert (temp-location-result(trigger "YES"))))
+         </Script>
+      <Script name = "time">
+          (defrule MAIN::trigger_time
+          (temp-time (weekDay @weekDay)(monthDay @monthDay))
+          =>(assert(temp-time-result(trigger "YES"))))
+          </Script>
+              <Template name = "Template_01">
+                  (deftemplate MAIN::temp-weather (slot weather)(slot date)(slot time))
+              </Template>
+              <Template name  = "Template_03">
+                  (deftemplate MAIN::temp-location (slot longtidute)(slot latlitude)(slot radius)(slot inside))
+                  </Template>
+              <Template name = "Template_04">
+                  (deftemplate MAIN::temp-time (slot weekDay)(slot monthDay))
+                  </Template>
+              <Template name = "Template_02">
+                  (deftemplate MAIN::temp-weather-result(slot trigger))
+                  </Template>
+              <Template name = "Template_05">
+                  (deftemplate MAIN::temp-location-result(slot trigger))
+              </Template>
+
+                <Template name = "Template_06">
+                (deftemplate MAIN::temp-time-result(slot trigger))
+                    </Template>
+                     </CLIPSRuleConfig>

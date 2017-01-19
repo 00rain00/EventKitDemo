@@ -11,14 +11,16 @@
 #import "CoreDataService.h"
 
 @interface EngineServieTest : XCTestCase
-
+@property(nonatomic,strong)EngineService * es;
+@property(nonatomic,strong)CoreDataService * cd;
 @end
 
 @implementation EngineServieTest
 
 - (void)setUp {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.es = [EngineService new];
+    self.cd = [[CoreDataService alloc] init];
 }
 
 - (void)tearDown {
@@ -27,40 +29,52 @@
 }
 
 -(void)testSetUpEngine{
-    EngineService * es = [EngineService new];
+   
     
-    int result = es.setUpClipsEnvironment;
+    int result = self.es.setUpClipsEnvironment;
     NSLog(@"%d",result);
     XCTAssertEqual(result, 1);
 }
--(void)testTransformFacts{
-    EngineService * es = [EngineService new];
-    es.setUpClipsEnvironment;
-    NSDictionary *facts = @{
-            @"Time" :[NSDate new]};
 
-    [es generateFacts:facts];
-}
 
--(void)testTransformRules{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
-    NSString * ID =@"56CB5865-B6F1-4E2F-8C50-566468970A27";
-    NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES",ID];
+
+
+-(void)testGenerateFact{
+    NSFetchRequest * request = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSPredicate *predicate =   [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
     [request setPredicate:predicate];
-    CoreDataService *cd  = [[CoreDataService alloc]init];
-    NSArray * re =  [cd fetchCondition:request];
-    EngineService * es = [EngineService new];
-    [es writeConditionToFile:re];
-    DDLogDebug(@"size : %ld",re.count);
+    NSArray * re = [self.cd fetchFacts:request];
+    DDLogDebug(@"size: %lu",re.count);
+//    for (Fact * fact in re) {
+//       // DDLogDebug(@"key: %@",fact.factKey);
+//        NSDictionary * data = [NSKeyedUnarchiver unarchiveObjectWithData:fact.factValue];
+//        LOOP_DICTIONARY(data);
+//    }
+       [EngineService generateFacts:re];
 
-
-
-
-
-
-
-    cd = nil;
-    es = nil;
 }
+    
+-(void)testGenerateRules{
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
+        NSString * ID =@"813F615D-1EC9-49EF-865B-77049D08EBC0";
+        NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@  AND sattus == YES AND myKey == %@",ID,@"Weather"];
+        [request setPredicate:predicate];
+        
+        NSArray * re =  [self.cd fetchCondition:request];
+        [EngineService generateRules:re];
+
+    }
+
+
+
+
+-(void)testRunEngine{
+    [self testGenerateFact];
+    
+    [self testGenerateRules];
+    [self.es setUpClipsEnvironment];
+    [self.es processRules];
+}
+
 
 @end

@@ -12,8 +12,9 @@
 NSString * const kWeatherDetails  = @"Weather";
 NSString * const kforecastTime = @"forecastTime";
 NSString * const kforecastType = @"forecastType";
-@interface AddWeatherViewController ()
 
+@interface AddWeatherViewController ()
+@property(nonatomic,strong)CoreDataService *cd ;
 @end
 
 @implementation AddWeatherViewController
@@ -32,7 +33,7 @@ NSString * const kforecastType = @"forecastType";
 
 {
 
-
+    self.cd = [[CoreDataService alloc] init];
     self = [super initWithCoder:aDecoder];
     if (self){
         [self initializeForm];
@@ -60,8 +61,8 @@ NSString * const kforecastType = @"forecastType";
 
 
     XLFormRowDescriptor * row2 = [XLFormRowDescriptor formRowDescriptorWithTag:kforecastType rowType:XLFormRowDescriptorTypeSelectorPickerViewInline title:@"weather type"];
-    row2.selectorOptions = @[@"Sunny", @"Cloudy", @"Rainy"];
-    row2.value = @"Sunny";
+    row2.selectorOptions = @[@"Clear Sky", @"Cloudy", @"Rainy"];
+    row2.value = @"Clear Sky";
     [section addFormRow:row2];
     self.form = form;
 
@@ -70,7 +71,7 @@ NSString * const kforecastType = @"forecastType";
 }
 
 - (IBAction)save:(id)sender {
-
+    DDLogDebug(@"start");
     NSString *reminderID = [[NSUserDefaults standardUserDefaults] valueForKey:@"selected_reminder_identifier"];
     if(OBJECT_IS_EMPTY(reminderID)){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
@@ -85,7 +86,7 @@ NSString * const kforecastType = @"forecastType";
             [alertController show];
         }else{
 
-            CoreDataService *coreDataService = [[CoreDataService alloc] init];
+
             NSDictionary *formDic = [self formValues];
 
 
@@ -105,10 +106,10 @@ NSString * const kforecastType = @"forecastType";
 
 
             NSData *myValue = [NSKeyedArchiver archivedDataWithRootObject:formDic];
-            [coreDataService createCondition:reminderID :kWeatherDetails :myValue];
+            [self.cd createCondition:reminderID :kWeatherDetails :myValue];
             //}
 
-            coreDataService = nil;
+
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:0] animated:YES];
 
         }
@@ -119,20 +120,19 @@ NSString * const kforecastType = @"forecastType";
 
 -(BOOL)saveValidation:(NSString *)reminderID{
     BOOL flag  = NO;
-    CoreDataService *coreDataService = [[CoreDataService alloc] init];
+   
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Condition"];
     NSString * ID =reminderID;
     NSPredicate * predicate =  [NSPredicate predicateWithFormat:@"myReminderID == %@",ID];
     [request setPredicate:predicate];
-    NSArray *result =  [coreDataService fetchCondition:request];
+    NSArray *result =  [self.cd fetchCondition:request];
     for(Condition * condition in result){
         if([condition.myKey isEqualToString:kWeatherDetails]){
             flag = YES;
             break;
         }
     }
-    coreDataService=nil;
-    return flag;
+        return flag;
 }
 
 

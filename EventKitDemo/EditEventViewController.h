@@ -12,7 +12,7 @@
 #import "AddLocationViewController.h"
 #import "AddWeatherViewController.h"
 #import "Condition.h"
-#import "CoreDataService.h"
+
 @protocol EditEventViewControllerDelegate
 
 -(void)eventWasSuccessfullySaved;
@@ -21,7 +21,7 @@
 
 
 @interface EditEventViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource,
-        AddAlarmDelegate,AddLocationViewControllerDelegate,AddWeatherViewControllerDelegate>
+        AddAlarmDelegate,AddLocationViewControllerDelegate>
 
 @property (nonatomic, strong) id<EditEventViewControllerDelegate> delegate;
 

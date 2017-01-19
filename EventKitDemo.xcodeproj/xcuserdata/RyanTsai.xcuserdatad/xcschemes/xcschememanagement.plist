@@ -9,40 +9,45 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>-[CoreDataTest testFetchLocationCondion].xcscheme</key>
+		<key>-[CoreDataTest testFetchCondion].xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false />
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[CoreDataTest testDeleteCondition].xcscheme</key>
+		<key>-[CoreDataTest testFetchFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>14</integer>
+			<integer>2</integer>
 		</dict>
-		<key>-[EventKitDemoTests testCheckCondition].xcscheme</key>
+		<key>-[CoreDataTest testCreateWeatherFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>15</integer>
+			<integer>3</integer>
 		</dict>
-		<key>-[CoreDataTest testEvalueWeatherCondition].xcscheme</key>
+		<key>-[EngineServieTest testGenerateFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>4</integer>
 		</dict>
-		<key>-[CoreDataTest testFetchAllCondition].xcscheme</key>
+		<key>-[CoreDataTest testDeleteFact].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>5</integer>
+		</dict>
+		<key>-[CoreDataTest testFetchCondion] (1).xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>19</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>

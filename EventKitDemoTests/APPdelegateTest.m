@@ -32,8 +32,6 @@
     [app evaluationCondition];
 }
 
-
-
 -(void)testGetWeather{
      XCTestExpectation *expectation = [self expectationWithDescription:@"test get weather woks"];
     NSString *apiKey = @"87d25c0b5f8ce6cbfb3f53beb86fa29d";

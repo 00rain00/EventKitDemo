@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <XLForm/XLForm.h>
-
+#import "CoreDataService.h"
 @class AddWeatherViewController;
 @class EKAlarm;
 
-@protocol AddWeatherViewControllerDelegate<NSObject>
--(void)addWeatherViewController:(AddWeatherViewController *)controller:(EKAlarm *)item;
-@end
+//@protocol AddWeatherViewControllerDelegate<NSObject>
+//-(void)addWeatherViewController:(AddWeatherViewController *)controller:(EKAlarm *)item;
+//@end
 @interface AddWeatherViewController : XLFormViewController
-@property (nonatomic, weak)id <AddWeatherViewControllerDelegate> delegate;
+//@property (nonatomic, weak)id <AddWeatherViewControllerDelegate> delegate;
 -(IBAction)save:(id)sender;
 @end

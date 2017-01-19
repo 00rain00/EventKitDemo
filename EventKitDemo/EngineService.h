@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <GDataXML_HTML/GDataXMLNode.h>
 typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
     OpenFileWithLoadError=-1,
     FileNotOpen,
@@ -19,12 +19,17 @@ typedef NS_ENUM(NSInteger,ClipsEngStateReturn){
 
 -(int)setUpClipsEnvironment;
 
-//get the dictionaary of user's setting and transform to clips rules with reminder identifier
--(NSDictionary *)transformRules:(NSDictionary *)rules;
-//transform devides information to clips fasts
--(BOOL)generateFacts:(NSDictionary *)facts;
--(BOOL)runEngine:(NSDictionary *)factsAndRules;
--(void)writeConditionToFile:(NSArray *)condition;
 
++(NSString *)generateFacts:(NSArray *)facts;
++(NSString *)generateTimeFacts;
++(void)generateRules:(NSArray *)rules;
++(NSString *)generateWeatherRules:(NSDictionary *)rules;
++(NSString *)generateTimeRules:(NSDictionary *)rules :(BOOL)haveWeekDay:(BOOL)haveMonthDay;
++ (NSString *)dataFilePath:(BOOL)forFact;
++ (GDataXMLDocument *)loadXml:(BOOL)forFact;
+-(NSString *)handleResponse;
+- (void) processRules;
+-(NSString *)executeWeather:(NSString *)rulePath:(NSString *)factPath;
+-(NSString *)executeTime:(NSString *)rulePath:(NSString *)factPath;
 
 @end

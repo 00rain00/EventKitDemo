@@ -131,20 +131,20 @@ NSString *const earphone = @"earphone";
     }
 }
 
-- (IBAction)saveNotificationRules:(id)sender {
-    [self print];
-    NSDictionary *rules= [self.appDelegate.engineService transformRules:self.dictionary];
-    if(OBJECT_IS_EMPTY(rules)){
-        DDLogDebug(@"fail generate ruls");
-        return;
-    } else{
-        for (id key in rules) {
-            DDLogDebug(@"key=%@  value =%@",key, rules[key]);
-        }
-
-        //TODO use core data to save the rules and identifier
-    }
-}
+//- (IBAction)saveNotificationRules:(id)sender {
+//    [self print];
+//    NSDictionary *rules= [self.appDelegate.engineService transformRules:self.dictionary];
+//    if(OBJECT_IS_EMPTY(rules)){
+//        DDLogDebug(@"fail generate ruls");
+//        return;
+//    } else{
+//        for (id key in rules) {
+//            DDLogDebug(@"key=%@  value =%@",key, rules[key]);
+//        }
+//
+//        //TODO use core data to save the rules and identifier
+//    }
+//}
 
 
 @end

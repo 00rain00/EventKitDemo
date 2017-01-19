@@ -1,0 +1,13 @@
+<CLIPSScriptConfig>
+<Script name = "Fact_01">
+(temp-weather (weather @weather)(date @date)(time @time))
+</Script>
+<Script name = "Fact_02">
+    (temp-location (longtidute @longtitude)(latlitude @latitude)(radius @radius)(inside @inside))
+    </Script>
+<Script name = "Fact_03">
+    (temp-time (weekDay @weekDay)(monthDay @monthDay))
+    </Script>
+
+</CLIPSScriptConfig>
+

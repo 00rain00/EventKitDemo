@@ -5,6 +5,8 @@
 @import INTULocationManager;
 static NSString *kNSDateHelperFormatTime                = @"h:mm a";
 static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss";
+static NSString *kNSDateHelperFormatSQLDate             = @"yyyy-MM-dd";
+static NSString *kNSDateHelperFormatSQLTime             = @"HH:mm:ss";
 @interface EventManager()
 @property (nonatomic, strong)NSMutableArray *customerCalendarIdentifiers;
 @property (assign, nonatomic) INTULocationRequestID locationRequestID;
@@ -16,6 +18,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     if((self=[super init])){
         self.ekEventStore=[EKEventStore new];
         self.cd = [[CoreDataService alloc] init];
+        self.es = [[EngineService alloc] init];
         NSUserDefaults *userDefaults=[NSUserDefaults standardUserDefaults];
         if(OBJECT_ISNOT_EMPTY([userDefaults valueForKey:@"eventkit_events_access_granted"])){
             self.eventsAccessGranted= [[userDefaults valueForKey:@"eventkit_events_access_granted"] intValue];
@@ -91,6 +94,8 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
 - (NSArray *)getiCloudReminders {
     NSArray *allCalendars = [self.ekEventStore calendarsForEntityType:EKEntityTypeReminder];
+
+
     NSMutableArray *localCalenders = [NSMutableArray new];
     for(int i =0; i<allCalendars.count;i++){
         EKCalendar *calendar= allCalendars[i];
@@ -100,9 +105,16 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             [localCalenders addObject:calendar];
 
     }
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title"
+                                                 ascending:YES];
+    NSArray *sortDescriptors;
+    sortDescriptors = @[sortDescriptor];
+    NSArray *sortedArray = [localCalenders sortedArrayUsingDescriptors:sortDescriptors];
     DDLogDebug(@"Size of local Calenders:%lu",(unsigned long)localCalenders.count);
-    return (NSArray *)localCalenders;
+    return sortedArray;
 }
+
 
 - (void)saveCustomerCalendarIdentifier:(NSString *)identifier {
  //   [self.customerCalendarIdentifiers addObject:identifier];
@@ -214,7 +226,13 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
         //call the block
         if(self.callbackForFetchReminders){
-            self.callbackForFetchReminders(reminders);
+            NSSortDescriptor *sortDescriptor;
+            sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title"
+                                                         ascending:YES];
+            NSArray *sortDescriptors;
+            sortDescriptors = @[sortDescriptor];
+            NSArray *sortedArray = [reminders sortedArrayUsingDescriptors:sortDescriptors];
+            self.callbackForFetchReminders(sortedArray);
         }
 
     }];
@@ -232,7 +250,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             NSString *key  = condition.myKey;
             NSDictionary *myValue = [NSKeyedUnarchiver unarchiveObjectWithData:condition.myValue];
             if([key containsString:@"Time"]){
-                BOOL result = [self compareTime:myValue];
+                BOOL result = [self compareTime2:myValue];
                 DDLogDebug(@"Time : %d",result);
                 [fullfillConditions addObject:@(result)];
             }
@@ -242,7 +260,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
                 [fullfillConditions addObject:@(result)];
             }
             if([key containsString:@"Weather"]){
-                BOOL result = [self compareWeather:myValue];
+                BOOL result = [self compareWeather2:myValue];
                 [fullfillConditions addObject:@(result)];
                 DDLogDebug(@"weather : %d", result);
             }
@@ -255,7 +273,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
         }
         //check whether add alarm to conditions
         int i = 0;
-        BOOL flag;
+        BOOL flag=NO;
     //1 for any 0 for all
         if(isAny){
             for(id result in fullfillConditions){
@@ -274,11 +292,11 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
                 }
 
             }
-            if(i==fullfillConditions.count){
+            if(i==fullfillConditions.count&&fullfillConditions.count!=0){
                 flag = YES;
             }
         }
-        DDLogDebug(@"flag : %d",flag);
+        DDLogDebug(@"check result : %d",flag);
         return flag;
 
 
@@ -342,6 +360,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
                 }
             }
             NSMutableArray *marrNumberWeekDay = [self wordWeekDay2NumberWeekDay:marrWeekDays];
+            DDLogDebug(@"marrNumberWeekDay size:%d",marrNumberWeekDay.count);
             //check if it is today
             for(NSNumber *numDay in marrNumberWeekDay){
                 DDLogDebug(@"current week day : %lu   numDay : %ld",(unsigned long)current.weekday,(long)numDay.integerValue);
@@ -498,7 +517,7 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
 
     BOOL fullfil = NO;
     NSString *compareType ;
-    if([forecastType isEqualToString:@"Sunny"]){
+    if([forecastType isEqualToString:@"Clear Sky"]){
         compareType = @"Clear";
     }else if([forecastType isEqualToString:@"Rainy"]){
         compareType = @"Rain";
@@ -508,10 +527,10 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
     if([forecastTime isEqualToString:@"Tomorrow"]){
         DDLogDebug(@"forecast tomottow");
         for(NSDictionary *data in mutableArray){
-            NSDate *date = data[@"time"];
-            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
-            if( date.isInFuture){
-                DDLogDebug(@"future time");
+            NSString *strDate = data[@"date"];
+          NSDate *date = [NSDate dateFromString:strDate withFormat:kNSDateHelperFormatSQLDate];
+            if( date.isTomorrow){
+                DDLogDebug(@"tomorrow");
                 NSString *type = data[@"main"];
                 DDLogDebug(@"constrain:%@  fact:%@",type,compareType);
                 if([type isEqualToString:compareType]){
@@ -525,25 +544,33 @@ static NSString *kNSDateHelperFormatSQLDateWithTime     = @"yyyy-MM-dd HH:mm:ss"
             }
         }
     }
-    if([forecastTime isEqualToString:@"Next3"]){
+    if([forecastTime isEqualToString:@"Next 3 hours"]){
 
         DDLogDebug(@"forecast next 3");
         for(NSDictionary *data in mutableArray){
-            NSDate *date = data[@"time"];
-            DDLogDebug(@"time : %@", [date stringWithFormat:kNSDateHelperFormatSQLDateWithTime]);
-            if([date isEarlierThanOrEqualDate:[[NSDate new] dateByAddingHours:6]]&& [date isLaterThanOrEqualDate:[NSDate new]]){
-                DDLogDebug(@" next 3 time interval");
-                NSString *type = data[@"main"];
-                DDLogDebug(@" %@ %@",type,compareType);
-                if([type isEqualToString:compareType]){
-                    DDLogDebug(@"checked");
-                    fullfil = YES;
-                    break;
-                }
+            NSString *strDate = data[@"date"];
+            NSString *strTime = data[@"time"];
 
+            NSDate *date = [NSDate dateFromString:strDate withFormat:kNSDateHelperFormatSQLDate];
+            if(date.isToday){
+                NSDate *time = [NSDate dateFromString:strTime withFormat:kNSDateHelperFormatSQLTime];
+                if([time isEarlierThanOrEqualDateIgnoringDate:[[NSDate new] dateByAddingHours:6]]&& [time isLaterThanOrEqualDateIgnoringDate:[NSDate new]]){
+                    DDLogDebug(@" next 6 time interval");
+                    NSString *type = data[@"main"];
+                    DDLogDebug(@" %@ %@",type,compareType);
+                    if([type isEqualToString:compareType]){
+                        DDLogDebug(@"checked");
+                        fullfil = YES;
+                        break;
+                    }
+
+                }else{
+                    continue;
+                }
             }else{
                 continue;
             }
+
         }
     }
 
@@ -654,6 +681,82 @@ DDLogDebug(@"end");
 }
 
 
+-(BOOL)compareWeather2:(NSDictionary *)myValue{
+    NSFetchRequest * request2 = [NSFetchRequest fetchRequestWithEntityName:@"Fact"];
+    NSSortDescriptor *timesorter = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:NO];
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"factKey == %@",@"weather"];
+    [request2 setSortDescriptors:@[timesorter]];
+    [request2 setPredicate:predicate2];
+    NSArray * re2 = [self.cd fetchFacts:request2];
+    DDLogDebug(@"size: %lu",(unsigned long)re2.count);
+    NSString *factPath = [EngineService generateFacts:re2];
+   NSString *rulePath =  [EngineService generateWeatherRules:myValue];
+//    int i = [self.es setUpClipsEnvironment];
+//    DDLogDebug(@"setupenvironment : %d",i);
+//   [self.es processRules];
+    NSString *result = [self.es executeWeather:rulePath :factPath];
+    return [result isEqualToString:@"YES"];
+
+}
+
+-(BOOL)compareTime2:(NSDictionary *)myValue{
+    DDLogDebug(@"start");
+    NSString *endSwitch ;
+    BOOL haveEndTime = NO;
+    BOOL isAllDay = NO;
+    BOOL isInTheTimeRange = NO;
+    BOOL haveWeekDay=NO;
+    BOOL haveMonthDay= NO;
+    NSDate* current = [NSDate new];
+    for(NSObject *kkkey in myValue){
+        NSString *str = [NSString stringWithFormat:@"%@",kkkey.description];
+        if([str isEqualToString:@"endSwitch"]){
+           endSwitch = [NSString stringWithFormat:@"%@",myValue[@"endSwitch"]];
+            if([endSwitch isEqualToString:@"1"]){
+                haveEndTime = YES;
+            }
+        }
+        if([str isEqualToString:@"allDaySwitch"]){
+            NSString *allDaySwitch = [NSString stringWithFormat:@"%@",myValue[@"allDaySwitch"]];
+            if([allDaySwitch isEqualToString:@"1"]){
+                isAllDay = YES;
+            }
+        }
+        if([str isEqualToString: @"WeekDay"]){
+            haveWeekDay = YES;
+        }
+        if([str isEqualToString:@"MonthDay"]){
+            haveMonthDay = YES;
+        }
+
+    }
+    DDLogDebug(@"isAllDay : %d",isAllDay);
+    if(!isAllDay){
+        NSDate * startTime = myValue[@"startTime"];
+        DDLogDebug(@"startTime : %@",[startTime stringWithFormat:kNSDateHelperFormatTime]);
+        if(haveEndTime){
+            
+            NSDate *endTime = myValue[@"endTime"];
+            DDLogDebug(@"endTime : %@",[endTime stringWithFormat:kNSDateHelperFormatTime]);
+            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime]&& [current isEarlierThanOrEqualDateIgnoringDate:endTime];
+            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+        }else{
+            isInTheTimeRange = [current isLaterThanOrEqualDateIgnoringDate:startTime];
+            DDLogDebug(@"is in the time range : %d",isInTheTimeRange);
+        }
+        
+    }else{
+        isInTheTimeRange=YES;
+    }
+    //generate rules
+
+        NSString *rulePath =  [EngineService generateTimeRules:myValue:haveWeekDay:haveMonthDay];
+        NSString *factPath = [EngineService generateTimeFacts];
+        NSString *result = [self.es executeTime:rulePath :factPath];
+        return [result isEqualToString:@"YES"]&&isInTheTimeRange;
+
+
+    }
 
 
 @end
